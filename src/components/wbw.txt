@@ -1,0 +1,23 @@
+https://archive.org/download/quran-wordbyword/wbw.zip/wbw%2F001_001_001.mp3
+https://archive.org/download/quran-wordbyword/wbw.zip/wbw%2F001_001_002.mp3
+https://archive.org/download/quran-wordbyword/wbw.zip/wbw%2F002_013_001.mp3
+
+
+
+import React from 'react';
+
+const AudioPlayer = ({ fileId }) => {
+  const audioUrl = https://drive.google.com/uc?export=download&id=${fileId};
+
+  return (
+    <div>
+      <audio controls>
+        <source src={audioUrl} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  );
+};
+
+export default AudioPlayer;
+drive.google.com

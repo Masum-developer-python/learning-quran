@@ -1,0 +1,257 @@
+{page.column[0] && (
+                    <td
+                      className={`py-2 px-4 border border-gray-300 text-8xl text-center 
+                  ${
+                    arabicWords.find(
+                      (item) =>
+                        item.diacritics === diacritics &&
+                        item.position === positions[0] &&
+                        item.letter == row.id &&
+                        item.join_diacritics == page.name &&
+                        item.in_quran > 0
+                    )
+                      ? "bg-green-300"
+                      : selectedColor.textColor
+                  }
+                  `}
+                    >
+                      {arabicWords.find(
+                        (item) =>
+                          item.diacritics === diacritics &&
+                          item.position === positions[0] &&
+                          item.letter == row.id &&
+                          item.join_diacritics == page.name
+                      )?.word || ""}
+                      <>
+                        <button
+                          onClick={() => {
+                            document.getElementById(
+                              positions[0] + row.id
+                            ).className = "block";
+                            method = "PATCH";
+                            address = baseAddress + "/" + String(item.id);
+                            console.log(method);
+                          }}
+                          className="text-xs"
+                        >
+                          ...
+                        </button>
+                        <div id={`${positions[0]}${row.id}`} className="hidden">
+                          <Words
+                            selectedColor={selectedColor}
+                            sendingWord={sendingWord}
+                            setSendingWord={setSendingWord}
+                            arabicAlphabet={arabicAlphabet}
+                          />
+                          <button
+                            className="bg-gray-300"
+                            onClick={() =>
+                              sendDataToDjango(
+                                {
+                                  diacritics: diacritics,
+                                  position: positions[0],
+                                  word: sendingWord,
+                                  bangla: "",
+                                  english: "",
+                                  parts_of_speech: "",
+                                  letter: row.id,
+                                  join_diacritics: page.name,
+                                }, // Data to send
+                                address, // URL
+                                method
+                              )
+                            }
+                          >
+                            {row.id}
+                            {diacritics}
+                            {positions[0]}
+                          </button>
+                        </div>
+                      </>
+                    </td>
+                  )}
+                  {page.column[1] && (
+                    <td
+                      className={`py-2 px-4 border border-gray-300 text-8xl text-center 
+                  ${
+                    arabicWords.find(
+                      (item) =>
+                        item.diacritics === diacritics &&
+                        item.position === positions[1] &&
+                        item.letter == row.id &&
+                        item.join_diacritics == page.name &&
+                        item.in_quran > 0
+                    )
+                      ? "bg-green-300"
+                      : selectedColor.textColor
+                  }
+                  `}
+                    >
+                      {arabicWords.find(
+                        (item) =>
+                          item.diacritics === diacritics &&
+                          item.position === positions[1] &&
+                          item.letter == row.id &&
+                          item.join_diacritics == page.name
+                      )?.word || ""}
+                      <>
+                        <button
+                          onClick={() => {
+                            document.getElementById(
+                              positions[1] + row.id
+                            ).className = "block";
+                            method = "PATCH";
+                            address = baseAddress + "/" + String(item.id);
+                            console.log(method);
+                          }}
+                          className="text-xs"
+                        >
+                          ...
+                        </button>
+                        <div id={`${positions[1]}${row.id}`} className="hidden">
+                          <Words
+                            selectedColor={selectedColor}
+                            sendingWord={sendingWord}
+                            setSendingWord={setSendingWord}
+                            arabicAlphabet={arabicAlphabet}
+                          />
+                          <button
+                            className="bg-gray-300"
+                            onClick={() =>
+                              sendDataToDjango(
+                                {
+                                  diacritics: diacritics,
+                                  position: positions[1],
+                                  word: sendingWord,
+                                  bangla: "",
+                                  english: "",
+                                  parts_of_speech: "",
+                                  letter: row.id,
+                                  join_diacritics: page.name,
+                                }, // Data to send
+                                address, // URL
+                                method // URL
+                              )
+                            }
+                          >
+                            {row.id}
+                            {diacritics}
+                            {positions[1]}
+                          </button>
+                        </div>
+                      </>
+                    </td>
+                  )}
+                  {page.column[2] && (
+                    <td
+                      className={`py-2 px-4 border border-gray-300 text-8xl text-center 
+                  ${
+                    arabicWords.find(
+                      (item) =>
+                        item.diacritics === diacritics &&
+                        item.position === positions[2] &&
+                        item.letter == row.id &&
+                        item.join_diacritics == page.name &&
+                        item.in_quran > 0
+                    )
+                      ? "bg-green-300"
+                      : selectedColor.textColor
+                  }
+                  `}
+                    >
+                      {arabicWords.find(
+                        (item) =>
+                          item.diacritics === diacritics &&
+                          item.position === positions[2] &&
+                          item.letter == row.id &&
+                          item.join_diacritics == page.name
+                      )?.word || ""}
+                      <>
+                        <button
+                          onClick={() => {
+                            document.getElementById(
+                              positions[2] + row.id
+                            ).className = "block";
+                            method = "PATCH";
+                            address = baseAddress + "/" + String(item.id);
+                            console.log(method);
+                          }}
+                          className="text-xs"
+                        >
+                          ...
+                        </button>
+                        <div
+                          id={`${positions[2]}${row.id}`}
+                          className="hidden h-[0%]"
+                        >
+                          <Words
+                            selectedColor={selectedColor}
+                            sendingWord={sendingWord}
+                            setSendingWord={setSendingWord}
+                            arabicAlphabet={arabicAlphabet}
+                          />
+                          <button
+                            className="bg-gray-300"
+                            onClick={() =>
+                              sendDataToDjango(
+                                {
+                                  diacritics: diacritics,
+                                  position: positions[2],
+                                  word: sendingWord,
+                                  bangla: "",
+                                  english: "",
+                                  parts_of_speech: "",
+                                  letter: row.id,
+                                  join_diacritics: page.name,
+                                }, // Data to send
+                                address, // URL
+                                method // URL
+                              )
+                            }
+                          >
+                            {row.id}
+                            {diacritics}
+                            {positions[2]}
+                          </button>
+                        </div>
+                      </>
+                    </td>
+                  )}
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  {page.column[0] && (
+              <th className="py-2 px-4 border border-gray-300 font-bangla">
+                {page.column[0]}
+              </th>
+            )}
+            {page.column[1] && (
+              <th className="py-2 px-4 border border-gray-300 font-bangla">
+                {page.column[1]}
+              </th>
+            )}
+            {page.column[2] && (
+              <th className="py-2 px-4 border border-gray-300 font-bangla">
+                {page.column[2]}
+              </th>
+            )}

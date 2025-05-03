@@ -1,0 +1,3995 @@
+data =[
+  {
+    "aya": 7,
+    "sura": 2,
+    "position": 1,
+    "text": "خَتَمَ",
+    "audio": "/002_007_001.mp3"
+  },
+  {
+    "aya": 17,
+    "sura": 2,
+    "position": 10,
+    "text": "ذَهَبَ",
+    "audio": "/002_017_010.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 2,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/002_022_002.mp3"
+  },
+  {
+    "aya": 29,
+    "sura": 2,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/002_029_001.mp3"
+  },
+  {
+    "aya": 37,
+    "sura": 2,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/002_037_010.mp3"
+  },
+  {
+    "aya": 54,
+    "sura": 2,
+    "position": 25,
+    "text": "هُوَ",
+    "audio": "/002_054_025.mp3"
+  },
+  {
+    "aya": 60,
+    "sura": 2,
+    "position": 18,
+    "text": "عَلِمَ",
+    "audio": "/002_060_018.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 2,
+    "position": 27,
+    "text": "هُوَ",
+    "audio": "/002_061_027.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 2,
+    "position": 30,
+    "text": "هُوَ",
+    "audio": "/002_061_030.mp3"
+  },
+  {
+    "aya": 76,
+    "sura": 2,
+    "position": 15,
+    "text": "فَتَحَ",
+    "audio": "/002_076_015.mp3"
+  },
+  {
+    "aya": 81,
+    "sura": 2,
+    "position": 3,
+    "text": "كَسَبَ",
+    "audio": "/002_081_003.mp3"
+  },
+  {
+    "aya": 96,
+    "sura": 2,
+    "position": 17,
+    "text": "هُوَ",
+    "audio": "/002_096_017.mp3"
+  },
+  {
+    "aya": 101,
+    "sura": 2,
+    "position": 10,
+    "text": "نَبَذَ",
+    "audio": "/002_101_010.mp3"
+  },
+  {
+    "aya": 114,
+    "sura": 2,
+    "position": 4,
+    "text": "مَنَعَ",
+    "audio": "/002_114_004.mp3"
+  },
+  {
+    "aya": 120,
+    "sura": 2,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/002_120_015.mp3"
+  },
+  {
+    "aya": 133,
+    "sura": 2,
+    "position": 5,
+    "text": "حَضَرَ",
+    "audio": "/002_133_005.mp3"
+  },
+  {
+    "aya": 148,
+    "sura": 2,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/002_148_003.mp3"
+  },
+  {
+    "aya": 163,
+    "sura": 2,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/002_163_008.mp3"
+  },
+  {
+    "aya": 180,
+    "sura": 2,
+    "position": 4,
+    "text": "حَضَرَ",
+    "audio": "/002_180_004.mp3"
+  },
+  {
+    "aya": 180,
+    "sura": 2,
+    "position": 8,
+    "text": "تَرَكَ",
+    "audio": "/002_180_008.mp3"
+  },
+  {
+    "aya": 185,
+    "sura": 2,
+    "position": 15,
+    "text": "شَهِدَ",
+    "audio": "/002_185_015.mp3"
+  },
+  {
+    "aya": 187,
+    "sura": 2,
+    "position": 16,
+    "text": "عَلِمَ",
+    "audio": "/002_187_016.mp3"
+  },
+  {
+    "aya": 187,
+    "sura": 2,
+    "position": 31,
+    "text": "كَتَبَ",
+    "audio": "/002_187_031.mp3"
+  },
+  {
+    "aya": 190,
+    "sura": 2,
+    "position": 13,
+    "text": "يُحِبُّ",
+    "audio": "/002_190_013.mp3"
+  },
+  {
+    "aya": 195,
+    "sura": 2,
+    "position": 15,
+    "text": "يُحِبُّ",
+    "audio": "/002_195_015.mp3"
+  },
+  {
+    "aya": 197,
+    "sura": 2,
+    "position": 6,
+    "text": "فَرَضَ",
+    "audio": "/002_197_006.mp3"
+  },
+  {
+    "aya": 205,
+    "sura": 2,
+    "position": 14,
+    "text": "يُحِبُّ",
+    "audio": "/002_205_014.mp3"
+  },
+  {
+    "aya": 222,
+    "sura": 2,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/002_222_006.mp3"
+  },
+  {
+    "aya": 222,
+    "sura": 2,
+    "position": 28,
+    "text": "يُحِبُّ",
+    "audio": "/002_222_028.mp3"
+  },
+  {
+    "aya": 231,
+    "sura": 2,
+    "position": 21,
+    "text": "ظَلَمَ",
+    "audio": "/002_231_021.mp3"
+  },
+  {
+    "aya": 235,
+    "sura": 2,
+    "position": 15,
+    "text": "عَلِمَ",
+    "audio": "/002_235_015.mp3"
+  },
+  {
+    "aya": 247,
+    "sura": 2,
+    "position": 7,
+    "text": "بَعَثَ",
+    "audio": "/002_247_007.mp3"
+  },
+  {
+    "aya": 248,
+    "sura": 2,
+    "position": 16,
+    "text": "تَرَكَ",
+    "audio": "/002_248_016.mp3"
+  },
+  {
+    "aya": 249,
+    "sura": 2,
+    "position": 2,
+    "text": "فَصَلَ",
+    "audio": "/002_249_002.mp3"
+  },
+  {
+    "aya": 249,
+    "sura": 2,
+    "position": 34,
+    "text": "هُوَ",
+    "audio": "/002_249_034.mp3"
+  },
+  {
+    "aya": 255,
+    "sura": 2,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/002_255_005.mp3"
+  },
+  {
+    "aya": 275,
+    "sura": 2,
+    "position": 37,
+    "text": "سَلَفَ",
+    "audio": "/002_275_037.mp3"
+  },
+  {
+    "aya": 276,
+    "sura": 2,
+    "position": 9,
+    "text": "يُحِبُّ",
+    "audio": "/002_276_009.mp3"
+  },
+  {
+    "aya": 278,
+    "sura": 2,
+    "position": 8,
+    "text": "بَقِيَ",
+    "audio": "/002_278_008.mp3"
+  },
+  {
+    "aya": 282,
+    "sura": 2,
+    "position": 52,
+    "text": "هُوَ",
+    "audio": "/002_282_052.mp3"
+  },
+  {
+    "aya": 283,
+    "sura": 2,
+    "position": 13,
+    "text": "أَمِنَ",
+    "audio": "/002_283_013.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 3,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/003_002_005.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 3,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/003_006_001.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 3,
+    "position": 12,
+    "text": "هُوَ",
+    "audio": "/003_006_012.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 3,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/003_007_001.mp3"
+  },
+  {
+    "aya": 18,
+    "sura": 3,
+    "position": 1,
+    "text": "شَهِدَ",
+    "audio": "/003_018_001.mp3"
+  },
+  {
+    "aya": 18,
+    "sura": 3,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/003_018_007.mp3"
+  },
+  {
+    "aya": 18,
+    "sura": 3,
+    "position": 17,
+    "text": "هُوَ",
+    "audio": "/003_018_017.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 3,
+    "position": 2,
+    "text": "تَجِدُ",
+    "audio": "/003_030_002.mp3"
+  },
+  {
+    "aya": 32,
+    "sura": 3,
+    "position": 11,
+    "text": "يُحِبُّ",
+    "audio": "/003_032_011.mp3"
+  },
+  {
+    "aya": 37,
+    "sura": 3,
+    "position": 12,
+    "text": "دَخَلَ",
+    "audio": "/003_037_012.mp3"
+  },
+  {
+    "aya": 37,
+    "sura": 3,
+    "position": 16,
+    "text": "وَجَدَ",
+    "audio": "/003_037_016.mp3"
+  },
+  {
+    "aya": 37,
+    "sura": 3,
+    "position": 27,
+    "text": "هُوَ",
+    "audio": "/003_037_027.mp3"
+  },
+  {
+    "aya": 57,
+    "sura": 3,
+    "position": 11,
+    "text": "يُحِبُّ",
+    "audio": "/003_057_011.mp3"
+  },
+  {
+    "aya": 59,
+    "sura": 3,
+    "position": 2,
+    "text": "مَثَلَ",
+    "audio": "/003_059_002.mp3"
+  },
+  {
+    "aya": 76,
+    "sura": 3,
+    "position": 8,
+    "text": "يُحِبُّ",
+    "audio": "/003_076_008.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 3,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/003_078_011.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 3,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/003_078_015.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 3,
+    "position": 20,
+    "text": "هُوَ",
+    "audio": "/003_078_020.mp3"
+  },
+  {
+    "aya": 81,
+    "sura": 3,
+    "position": 2,
+    "text": "أَخَذَ",
+    "audio": "/003_081_002.mp3"
+  },
+  {
+    "aya": 95,
+    "sura": 3,
+    "position": 2,
+    "text": "صَدَقَ",
+    "audio": "/003_095_002.mp3"
+  },
+  {
+    "aya": 134,
+    "sura": 3,
+    "position": 13,
+    "text": "يُحِبُّ",
+    "audio": "/003_134_013.mp3"
+  },
+  {
+    "aya": 140,
+    "sura": 3,
+    "position": 25,
+    "text": "يُحِبُّ",
+    "audio": "/003_140_025.mp3"
+  },
+  {
+    "aya": 146,
+    "sura": 3,
+    "position": 21,
+    "text": "يُحِبُّ",
+    "audio": "/003_146_021.mp3"
+  },
+  {
+    "aya": 148,
+    "sura": 3,
+    "position": 10,
+    "text": "يُحِبُّ",
+    "audio": "/003_148_010.mp3"
+  },
+  {
+    "aya": 159,
+    "sura": 3,
+    "position": 33,
+    "text": "يُحِبُّ",
+    "audio": "/003_159_033.mp3"
+  },
+  {
+    "aya": 164,
+    "sura": 3,
+    "position": 7,
+    "text": "بَعَثَ",
+    "audio": "/003_164_007.mp3"
+  },
+  {
+    "aya": 165,
+    "sura": 3,
+    "position": 12,
+    "text": "هُوَ",
+    "audio": "/003_165_012.mp3"
+  },
+  {
+    "aya": 180,
+    "sura": 3,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/003_180_010.mp3"
+  },
+  {
+    "aya": 180,
+    "sura": 3,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/003_180_015.mp3"
+  },
+  {
+    "aya": 183,
+    "sura": 3,
+    "position": 19,
+    "text": "رُسُلٌ",
+    "audio": "/003_183_019.mp3"
+  },
+  {
+    "aya": 184,
+    "sura": 3,
+    "position": 5,
+    "text": "رُسُلٌ",
+    "audio": "/003_184_005.mp3"
+  },
+  {
+    "aya": 187,
+    "sura": 3,
+    "position": 2,
+    "text": "أَخَذَ",
+    "audio": "/003_187_002.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 4,
+    "position": 6,
+    "text": "جَعَلَ",
+    "audio": "/004_005_006.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 4,
+    "position": 4,
+    "text": "تَرَكَ",
+    "audio": "/004_007_004.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 4,
+    "position": 10,
+    "text": "تَرَكَ",
+    "audio": "/004_007_010.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 4,
+    "position": 17,
+    "text": "كَثُرَ",
+    "audio": "/004_007_017.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 4,
+    "position": 2,
+    "text": "حَضَرَ",
+    "audio": "/004_008_002.mp3"
+  },
+  {
+    "aya": 11,
+    "sura": 4,
+    "position": 19,
+    "text": "تَرَكَ",
+    "audio": "/004_011_019.mp3"
+  },
+  {
+    "aya": 11,
+    "sura": 4,
+    "position": 33,
+    "text": "تَرَكَ",
+    "audio": "/004_011_033.mp3"
+  },
+  {
+    "aya": 12,
+    "sura": 4,
+    "position": 5,
+    "text": "تَرَكَ",
+    "audio": "/004_012_005.mp3"
+  },
+  {
+    "aya": 18,
+    "sura": 4,
+    "position": 8,
+    "text": "حَضَرَ",
+    "audio": "/004_018_008.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 4,
+    "position": 11,
+    "text": "سَلَفَ",
+    "audio": "/004_022_011.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 4,
+    "position": 49,
+    "text": "سَلَفَ",
+    "audio": "/004_023_049.mp3"
+  },
+  {
+    "aya": 25,
+    "sura": 4,
+    "position": 54,
+    "text": "خَشِيَ",
+    "audio": "/004_025_054.mp3"
+  },
+  {
+    "aya": 33,
+    "sura": 4,
+    "position": 5,
+    "text": "تَرَكَ",
+    "audio": "/004_033_005.mp3"
+  },
+  {
+    "aya": 34,
+    "sura": 4,
+    "position": 21,
+    "text": "حَفِظَ",
+    "audio": "/004_034_021.mp3"
+  },
+  {
+    "aya": 36,
+    "sura": 4,
+    "position": 31,
+    "text": "يُحِبُّ",
+    "audio": "/004_036_031.mp3"
+  },
+  {
+    "aya": 87,
+    "sura": 4,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/004_087_005.mp3"
+  },
+  {
+    "aya": 90,
+    "sura": 4,
+    "position": 34,
+    "text": "جَعَلَ",
+    "audio": "/004_090_034.mp3"
+  },
+  {
+    "aya": 92,
+    "sura": 4,
+    "position": 11,
+    "text": "قَتَلَ",
+    "audio": "/004_092_011.mp3"
+  },
+  {
+    "aya": 107,
+    "sura": 4,
+    "position": 11,
+    "text": "يُحِبُّ",
+    "audio": "/004_107_011.mp3"
+  },
+  {
+    "aya": 119,
+    "sura": 4,
+    "position": 20,
+    "text": "خَسِرَ",
+    "audio": "/004_119_020.mp3"
+  },
+  {
+    "aya": 148,
+    "sura": 4,
+    "position": 3,
+    "text": "يُحِبُّ",
+    "audio": "/004_148_003.mp3"
+  },
+  {
+    "aya": 148,
+    "sura": 4,
+    "position": 11,
+    "text": "ظُلِمَ",
+    "audio": "/004_148_011.mp3"
+  },
+  {
+    "aya": 155,
+    "sura": 4,
+    "position": 16,
+    "text": "طَبَعَ",
+    "audio": "/004_155_016.mp3"
+  },
+  {
+    "aya": 176,
+    "sura": 4,
+    "position": 10,
+    "text": "هَلَكَ",
+    "audio": "/004_176_010.mp3"
+  },
+  {
+    "aya": 176,
+    "sura": 4,
+    "position": 19,
+    "text": "تَرَكَ",
+    "audio": "/004_176_019.mp3"
+  },
+  {
+    "aya": 176,
+    "sura": 4,
+    "position": 35,
+    "text": "تَرَكَ",
+    "audio": "/004_176_035.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 5,
+    "position": 40,
+    "text": "حَبِطَ",
+    "audio": "/005_005_040.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 5,
+    "position": 19,
+    "text": "هُوَ",
+    "audio": "/005_008_019.mp3"
+  },
+  {
+    "aya": 12,
+    "sura": 5,
+    "position": 3,
+    "text": "أَخَذَ",
+    "audio": "/005_012_003.mp3"
+  },
+  {
+    "aya": 13,
+    "sura": 5,
+    "position": 36,
+    "text": "يُحِبُّ",
+    "audio": "/005_013_036.mp3"
+  },
+  {
+    "aya": 17,
+    "sura": 5,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/005_017_007.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 5,
+    "position": 11,
+    "text": "جَعَلَ",
+    "audio": "/005_020_011.mp3"
+  },
+  {
+    "aya": 21,
+    "sura": 5,
+    "position": 6,
+    "text": "كَتَبَ",
+    "audio": "/005_021_006.mp3"
+  },
+  {
+    "aya": 32,
+    "sura": 5,
+    "position": 10,
+    "text": "قَتَلَ",
+    "audio": "/005_032_010.mp3"
+  },
+  {
+    "aya": 32,
+    "sura": 5,
+    "position": 19,
+    "text": "قَتَلَ",
+    "audio": "/005_032_019.mp3"
+  },
+  {
+    "aya": 42,
+    "sura": 5,
+    "position": 29,
+    "text": "يُحِبُّ",
+    "audio": "/005_042_029.mp3"
+  },
+  {
+    "aya": 64,
+    "sura": 5,
+    "position": 53,
+    "text": "يُحِبُّ",
+    "audio": "/005_064_053.mp3"
+  },
+  {
+    "aya": 72,
+    "sura": 5,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/005_072_007.mp3"
+  },
+  {
+    "aya": 76,
+    "sura": 5,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/005_076_015.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 5,
+    "position": 1,
+    "text": "لُعِنَ",
+    "audio": "/005_078_001.mp3"
+  },
+  {
+    "aya": 87,
+    "sura": 5,
+    "position": 17,
+    "text": "يُحِبُّ",
+    "audio": "/005_087_017.mp3"
+  },
+  {
+    "aya": 93,
+    "sura": 5,
+    "position": 24,
+    "text": "يُحِبُّ",
+    "audio": "/005_093_024.mp3"
+  },
+  {
+    "aya": 95,
+    "sura": 5,
+    "position": 17,
+    "text": "قَتَلَ",
+    "audio": "/005_095_017.mp3"
+  },
+  {
+    "aya": 95,
+    "sura": 5,
+    "position": 43,
+    "text": "سَلَفَ",
+    "audio": "/005_095_043.mp3"
+  },
+  {
+    "aya": 97,
+    "sura": 5,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/005_097_002.mp3"
+  },
+  {
+    "aya": 103,
+    "sura": 5,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/005_103_002.mp3"
+  },
+  {
+    "aya": 106,
+    "sura": 5,
+    "position": 7,
+    "text": "حَضَرَ",
+    "audio": "/005_106_007.mp3"
+  },
+  {
+    "aya": 107,
+    "sura": 5,
+    "position": 2,
+    "text": "عُثِرَ",
+    "audio": "/005_107_002.mp3"
+  },
+  {
+    "aya": 119,
+    "sura": 5,
+    "position": 19,
+    "text": "رَضِيَ",
+    "audio": "/005_119_019.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 6,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/006_002_001.mp3"
+  },
+  {
+    "aya": 12,
+    "sura": 6,
+    "position": 11,
+    "text": "كَتَبَ",
+    "audio": "/006_012_011.mp3"
+  },
+  {
+    "aya": 13,
+    "sura": 6,
+    "position": 4,
+    "text": "سَكَنَ",
+    "audio": "/006_013_004.mp3"
+  },
+  {
+    "aya": 17,
+    "sura": 6,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/006_017_009.mp3"
+  },
+  {
+    "aya": 19,
+    "sura": 6,
+    "position": 37,
+    "text": "هُوَ",
+    "audio": "/006_019_037.mp3"
+  },
+  {
+    "aya": 31,
+    "sura": 6,
+    "position": 2,
+    "text": "خَسِرَ",
+    "audio": "/006_031_002.mp3"
+  },
+  {
+    "aya": 34,
+    "sura": 6,
+    "position": 3,
+    "text": "رُسُلٌ",
+    "audio": "/006_034_003.mp3"
+  },
+  {
+    "aya": 46,
+    "sura": 6,
+    "position": 4,
+    "text": "أَخَذَ",
+    "audio": "/006_046_004.mp3"
+  },
+  {
+    "aya": 54,
+    "sura": 6,
+    "position": 10,
+    "text": "كَتَبَ",
+    "audio": "/006_054_010.mp3"
+  },
+  {
+    "aya": 59,
+    "sura": 6,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/006_059_008.mp3"
+  },
+  {
+    "aya": 65,
+    "sura": 6,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/006_065_002.mp3"
+  },
+  {
+    "aya": 71,
+    "sura": 6,
+    "position": 35,
+    "text": "هُوَ",
+    "audio": "/006_071_035.mp3"
+  },
+  {
+    "aya": 76,
+    "sura": 6,
+    "position": 13,
+    "text": "أَفَلَ",
+    "audio": "/006_076_013.mp3"
+  },
+  {
+    "aya": 77,
+    "sura": 6,
+    "position": 10,
+    "text": "أَفَلَ",
+    "audio": "/006_077_010.mp3"
+  },
+  {
+    "aya": 79,
+    "sura": 6,
+    "position": 5,
+    "text": "فَطَرَ",
+    "audio": "/006_079_005.mp3"
+  },
+  {
+    "aya": 90,
+    "sura": 6,
+    "position": 16,
+    "text": "هُوَ",
+    "audio": "/006_090_016.mp3"
+  },
+  {
+    "aya": 97,
+    "sura": 6,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/006_097_003.mp3"
+  },
+  {
+    "aya": 102,
+    "sura": 6,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/006_102_008.mp3"
+  },
+  {
+    "aya": 106,
+    "sura": 6,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/006_106_011.mp3"
+  },
+  {
+    "aya": 117,
+    "sura": 6,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/006_117_003.mp3"
+  },
+  {
+    "aya": 119,
+    "sura": 6,
+    "position": 30,
+    "text": "هُوَ",
+    "audio": "/006_119_030.mp3"
+  },
+  {
+    "aya": 130,
+    "sura": 6,
+    "position": 6,
+    "text": "رُسُلٌ",
+    "audio": "/006_130_006.mp3"
+  },
+  {
+    "aya": 136,
+    "sura": 6,
+    "position": 4,
+    "text": "ذَرَأَ",
+    "audio": "/006_136_004.mp3"
+  },
+  {
+    "aya": 140,
+    "sura": 6,
+    "position": 2,
+    "text": "خَسِرَ",
+    "audio": "/006_140_002.mp3"
+  },
+  {
+    "aya": 141,
+    "sura": 6,
+    "position": 34,
+    "text": "يُحِبُّ",
+    "audio": "/006_141_034.mp3"
+  },
+  {
+    "aya": 17,
+    "sura": 7,
+    "position": 14,
+    "text": "تَجِدُ",
+    "audio": "/007_017_014.mp3"
+  },
+  {
+    "aya": 27,
+    "sura": 7,
+    "position": 19,
+    "text": "هُوَ",
+    "audio": "/007_027_019.mp3"
+  },
+  {
+    "aya": 31,
+    "sura": 7,
+    "position": 16,
+    "text": "يُحِبُّ",
+    "audio": "/007_031_016.mp3"
+  },
+  {
+    "aya": 35,
+    "sura": 7,
+    "position": 5,
+    "text": "رُسُلٌ",
+    "audio": "/007_035_005.mp3"
+  },
+  {
+    "aya": 55,
+    "sura": 7,
+    "position": 8,
+    "text": "يُحِبُّ",
+    "audio": "/007_055_008.mp3"
+  },
+  {
+    "aya": 58,
+    "sura": 7,
+    "position": 9,
+    "text": "خَبُثَ",
+    "audio": "/007_058_009.mp3"
+  },
+  {
+    "aya": 150,
+    "sura": 7,
+    "position": 2,
+    "text": "رَجَعَ",
+    "audio": "/007_150_002.mp3"
+  },
+  {
+    "aya": 154,
+    "sura": 7,
+    "position": 2,
+    "text": "سَكَتَ",
+    "audio": "/007_154_002.mp3"
+  },
+  {
+    "aya": 154,
+    "sura": 7,
+    "position": 6,
+    "text": "أَخَذَ",
+    "audio": "/007_154_006.mp3"
+  },
+  {
+    "aya": 158,
+    "sura": 7,
+    "position": 18,
+    "text": "هُوَ",
+    "audio": "/007_158_018.mp3"
+  },
+  {
+    "aya": 160,
+    "sura": 7,
+    "position": 25,
+    "text": "عَلِمَ",
+    "audio": "/007_160_025.mp3"
+  },
+  {
+    "aya": 172,
+    "sura": 7,
+    "position": 2,
+    "text": "أَخَذَ",
+    "audio": "/007_172_002.mp3"
+  },
+  {
+    "aya": 184,
+    "sura": 7,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/007_184_010.mp3"
+  },
+  {
+    "aya": 187,
+    "sura": 7,
+    "position": 17,
+    "text": "هُوَ",
+    "audio": "/007_187_017.mp3"
+  },
+  {
+    "aya": 189,
+    "sura": 7,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/007_189_002.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 8,
+    "position": 2,
+    "text": "عَلِمَ",
+    "audio": "/008_023_002.mp3"
+  },
+  {
+    "aya": 32,
+    "sura": 8,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/008_032_007.mp3"
+  },
+  {
+    "aya": 38,
+    "sura": 8,
+    "position": 10,
+    "text": "سَلَفَ",
+    "audio": "/008_038_010.mp3"
+  },
+  {
+    "aya": 42,
+    "sura": 8,
+    "position": 26,
+    "text": "هَلَكَ",
+    "audio": "/008_042_026.mp3"
+  },
+  {
+    "aya": 48,
+    "sura": 8,
+    "position": 20,
+    "text": "نَكَصَ",
+    "audio": "/008_048_020.mp3"
+  },
+  {
+    "aya": 58,
+    "sura": 8,
+    "position": 14,
+    "text": "يُحِبُّ",
+    "audio": "/008_058_014.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 8,
+    "position": 12,
+    "text": "هُوَ",
+    "audio": "/008_061_012.mp3"
+  },
+  {
+    "aya": 62,
+    "sura": 8,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/008_062_009.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 9,
+    "position": 22,
+    "text": "يُحِبُّ",
+    "audio": "/009_004_022.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 9,
+    "position": 24,
+    "text": "يُحِبُّ",
+    "audio": "/009_007_024.mp3"
+  },
+  {
+    "aya": 31,
+    "sura": 9,
+    "position": 21,
+    "text": "هُوَ",
+    "audio": "/009_031_021.mp3"
+  },
+  {
+    "aya": 33,
+    "sura": 9,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/009_033_001.mp3"
+  },
+  {
+    "aya": 51,
+    "sura": 9,
+    "position": 6,
+    "text": "كَتَبَ",
+    "audio": "/009_051_006.mp3"
+  },
+  {
+    "aya": 51,
+    "sura": 9,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/009_051_009.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 9,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/009_061_006.mp3"
+  },
+  {
+    "aya": 72,
+    "sura": 9,
+    "position": 24,
+    "text": "هُوَ",
+    "audio": "/009_072_024.mp3"
+  },
+  {
+    "aya": 100,
+    "sura": 9,
+    "position": 9,
+    "text": "رَضِيَ",
+    "audio": "/009_100_009.mp3"
+  },
+  {
+    "aya": 104,
+    "sura": 9,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/009_104_005.mp3"
+  },
+  {
+    "aya": 104,
+    "sura": 9,
+    "position": 14,
+    "text": "هُوَ",
+    "audio": "/009_104_014.mp3"
+  },
+  {
+    "aya": 108,
+    "sura": 9,
+    "position": 25,
+    "text": "يُحِبُّ",
+    "audio": "/009_108_025.mp3"
+  },
+  {
+    "aya": 111,
+    "sura": 9,
+    "position": 41,
+    "text": "هُوَ",
+    "audio": "/009_111_041.mp3"
+  },
+  {
+    "aya": 118,
+    "sura": 9,
+    "position": 30,
+    "text": "هُوَ",
+    "audio": "/009_118_030.mp3"
+  },
+  {
+    "aya": 127,
+    "sura": 9,
+    "position": 5,
+    "text": "نَظَرَ",
+    "audio": "/009_127_005.mp3"
+  },
+  {
+    "aya": 127,
+    "sura": 9,
+    "position": 16,
+    "text": "صَرَفَ",
+    "audio": "/009_127_016.mp3"
+  },
+  {
+    "aya": 129,
+    "sura": 9,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/009_129_009.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 10,
+    "position": 3,
+    "text": "عَجَبًا",
+    "audio": "/010_002_003.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 10,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/010_005_001.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 10,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/010_005_003.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 10,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/010_022_001.mp3"
+  },
+  {
+    "aya": 45,
+    "sura": 10,
+    "position": 14,
+    "text": "خَسِرَ",
+    "audio": "/010_045_014.mp3"
+  },
+  {
+    "aya": 53,
+    "sura": 10,
+    "position": 4,
+    "text": "هُوَ",
+    "audio": "/010_053_004.mp3"
+  },
+  {
+    "aya": 56,
+    "sura": 10,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/010_056_001.mp3"
+  },
+  {
+    "aya": 58,
+    "sura": 10,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/010_058_007.mp3"
+  },
+  {
+    "aya": 64,
+    "sura": 10,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/010_064_015.mp3"
+  },
+  {
+    "aya": 65,
+    "sura": 10,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/010_065_010.mp3"
+  },
+  {
+    "aya": 67,
+    "sura": 10,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/010_067_001.mp3"
+  },
+  {
+    "aya": 67,
+    "sura": 10,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/010_067_003.mp3"
+  },
+  {
+    "aya": 68,
+    "sura": 10,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/010_068_008.mp3"
+  },
+  {
+    "aya": 107,
+    "sura": 10,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/010_107_009.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 11,
+    "position": 8,
+    "text": "ذَهَبَ",
+    "audio": "/011_010_008.mp3"
+  },
+  {
+    "aya": 14,
+    "sura": 11,
+    "position": 13,
+    "text": "هُوَ",
+    "audio": "/011_014_013.mp3"
+  },
+  {
+    "aya": 34,
+    "sura": 11,
+    "position": 16,
+    "text": "هُوَ",
+    "audio": "/011_034_016.mp3"
+  },
+  {
+    "aya": 43,
+    "sura": 11,
+    "position": 18,
+    "text": "رَحِمَ",
+    "audio": "/011_043_018.mp3"
+  },
+  {
+    "aya": 56,
+    "sura": 11,
+    "position": 12,
+    "text": "هُوَ",
+    "audio": "/011_056_012.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 11,
+    "position": 17,
+    "text": "هُوَ",
+    "audio": "/011_061_017.mp3"
+  },
+  {
+    "aya": 66,
+    "sura": 11,
+    "position": 17,
+    "text": "هُوَ",
+    "audio": "/011_066_017.mp3"
+  },
+  {
+    "aya": 74,
+    "sura": 11,
+    "position": 2,
+    "text": "ذَهَبَ",
+    "audio": "/011_074_002.mp3"
+  },
+  {
+    "aya": 93,
+    "sura": 11,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/011_093_015.mp3"
+  },
+  {
+    "aya": 102,
+    "sura": 11,
+    "position": 5,
+    "text": "أَخَذَ",
+    "audio": "/011_102_005.mp3"
+  },
+  {
+    "aya": 119,
+    "sura": 11,
+    "position": 3,
+    "text": "رَحِمَ",
+    "audio": "/011_119_003.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 12,
+    "position": 8,
+    "text": "أَحَدَ",
+    "audio": "/012_004_008.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 12,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/012_023_003.mp3"
+  },
+  {
+    "aya": 34,
+    "sura": 12,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/012_034_009.mp3"
+  },
+  {
+    "aya": 53,
+    "sura": 12,
+    "position": 12,
+    "text": "رَحِمَ",
+    "audio": "/012_053_012.mp3"
+  },
+  {
+    "aya": 70,
+    "sura": 12,
+    "position": 4,
+    "text": "جَعَلَ",
+    "audio": "/012_070_004.mp3"
+  },
+  {
+    "aya": 75,
+    "sura": 12,
+    "position": 4,
+    "text": "وُجِدَ",
+    "audio": "/012_075_004.mp3"
+  },
+  {
+    "aya": 77,
+    "sura": 12,
+    "position": 6,
+    "text": "سَرَقَ",
+    "audio": "/012_077_006.mp3"
+  },
+  {
+    "aya": 80,
+    "sura": 12,
+    "position": 14,
+    "text": "أَخَذَ",
+    "audio": "/012_080_014.mp3"
+  },
+  {
+    "aya": 81,
+    "sura": 12,
+    "position": 8,
+    "text": "سَرَقَ",
+    "audio": "/012_081_008.mp3"
+  },
+  {
+    "aya": 83,
+    "sura": 12,
+    "position": 19,
+    "text": "هُوَ",
+    "audio": "/012_083_019.mp3"
+  },
+  {
+    "aya": 98,
+    "sura": 12,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/012_098_008.mp3"
+  },
+  {
+    "aya": 100,
+    "sura": 12,
+    "position": 35,
+    "text": "نَزَغَ",
+    "audio": "/012_100_035.mp3"
+  },
+  {
+    "aya": 100,
+    "sura": 12,
+    "position": 48,
+    "text": "هُوَ",
+    "audio": "/012_100_048.mp3"
+  },
+  {
+    "aya": 104,
+    "sura": 12,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/012_104_008.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 13,
+    "position": 13,
+    "text": "جَعَلَ",
+    "audio": "/013_003_013.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 13,
+    "position": 7,
+    "text": "جَهَرَ",
+    "audio": "/013_010_007.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 13,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/013_010_010.mp3"
+  },
+  {
+    "aya": 12,
+    "sura": 13,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/013_012_001.mp3"
+  },
+  {
+    "aya": 14,
+    "sura": 13,
+    "position": 21,
+    "text": "هُوَ",
+    "audio": "/013_014_021.mp3"
+  },
+  {
+    "aya": 19,
+    "sura": 13,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/013_019_011.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 13,
+    "position": 20,
+    "text": "هُوَ",
+    "audio": "/013_030_020.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 13,
+    "position": 25,
+    "text": "هُوَ",
+    "audio": "/013_030_025.mp3"
+  },
+  {
+    "aya": 33,
+    "sura": 13,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/013_033_002.mp3"
+  },
+  {
+    "aya": 17,
+    "sura": 14,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/014_017_011.mp3"
+  },
+  {
+    "aya": 18,
+    "sura": 14,
+    "position": 23,
+    "text": "هُوَ",
+    "audio": "/014_018_023.mp3"
+  },
+  {
+    "aya": 24,
+    "sura": 14,
+    "position": 4,
+    "text": "ضَرَبَ",
+    "audio": "/014_024_004.mp3"
+  },
+  {
+    "aya": 39,
+    "sura": 14,
+    "position": 4,
+    "text": "وَهَبَ",
+    "audio": "/014_039_004.mp3"
+  },
+  {
+    "aya": 52,
+    "sura": 14,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/014_052_008.mp3"
+  },
+  {
+    "aya": 25,
+    "sura": 15,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/015_025_003.mp3"
+  },
+  {
+    "aya": 50,
+    "sura": 15,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/015_050_003.mp3"
+  },
+  {
+    "aya": 86,
+    "sura": 15,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/015_086_003.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 16,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/016_004_006.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 16,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/016_010_001.mp3"
+  },
+  {
+    "aya": 13,
+    "sura": 16,
+    "position": 2,
+    "text": "ذَرَأَ",
+    "audio": "/016_013_002.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 16,
+    "position": 13,
+    "text": "يُحِبُّ",
+    "audio": "/016_023_013.mp3"
+  },
+  {
+    "aya": 51,
+    "sura": 16,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/016_051_010.mp3"
+  },
+  {
+    "aya": 54,
+    "sura": 16,
+    "position": 3,
+    "text": "كَشَفَ",
+    "audio": "/016_054_003.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 16,
+    "position": 7,
+    "text": "تَرَكَ",
+    "audio": "/016_061_007.mp3"
+  },
+  {
+    "aya": 72,
+    "sura": 16,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/016_072_002.mp3"
+  },
+  {
+    "aya": 75,
+    "sura": 16,
+    "position": 2,
+    "text": "ضَرَبَ",
+    "audio": "/016_075_002.mp3"
+  },
+  {
+    "aya": 76,
+    "sura": 16,
+    "position": 23,
+    "text": "هُوَ",
+    "audio": "/016_076_023.mp3"
+  },
+  {
+    "aya": 77,
+    "sura": 16,
+    "position": 13,
+    "text": "هُوَ",
+    "audio": "/016_077_013.mp3"
+  },
+  {
+    "aya": 80,
+    "sura": 16,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/016_080_002.mp3"
+  },
+  {
+    "aya": 81,
+    "sura": 16,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/016_081_002.mp3"
+  },
+  {
+    "aya": 95,
+    "sura": 16,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/016_095_011.mp3"
+  },
+  {
+    "aya": 106,
+    "sura": 16,
+    "position": 15,
+    "text": "شَرَحَ",
+    "audio": "/016_106_015.mp3"
+  },
+  {
+    "aya": 108,
+    "sura": 16,
+    "position": 3,
+    "text": "طَبَعَ",
+    "audio": "/016_108_003.mp3"
+  },
+  {
+    "aya": 116,
+    "sura": 16,
+    "position": 4,
+    "text": "تَصِفُ",
+    "audio": "/016_116_004.mp3"
+  },
+  {
+    "aya": 125,
+    "sura": 16,
+    "position": 16,
+    "text": "هُوَ",
+    "audio": "/016_125_016.mp3"
+  },
+  {
+    "aya": 1,
+    "sura": 17,
+    "position": 20,
+    "text": "هُوَ",
+    "audio": "/017_001_020.mp3"
+  },
+  {
+    "aya": 51,
+    "sura": 17,
+    "position": 23,
+    "text": "هُوَ",
+    "audio": "/017_051_023.mp3"
+  },
+  {
+    "aya": 75,
+    "sura": 17,
+    "position": 9,
+    "text": "تَجِدُ",
+    "audio": "/017_075_009.mp3"
+  },
+  {
+    "aya": 77,
+    "sura": 17,
+    "position": 10,
+    "text": "تَجِدُ",
+    "audio": "/017_077_010.mp3"
+  },
+  {
+    "aya": 82,
+    "sura": 17,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/017_082_005.mp3"
+  },
+  {
+    "aya": 84,
+    "sura": 17,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/017_084_009.mp3"
+  },
+  {
+    "aya": 86,
+    "sura": 17,
+    "position": 9,
+    "text": "تَجِدُ",
+    "audio": "/017_086_009.mp3"
+  },
+  {
+    "aya": 94,
+    "sura": 17,
+    "position": 2,
+    "text": "مَنَعَ",
+    "audio": "/017_094_002.mp3"
+  },
+  {
+    "aya": 105,
+    "sura": 17,
+    "position": 4,
+    "text": "نَزَلَ",
+    "audio": "/017_105_004.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 18,
+    "position": 10,
+    "text": "عَجَبًا",
+    "audio": "/018_009_010.mp3"
+  },
+  {
+    "aya": 38,
+    "sura": 18,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/018_038_002.mp3"
+  },
+  {
+    "aya": 39,
+    "sura": 18,
+    "position": 15,
+    "text": "تَرَنِ",
+    "audio": "/018_039_015.mp3"
+  },
+  {
+    "aya": 44,
+    "sura": 18,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/018_044_006.mp3"
+  },
+  {
+    "aya": 45,
+    "sura": 18,
+    "position": 3,
+    "text": "مَثَلَ",
+    "audio": "/018_045_003.mp3"
+  },
+  {
+    "aya": 55,
+    "sura": 18,
+    "position": 2,
+    "text": "مَنَعَ",
+    "audio": "/018_055_002.mp3"
+  },
+  {
+    "aya": 63,
+    "sura": 18,
+    "position": 21,
+    "text": "عَجَبًا",
+    "audio": "/018_063_021.mp3"
+  },
+  {
+    "aya": 87,
+    "sura": 18,
+    "position": 4,
+    "text": "ظَلَمَ",
+    "audio": "/018_087_004.mp3"
+  },
+  {
+    "aya": 93,
+    "sura": 18,
+    "position": 6,
+    "text": "وَجَدَ",
+    "audio": "/018_093_006.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 19,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/019_009_005.mp3"
+  },
+  {
+    "aya": 21,
+    "sura": 19,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/019_021_005.mp3"
+  },
+  {
+    "aya": 24,
+    "sura": 19,
+    "position": 7,
+    "text": "جَعَلَ",
+    "audio": "/019_024_007.mp3"
+  },
+  {
+    "aya": 75,
+    "sura": 19,
+    "position": 22,
+    "text": "هُوَ",
+    "audio": "/019_075_022.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 20,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/020_008_005.mp3"
+  },
+  {
+    "aya": 53,
+    "sura": 20,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/020_053_002.mp3"
+  },
+  {
+    "aya": 98,
+    "sura": 20,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/020_098_008.mp3"
+  },
+  {
+    "aya": 108,
+    "sura": 20,
+    "position": 5,
+    "text": "عِوَجَ",
+    "audio": "/020_108_005.mp3"
+  },
+  {
+    "aya": 111,
+    "sura": 20,
+    "position": 10,
+    "text": "حَمَلَ",
+    "audio": "/020_111_010.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 21,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/021_005_008.mp3"
+  },
+  {
+    "aya": 18,
+    "sura": 21,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/021_018_008.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 21,
+    "position": 10,
+    "text": "غَنَمُ",
+    "audio": "/021_078_010.mp3"
+  },
+  {
+    "aya": 87,
+    "sura": 21,
+    "position": 4,
+    "text": "ذَهَبَ",
+    "audio": "/021_087_004.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 22,
+    "position": 4,
+    "text": "هُوَ",
+    "audio": "/022_006_004.mp3"
+  },
+  {
+    "aya": 11,
+    "sura": 22,
+    "position": 21,
+    "text": "خَسِرَ",
+    "audio": "/022_011_021.mp3"
+  },
+  {
+    "aya": 11,
+    "sura": 22,
+    "position": 26,
+    "text": "هُوَ",
+    "audio": "/022_011_026.mp3"
+  },
+  {
+    "aya": 12,
+    "sura": 22,
+    "position": 13,
+    "text": "هُوَ",
+    "audio": "/022_012_013.mp3"
+  },
+  {
+    "aya": 38,
+    "sura": 22,
+    "position": 12,
+    "text": "يُحِبُّ",
+    "audio": "/022_038_012.mp3"
+  },
+  {
+    "aya": 60,
+    "sura": 22,
+    "position": 10,
+    "text": "بُغِيَ",
+    "audio": "/022_060_010.mp3"
+  },
+  {
+    "aya": 62,
+    "sura": 22,
+    "position": 4,
+    "text": "هُوَ",
+    "audio": "/022_062_004.mp3"
+  },
+  {
+    "aya": 62,
+    "sura": 22,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/022_062_011.mp3"
+  },
+  {
+    "aya": 62,
+    "sura": 22,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/022_062_015.mp3"
+  },
+  {
+    "aya": 73,
+    "sura": 22,
+    "position": 3,
+    "text": "ضُرِبَ",
+    "audio": "/022_073_003.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 22,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/022_078_007.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 22,
+    "position": 10,
+    "text": "جَعَلَ",
+    "audio": "/022_078_010.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 22,
+    "position": 21,
+    "text": "هُوَ",
+    "audio": "/022_078_021.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 22,
+    "position": 43,
+    "text": "هُوَ",
+    "audio": "/022_078_043.mp3"
+  },
+  {
+    "aya": 25,
+    "sura": 23,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/023_025_002.mp3"
+  },
+  {
+    "aya": 38,
+    "sura": 23,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/023_038_002.mp3"
+  },
+  {
+    "aya": 100,
+    "sura": 23,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/023_100_011.mp3"
+  },
+  {
+    "aya": 116,
+    "sura": 23,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/023_116_009.mp3"
+  },
+  {
+    "aya": 11,
+    "sura": 24,
+    "position": 14,
+    "text": "هُوَ",
+    "audio": "/024_011_014.mp3"
+  },
+  {
+    "aya": 25,
+    "sura": 24,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/024_025_009.mp3"
+  },
+  {
+    "aya": 28,
+    "sura": 24,
+    "position": 18,
+    "text": "هُوَ",
+    "audio": "/024_028_018.mp3"
+  },
+  {
+    "aya": 41,
+    "sura": 24,
+    "position": 16,
+    "text": "عَلِمَ",
+    "audio": "/024_041_016.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 25,
+    "position": 5,
+    "text": "جَعَلَ",
+    "audio": "/025_010_005.mp3"
+  },
+  {
+    "aya": 41,
+    "sura": 25,
+    "position": 9,
+    "text": "بَعَثَ",
+    "audio": "/025_041_009.mp3"
+  },
+  {
+    "aya": 47,
+    "sura": 25,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/025_047_003.mp3"
+  },
+  {
+    "aya": 52,
+    "sura": 25,
+    "position": 2,
+    "text": "تُطِعِ",
+    "audio": "/025_052_002.mp3"
+  },
+  {
+    "aya": 53,
+    "sura": 25,
+    "position": 4,
+    "text": "مَرَجَ",
+    "audio": "/025_053_004.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 25,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/025_061_003.mp3"
+  },
+  {
+    "aya": 62,
+    "sura": 25,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/025_062_003.mp3"
+  },
+  {
+    "aya": 79,
+    "sura": 26,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/026_079_002.mp3"
+  },
+  {
+    "aya": 193,
+    "sura": 26,
+    "position": 1,
+    "text": "نَزَلَ",
+    "audio": "/026_193_001.mp3"
+  },
+  {
+    "aya": 220,
+    "sura": 26,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/026_220_002.mp3"
+  },
+  {
+    "aya": 11,
+    "sura": 27,
+    "position": 3,
+    "text": "ظَلَمَ",
+    "audio": "/027_011_003.mp3"
+  },
+  {
+    "aya": 26,
+    "sura": 27,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/027_026_005.mp3"
+  },
+  {
+    "aya": 40,
+    "sura": 27,
+    "position": 31,
+    "text": "شَكَرَ",
+    "audio": "/027_040_031.mp3"
+  },
+  {
+    "aya": 42,
+    "sura": 27,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/027_042_009.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 27,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/027_061_002.mp3"
+  },
+  {
+    "aya": 72,
+    "sura": 27,
+    "position": 5,
+    "text": "رَدِفَ",
+    "audio": "/027_072_005.mp3"
+  },
+  {
+    "aya": 16,
+    "sura": 28,
+    "position": 12,
+    "text": "هُوَ",
+    "audio": "/028_016_012.mp3"
+  },
+  {
+    "aya": 19,
+    "sura": 28,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/028_019_007.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 28,
+    "position": 5,
+    "text": "وَجَدَ",
+    "audio": "/028_023_005.mp3"
+  },
+  {
+    "aya": 34,
+    "sura": 28,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/028_034_003.mp3"
+  },
+  {
+    "aya": 39,
+    "sura": 28,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/028_039_002.mp3"
+  },
+  {
+    "aya": 49,
+    "sura": 28,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/028_049_007.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 28,
+    "position": 13,
+    "text": "هُوَ",
+    "audio": "/028_061_013.mp3"
+  },
+  {
+    "aya": 70,
+    "sura": 28,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/028_070_006.mp3"
+  },
+  {
+    "aya": 71,
+    "sura": 28,
+    "position": 4,
+    "text": "جَعَلَ",
+    "audio": "/028_071_004.mp3"
+  },
+  {
+    "aya": 72,
+    "sura": 28,
+    "position": 4,
+    "text": "جَعَلَ",
+    "audio": "/028_072_004.mp3"
+  },
+  {
+    "aya": 73,
+    "sura": 28,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/028_073_003.mp3"
+  },
+  {
+    "aya": 76,
+    "sura": 28,
+    "position": 31,
+    "text": "يُحِبُّ",
+    "audio": "/028_076_031.mp3"
+  },
+  {
+    "aya": 77,
+    "sura": 28,
+    "position": 29,
+    "text": "يُحِبُّ",
+    "audio": "/028_077_029.mp3"
+  },
+  {
+    "aya": 78,
+    "sura": 28,
+    "position": 19,
+    "text": "هُوَ",
+    "audio": "/028_078_019.mp3"
+  },
+  {
+    "aya": 85,
+    "sura": 28,
+    "position": 3,
+    "text": "فَرَضَ",
+    "audio": "/028_085_003.mp3"
+  },
+  {
+    "aya": 85,
+    "sura": 28,
+    "position": 17,
+    "text": "هُوَ",
+    "audio": "/028_085_017.mp3"
+  },
+  {
+    "aya": 88,
+    "sura": 28,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/028_088_011.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 29,
+    "position": 11,
+    "text": "جَعَلَ",
+    "audio": "/029_010_011.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 29,
+    "position": 7,
+    "text": "بَدَأَ",
+    "audio": "/029_020_007.mp3"
+  },
+  {
+    "aya": 26,
+    "sura": 29,
+    "position": 13,
+    "text": "هُوَ",
+    "audio": "/029_026_013.mp3"
+  },
+  {
+    "aya": 49,
+    "sura": 29,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/029_049_002.mp3"
+  },
+  {
+    "aya": 28,
+    "sura": 30,
+    "position": 1,
+    "text": "ضَرَبَ",
+    "audio": "/030_028_001.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 30,
+    "position": 9,
+    "text": "فَطَرَ",
+    "audio": "/030_030_009.mp3"
+  },
+  {
+    "aya": 45,
+    "sura": 30,
+    "position": 11,
+    "text": "يُحِبُّ",
+    "audio": "/030_045_011.mp3"
+  },
+  {
+    "aya": 54,
+    "sura": 30,
+    "position": 8,
+    "text": "جَعَلَ",
+    "audio": "/030_054_008.mp3"
+  },
+  {
+    "aya": 54,
+    "sura": 30,
+    "position": 14,
+    "text": "جَعَلَ",
+    "audio": "/030_054_014.mp3"
+  },
+  {
+    "aya": 18,
+    "sura": 31,
+    "position": 14,
+    "text": "يُحِبُّ",
+    "audio": "/031_018_014.mp3"
+  },
+  {
+    "aya": 26,
+    "sura": 31,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/031_026_009.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 31,
+    "position": 4,
+    "text": "هُوَ",
+    "audio": "/031_030_004.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 31,
+    "position": 14,
+    "text": "هُوَ",
+    "audio": "/031_030_014.mp3"
+  },
+  {
+    "aya": 33,
+    "sura": 31,
+    "position": 14,
+    "text": "هُوَ",
+    "audio": "/031_033_014.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 32,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/032_003_006.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 32,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/032_008_002.mp3"
+  },
+  {
+    "aya": 25,
+    "sura": 32,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/032_025_003.mp3"
+  },
+  {
+    "aya": 1,
+    "sura": 33,
+    "position": 6,
+    "text": "تُطِعِ",
+    "audio": "/033_001_006.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 33,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/033_004_002.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 33,
+    "position": 11,
+    "text": "جَعَلَ",
+    "audio": "/033_004_011.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 33,
+    "position": 19,
+    "text": "جَعَلَ",
+    "audio": "/033_004_019.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 33,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/033_005_003.mp3"
+  },
+  {
+    "aya": 19,
+    "sura": 33,
+    "position": 19,
+    "text": "ذَهَبَ",
+    "audio": "/033_019_019.mp3"
+  },
+  {
+    "aya": 38,
+    "sura": 33,
+    "position": 8,
+    "text": "فَرَضَ",
+    "audio": "/033_038_008.mp3"
+  },
+  {
+    "aya": 43,
+    "sura": 33,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/033_043_001.mp3"
+  },
+  {
+    "aya": 48,
+    "sura": 33,
+    "position": 2,
+    "text": "تُطِعِ",
+    "audio": "/033_048_002.mp3"
+  },
+  {
+    "aya": 64,
+    "sura": 33,
+    "position": 3,
+    "text": "لَعَنَ",
+    "audio": "/033_064_003.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 34,
+    "position": 3,
+    "text": "يَلِجُ",
+    "audio": "/034_002_003.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 34,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/034_006_010.mp3"
+  },
+  {
+    "aya": 21,
+    "sura": 34,
+    "position": 13,
+    "text": "هُوَ",
+    "audio": "/034_021_013.mp3"
+  },
+  {
+    "aya": 27,
+    "sura": 34,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/034_027_011.mp3"
+  },
+  {
+    "aya": 46,
+    "sura": 34,
+    "position": 21,
+    "text": "هُوَ",
+    "audio": "/034_046_021.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 35,
+    "position": 21,
+    "text": "هُوَ",
+    "audio": "/035_003_021.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 35,
+    "position": 5,
+    "text": "رُسُلٌ",
+    "audio": "/035_004_005.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 35,
+    "position": 26,
+    "text": "هُوَ",
+    "audio": "/035_010_026.mp3"
+  },
+  {
+    "aya": 15,
+    "sura": 35,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/035_015_010.mp3"
+  },
+  {
+    "aya": 31,
+    "sura": 35,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/035_031_006.mp3"
+  },
+  {
+    "aya": 32,
+    "sura": 35,
+    "position": 21,
+    "text": "هُوَ",
+    "audio": "/035_032_021.mp3"
+  },
+  {
+    "aya": 39,
+    "sura": 35,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/035_039_001.mp3"
+  },
+  {
+    "aya": 45,
+    "sura": 35,
+    "position": 8,
+    "text": "تَرَكَ",
+    "audio": "/035_045_008.mp3"
+  },
+  {
+    "aya": 27,
+    "sura": 36,
+    "position": 2,
+    "text": "غَفَرَ",
+    "audio": "/036_027_002.mp3"
+  },
+  {
+    "aya": 69,
+    "sura": 36,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/036_069_009.mp3"
+  },
+  {
+    "aya": 77,
+    "sura": 36,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/036_077_009.mp3"
+  },
+  {
+    "aya": 80,
+    "sura": 36,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/036_080_002.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 37,
+    "position": 3,
+    "text": "خَطِفَ",
+    "audio": "/037_010_003.mp3"
+  },
+  {
+    "aya": 163,
+    "sura": 37,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/037_163_003.mp3"
+  },
+  {
+    "aya": 177,
+    "sura": 37,
+    "position": 2,
+    "text": "نَزَلَ",
+    "audio": "/037_177_002.mp3"
+  },
+  {
+    "aya": 67,
+    "sura": 38,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/038_067_002.mp3"
+  },
+  {
+    "aya": 87,
+    "sura": 38,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/038_087_002.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 39,
+    "position": 33,
+    "text": "هُوَ",
+    "audio": "/039_003_033.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 39,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/039_004_015.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 39,
+    "position": 25,
+    "text": "هُوَ",
+    "audio": "/039_005_025.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 39,
+    "position": 6,
+    "text": "جَعَلَ",
+    "audio": "/039_006_006.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 39,
+    "position": 37,
+    "text": "هُوَ",
+    "audio": "/039_006_037.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 39,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/039_009_002.mp3"
+  },
+  {
+    "aya": 15,
+    "sura": 39,
+    "position": 19,
+    "text": "هُوَ",
+    "audio": "/039_015_019.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 39,
+    "position": 2,
+    "text": "شَرَحَ",
+    "audio": "/039_022_002.mp3"
+  },
+  {
+    "aya": 29,
+    "sura": 39,
+    "position": 1,
+    "text": "ضَرَبَ",
+    "audio": "/039_029_001.mp3"
+  },
+  {
+    "aya": 32,
+    "sura": 39,
+    "position": 5,
+    "text": "كَذَبَ",
+    "audio": "/039_032_005.mp3"
+  },
+  {
+    "aya": 53,
+    "sura": 39,
+    "position": 21,
+    "text": "هُوَ",
+    "audio": "/039_053_021.mp3"
+  },
+  {
+    "aya": 71,
+    "sura": 39,
+    "position": 18,
+    "text": "رُسُلٌ",
+    "audio": "/039_071_018.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 40,
+    "position": 13,
+    "text": "هُوَ",
+    "audio": "/040_003_013.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 40,
+    "position": 12,
+    "text": "هُوَ",
+    "audio": "/040_009_012.mp3"
+  },
+  {
+    "aya": 13,
+    "sura": 40,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/040_013_001.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 40,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/040_020_015.mp3"
+  },
+  {
+    "aya": 28,
+    "sura": 40,
+    "position": 40,
+    "text": "هُوَ",
+    "audio": "/040_028_040.mp3"
+  },
+  {
+    "aya": 34,
+    "sura": 40,
+    "position": 17,
+    "text": "هَلَكَ",
+    "audio": "/040_034_017.mp3"
+  },
+  {
+    "aya": 34,
+    "sura": 40,
+    "position": 30,
+    "text": "هُوَ",
+    "audio": "/040_034_030.mp3"
+  },
+  {
+    "aya": 48,
+    "sura": 40,
+    "position": 10,
+    "text": "حَكَمَ",
+    "audio": "/040_048_010.mp3"
+  },
+  {
+    "aya": 56,
+    "sura": 40,
+    "position": 24,
+    "text": "هُوَ",
+    "audio": "/040_056_024.mp3"
+  },
+  {
+    "aya": 61,
+    "sura": 40,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/040_061_003.mp3"
+  },
+  {
+    "aya": 62,
+    "sura": 40,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/040_062_010.mp3"
+  },
+  {
+    "aya": 64,
+    "sura": 40,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/040_064_003.mp3"
+  },
+  {
+    "aya": 65,
+    "sura": 40,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/040_065_001.mp3"
+  },
+  {
+    "aya": 65,
+    "sura": 40,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/040_065_006.mp3"
+  },
+  {
+    "aya": 67,
+    "sura": 40,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/040_067_001.mp3"
+  },
+  {
+    "aya": 68,
+    "sura": 40,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/040_068_001.mp3"
+  },
+  {
+    "aya": 79,
+    "sura": 40,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/040_079_003.mp3"
+  },
+  {
+    "aya": 15,
+    "sura": 41,
+    "position": 20,
+    "text": "هُوَ",
+    "audio": "/041_015_020.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 41,
+    "position": 5,
+    "text": "شَهِدَ",
+    "audio": "/041_020_005.mp3"
+  },
+  {
+    "aya": 36,
+    "sura": 41,
+    "position": 10,
+    "text": "هُوَ",
+    "audio": "/041_036_010.mp3"
+  },
+  {
+    "aya": 44,
+    "sura": 41,
+    "position": 14,
+    "text": "هُوَ",
+    "audio": "/041_044_014.mp3"
+  },
+  {
+    "aya": 52,
+    "sura": 41,
+    "position": 14,
+    "text": "هُوَ",
+    "audio": "/041_052_014.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 42,
+    "position": 19,
+    "text": "هُوَ",
+    "audio": "/042_005_019.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 42,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/042_009_008.mp3"
+  },
+  {
+    "aya": 11,
+    "sura": 42,
+    "position": 5,
+    "text": "جَعَلَ",
+    "audio": "/042_011_005.mp3"
+  },
+  {
+    "aya": 13,
+    "sura": 42,
+    "position": 2,
+    "text": "شَرَعَ",
+    "audio": "/042_013_002.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 42,
+    "position": 25,
+    "text": "هُوَ",
+    "audio": "/042_022_025.mp3"
+  },
+  {
+    "aya": 27,
+    "sura": 42,
+    "position": 3,
+    "text": "بَسَطَ",
+    "audio": "/042_027_003.mp3"
+  },
+  {
+    "aya": 40,
+    "sura": 42,
+    "position": 15,
+    "text": "يُحِبُّ",
+    "audio": "/042_040_015.mp3"
+  },
+  {
+    "aya": 43,
+    "sura": 42,
+    "position": 2,
+    "text": "صَبَرَ",
+    "audio": "/042_043_002.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 43,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/043_010_002.mp3"
+  },
+  {
+    "aya": 17,
+    "sura": 43,
+    "position": 5,
+    "text": "ضَرَبَ",
+    "audio": "/043_017_005.mp3"
+  },
+  {
+    "aya": 52,
+    "sura": 43,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/043_052_007.mp3"
+  },
+  {
+    "aya": 57,
+    "sura": 43,
+    "position": 3,
+    "text": "ضُرِبَ",
+    "audio": "/043_057_003.mp3"
+  },
+  {
+    "aya": 58,
+    "sura": 43,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/043_058_005.mp3"
+  },
+  {
+    "aya": 59,
+    "sura": 43,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/043_059_002.mp3"
+  },
+  {
+    "aya": 64,
+    "sura": 43,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/043_064_003.mp3"
+  },
+  {
+    "aya": 86,
+    "sura": 43,
+    "position": 10,
+    "text": "شَهِدَ",
+    "audio": "/043_086_010.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 44,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/044_006_006.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 44,
+    "position": 4,
+    "text": "هُوَ",
+    "audio": "/044_008_004.mp3"
+  },
+  {
+    "aya": 42,
+    "sura": 44,
+    "position": 3,
+    "text": "رَحِمَ",
+    "audio": "/044_042_003.mp3"
+  },
+  {
+    "aya": 42,
+    "sura": 44,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/044_042_007.mp3"
+  },
+  {
+    "aya": 57,
+    "sura": 44,
+    "position": 6,
+    "text": "هُوَ",
+    "audio": "/044_057_006.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 45,
+    "position": 2,
+    "text": "عَلِمَ",
+    "audio": "/045_009_002.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 45,
+    "position": 12,
+    "text": "هُوَ",
+    "audio": "/045_030_012.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 46,
+    "position": 2,
+    "text": "حُشِرَ",
+    "audio": "/046_006_002.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 46,
+    "position": 15,
+    "text": "هُوَ",
+    "audio": "/046_008_015.mp3"
+  },
+  {
+    "aya": 24,
+    "sura": 46,
+    "position": 12,
+    "text": "هُوَ",
+    "audio": "/046_024_012.mp3"
+  },
+  {
+    "aya": 35,
+    "sura": 46,
+    "position": 3,
+    "text": "صَبَرَ",
+    "audio": "/046_035_003.mp3"
+  },
+  {
+    "aya": 15,
+    "sura": 47,
+    "position": 39,
+    "text": "هُوَ",
+    "audio": "/047_015_039.mp3"
+  },
+  {
+    "aya": 16,
+    "sura": 47,
+    "position": 20,
+    "text": "طَبَعَ",
+    "audio": "/047_016_020.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 47,
+    "position": 23,
+    "text": "نَظَرَ",
+    "audio": "/047_020_023.mp3"
+  },
+  {
+    "aya": 21,
+    "sura": 47,
+    "position": 6,
+    "text": "عَزَمَ",
+    "audio": "/047_021_006.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 48,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/048_004_001.mp3"
+  },
+  {
+    "aya": 18,
+    "sura": 48,
+    "position": 3,
+    "text": "رَضِيَ",
+    "audio": "/048_018_003.mp3"
+  },
+  {
+    "aya": 26,
+    "sura": 48,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/048_026_002.mp3"
+  },
+  {
+    "aya": 27,
+    "sura": 48,
+    "position": 2,
+    "text": "صَدَقَ",
+    "audio": "/048_027_002.mp3"
+  },
+  {
+    "aya": 28,
+    "sura": 48,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/048_028_001.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 49,
+    "position": 32,
+    "text": "يُحِبُّ",
+    "audio": "/049_009_032.mp3"
+  },
+  {
+    "aya": 26,
+    "sura": 50,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/050_026_002.mp3"
+  },
+  {
+    "aya": 33,
+    "sura": 50,
+    "position": 2,
+    "text": "خَشِيَ",
+    "audio": "/050_033_002.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 51,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/051_030_007.mp3"
+  },
+  {
+    "aya": 42,
+    "sura": 51,
+    "position": 2,
+    "text": "تَذَرُ",
+    "audio": "/051_042_002.mp3"
+  },
+  {
+    "aya": 58,
+    "sura": 51,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/051_058_003.mp3"
+  },
+  {
+    "aya": 21,
+    "sura": 52,
+    "position": 19,
+    "text": "كَسَبَ",
+    "audio": "/052_021_019.mp3"
+  },
+  {
+    "aya": 28,
+    "sura": 52,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/052_028_008.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 53,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/053_004_002.mp3"
+  },
+  {
+    "aya": 11,
+    "sura": 53,
+    "position": 2,
+    "text": "كَذَبَ",
+    "audio": "/053_011_002.mp3"
+  },
+  {
+    "aya": 30,
+    "sura": 53,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/053_030_008.mp3"
+  },
+  {
+    "aya": 32,
+    "sura": 53,
+    "position": 14,
+    "text": "هُوَ",
+    "audio": "/053_032_014.mp3"
+  },
+  {
+    "aya": 32,
+    "sura": 53,
+    "position": 32,
+    "text": "هُوَ",
+    "audio": "/053_032_032.mp3"
+  },
+  {
+    "aya": 43,
+    "sura": 53,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/053_043_002.mp3"
+  },
+  {
+    "aya": 44,
+    "sura": 53,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/053_044_002.mp3"
+  },
+  {
+    "aya": 48,
+    "sura": 53,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/053_048_002.mp3"
+  },
+  {
+    "aya": 49,
+    "sura": 53,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/053_049_002.mp3"
+  },
+  {
+    "aya": 25,
+    "sura": 54,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/054_025_007.mp3"
+  },
+  {
+    "aya": 35,
+    "sura": 54,
+    "position": 8,
+    "text": "شَكَرَ",
+    "audio": "/054_035_008.mp3"
+  },
+  {
+    "aya": 19,
+    "sura": 55,
+    "position": 1,
+    "text": "مَرَجَ",
+    "audio": "/055_019_001.mp3"
+  },
+  {
+    "aya": 29,
+    "sura": 55,
+    "position": 9,
+    "text": "هُوَ",
+    "audio": "/055_029_009.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 57,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/057_003_001.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 57,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/057_004_001.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 57,
+    "position": 16,
+    "text": "يَلِجُ",
+    "audio": "/057_004_016.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 57,
+    "position": 12,
+    "text": "أَخَذَ",
+    "audio": "/057_008_012.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 57,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/057_009_001.mp3"
+  },
+  {
+    "aya": 12,
+    "sura": 57,
+    "position": 21,
+    "text": "هُوَ",
+    "audio": "/057_012_021.mp3"
+  },
+  {
+    "aya": 16,
+    "sura": 57,
+    "position": 12,
+    "text": "نَزَلَ",
+    "audio": "/057_016_012.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 57,
+    "position": 13,
+    "text": "يُحِبُّ",
+    "audio": "/057_023_013.mp3"
+  },
+  {
+    "aya": 24,
+    "sura": 57,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/057_024_011.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 58,
+    "position": 8,
+    "text": "كُبِتَ",
+    "audio": "/058_005_008.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 58,
+    "position": 19,
+    "text": "هُوَ",
+    "audio": "/058_007_019.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 58,
+    "position": 24,
+    "text": "هُوَ",
+    "audio": "/058_007_024.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 58,
+    "position": 33,
+    "text": "هُوَ",
+    "audio": "/058_007_033.mp3"
+  },
+  {
+    "aya": 21,
+    "sura": 58,
+    "position": 1,
+    "text": "كَتَبَ",
+    "audio": "/058_021_001.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 58,
+    "position": 2,
+    "text": "تَجِدُ",
+    "audio": "/058_022_002.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 58,
+    "position": 24,
+    "text": "كَتَبَ",
+    "audio": "/058_022_024.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 58,
+    "position": 41,
+    "text": "رَضِيَ",
+    "audio": "/058_022_041.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 59,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/059_002_001.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 59,
+    "position": 3,
+    "text": "كَتَبَ",
+    "audio": "/059_003_003.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 59,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/059_022_001.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 59,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/059_022_007.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 59,
+    "position": 13,
+    "text": "هُوَ",
+    "audio": "/059_022_013.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 59,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/059_023_001.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 59,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/059_023_007.mp3"
+  },
+  {
+    "aya": 24,
+    "sura": 59,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/059_024_001.mp3"
+  },
+  {
+    "aya": 6,
+    "sura": 60,
+    "position": 18,
+    "text": "هُوَ",
+    "audio": "/060_006_018.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 60,
+    "position": 21,
+    "text": "يُحِبُّ",
+    "audio": "/060_008_021.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 61,
+    "position": 3,
+    "text": "يُحِبُّ",
+    "audio": "/061_004_003.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 61,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/061_009_001.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 62,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/062_002_001.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 62,
+    "position": 3,
+    "text": "بَعَثَ",
+    "audio": "/062_002_003.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 64,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/064_002_001.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 64,
+    "position": 1,
+    "text": "زَعَمَ",
+    "audio": "/064_007_001.mp3"
+  },
+  {
+    "aya": 13,
+    "sura": 64,
+    "position": 5,
+    "text": "هُوَ",
+    "audio": "/064_013_005.mp3"
+  },
+  {
+    "aya": 1,
+    "sura": 65,
+    "position": 36,
+    "text": "ظَلَمَ",
+    "audio": "/065_001_036.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 65,
+    "position": 20,
+    "text": "جَعَلَ",
+    "audio": "/065_003_020.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 66,
+    "position": 2,
+    "text": "فَرَضَ",
+    "audio": "/066_002_002.mp3"
+  },
+  {
+    "aya": 4,
+    "sura": 66,
+    "position": 14,
+    "text": "هُوَ",
+    "audio": "/066_004_014.mp3"
+  },
+  {
+    "aya": 10,
+    "sura": 66,
+    "position": 1,
+    "text": "ضَرَبَ",
+    "audio": "/066_010_001.mp3"
+  },
+  {
+    "aya": 15,
+    "sura": 67,
+    "position": 1,
+    "text": "هُوَ",
+    "audio": "/067_015_001.mp3"
+  },
+  {
+    "aya": 15,
+    "sura": 67,
+    "position": 3,
+    "text": "جَعَلَ",
+    "audio": "/067_015_003.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 67,
+    "position": 4,
+    "text": "هُوَ",
+    "audio": "/067_020_004.mp3"
+  },
+  {
+    "aya": 23,
+    "sura": 67,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/067_023_002.mp3"
+  },
+  {
+    "aya": 24,
+    "sura": 67,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/067_024_002.mp3"
+  },
+  {
+    "aya": 29,
+    "sura": 67,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/067_029_002.mp3"
+  },
+  {
+    "aya": 29,
+    "sura": 67,
+    "position": 11,
+    "text": "هُوَ",
+    "audio": "/067_029_011.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 68,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/068_007_003.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 68,
+    "position": 2,
+    "text": "تُطِعِ",
+    "audio": "/068_008_002.mp3"
+  },
+  {
+    "aya": 52,
+    "sura": 68,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/068_052_002.mp3"
+  },
+  {
+    "aya": 29,
+    "sura": 69,
+    "position": 1,
+    "text": "هَلَكَ",
+    "audio": "/069_029_001.mp3"
+  },
+  {
+    "aya": 41,
+    "sura": 69,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/069_041_002.mp3"
+  },
+  {
+    "aya": 1,
+    "sura": 70,
+    "position": 1,
+    "text": "سَأَلَ",
+    "audio": "/070_001_001.mp3"
+  },
+  {
+    "aya": 19,
+    "sura": 71,
+    "position": 2,
+    "text": "جَعَلَ",
+    "audio": "/071_019_002.mp3"
+  },
+  {
+    "aya": 28,
+    "sura": 71,
+    "position": 6,
+    "text": "دَخَلَ",
+    "audio": "/071_028_006.mp3"
+  },
+  {
+    "aya": 1,
+    "sura": 72,
+    "position": 13,
+    "text": "عَجَبًا",
+    "audio": "/072_001_013.mp3"
+  },
+  {
+    "aya": 9,
+    "sura": 73,
+    "position": 7,
+    "text": "هُوَ",
+    "audio": "/073_009_007.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 73,
+    "position": 23,
+    "text": "عَلِمَ",
+    "audio": "/073_020_023.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 73,
+    "position": 36,
+    "text": "عَلِمَ",
+    "audio": "/073_020_036.mp3"
+  },
+  {
+    "aya": 20,
+    "sura": 73,
+    "position": 79,
+    "text": "هُوَ",
+    "audio": "/073_020_079.mp3"
+  },
+  {
+    "aya": 21,
+    "sura": 74,
+    "position": 2,
+    "text": "نَظَرَ",
+    "audio": "/074_021_002.mp3"
+  },
+  {
+    "aya": 22,
+    "sura": 74,
+    "position": 2,
+    "text": "عَبَسَ",
+    "audio": "/074_022_002.mp3"
+  },
+  {
+    "aya": 28,
+    "sura": 74,
+    "position": 4,
+    "text": "تَذَرُ",
+    "audio": "/074_028_004.mp3"
+  },
+  {
+    "aya": 31,
+    "sura": 74,
+    "position": 57,
+    "text": "هُوَ",
+    "audio": "/074_031_057.mp3"
+  },
+  {
+    "aya": 56,
+    "sura": 74,
+    "position": 8,
+    "text": "هُوَ",
+    "audio": "/074_056_008.mp3"
+  },
+  {
+    "aya": 33,
+    "sura": 75,
+    "position": 2,
+    "text": "ذَهَبَ",
+    "audio": "/075_033_002.mp3"
+  },
+  {
+    "aya": 1,
+    "sura": 80,
+    "position": 1,
+    "text": "عَبَسَ",
+    "audio": "/080_001_001.mp3"
+  },
+  {
+    "aya": 24,
+    "sura": 81,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/081_024_002.mp3"
+  },
+  {
+    "aya": 25,
+    "sura": 81,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/081_025_002.mp3"
+  },
+  {
+    "aya": 27,
+    "sura": 81,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/081_027_002.mp3"
+  },
+  {
+    "aya": 17,
+    "sura": 84,
+    "position": 3,
+    "text": "وَسَقَ",
+    "audio": "/084_017_003.mp3"
+  },
+  {
+    "aya": 13,
+    "sura": 85,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/085_013_002.mp3"
+  },
+  {
+    "aya": 21,
+    "sura": 85,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/085_021_002.mp3"
+  },
+  {
+    "aya": 14,
+    "sura": 86,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/086_014_002.mp3"
+  },
+  {
+    "aya": 7,
+    "sura": 89,
+    "position": 1,
+    "text": "إِرَمَ",
+    "audio": "/089_007_001.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 92,
+    "position": 3,
+    "text": "بَخِلَ",
+    "audio": "/092_008_003.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 98,
+    "position": 14,
+    "text": "رَضِيَ",
+    "audio": "/098_008_014.mp3"
+  },
+  {
+    "aya": 8,
+    "sura": 98,
+    "position": 22,
+    "text": "خَشِيَ",
+    "audio": "/098_008_022.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 104,
+    "position": 2,
+    "text": "جَمَعَ",
+    "audio": "/104_002_002.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 108,
+    "position": 3,
+    "text": "هُوَ",
+    "audio": "/108_003_003.mp3"
+  },
+  {
+    "aya": 2,
+    "sura": 111,
+    "position": 6,
+    "text": "كَسَبَ",
+    "audio": "/111_002_006.mp3"
+  },
+  {
+    "aya": 1,
+    "sura": 112,
+    "position": 2,
+    "text": "هُوَ",
+    "audio": "/112_001_002.mp3"
+  },
+  {
+    "aya": 3,
+    "sura": 113,
+    "position": 5,
+    "text": "وَقَبَ",
+    "audio": "/113_003_005.mp3"
+  },
+  {
+    "aya": 5,
+    "sura": 113,
+    "position": 5,
+    "text": "حَسَدَ",
+    "audio": "/113_005_005.mp3"
+  }
+]
+
+audios = [item['audio'] for item in data]
+print(audios)
