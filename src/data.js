@@ -1,8 +1,8 @@
 console.log("data.js");
 export const rootAddresses = [
-  
-  "https://rmn30654.pythonanywhere.com/",
   "http://localhost:8000/",
+  "https://rmn30654.pythonanywhere.com/",
+  
 ];
 
 export async function selectAliveRootAddress() {

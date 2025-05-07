@@ -40,7 +40,7 @@ export default function ActionBar({
   // console.log(user, isAdmin);
   return (
     <>
-      <div id="imageframe" className="hidden z-5 absolute top-0 bg-gray-100">
+      <div id="imageframe" className="hidden z-5 fixed top-0 bg-gray-100">
         <button className="w-4 h-4 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
           
           onClick={() => {
