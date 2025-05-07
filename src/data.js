@@ -1,6 +1,6 @@
 console.log("data.js");
-export const rootAddress = "https://rmn30654.pythonanywhere.com"+"/";
-
+export const rootAddresses = ["https://rmn30654.pythonanywhere.com"+"/","http://localhost:8000/"];
+export const rootAddress= rootAddresses[1];
 
 export const siteTitle =
   "Al  Quran  learning , developed by RARE academy with Masum";
