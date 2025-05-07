@@ -3,7 +3,7 @@ import ColorSelector from "./ColorSelector";
 import Submenu from "./menuSubmenu";
 import { arabicDiacritics } from "../data";
 import { Children } from "react";
-import { Navigation } from "./navigations";
+import { UserNavigation } from "./navigations";
 import { Menu } from 'lucide-react';
 
 function Nav({
@@ -44,7 +44,7 @@ function Nav({
         id="vertical-menu"
         className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 hidden fixed h-screen overflow-hidden overflow-y-scroll hover:w-96 md:block mt-16 md:mt-0`}
       >
-        <Navigation></Navigation>
+        <UserNavigation/>
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
         <div className="mb-4">
           <ThemeSelector

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-export function Navigation() {
+export function UserNavigation() {
    const user = localStorage.getItem("user");
    const [isAuth, setIsAuth] = useState(false);
    useEffect(() => {
