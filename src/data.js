@@ -1,7 +1,50 @@
 console.log("data.js");
-export const rootAddresses = ["https://rmn30654.pythonanywhere.com"+"/","http://localhost:8000/"];
-export const rootAddress= rootAddresses[1];
+export const rootAddresses = [
+  
+  "https://rmn30654.pythonanywhere.com/",
+  "http://localhost:8000/",
+];
 
+export async function selectAliveRootAddress() {
+  for (const address of rootAddresses) {
+    console.log(`Checking address: ${address}`);
+    try {
+      const response = await fetch(address, { 
+        method: "HEAD", 
+        mode: "cors",
+        // Adding a short timeout to avoid long waits
+        signal: AbortSignal.timeout(3000)
+      });
+      
+      if (response.ok) {
+        console.log(`Found working address: ${address}`);
+        return address;
+      }
+    } catch (error) {
+      // If fetch fails (e.g., due to CORS or server down), try the next one
+      console.warn(`Address ${address} not reachable:`, error.message);
+    }
+  }
+  // Return default address if none are reachable
+  console.warn("No addresses reachable, using first address as fallback");
+  return rootAddresses[0];
+}
+
+// Note: This needs to be properly initialized using an async function
+// You can't just assign the result of an async function directly
+
+// Using an IIFE (Immediately Invoked Function Expression) to initialize
+export let rootAddress = rootAddresses[0]; // Default value
+
+// Initialize rootAddress properly
+(async function initializeRootAddress() {
+  try {
+    rootAddress = await selectAliveRootAddress();
+    console.log(`Selected root address: ${rootAddress}`);
+  } catch (error) {
+    console.error("Error selecting root address:", error);
+  }
+})();
 export const siteTitle =
   "Al  Quran  learning , developed by RARE academy with Masum";
 

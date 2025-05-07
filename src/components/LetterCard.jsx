@@ -110,11 +110,7 @@ function Cards({
               </div>
             ))}
         </div>
-        <div
-          className={`flex font-bangla justify-center items-center space-x-4 text-center text-2xl w-[100%] m-2 max-h-[150px] ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
-        >
-          {siteTitle}
-        </div>
+        
       </div>
       {/* ))} */}
       <aside>
