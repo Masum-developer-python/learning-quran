@@ -177,7 +177,7 @@ export default function ActionBar({
             // });
             try {
               const ref = await receiveDataFromDjango(
-                rootAddress + "quran-words/filter_by_word/?word=" + word
+                rootAddress + "quran-words/filter_by_words/?word=" + word
               ); // ✅ waits here
               if (!ref) {
                 console.log("Not found in Quran DB");
