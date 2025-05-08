@@ -1,7 +1,8 @@
 console.log("data.js");
 export const rootAddresses = [
-  "http://localhost:8000/",
+  
   "https://rmn30654.pythonanywhere.com/",
+  "http://localhost:8000/",
   
 ];
 

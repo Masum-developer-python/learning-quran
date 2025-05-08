@@ -6,7 +6,7 @@ import {
   Eraser,
   Save,
   CirclePlay,
-  SquareX
+  SquareX,
 } from "lucide-react";
 import { sendDataToDjango, rootAddress, receiveDataFromDjango } from "../data";
 import Words from "./Words";
@@ -41,8 +41,8 @@ export default function ActionBar({
   return (
     <>
       <div id="imageframe" className="hidden z-5 fixed top-0 bg-gray-100">
-        <button className="w-4 h-4 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
-          
+        <button
+          className="w-4 h-4 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
           onClick={() => {
             document.getElementById("imageframe").classList.toggle("hidden");
           }}
@@ -195,19 +195,21 @@ export default function ActionBar({
         </button>
 
         <div id={`${position}${id}ID`} className="hidden">
-          <table className="text-2xl">
+          <table className="text-2xl table-auto border-collapse">
             <thead>
               <tr>
-                <th></th>
-                <th className="border font-bangla"> সুরা </th>
-                <th className="border font-bangla"> আয়াত </th>
-                <th></th>
+                <th className="border-2 font-bangla border-gray-500"> রেফারেন্স </th>
+                <th className="border-2 font-bangla border-gray-500"> সুরা </th>
+                <th className="border-2 font-bangla border-gray-500"> আয়াত </th>
+                <th className="border-2 font-bangla border-gray-500"> শব্দ </th>
+                <th className="border-2 font-bangla border-gray-500"> শব্দ অডিও </th>
+                <th className="border-2 font-bangla border-gray-500"> আয়াত অডিও </th>
               </tr>
             </thead>
             <tbody key={`${position}${id}tbody`}>
               {refData.map((item, index) => (
                 <tr key={`${position}${id}${index}trow`}>
-                  <td>
+                  <td className="border-2 border-gray-500">
                     <button
                       onClick={() => {
                         const src =
@@ -222,11 +224,39 @@ export default function ActionBar({
                       <BookOpen className="w-3 h-3 text-green-800" />
                     </button>
                   </td>
-                  <td className="border">{item.sura}</td>
-                  <td className="border">{item.aya}</td>
-                  <td>
+                  <td className="border-2 border-gray-500">{item.sura}</td>
+                  <td className="border-2 border-gray-500">{item.aya}</td>
+                  <td className="border-2 border-gray-500">{item.text}</td>
+                  <td className="border-2 border-gray-500 ">
                     <button
-                      className="w-4 h-4 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
+                      
+                      onClick={async () => {
+                        // const newAddress =
+                        //   rootAddress + "quran-words/filter_by_word/?word=" + word;
+                        // setAddress(newAddress);
+                        // console.log(address);
+                        try {
+                          const src =
+                            "/wbw" + item.audio.substring(0, 4) + item.audio;
+                          console.log(src);
+                          document.getElementById(position + id + "Audio").src =
+                            src;
+                          document
+                            .getElementById(position + id + "Audio")
+                            .play();
+                          document.getElementById(
+                            position + id + "Audio"
+                          ).classList = "hidden";
+                        } catch (error) {
+                          console.error("❌ Error fetching data:", error);
+                        }
+                      }}
+                    >
+                      <CirclePlay className="w-3 h-3 text-green-500" />
+                    </button>
+                  </td>
+                  <td className="border-2 border-gray-500">
+                    <button
                       onClick={async () => {
                         // const newAddress =
                         //   rootAddress + "quran-words/filter_by_word/?word=" + word;
@@ -269,10 +299,12 @@ export default function ActionBar({
             // setAddress(newAddress);
             // console.log(address);
             try {
-              const ref = await receiveDataFromDjango(rootAddress + "quran-words/filter_by_word/?word=" + word);
+              const ref = await receiveDataFromDjango(
+                rootAddress + "quran-words/filter_by_word/?word=" + word
+              );
               console.log(ref[0]);
               document.getElementById(position + id + "Audio").src =
-                "/wbw" + ref[0].audio.substring(0,4)+ ref[0].audio;
+                "/wbw" + ref[0].audio.substring(0, 4) + ref[0].audio;
               document.getElementById(position + id + "Audio").play();
               document.getElementById(position + id + "Audio").classList =
                 "hidden";
