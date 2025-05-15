@@ -4,7 +4,7 @@ import Submenu from "./menuSubmenu";
 import { arabicDiacritics } from "../data";
 import { Children } from "react";
 import { UserNavigation } from "./navigations";
-import { Menu } from 'lucide-react';
+import { Menu } from "lucide-react";
 
 function Nav({
   selectedColor,
@@ -33,18 +33,25 @@ function Nav({
           menu.classList.toggle("hidden");
         }}
       >
-        <Menu/>
+        <Menu />
       </button>
       <div
         className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-4 h-screen md:block hidden mt-16`}
-      >
-      </div>
+      ></div>
       {/* Navbar */}
       <nav
         id="vertical-menu"
         className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 hidden fixed h-screen overflow-hidden overflow-y-scroll hover:w-96 md:block mt-16 md:mt-0`}
       >
-        <UserNavigation/>
+      {/* <nav
+        id="vertical-menu"
+        className={`
+    ${selectedColor.backgroundColor} ${selectedColor.textColor}
+    hidden md:flex fixed md:flex-col w-full md:w-32 h-16 md:h-screen
+    overflow-x-auto md:overflow-hidden md:overflow-y-scroll
+    mt-16 md:mt-0 p-2
+  `} */}
+      
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
         <div className="mb-4">
           <ThemeSelector
@@ -62,9 +69,8 @@ function Nav({
           />
         </div>
         <Submenu selectedTheme={selectedTheme} selectedColor={selectedColor} />
-      
+        <UserNavigation />
       </nav>
-      
     </>
   );
 }
