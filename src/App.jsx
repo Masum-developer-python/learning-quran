@@ -5,7 +5,6 @@ import SideBar from "./components/sideBar";
 import Words from "./components/Words";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
-  siteTitle,
   alphabetColorCombinations,
   arabicDiacritics,
   receiveDataFromDjango,

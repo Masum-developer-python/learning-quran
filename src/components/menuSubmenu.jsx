@@ -1,7 +1,7 @@
 import { arabicDiacritics } from "../data";
 import { useState } from "react";
 
-function Submenu({selectedColor}) {
+function Submenu({ selectedColor }) {
   const width = window.innerWidth;
   const isMobile = width < 640;
   const isTablet = width >= 640 && width < 1024;
@@ -14,10 +14,13 @@ function Submenu({selectedColor}) {
       ...prev,
       [category]: !prev[category],
     }));
+    console.log(openCategories);
   };
 
   return (
-    <ul className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal ${selectedColor.backgroundColor} ${selectedColor.textColor} `}>
+    <ul
+      className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal ${selectedColor.backgroundColor} ${selectedColor.textColor} `}
+    >
       {Object.keys(arabicDiacritics).map((category, index) => (
         <li key={index} className="group">
           <hr />
@@ -31,7 +34,7 @@ function Submenu({selectedColor}) {
             {arabicDiacritics[category].title}
           </a>
 
-          {(isMobile || isTablet) && arabicDiacritics[category].diacritics && (
+          {(isMobile || isTablet) && (
             <button
               onClick={() => toggleCategory(category)}
               className="px-4 py-2"
@@ -42,7 +45,9 @@ function Submenu({selectedColor}) {
 
           {(openCategories[category] || isDesktop) &&
             arabicDiacritics[category].diacritics && (
-              <div className={`absolute left-full transform -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition duration-300 hover:z-30`}>
+              <div
+                className={`absolute left-full transform -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition duration-300 hover:z-30`}
+              >
                 {/* Sub-Menu */}
                 {arabicDiacritics[category].diacritics.map((item, index) => (
                   <div key={index} className="group/sub relative">
@@ -57,8 +62,21 @@ function Submenu({selectedColor}) {
                     >
                       {item.title}
                     </a>
-                    {item.pages && (
-                      <div className={`absolute left-full top-0 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg opacity-0 group-hover/sub:opacity-100 transition duration-300 hover:z-50`}>
+
+                    {(isMobile || isTablet) && (
+                      <button
+                        onClick={() => toggleCategory(item.name)}
+                        className="px-4 py-2"
+                      >
+                        {openCategories[item.name] ? ">" : "<"}
+                      </button>
+                    )}
+
+                    {(openCategories[item.name] || isDesktop) &&
+                    item.pages && (
+                      <div
+                        className={`absolute left-full top-0 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg opacity-0 group-hover/sub:opacity-100 transition duration-300 hover:z-50`}
+                      >
                         {item.pages.map((page, pageIndex) => (
                           <a
                             key={pageIndex}
