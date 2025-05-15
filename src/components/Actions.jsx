@@ -40,6 +40,7 @@ export default function ActionBar({
   // console.log(user, isAdmin);
   return (
     <>
+      {/* ayah image container */}
       <div id="imageframe" className="hidden z-5 fixed top-0 bg-gray-100">
         <button
           className="w-4 h-4 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
@@ -78,9 +79,9 @@ export default function ActionBar({
         >
           <CirclePlay className="w-3 h-3 text-red-500" />
         </button>
-        <img id="image" className="" src="" />
+        <img id="image" className="bg-white" src="" />
       </div>
-
+      {/* actions */}
       <div className="flex flex-row w-full p-1 mt-6 bg-gray-200 rounded-lg">
         {isAdmin && (
           <>
@@ -88,19 +89,6 @@ export default function ActionBar({
             <button
               className="w-4 h-4 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
               onClick={() => {
-                // setAddress(
-                //   baseAddress +
-                //     String(
-                //       arabicWords.find(
-                //         (item) =>
-                //           item.diacritics === diacritics &&
-                //           item.position === position &&
-                //           item.letter == id &&
-                //           item.join_diacritics == pName
-                //       )?.id || ""
-                //     ) +
-                //     "/"
-                // );
                 setMethod("DELETE");
                 console.log(address, method);
                 sendDataToDjango(
@@ -121,19 +109,6 @@ export default function ActionBar({
                 document
                   .getElementById(position + id)
                   .classList.toggle("hidden");
-                // setAddress(
-                //   baseAddress +
-                //     String(
-                //       arabicWords.find(
-                //         (item) =>
-                //           item.diacritics === diacritics &&
-                //           item.position === position &&
-                //           item.letter == id &&
-                //           item.join_diacritics == pName
-                //       )?.id || ""
-                //     ) +
-                //     "/"
-                // );
                 setAddress(baseAddress + cellId + "/");
                 setMethod("PATCH");
                 console.log(baseAddress + cellId + "/", method, accessToken);
@@ -158,7 +133,7 @@ export default function ActionBar({
             </button>
           </>
         )}
-
+        {/* refference start*/}
         <button
           className="w-4 h-4 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-green-200"
           onClick={async () => {
@@ -166,15 +141,6 @@ export default function ActionBar({
               .getElementById(position + id + "ID")
               .classList.toggle("hidden");
             console.log(word);
-            // setAddress(
-            //   rootAddress + "quran-words/filter_by_word/?word=" + word
-            // );
-            // console.log(address);
-            // receiveDataFromDjango(address).then((ref) => {
-            //   if (!ref) console.log("Not found in Quran DB");
-            //   else ref.forEach((item) => console.log(item));
-            //   setRefData(ref);
-            // });
             try {
               const ref = await receiveDataFromDjango(
                 rootAddress + "quran-words/filter_by_words/?word=" + word
@@ -198,17 +164,31 @@ export default function ActionBar({
           <table className="text-2xl table-auto border-collapse">
             <thead>
               <tr>
-                <th className="border-2 font-bangla border-gray-500"> রেফারেন্স </th>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  ক্রমিক{" "}
+                </th>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  রেফারেন্স{" "}
+                </th>
                 <th className="border-2 font-bangla border-gray-500"> সুরা </th>
                 <th className="border-2 font-bangla border-gray-500"> আয়াত </th>
                 <th className="border-2 font-bangla border-gray-500"> শব্দ </th>
-                <th className="border-2 font-bangla border-gray-500"> শব্দ অডিও </th>
-                <th className="border-2 font-bangla border-gray-500"> আয়াত অডিও </th>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  শব্দ অডিও{" "}
+                </th>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  আয়াত অডিও{" "}
+                </th>
               </tr>
             </thead>
             <tbody key={`${position}${id}tbody`}>
               {refData.map((item, index) => (
                 <tr key={`${position}${id}${index}trow`}>
+                  <td className="border-2 border-gray-500">{index}</td>
                   <td className="border-2 border-gray-500">
                     <button
                       onClick={() => {
@@ -229,12 +209,7 @@ export default function ActionBar({
                   <td className="border-2 border-gray-500">{item.text}</td>
                   <td className="border-2 border-gray-500 ">
                     <button
-                      
                       onClick={async () => {
-                        // const newAddress =
-                        //   rootAddress + "quran-words/filter_by_word/?word=" + word;
-                        // setAddress(newAddress);
-                        // console.log(address);
                         try {
                           const src =
                             "/wbw" + item.audio.substring(0, 4) + item.audio;
@@ -258,10 +233,6 @@ export default function ActionBar({
                   <td className="border-2 border-gray-500">
                     <button
                       onClick={async () => {
-                        // const newAddress =
-                        //   rootAddress + "quran-words/filter_by_word/?word=" + word;
-                        // setAddress(newAddress);
-                        // console.log(address);
                         try {
                           const src =
                             "/wbw" +
@@ -291,13 +262,11 @@ export default function ActionBar({
             </tbody>
           </table>
         </div>
+        {/* refference end*/}
+        {/* word audio */}
         <button
           className="w-4 h-4 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
           onClick={async () => {
-            // const newAddress =
-            //   rootAddress + "quran-words/filter_by_word/?word=" + word;
-            // setAddress(newAddress);
-            // console.log(address);
             try {
               const ref = await receiveDataFromDjango(
                 rootAddress + "quran-words/filter_by_word/?word=" + word

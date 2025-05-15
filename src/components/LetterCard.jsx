@@ -9,7 +9,7 @@ import {
   receiveDataFromDjango,
 } from "../data";
 import SideBar from "./sideBar";
-import Audio from "./AudioPlay";
+import Audio from "./Audio";
 function Cards({
   arabicAlphabet,
   selectedColor,
@@ -29,9 +29,6 @@ function Cards({
 
   console.log("LetterCard.jsx");
   console.log(arabicAlphabet);
-  //console.log(isSaddah);
-  // console.log(arabicDiacritics["Harakat"].diacritics[0].unicode);
-  // console.log(preAlphabetDiacriticsUnicode);
   return (
     <>
       <div key={rowIndex} className="flex flex-wrap w-[100%] space-x-1 m-2 ">
@@ -101,21 +98,12 @@ function Cards({
                     </div>
                   )}
                 </div>
-                {/* <button
-                onClick={() =>
-                  sendDataToDjango(
-                    { alphabet: item, alphabet_name: arabicAlphabetNames[itemIndex] }, // Data to send
-                    "http://localhost:5000/quran/arabic-alphabets/" // URL
-                  )
-                }
-              >
-                +
-              </button> */}
+                
               </div>
             ))}
         </div>
       </div>
-      {/* ))} */}
+      
       <aside>
         {isSaakinah && (
           <SideBar
