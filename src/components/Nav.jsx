@@ -69,6 +69,7 @@ function Nav({
           />
         </div>
         <Submenu selectedTheme={selectedTheme} selectedColor={selectedColor} />
+        
         <UserNavigation />
       </nav>
     </>

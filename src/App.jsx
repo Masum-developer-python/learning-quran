@@ -66,7 +66,7 @@ function App() {
 
   return (
     <>
-      <div className="flex w-[98%]">
+      <div className="flex w-full">
         <Nav
           selectedColor={selectedColor}
           selectedTheme={selectedTheme}

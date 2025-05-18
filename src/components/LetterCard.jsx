@@ -44,7 +44,7 @@ function Cards({
           </span>
         </div>
 
-        <div className="flex flex-0 flex-wrap flex-row-reverse w-[100%] m-auto">
+        <div className="flex flex-0 flex-wrap flex-row-reverse w-[100%] m-auto md:m-2">
           {arabicAlphabet
             .filter((row) => row.extra != 1)
             .map((item, itemIndex) => (
