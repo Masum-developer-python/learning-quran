@@ -55,7 +55,14 @@ function Nav({
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
         <Submenu selectedTheme={selectedTheme} selectedColor={selectedColor} />
 
+        <br />
+        <br />
         <UserNavigation />
+        <br />
+        <br />
+        <hr />
+        <br />
+        <br />
         <div className="mb-4">
           <ThemeSelector
             selectedTheme={selectedTheme}
