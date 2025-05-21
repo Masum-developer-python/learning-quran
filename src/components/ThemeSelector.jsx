@@ -11,7 +11,7 @@ function ThemeSelector({ selectedTheme, setSelectedTheme, alphabetColorCombinati
 
   return (
     <>
-      <label className="font-bangla w-32 mb-2 font-semibold">Select Theme & color combination : &nbsp; &nbsp;</label>
+      <label className="font-bangla w-16 mb-2 font-small">Select Theme : </label>
       <select
         value={selectedTheme.theme}
         onChange={handleThemeChange}

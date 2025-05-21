@@ -11,6 +11,7 @@ function ColorSelector({ selectedTheme, selectedColor, setSelectedColor }) {
   return (
     <>
       {/* <label className=" mb-2 font-semibold">Select Color Combination:</label> */}
+      <label className="font-bangla w-16 mb-2 font-small">Select Color : </label>
       <select
         value={JSON.stringify(selectedColor)}
         onChange={handleColorChange}
