@@ -14,7 +14,7 @@ function ColorSelector({ selectedTheme, selectedColor, setSelectedColor }) {
       <select
         value={JSON.stringify(selectedColor)}
         onChange={handleColorChange}
-        className="font-bangla w-full p-2 border rounded ${selectedColor.backgroundColor}"
+        className="font-bangla w-32 p-2 border rounded ${selectedColor.backgroundColor}"
       >
         {selectedTheme.combinations.map((combo, index) => (
           <option key={index} className= {`${combo.textColor} ${combo.backgroundColor}`} value={JSON.stringify(combo)}>

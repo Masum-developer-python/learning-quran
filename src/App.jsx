@@ -15,6 +15,7 @@ import Blog from "./components/Blog";
 import Home from "./components/home";
 import { Login } from "./components/login";
 import Logout from "./components/logout";
+import QuranRead from "./components/QuranRead";
 
 function App() {
   console.log("App.jsx");
@@ -83,6 +84,9 @@ function App() {
                 element={<Login />}
               />
               <Route path="/logout" element={<Logout />} />
+
+              <Route path="/quran" element={<QuranRead />} />
+
               <Route
                 key={0}
                 path={`/`}
@@ -160,6 +164,7 @@ function App() {
                   </>
                 ))
               )}
+              
             </Routes>
           </main>
         </Router>

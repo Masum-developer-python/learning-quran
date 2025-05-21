@@ -41,9 +41,9 @@ function Nav({
       {/* Navbar */}
       <nav
         id="vertical-menu"
-        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 hidden fixed h-screen overflow-hidden overflow-y-scroll hover:w-96 md:block mt-16 md:mt-0`}
+        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 hidden fixed h-screen overflow-y-scroll hover:w-52 md:block mt-16 md:mt-0`}
       >
-      {/* <nav
+        {/* <nav
         id="vertical-menu"
         className={`
     ${selectedColor.backgroundColor} ${selectedColor.textColor}
@@ -51,8 +51,11 @@ function Nav({
     overflow-x-auto md:overflow-hidden md:overflow-y-scroll
     mt-16 md:mt-0 p-2
   `} */}
-      
+
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
+        <Submenu selectedTheme={selectedTheme} selectedColor={selectedColor} />
+
+        <UserNavigation />
         <div className="mb-4">
           <ThemeSelector
             selectedTheme={selectedTheme}
@@ -68,9 +71,6 @@ function Nav({
             setSelectedColor={setSelectedColor}
           />
         </div>
-        <Submenu selectedTheme={selectedTheme} selectedColor={selectedColor} />
-        
-        <UserNavigation />
       </nav>
     </>
   );

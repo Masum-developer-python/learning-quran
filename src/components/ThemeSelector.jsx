@@ -15,7 +15,7 @@ function ThemeSelector({ selectedTheme, setSelectedTheme, alphabetColorCombinati
       <select
         value={selectedTheme.theme}
         onChange={handleThemeChange}
-        className="w-full p-2 border rounded font-bangla"
+        className="w-32 p-2 border rounded font-bangla"
       >
         {alphabetColorCombinations.map((theme) => (
           <option key={theme.theme} value={theme.theme}>
@@ -23,6 +23,7 @@ function ThemeSelector({ selectedTheme, setSelectedTheme, alphabetColorCombinati
           </option>
         ))}
       </select>
+      <br></br>
     </>
   );
 }

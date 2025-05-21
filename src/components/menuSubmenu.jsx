@@ -1,5 +1,5 @@
 import { arabicDiacritics } from "../data";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function Submenu({ selectedColor }) {
   const width = window.innerWidth;
@@ -8,21 +8,46 @@ function Submenu({ selectedColor }) {
   const isDesktop = width >= 1024;
 
   const [openCategories, setOpenCategories] = useState({});
+  const [openSubCategories, setOpenSubCategories] = useState({});
+  const submenuRefs = useRef({});
 
   const toggleCategory = (category) => {
-    setOpenCategories((prev) => ({
-      ...prev,
-      [category]: !prev[category],
-    }));
-    console.log(openCategories);
+    setOpenCategories((prev) => {
+      const isCurrentlyOpen = prev[category];
+  
+      // If the clicked category is already open, close all
+      if (isCurrentlyOpen) {
+        return {};
+      }
+  
+      // Otherwise, open only the clicked one
+      return {
+        [category]: true,
+      };
+    }); 
   };
-
+  
+  const toggleSubCategory = (subCategory) => {
+    setOpenSubCategories((prev) => {
+      const isCurrentlyOpen = prev[subCategory];
+  
+      // If the clicked category is already open, close all
+      if (isCurrentlyOpen) {
+        return {};
+      }
+  
+      // Otherwise, open only the clicked one
+      return {
+        [subCategory]: true,
+      };
+    }); 
+  };
   return (
     <ul
-      className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal ${selectedColor.backgroundColor} ${selectedColor.textColor} `}
+      className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal ${selectedColor.backgroundColor} ${selectedColor.textColor} z-20`}
     >
       {Object.keys(arabicDiacritics).map((category, index) => (
-        <li key={index} className="group">
+        <li key={index} className="relative">
           <hr />
           <br />
           <br />
@@ -34,10 +59,12 @@ function Submenu({ selectedColor }) {
             {arabicDiacritics[category].title}
           </a>
 
-          {(isMobile || isTablet) && (
+          {(isMobile || isTablet || isDesktop) && (
             <button
-              onClick={() => toggleCategory(category)}
-              className="px-4 py-2"
+              onClick={() => {
+                toggleCategory(category);
+              }}
+              className=" py-2"
             >
               {openCategories[category] ? ">" : "<"}
             </button>
@@ -46,7 +73,7 @@ function Submenu({ selectedColor }) {
           {(openCategories[category] || isDesktop) &&
             arabicDiacritics[category].diacritics && (
               <div
-                className={`absolute left-full transform -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition duration-300 hover:z-30`}
+                className={`absolute z-30 left-14 ${openCategories[category] ? "" : "hidden"} transform -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg transition duration-300 z-5`}
               >
                 {/* Sub-Menu */}
                 {arabicDiacritics[category].diacritics.map((item, index) => (
@@ -63,37 +90,39 @@ function Submenu({ selectedColor }) {
                       {item.title}
                     </a>
 
-                    {(isMobile || isTablet) && (
+                    {(isMobile || isTablet || isDesktop) && (
                       <button
-                        onClick={() => toggleCategory(item.name)}
+                        onClick={() => {
+                          toggleSubCategory(item.name);
+                        }}
                         className="px-4 py-2"
                       >
-                        {openCategories[item.name] ? ">" : "<"}
+                        {openSubCategories[item.name] ? ">" : "<"}
                       </button>
                     )}
 
-                    {(openCategories[item.name] || isDesktop) &&
-                    item.pages && (
-                      <div
-                        className={`absolute left-full top-0 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg opacity-0 group-hover/sub:opacity-100 transition duration-300 hover:z-50`}
-                      >
-                        {item.pages.map((page, pageIndex) => (
-                          <a
-                            key={pageIndex}
-                            href={
-                              "/" +
-                              category.toLowerCase() +
-                              "/" +
-                              item.name.toLowerCase() +
-                              page.name.toLowerCase()
-                            }
-                            className="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"
-                          >
-                            {page.title}
-                          </a>
-                        ))}
-                      </div>
-                    )}
+                    {(openSubCategories[item.name] || isDesktop) &&
+                      item.pages && (
+                        <div
+                          className={`absolute left-14 top-0 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg transition duration-300`}
+                        >
+                          {item.pages.map((page, pageIndex) => (
+                            <a
+                              key={pageIndex}
+                              href={
+                                "/" +
+                                category.toLowerCase() +
+                                "/" +
+                                item.name.toLowerCase() +
+                                page.name.toLowerCase()
+                              }
+                              className="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+                            >
+                              {page.title}
+                            </a>
+                          ))}
+                        </div>
+                      )}
                   </div>
                 ))}
               </div>
