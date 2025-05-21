@@ -44,7 +44,8 @@ function Submenu({ selectedColor }) {
   };
   return (
     <ul
-      className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal ${selectedColor.backgroundColor} ${selectedColor.textColor} z-20`}
+      className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal 
+        ${selectedColor.backgroundColor} ${selectedColor.textColor} z-20`}
     >
       {Object.keys(arabicDiacritics).map((category, index) => (
         <li key={index} className="relative">
@@ -53,7 +54,8 @@ function Submenu({ selectedColor }) {
           <br />
           {/* Category Name */}
           <a
-            className="block px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition duration-1000"
+            className="block px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition 
+            duration-1000"
             href={"/" + category.toLowerCase()}
           >
             {arabicDiacritics[category].title}
@@ -73,7 +75,9 @@ function Submenu({ selectedColor }) {
           {(openCategories[category] || isDesktop) &&
             arabicDiacritics[category].diacritics && (
               <div
-                className={`absolute z-30 left-14 ${openCategories[category] ? "" : "hidden"} transform -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg transition duration-300 z-5`}
+                className={`absolute z-30 left-14 ${openCategories[category] ? "" : "hidden"} transform 
+                -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} 
+                rounded shadow-lg transition duration-300 z-5`}
               >
                 {/* Sub-Menu */}
                 {arabicDiacritics[category].diacritics.map((item, index) => (
@@ -104,7 +108,10 @@ function Submenu({ selectedColor }) {
                     {(openSubCategories[item.name] || isDesktop) &&
                       item.pages && (
                         <div
-                          className={`absolute left-14 top-0 mt-2 w-full ${openSubCategories[item.name] ? "" : "hidden"} ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg transition duration-300`}
+                          className={`absolute left-14 top-0 mt-2 w-full rounded shadow-lg
+                            ${openSubCategories[item.name] ? "" : "hidden"} transition duration-300
+                            ${selectedColor.backgroundColor} ${selectedColor.textColor} 
+                        `}
                         >
                           {item.pages.map((page, pageIndex) => (
                             <a

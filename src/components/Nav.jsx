@@ -12,22 +12,14 @@ function Nav({
   setSelectedTheme,
   setSelectedColor,
   alphabetColorCombinations,
-  Children,
 }) {
   console.log("Nav.jsx");
-  //console.log("Nav ");
-  //console.log(selectedColor);
-  //   Object.keys(arabicDiacritics).map((category) =>{
-  //     console.log(category);
-  //     arabicDiacritics[category].diacritics.map((route, index) => {
-  //       console.log(route);
-  //   })
-  // })
   return (
     <>
       {/* Toggle Button for Small Screens */}
       <button
-        className={`md:hidden ${selectedColor.backgroundColor} ${selectedColor.textColor} p-2 h-[50px] z-10 rounded-full fixed`}
+        className={`md:hidden ${selectedColor.backgroundColor} ${selectedColor.textColor} p-2 h-[50px] 
+        z-10 rounded-full fixed`}
         onClick={() => {
           const menu = document.getElementById("vertical-menu");
           menu.classList.toggle("hidden");
@@ -36,32 +28,23 @@ function Nav({
         <Menu />
       </button>
       <div
-        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-4 h-screen md:block hidden mt-16`}
+        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-4 h-screen 
+        md:block hidden mt-16`}
       ></div>
       {/* Navbar */}
       <nav
         id="vertical-menu"
-        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 hidden fixed h-screen overflow-y-scroll hover:w-52 md:block mt-16 md:mt-0`}
+        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 
+        fixed h-[calc(100vh-30px)] lg:h-screen overflow-y-scroll hover:w-52 md:block mt-16 md:mt-0`}
       >
-        {/* <nav
-        id="vertical-menu"
-        className={`
-    ${selectedColor.backgroundColor} ${selectedColor.textColor}
-    hidden md:flex fixed md:flex-col w-full md:w-32 h-16 md:h-screen
-    overflow-x-auto md:overflow-hidden md:overflow-y-scroll
-    mt-16 md:mt-0 p-2
-  `} */}
-
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
         <Submenu selectedTheme={selectedTheme} selectedColor={selectedColor} />
 
-        <br />
+        <hr className="w-24 p-2"/>
         <br />
         <UserNavigation />
         <br />
-        <br />
-        <hr />
-        <br />
+        <hr className="w-24 p-2"/>
         <br />
         <div className="mb-4">
           <ThemeSelector
