@@ -104,7 +104,7 @@ function Submenu({ selectedColor }) {
                     {(openSubCategories[item.name] || isDesktop) &&
                       item.pages && (
                         <div
-                          className={`absolute left-14 top-0 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg transition duration-300`}
+                          className={`absolute left-14 top-0 mt-2 w-full ${openSubCategories[item.name] ? "" : "hidden"} ${selectedColor.backgroundColor} ${selectedColor.textColor} rounded shadow-lg transition duration-300`}
                         >
                           {item.pages.map((page, pageIndex) => (
                             <a
