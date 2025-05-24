@@ -77,7 +77,7 @@ export default function QuranRead() {
             {data.map((i) => (
               <>
                 {i.text ? (
-                  <button
+                  <button className="hover:bg-green-100"
                     onClick={() => {
                       document.getElementById("Audio").src =
                         "/wbw" + i.audio.substring(0, 4) + i.audio;
@@ -86,9 +86,10 @@ export default function QuranRead() {
                     }}
                   >
                     {i.text + " "}
+                    
                   </button>
                 ) : (
-                  <button
+                  <button className=""
                     onClick={() => {
                       console.log(i);
                       document.getElementById("Audio").src =
@@ -102,7 +103,7 @@ export default function QuranRead() {
                       document.getElementById("Audio").classList = "hidden";
                     }}
                   >
-                    <Circle>1</Circle>
+                    <Circle className="w-8 p-2"></Circle>{" "}
                   </button>
                 )}
               </>
