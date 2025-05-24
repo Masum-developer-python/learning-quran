@@ -13,28 +13,27 @@ export default function QuranRead() {
     setLoading(true);
     setError("");
     setData(null);
-    if(sura<1 || sura >114)
-    {
+    if (sura < 1 || sura > 114) {
       setError("Number of Surah is wrong");
-    }
-    let url = `https://rmn30654.pythonanywhere.com/quran-words/filter_by_sura/?sura=${sura}`;
-    if (aya) {
-      url += `&aya=${aya}`;
-    }
-
-    try {
-      const res = await fetch(url);
-      console.log(res);
-      if (!res.ok) throw new Error("Failed to fetch");
-      const result = await res.json();
-      if(result.length != 0)
-        setData(result);
-      else
-        setError("Ayah Number not exist");
-    } catch (err) {
-      setError("Error fetching data");
-    } finally {
       setLoading(false);
+    } else {
+      let url = `https://rmn30654.pythonanywhere.com/quran-words/filter_by_sura/?sura=${sura}`;
+      if (aya) {
+        url += `&aya=${aya}`;
+      }
+
+      try {
+        const res = await fetch(url);
+        console.log(res);
+        if (!res.ok) throw new Error("Failed to fetch");
+        const result = await res.json();
+        if (result.length != 0) setData(result);
+        else setError("Ayah Number not exist");
+      } catch (err) {
+        setError("Error fetching data");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -76,38 +75,42 @@ export default function QuranRead() {
       </form>
 
       {loading && <p className="mt-4 text-blue-600">Loading...</p>}
-      {error && <p className="mt-4 text-red-600"><pre>{error}</pre></p>}
+      {error && (
+        <p className="mt-4 text-red-600">
+          <pre>{error}</pre>
+        </p>
+      )}
       {!error && data && (
-        
         <div className="mt-6">
           <h2 className="text-xl font-semibold mb-2">Results:</h2>
-          <Audio 
-          folder = 'wbw/'
-          fileName= {String(data[0].sura).padStart(3, "0") + "/" +
-            String(data[0].sura).padStart(3, "0") +
-          ".mp3"}
+          <Audio
+            folder="wbw/"
+            fileName={
+              String(data[0].sura).padStart(3, "0") +
+              "/" +
+              String(data[0].sura).padStart(3, "0") +
+              ".mp3"
+            }
           />
           <div className="text-4xl" dir="rtl">
             {data.map((i) => (
               <>
                 {i.text ? (
-                  <Audio 
-                  folder="/wbw"
-                  fileName={i.audio.substring(0, 4) + i.audio}
-                >
-                  <span>{i.text + " "}</span>
-                </Audio>
-                
-                  
+                  <Audio
+                    folder="/wbw"
+                    fileName={i.audio.substring(0, 4) + i.audio}
+                  >
+                    <span>{i.text + " "}</span>
+                  </Audio>
                 ) : (
-                  <Audio 
-                    folder = "/wbw/"
+                  <Audio
+                    folder="/wbw/"
                     fileName={
                       String(i.sura).padStart(3, "0") +
-                        "/" +
-                        String(i.sura).padStart(3, "0") +
-                        String(i.aya).padStart(3, "0") +
-                        ".mp3"
+                      "/" +
+                      String(i.sura).padStart(3, "0") +
+                      String(i.aya).padStart(3, "0") +
+                      ".mp3"
                     }
                   />
                 )}
@@ -119,7 +122,6 @@ export default function QuranRead() {
           </pre> */}
         </div>
       )}
-      
     </div>
   );
 }
