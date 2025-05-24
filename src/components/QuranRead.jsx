@@ -108,9 +108,9 @@ export default function QuranRead() {
               </>
             ))}
           </div>
-          <pre className="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
+          {/* <pre className="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
             {JSON.stringify(data, null, 2)}
-          </pre>
+          </pre> */}
         </div>
       )}
 
