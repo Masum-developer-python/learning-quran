@@ -14,33 +14,33 @@ function Submenu({ selectedColor }) {
   const toggleCategory = (category) => {
     setOpenCategories((prev) => {
       const isCurrentlyOpen = prev[category];
-  
+
       // If the clicked category is already open, close all
       if (isCurrentlyOpen) {
         return {};
       }
-  
+
       // Otherwise, open only the clicked one
       return {
         [category]: true,
       };
-    }); 
+    });
   };
-  
+
   const toggleSubCategory = (subCategory) => {
     setOpenSubCategories((prev) => {
       const isCurrentlyOpen = prev[subCategory];
-  
+
       // If the clicked category is already open, close all
       if (isCurrentlyOpen) {
         return {};
       }
-  
+
       // Otherwise, open only the clicked one
       return {
         [subCategory]: true,
       };
-    }); 
+    });
   };
   return (
     <ul
@@ -75,8 +75,12 @@ function Submenu({ selectedColor }) {
           {(openCategories[category] || isDesktop) &&
             arabicDiacritics[category].diacritics && (
               <div
-                className={`absolute z-30 left-14 ${openCategories[category] ? "" : "hidden"} transform 
-                -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${selectedColor.textColor} 
+                className={`absolute z-30 left-14 ${
+                  openCategories[category] ? "" : "hidden"
+                } transform 
+                -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${
+                  selectedColor.textColor
+                } 
                 rounded shadow-lg transition duration-300 z-5`}
               >
                 {/* Sub-Menu */}
@@ -109,8 +113,12 @@ function Submenu({ selectedColor }) {
                       item.pages && (
                         <div
                           className={`absolute left-14 top-0 mt-2 w-full rounded shadow-lg
-                            ${openSubCategories[item.name] ? "" : "hidden"} transition duration-300
-                            ${selectedColor.backgroundColor} ${selectedColor.textColor} 
+                            ${
+                              openSubCategories[item.name] ? "" : "hidden"
+                            } transition duration-300
+                            ${selectedColor.backgroundColor} ${
+                            selectedColor.textColor
+                          } 
                         `}
                         >
                           {item.pages.map((page, pageIndex) => (
@@ -149,6 +157,22 @@ function Submenu({ selectedColor }) {
           href={"/words"}
         >
           শব্দ তৈরী
+        </a>
+        <br />
+        <br />
+        <hr />
+      </li>
+
+      <li key={"1234"} className="">
+        <hr />
+        <br />
+        <br />
+        {/* Category Name */}
+        <a
+          className="block px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition duration-1000"
+          href={"/quran"}
+        >
+          কুরআন পড়া
         </a>
         <br />
         <br />
