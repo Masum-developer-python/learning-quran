@@ -98,7 +98,8 @@ export default function QuranRead() {
                 {i.text ? (
                   <Audio
                     folder="/wbw"
-                    fileName={i.audio.substring(0, 4) + i.audio}
+
+                    fileName={i.audio !=null ? (i.audio.substring(0, 4) + i.audio) : ""}
                   >
                     <span>{i.text + " "}</span>
                   </Audio>
