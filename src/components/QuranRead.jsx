@@ -13,7 +13,10 @@ export default function QuranRead() {
     setLoading(true);
     setError("");
     setData(null);
-
+    if(sura<1 || sura >114)
+    {
+      setError("Number of Surah is wrong");
+    }
     let url = `https://rmn30654.pythonanywhere.com/quran-words/filter_by_sura/?sura=${sura}`;
     if (aya) {
       url += `&aya=${aya}`;
@@ -21,9 +24,13 @@ export default function QuranRead() {
 
     try {
       const res = await fetch(url);
+      console.log(res);
       if (!res.ok) throw new Error("Failed to fetch");
       const result = await res.json();
-      setData(result);
+      if(result.length != 0)
+        setData(result);
+      else
+        setError("Ayah Number not exist");
     } catch (err) {
       setError("Error fetching data");
     } finally {
@@ -69,42 +76,40 @@ export default function QuranRead() {
       </form>
 
       {loading && <p className="mt-4 text-blue-600">Loading...</p>}
-      {error && <p className="mt-4 text-red-600">{error}</p>}
-      {data && (
+      {error && <p className="mt-4 text-red-600"><pre>{error}</pre></p>}
+      {!error && data && (
+        
         <div className="mt-6">
           <h2 className="text-xl font-semibold mb-2">Results:</h2>
+          <Audio 
+          folder = 'wbw/'
+          fileName= {String(data[0].sura).padStart(3, "0") + "/" +
+            String(data[0].sura).padStart(3, "0") +
+          ".mp3"}
+          />
           <div className="text-4xl" dir="rtl">
             {data.map((i) => (
               <>
                 {i.text ? (
-                  <button className="hover:bg-green-100"
-                    onClick={() => {
-                      document.getElementById("Audio").src =
-                        "/wbw" + i.audio.substring(0, 4) + i.audio;
-                      document.getElementById("Audio").play();
-                      document.getElementById("Audio").classList = "hidden";
-                    }}
-                  >
-                    {i.text + " "}
-                    
-                  </button>
+                  <Audio 
+                  folder="/wbw"
+                  fileName={i.audio.substring(0, 4) + i.audio}
+                >
+                  <span>{i.text + " "}</span>
+                </Audio>
+                
+                  
                 ) : (
-                  <button className=""
-                    onClick={() => {
-                      console.log(i);
-                      document.getElementById("Audio").src =
-                        "/wbw/" +
-                        String(i.sura).padStart(3, "0") +
+                  <Audio 
+                    folder = "/wbw/"
+                    fileName={
+                      String(i.sura).padStart(3, "0") +
                         "/" +
                         String(i.sura).padStart(3, "0") +
                         String(i.aya).padStart(3, "0") +
-                        ".mp3";
-                      document.getElementById("Audio").play();
-                      document.getElementById("Audio").classList = "hidden";
-                    }}
-                  >
-                    <Circle className="w-8 p-2"></Circle>{" "}
-                  </button>
+                        ".mp3"
+                    }
+                  />
                 )}
               </>
             ))}
@@ -114,11 +119,7 @@ export default function QuranRead() {
           </pre> */}
         </div>
       )}
-
-      <audio controls id={`Audio`} className="hidden">
-        <source src="" type="audio/mpeg" />
-        The Word can't be found in Quran words database.
-      </audio>
+      
     </div>
   );
 }
