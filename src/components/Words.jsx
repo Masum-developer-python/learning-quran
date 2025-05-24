@@ -15,6 +15,7 @@ function Words({
     useState("");
   const [preAlphabet, setPreAlphabet] = useState("");
   return (
+    <>
     <div className="flex font-bangla">
       <SideBar
         isAllDiacritics={true}
@@ -49,13 +50,13 @@ function Words({
           }}
           className={`rtl p-4 m-1 mb-0 h-[40px] w-16
            ${selectedColor.backgroundColor} 
-          text-4xl text-center 
+          text-xl text-center 
           ${selectedColor.textColor} 
         rounded-lg
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4 `}
         >
-          {" "}
+          {"NWSP"}
         </button>
         <button
           key={`del`}
@@ -90,19 +91,21 @@ function Words({
         </button>
       </SideBar>
 
-      <div
-        className={`font-akber ${selectedColor.backgroundColor} 
-          text-8xl text-center w-[{width}]
-          ${selectedColor.textColor}  p-8`}
-      >
-        {word}
-        <br />
-        {sendingWord}
-      </div>
+      
       {/* {word.map((item, index) => (
         <div key={index}>{item}</div>
       ))} */}
     </div>
+    <div
+    className={`font-akber ${selectedColor.backgroundColor} 
+      text-8xl text-center w-[${width}]
+      ${selectedColor.textColor} absolute right-0 top-0`}
+  >
+    {word}
+    <br />
+    {sendingWord}
+  </div>
+  </>
   );
 }
 export default Words;

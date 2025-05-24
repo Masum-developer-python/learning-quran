@@ -42,6 +42,7 @@ export default function ActionBar({
   // console.log(user, isAdmin);
   return (
     <>
+    
       {/* ayah image container */}
       <div id="imageframe" className="hidden z-5 fixed top-0 bg-gray-100">
         <button
@@ -346,8 +347,10 @@ export default function ActionBar({
           The Word can't be found in Quran words database.
         </audio>
         {/* ------------------------------------------------------------------------------------------------------------------- */}
-        {/* word maker */}
-        <div id={`${position}${id}`} className="hidden">
+        
+      </div>
+      {/* word maker */}
+    <div id={`${position}${id}`} className="hidden bg-gray-100 relative">
           <Words
             selectedColor={selectedColor}
             sendingWord={sendingWord}
@@ -377,7 +380,6 @@ export default function ActionBar({
             <Save className="w-8 h-8 text-blue-500" />
           </button>
         </div>
-      </div>
     </>
   );
 }

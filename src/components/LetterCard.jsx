@@ -1,13 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { CirclePlay } from "lucide-react";
-import {
-  siteTitle,
-  //arabicAlphabet,
-  //arabicAlphabetNames,
-  arabicDiacritics,
-  sendDataToDjango,
-  receiveDataFromDjango,
-} from "../data";
 import SideBar from "./sideBar";
 import Audio from "./Audio";
 function Cards({
@@ -104,7 +95,7 @@ function Cards({
         </div>
       </div>
       
-      <aside>
+      <aside className="z-5">
         {isSaakinah && (
           <SideBar
             selectedColor={selectedColor}
@@ -115,6 +106,7 @@ function Cards({
             postAlphabetDiacriticsUnicode={postAlphabetDiacriticsUnicode}
             setPostAlphabetDiacriticsUnicode={setPostAlphabetDiacriticsUnicode}
             isSaddah={isSaddah}
+            arabicAlphabet={arabicAlphabet}
           />
         )}
       </aside>

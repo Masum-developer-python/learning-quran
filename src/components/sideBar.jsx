@@ -20,77 +20,17 @@ function SideBar({
 }) {
   console.log("SideBar.jsx");
   console.log(word);
-
+  console.log(arabicAlphabet, preAlphabet);
   //console.log(isSaddah);
   //console.log(alphabetColorCombinations);
   let rowIndex = 0;
   const ringColor = `focus:ring-${selectedColor.textColor.slice(4)}`;
   return (
-    <div key={rowIndex} className="flex w-64  ">
+    <div key={rowIndex} className="flex w-128 font-bangla ">
       <div className="flex flex-row h-[250px]"></div>
-      <div>
-        {arabicAlphabet.slice(0,18).map((item, itemIndex) => (
-          <button
-            onClick={() => {
-              setPreAlphabet(item);
-              setWord((prev) => prev + item.alphabet);
-            }}
-            key={`item-${rowIndex}-${itemIndex}`}
-            className={`rtl p-4 m-1 mb-0 h-[2px] w-16
-          ${selectedColor.backgroundColor} 
-          text-xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-          >
-            {item.alphabet}
-          </button>
-        ))}
-      </div>
-      <div>
-        {arabicAlphabet.slice(18).map((item, itemIndex) => (
-          <button
-            onClick={() => {
-              setPreAlphabet(item);
-              setWord((prev) => prev + item.alphabet);
-            }}
-            key={`item-${rowIndex}-${itemIndex}`}
-            className={`rtl p-4 m-1 mb-0 h-[2px] w-16
-          ${selectedColor.backgroundColor} 
-          text-xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-          >
-            {item.alphabet}
-          </button>
-        ))}
-      </div>
-      <div>
-        {!isAllDiacritics && (
+      {(isSaddah || isAllDiacritics) && (
+        <>
           <div>
-            {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
-              <button
-                key={`item-${rowIndex}-${itemIndex}`}
-                onClick={() =>
-                  setPreAlphabetDiacriticsUnicode(item.unicode.slice(2))
-                }
-                className={`rtl p-4 m-1 mb-0 h-[40px] w-16 bg-gray-300
-          ${selectedColor.backgroundColor} 
-          text-4xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-              >
-                {"-" +
-                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {(isSaddah || isAllDiacritics) && (
-          <div >
             {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
               <button
                 key={`item-${rowIndex}-${itemIndex}`}
@@ -109,12 +49,14 @@ function SideBar({
           text-4xl text-center 
           ${selectedColor.textColor} rounded-lg
           flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          hover:shadow-2xl focus:outline-none focus:ring-4`}
               >
                 {"-" +
                   String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
+          {/* </div>
+          <div> */}
             {arabicDiacritics["Tanween"].diacritics.map((item, itemIndex) => (
               <button
                 key={`item-${rowIndex}-${itemIndex}`}
@@ -133,12 +75,16 @@ function SideBar({
           text-4xl text-center 
           ${selectedColor.textColor} rounded-lg
           flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          hover:shadow-2xl focus:outline-none focus:ring-4
+          ${itemIndex==2 ? 'font-akber': ''}
+          `}
               >
                 {"-" +
                   String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
+          {/* </div>
+          <div> */}
             {arabicDiacritics["Madd"].diacritics.map((item, itemIndex) => (
               <button
                 key={`item-${rowIndex}-${itemIndex}`}
@@ -157,13 +103,17 @@ function SideBar({
           text-4xl text-center 
           ${selectedColor.textColor} rounded-lg
           flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          hover:shadow-2xl focus:outline-none focus:ring-4 
+          
+          `}
               >
                 {"-" +
                   String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
-            {isAllDiacritics &&(
+          {/* </div>
+          <div> */}
+            {isAllDiacritics &&
               arabicDiacritics["others"].diacritics.map((item, itemIndex) => (
                 <button
                   key={`item-${rowIndex}-${itemIndex}`}
@@ -187,13 +137,95 @@ function SideBar({
                   {"-" +
                     String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
                 </button>
-                
-              )))}
-              
-              {children}
+              ))}
           </div>
+          
+        </>
+      )}
+      <div>
+        {arabicAlphabet.slice(0, 14).map((item, itemIndex) => (
+          <button
+            onClick={() => {
+              console.log(item);
+              setPreAlphabet(item.alphabet);
+              console.log(preAlphabet);
+              setWord((prev) => prev + item.alphabet);
+            }}
+            key={`item-${rowIndex}-${itemIndex}`}
+            className={`rtl p-4 m-1 mb-0 h-[2px] w-16
+          ${selectedColor.backgroundColor} 
+          text-xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          >
+            {item.alphabet}
+          </button>
+        ))}
+      </div>
+      <div>
+        {arabicAlphabet.slice(14, 28).map((item, itemIndex) => (
+          <button
+            onClick={() => {
+              setPreAlphabet(item.alphabet);
+              setWord((prev) => prev + item.alphabet);
+            }}
+            key={`item-${rowIndex}-${itemIndex}`}
+            className={`rtl p-4 m-1 mb-0 h-[2px] w-16
+          ${selectedColor.backgroundColor} 
+          text-xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          >
+            {item.alphabet}
+          </button>
+        ))}
+      </div>
+      
+      <div>
+        {arabicAlphabet.slice(28).map((item, itemIndex) => (
+          <button
+            onClick={() => {
+              setPreAlphabet(item.alphabet);
+              setWord((prev) => prev + item.alphabet);
+            }}
+            key={`item-${rowIndex}-${itemIndex}`}
+            className={`rtl p-4 m-1 mb-0 h-[2px] w-16
+          ${selectedColor.backgroundColor} 
+          text-xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          >
+            {item.alphabet}
+          </button>
+        ))}
+      </div>
+      <div>
+        {!isAllDiacritics && (
+          <>
+            {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
+              <button
+                key={`item-${rowIndex}-${itemIndex}`}
+                onClick={() =>
+                  setPreAlphabetDiacriticsUnicode(item.unicode.slice(2))
+                }
+                className={`rtl p-4 m-1 mb-0 h-[40px] w-16 bg-gray-300
+          ${selectedColor.backgroundColor} 
+          text-4xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+              >
+                {"-" +
+                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+              </button>
+            ))}
+          </>
         )}
       </div>
+      <div>{children}</div>
     </div>
   );
 }
