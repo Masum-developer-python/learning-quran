@@ -10,18 +10,8 @@ export function UserNavigation() {
     }, [isAuth]);
      return ( 
     
-        <div >    
-          <br />  
-          <br/>   
-          <br />  
-          <br/>  
-          <br />  
-           
-          <br/>  
-          <br />  
-          <br/>  
-          <br />  
-          <br/> 
+        <li >    
+          
           {/* <li className="m-auto">  */}
           {isAuth ? <a href="/home">{user}</a> : null}
           <br />
@@ -29,10 +19,8 @@ export function UserNavigation() {
           {isAuth ? <a href="/logout">Logout</a> :  
                     <a href="/login">Login</a>}
           {/* </li> */}
-          <br />  
-          <br/> 
-          <hr /> 
-        </div>
+           
+        </li>
        
      );
 }

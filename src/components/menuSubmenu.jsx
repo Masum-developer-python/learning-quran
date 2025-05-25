@@ -1,7 +1,16 @@
 import { arabicDiacritics } from "../data";
 import { useState, useRef } from "react";
+import { UserNavigation } from "./navigations";
+import ThemeSelector from "./ThemeSelector";
+import ColorSelector from "./ColorSelector";
 
-function Submenu({ selectedColor }) {
+function Submenu({
+  selectedTheme,
+  selectedColor,
+  setSelectedTheme,
+  setSelectedColor,
+  alphabetColorCombinations,
+}) {
   const width = window.innerWidth;
   const isMobile = width < 640;
   const isTablet = width >= 640 && width < 1024;
@@ -174,6 +183,37 @@ function Submenu({ selectedColor }) {
         >
           কুরআন পড়া
         </a>
+        <br />
+        <br />
+        <hr />
+      </li>
+      <li>
+        <hr />
+        <br />
+        <br />
+        <UserNavigation />
+        <br />
+        <br />
+        <hr />
+      </li>
+
+      <li className="mb-4">
+        <hr />
+        <br />
+        <br />
+        <ThemeSelector
+          selectedTheme={selectedTheme}
+          setSelectedTheme={(newTheme) => {
+            setSelectedTheme(newTheme);
+            setSelectedColor(newTheme.combinations[2]); // Reset color when theme changes
+          }}
+          alphabetColorCombinations={alphabetColorCombinations}
+        />
+        <ColorSelector
+          selectedTheme={selectedTheme}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+        />
         <br />
         <br />
         <hr />
