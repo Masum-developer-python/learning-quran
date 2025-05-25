@@ -197,7 +197,7 @@ function Submenu({
         <hr />
       </li>
 
-      <li className="mb-4">
+      <li className="w-24">
         <hr />
         <br />
         <br />
