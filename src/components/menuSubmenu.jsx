@@ -70,7 +70,7 @@ function Submenu({
             {arabicDiacritics[category].title}
           </a>
 
-          {(isMobile || isTablet || isDesktop) && (
+          {(arabicDiacritics[category]?.diacritics?.length > 0) && (
             <button
               onClick={() => {
                 toggleCategory(category);

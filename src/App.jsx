@@ -86,10 +86,20 @@ function App() {
               <Route path="/logout" element={<Logout />} />
 
               <Route path="/quran" element={<QuranRead />} />
-
+              <Route
+                key={10}
+                path={`/`}
+                element={
+                  <Cards
+                    selectedColor={selectedColor}
+                    withHoverChildren={true}
+                    arabicAlphabet={arabicAlphabet}
+                  />
+                }
+              />
               <Route
                 key={0}
-                path={`/`}
+                path={`/letter`}
                 element={
                   <Cards
                     selectedColor={selectedColor}

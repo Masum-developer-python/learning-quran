@@ -38,14 +38,14 @@ export default function QuranRead() {
   };
 
   return (
-    <div className="w-[100%] mx-auto mt-10 p-4 bg-white shadow-lg rounded-xl">
-      <h1 className="text-2xl font-bold mb-4 text-center">
+    <div className="w-[100%] mx-auto mt-10 p-4 bg-white shadow-lg rounded-xl font-bangla">
+      <h1 className="text-2xl font-bold mb-4 text-center ">
         Quran Word Fetcher
       </h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Sura
+            সূরাহ নং
           </label>
           <input
             type="number"
@@ -57,7 +57,7 @@ export default function QuranRead() {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Aya (optional)
+            আয়াত নং (ঐচ্ছিক)
           </label>
           <input
             type="number"
@@ -101,7 +101,7 @@ export default function QuranRead() {
 
                     fileName={i.audio !=null ? (i.audio.substring(0, 4) + i.audio) : ""}
                   >
-                    <span>{i.text + " "}</span>
+                    <span className="py-2 m-1 font-akber">{i.text + " "}</span>
                   </Audio>
                 ) : (
                   <Audio

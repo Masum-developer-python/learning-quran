@@ -116,7 +116,7 @@ export const alphabetColorCombinations = [
 // console.log(cl);
 
 export const arabicDiacritics = {
-  "": {
+  Letter: {
     title: "বর্ণমালা",
     diacritics: [],
   },
