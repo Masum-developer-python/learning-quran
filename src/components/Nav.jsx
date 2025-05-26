@@ -7,6 +7,9 @@ function Nav({
   setSelectedTheme,
   setSelectedColor,
   alphabetColorCombinations,
+  selectedReciter,
+  setSelectedReciter,
+  reciterList,
 }) {
   console.log("Nav.jsx");
   return (
@@ -39,6 +42,9 @@ function Nav({
           setSelectedTheme={setSelectedTheme}
           setSelectedColor={setSelectedColor}
           alphabetColorCombinations={alphabetColorCombinations}
+          selectedReciter={selectedReciter}
+          setSelectedReciter={setSelectedReciter}
+          reciterList={reciterList}
         />
       </nav>
     </>

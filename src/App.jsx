@@ -8,7 +8,7 @@ import {
   alphabetColorCombinations,
   arabicDiacritics,
   receiveDataFromDjango,
-  rootAddress
+  rootAddress,
 } from "./data";
 import Table from "./components/wordTable";
 import Blog from "./components/Blog";
@@ -65,6 +65,29 @@ function App() {
     localStorage.setItem("arabic-app-color", JSON.stringify(selectedColor));
   }, [selectedColor]);
 
+  const reciterList = [
+    { name: "Shuraim", folder: "Shuraim" },
+    // Add more reciterList as needed
+  ];
+  const [selectedReciter, setSelectedReciter] = useState(() => {
+    const saved = localStorage.getItem("arabic-app-reciter");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        return parsed?.folder ? parsed : reciterList[0];
+      } catch {
+        return reciterList[0];
+      }
+    }
+    return reciterList[0];
+  });
+
+  // Save to localStorage on change
+  useEffect(() => {
+    localStorage.setItem("arabic-app-reciter", JSON.stringify(selectedReciter));
+    console.log(selectedReciter);
+  }, [selectedReciter]);
+
   return (
     <>
       <div className="flex w-full">
@@ -74,15 +97,15 @@ function App() {
           setSelectedTheme={setSelectedTheme}
           setSelectedColor={setSelectedColor}
           alphabetColorCombinations={alphabetColorCombinations}
+          selectedReciter={selectedReciter}
+          setSelectedReciter={setSelectedReciter}
+          reciterList={reciterList}
         />
         <Router>
           <main className="flex-1 flex max-w-">
             <Routes>
               <Route path="/home" element={<Home />} />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
+              <Route path="/login" element={<Login />} />
               <Route path="/logout" element={<Logout />} />
 
               <Route path="/quran" element={<QuranRead />} />
@@ -174,7 +197,6 @@ function App() {
                   </>
                 ))
               )}
-              
             </Routes>
           </main>
         </Router>

@@ -35,6 +35,8 @@ export default function ActionBar({
   const [ref, setRef] = useState([]);
   console.log(cellId);
   const accessToken = localStorage.getItem("access_token");
+  const reciter = localStorage.getItem("arabic-app-reciter").split(",")[1].split(":")[1].slice(1,-2);
+  console.log(reciter);
 
   // receiveDataFromDjango(rootAddress +"quran-words/filter_by_word/?word=" + word).then( item =>
   //   setRef(item)
@@ -66,7 +68,7 @@ export default function ActionBar({
             console.log(
               "/wbw/" +
                 src[0].padStart(3, "0") +
-                "/Shuraim/" +
+                "/"+reciter+"/" +
                 src[0].padStart(3, "0") +
                 src[1].padStart(3, "0") +
                 ".mp3"
@@ -74,7 +76,7 @@ export default function ActionBar({
             document.getElementById(position + id + "Audio").src =
               "/wbw/" +
               src[0].padStart(3, "0") +
-              "/Shuraim/" +
+              "/"+reciter+"/" +
               src[0].padStart(3, "0") +
               src[1].padStart(3, "0") +
               ".mp3";
@@ -291,7 +293,7 @@ export default function ActionBar({
                           const src =
                             "/wbw" +
                             item.audio.substring(0, 4) +
-                            "/Shuraim"+
+                            "/"+reciter+""+
                             item.audio.substring(0, 4) +
                             item.audio.substring(5, 8) +
                             ".mp3";

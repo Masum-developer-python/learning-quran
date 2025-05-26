@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { UserNavigation } from "./navigations";
 import ThemeSelector from "./ThemeSelector";
 import ColorSelector from "./ColorSelector";
+import ReciterSelector from "./ReciterSelector";
 
 function Submenu({
   selectedTheme,
@@ -10,6 +11,9 @@ function Submenu({
   setSelectedTheme,
   setSelectedColor,
   alphabetColorCombinations,
+  selectedReciter,
+  setSelectedReciter,
+  reciterList,
 }) {
   const width = window.innerWidth;
   const isMobile = width < 640;
@@ -70,7 +74,7 @@ function Submenu({
             {arabicDiacritics[category].title}
           </a>
 
-          {(arabicDiacritics[category]?.diacritics?.length > 0) && (
+          {arabicDiacritics[category]?.diacritics?.length > 0 && (
             <button
               onClick={() => {
                 toggleCategory(category);
@@ -183,6 +187,19 @@ function Submenu({
         >
           কুরআন পড়া
         </a>
+        <br />
+        <br />
+        <hr />
+      </li>
+      <li>
+        <hr />
+        <br />
+        <br />
+        <ReciterSelector
+          selectedReciter={selectedReciter}
+          setSelectedReciter={setSelectedReciter}
+          reciterList={reciterList}
+        />
         <br />
         <br />
         <hr />
