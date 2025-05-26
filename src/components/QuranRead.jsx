@@ -87,7 +87,7 @@ export default function QuranRead() {
             folder="wbw/"
             fileName={
               String(data[0].sura).padStart(3, "0") +
-              "/" +
+              "/Shuraim/" +
               String(data[0].sura).padStart(3, "0") +
               ".mp3"
             }
@@ -108,7 +108,7 @@ export default function QuranRead() {
                     folder="/wbw/"
                     fileName={
                       String(i.sura).padStart(3, "0") +
-                      "/" +
+                      "/Shuraim/" +
                       String(i.sura).padStart(3, "0") +
                       String(i.aya).padStart(3, "0") +
                       ".mp3"

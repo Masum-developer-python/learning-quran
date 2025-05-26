@@ -66,7 +66,7 @@ export default function ActionBar({
             console.log(
               "/wbw/" +
                 src[0].padStart(3, "0") +
-                "/" +
+                "/Shuraim/" +
                 src[0].padStart(3, "0") +
                 src[1].padStart(3, "0") +
                 ".mp3"
@@ -74,7 +74,7 @@ export default function ActionBar({
             document.getElementById(position + id + "Audio").src =
               "/wbw/" +
               src[0].padStart(3, "0") +
-              "/" +
+              "/Shuraim/" +
               src[0].padStart(3, "0") +
               src[1].padStart(3, "0") +
               ".mp3";
@@ -291,6 +291,7 @@ export default function ActionBar({
                           const src =
                             "/wbw" +
                             item.audio.substring(0, 4) +
+                            "/Shuraim"+
                             item.audio.substring(0, 4) +
                             item.audio.substring(5, 8) +
                             ".mp3";
