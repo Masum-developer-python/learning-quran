@@ -2,10 +2,10 @@ import { CirclePlay } from "lucide-react";
 export default function Audio({ folder, fileName, children }) {
   console.log(folder, fileName);
   const selectedcolor = localStorage.getItem("arabic-app-color");
+  console.log(selectedcolor);
   return (
     <>
       <button
-        className={` ${selectedcolor.backgroundColor} hover:bg-red-200`}
         onClick={() => {
           console.log(folder, fileName);
           document.getElementById("Audio").src = folder + fileName;
@@ -14,7 +14,7 @@ export default function Audio({ folder, fileName, children }) {
         }}
       >
         {children ? children :
-        <CirclePlay className={`w-8 h-8 ${selectedcolor.textColor}`} />}
+        <CirclePlay className={`w-8 h-8 hover:bg-red-200 ${selectedcolor.backgroundColor}`} />}
       </button>
       <audio controls id={`Audio`} className="hidden">
         <source src="" type="audio/mpeg" />

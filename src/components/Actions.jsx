@@ -46,7 +46,7 @@ export default function ActionBar({
     <>
     
       {/* ayah image container */}
-      <div id="imageframe" className="hidden z-5 fixed top-0 bg-gray-100">
+      <div id="imageframe" className="hidden z-5 fixed top-0 bg-gray-100 w-[1500px]">
         <button
           className="w-8 h-8  bg-gray-100 rounded-lg hover:bg-red-200"
           onClick={() => {

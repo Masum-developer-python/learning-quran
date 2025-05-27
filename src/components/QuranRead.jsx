@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Audio from "./Audio";
 import { Circle } from "lucide-react";
-export default function QuranRead() {
+export default function QuranRead({selectedColor}) {
   const [sura, setSura] = useState("");
   const [aya, setAya] = useState("");
   const [data, setData] = useState(null);
@@ -42,7 +42,7 @@ export default function QuranRead() {
   };
 
   return (
-    <div className="w-[100%] mx-auto mt-10 p-4 bg-white shadow-lg rounded-xl font-bangla">
+    <div className={`w-[100%] mx-auto mt-10 p-4 ${selectedColor.backgroundColor} shadow-lg rounded-xl font-bangla`}>
       <h1 className="text-2xl font-bold mb-4 text-center ">
         Quran Word Fetcher
       </h1>
@@ -85,9 +85,10 @@ export default function QuranRead() {
         </p>
       )}
       {!error && data && (
-        <div className="mt-6">
+        <div className = {`${selectedColor.textColor}`}>
           <h2 className="text-xl font-semibold mb-2">Results:</h2>
           <Audio
+            
             folder="wbw/"
             fileName={
               String(data[0].sura).padStart(3, "0") +
@@ -96,7 +97,7 @@ export default function QuranRead() {
               ".mp3"
             }
           />
-          <div className="text-4xl" dir="rtl">
+          <div className={`text-4xl ${selectedColor.textColor}`} dir="rtl">
             {data.map((i) => (
               <>
                 {i.text ? (

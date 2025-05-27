@@ -12,7 +12,7 @@ function ReciterSelector({ selectedReciter, setSelectedReciter, reciterList }) {
       <select
         value={selectedReciter.name}
         onChange={handleReciterChange}
-        className="w-32 p-2 border rounded font-bangla"
+        className="w-24 p-2 border rounded font-bangla"
       >
         {reciterList.map((reciter) => (
           <option key={reciter.name} value={reciter.name}>

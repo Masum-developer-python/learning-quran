@@ -33,7 +33,7 @@ function Nav({
       <nav
         id="vertical-menu"
         className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 
-        fixed h-[calc(100vh-0px)]  overflow-y-scroll hover:w-52 md:block mt-16 md:mt-0`}
+        fixed h-[calc(100vh-0px)] hidden overflow-y-scroll hover:w-52 md:block mt-16 md:mt-0`}
       >
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
         <Submenu

@@ -108,7 +108,10 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/logout" element={<Logout />} />
 
-              <Route path="/quran" element={<QuranRead />} />
+              <Route
+                path="/quran"
+                element={<QuranRead selectedColor={selectedColor} />}
+              />
               <Route
                 key={10}
                 path={`/`}

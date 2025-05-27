@@ -1,3 +1,4 @@
+import { Children } from "react";
 import { arabicDiacritics } from "../data";
 function SideBar({
   selectedColor = {
@@ -20,14 +21,14 @@ function SideBar({
 }) {
   console.log("SideBar.jsx");
   console.log(word);
-  console.log(arabicAlphabet, preAlphabet);
+  // console.log(arabicAlphabet, preAlphabet);
   //console.log(isSaddah);
   //console.log(alphabetColorCombinations);
   let rowIndex = 0;
   const ringColor = `focus:ring-${selectedColor.textColor.slice(4)}`;
   return (
-    <div key={rowIndex} className="flex w-128 font-bangla ">
-      <div className="flex flex-row h-[250px]"></div>
+    <div key={rowIndex} className="flex flex-grow font-bangla ">
+      
       {(isSaddah || isAllDiacritics) && (
         <>
           <div>
@@ -55,7 +56,7 @@ function SideBar({
                   String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
-          {/* </div>
+            {/* </div>
           <div> */}
             {arabicDiacritics["Tanween"].diacritics.map((item, itemIndex) => (
               <button
@@ -76,14 +77,14 @@ function SideBar({
           ${selectedColor.textColor} rounded-lg
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4
-          ${itemIndex==2 ? 'font-akber': ''}
+          ${itemIndex == 2 ? "font-akber" : ""}
           `}
               >
                 {"-" +
                   String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
-          {/* </div>
+            {/* </div>
           <div> */}
             {arabicDiacritics["Madd"].diacritics.map((item, itemIndex) => (
               <button
@@ -111,7 +112,7 @@ function SideBar({
                   String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
-          {/* </div>
+            {/* </div>
           <div> */}
             {isAllDiacritics &&
               arabicDiacritics["others"].diacritics.map((item, itemIndex) => (
@@ -139,7 +140,6 @@ function SideBar({
                 </button>
               ))}
           </div>
-          
         </>
       )}
       <div>
@@ -182,7 +182,7 @@ function SideBar({
           </button>
         ))}
       </div>
-      
+
       <div>
         {arabicAlphabet.slice(28).map((item, itemIndex) => (
           <button
@@ -201,6 +201,32 @@ function SideBar({
             {item.alphabet}
           </button>
         ))}
+
+        <div>
+          {children && (
+            <div>
+              <input
+                type="text"
+                className={`rtl p-4 m-1 mb-0 h-[40px] w-16 bg-gray-300
+          ${selectedColor.backgroundColor} 
+          text-sm text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+                placeholder="Input"
+                onInput={(e) => {
+                  const value = e.target.value;
+                  if (value) {
+                    setWord((prev) => prev + value);
+                    e.target.value = "";
+                  }
+                }}
+              ></input>
+            </div>
+          )}
+
+          {children}
+        </div>
       </div>
       <div>
         {!isAllDiacritics && (
@@ -225,7 +251,6 @@ function SideBar({
           </>
         )}
       </div>
-      <div>{children}</div>
     </div>
   );
 }
