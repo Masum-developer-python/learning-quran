@@ -90,13 +90,13 @@ function Cards({
                         <div
                           dir="rtl"
                           key={`itemName-${rowIndex}-${itemIndex}`}
-                          className="text-5xl text-right md:opacity-0 group-hover:opacity-100"
+                          className="text-5xl text-right opacity-0 group-hover:opacity-100"
                         >
                           {item.alphabet_name}
                         </div>
                         <div
                           key={`itemName-${rowIndex}-${itemIndex}`}
-                          className="text-2xl text-left md:opacity-0 group-hover:opacity-100"
+                          className="text-2xl text-left opacity-0 group-hover:opacity-100"
                         >
                           {item.alphabet_banglaname}
                         </div>
