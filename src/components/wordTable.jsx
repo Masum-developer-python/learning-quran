@@ -1,6 +1,6 @@
 // src/components/ArabicWordsTable.js
 import React, { useState, useEffect } from "react";
-import { sendDataToDjango, receiveDataFromDjango,rootAddress } from "../data";
+import { sendDataToDjango, receiveDataFromDjango } from "../data";
 import Words from "./Words";
 import WordCell from "./wordCell";
 
@@ -12,35 +12,36 @@ const Table = ({
   page,
 }) => {
   const [sendingWord, setSendingWord] = useState("");
-  const positions = ['end', 'middle', 'start'];
+  const positions = ["end", "middle", "start"];
   console.log("wordTable.jsx");
   let method = "POST";
-    const baseAddress = rootAddress + "arabic-words/";
-    let address = `${baseAddress}filter_by_diacritics/?diacritic=${diacritics}`;
-    console.log(address);
-    const [arabicWords, setArabicWords] = useState([]);
-    useEffect(() => {
-      async function fetchData() {
-        const data = await receiveDataFromDjango(address);
-        setArabicWords(data); // ✅ Update state with fetched data
-      }
-      fetchData();
-    }, []);
-    console.log(arabicWords);
-  
-    // const address1 =
-    //   rootAddress + "quran-words/filter_by_arabic_words";
-    // const [quranWords, setQuranWords] = useState([]);
-    // useEffect(() => {
-    //   async function fetchData() {
-    //     const data = await receiveDataFromDjango(address1);
-    //     setQuranWords(data); // ✅ Update state with fetched data
-    //   }
-    //   fetchData();
-    // }, []);
-    // console.log(quranWords);
-    console.log(selectedColor);
-    console.log(method);
+  let rootAddress = localStorage.getItem("rootAddress");
+  const baseAddress = rootAddress + "arabic-words/";
+  let address = `${baseAddress}filter_by_diacritics/?diacritic=${diacritics}`;
+  console.log(address);
+  const [arabicWords, setArabicWords] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await receiveDataFromDjango(address);
+      setArabicWords(data); // ✅ Update state with fetched data
+    }
+    fetchData();
+  }, []);
+  console.log(arabicWords);
+
+  // const address1 =
+  //   rootAddress + "quran-words/filter_by_arabic_words";
+  // const [quranWords, setQuranWords] = useState([]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const data = await receiveDataFromDjango(address1);
+  //     setQuranWords(data); // ✅ Update state with fetched data
+  //   }
+  //   fetchData();
+  // }, []);
+  // console.log(quranWords);
+  console.log(selectedColor);
+  console.log(method);
   console.log(page.column);
   page.column.map((position, index) => console.log(index));
   return (
@@ -72,22 +73,22 @@ const Table = ({
             .map((letter, letterIndex) => (
               <>
                 <tr key={letterIndex} className={"bg-red"}>
-                  {page.column
-                    .map((position, index) => (
+                  {page.column.map(
+                    (position, index) =>
                       position != "" && (
-                        <WordCell 
+                        <WordCell
                           arabicWords={arabicWords}
                           arabicAlphabet={arabicAlphabet}
                           selectedColor={selectedColor}
                           diacritics={diacritics}
                           position={page.columnEn[index]}
-                          id={letterIndex+1}
+                          id={letterIndex + 1}
                           pName={page.name}
                           sendingWord={sendingWord}
                           setSendingWord={setSendingWord}
                         />
-                    
-                    )))}
+                      )
+                  )}
                   <td className="py-2 px-4 border-t border-gray-300 text-5xl md:text-7xl text-center ">
                     {letter.alphabet}
                     {String.fromCodePoint(

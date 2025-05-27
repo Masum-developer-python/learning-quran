@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import Cards from "./components/LetterCard";
 import Nav from "./components/Nav";
-import SideBar from "./components/sideBar";
 import Words from "./components/Words";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   alphabetColorCombinations,
   arabicDiacritics,
   receiveDataFromDjango,
-  rootAddress,
+  // rootAddress,
 } from "./data";
 import Table from "./components/wordTable";
 import Blog from "./components/Blog";
@@ -21,6 +20,9 @@ function App() {
   console.log("App.jsx");
   console.log(arabicDiacritics.Harakat.diacritics[0].pages[0].column);
   const [arabicAlphabet, setArabicAlphabet] = useState([]);
+
+  let rootAddress = localStorage.getItem('rootAddress');
+  console.log(rootAddress);
   useEffect(() => {
     async function fetchData() {
       const data = await receiveDataFromDjango(

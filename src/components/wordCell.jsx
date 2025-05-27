@@ -55,50 +55,6 @@ export default function WordCell({
         word = {word}
         cellId = {cellId}
       />
-      {/* <>
-        <button
-          onClick={() => {
-            document.getElementById(positions[0] + row.id).className = "block";
-            method = "PATCH";
-            address = baseAddress + "/" + String(item.id);
-            console.log(method);
-          }}
-          className="text-xs"
-        >
-          ...
-        </button>
-        <div id={`${positions[0]}${row.id}`} className="hidden">
-          <Words
-            selectedColor={selectedColor}
-            sendingWord={sendingWord}
-            setSendingWord={setSendingWord}
-            arabicAlphabet={arabicAlphabet}
-          />
-          <button
-            className="bg-gray-300"
-            onClick={() =>
-              sendDataToDjango(
-                {
-                  diacritics: diacritics,
-                  position: positions[0],
-                  word: sendingWord,
-                  bangla: "",
-                  english: "",
-                  parts_of_speech: "",
-                  letter: row.id,
-                  join_diacritics: page.name,
-                }, // Data to send
-                address, // URL
-                method
-              )
-            }
-          >
-            {row.id}
-            {diacritics}
-            {positions[0]}
-          </button>
-        </div>
-      </> */}
     </td>
   );
 }

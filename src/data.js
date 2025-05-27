@@ -19,6 +19,8 @@ export async function selectAliveRootAddress() {
       
       if (response.ok) {
         console.log(`Found working address: ${address}`);
+        localStorage.setItem('rootAddress', '');
+        localStorage.setItem('rootAddress', address);
         return address;
       }
     } catch (error) {
@@ -35,12 +37,13 @@ export async function selectAliveRootAddress() {
 // You can't just assign the result of an async function directly
 
 // Using an IIFE (Immediately Invoked Function Expression) to initialize
-export let rootAddress = rootAddresses[0]; // Default value
-
+ // Default value
+export let rootAddress = localStorage.getItem('rootAddress');
+console.log(rootAddress);
 // Initialize rootAddress properly
 (async function initializeRootAddress() {
   try {
-    rootAddress = await selectAliveRootAddress();
+    let Address = await selectAliveRootAddress();
     console.log(`Selected root address: ${rootAddress}`);
   } catch (error) {
     console.error("Error selecting root address:", error);
@@ -377,3 +380,189 @@ export async function receiveDataFromDjango(address) {
     return null;
   }
 }
+
+
+
+
+{/* ayah image container */}
+{/* <div
+id="imageframe"
+className="hidden z-20 fixed top-0 bg-gray-100 w-[1500px]"
+>
+<button
+  className="w-8 h-8  bg-gray-100 rounded-lg hover:bg-red-200"
+  onClick={() => {
+    document.getElementById("imageframe").classList.toggle("hidden");
+  }}
+>
+  <SquareX className="w-7 h-7 text-red-500"></SquareX>
+</button> */}
+{/* <Audio
+  folder={''}
+/> */}
+{/* <button
+  className="w-8 h-8  bg-gray-100 rounded-lg hover:bg-red-200"
+  onClick={() => {
+    const src = document
+      .getElementById("image")
+      .src.split("a/")[1]
+      .split(/[_\.]/);
+    console.log(
+      "/wbw/" +
+        src[0].padStart(3, "0") +
+        "/" +
+        reciter +
+        "/" +
+        src[0].padStart(3, "0") +
+        src[1].padStart(3, "0") +
+        ".mp3"
+    );
+    document.getElementById(position + id + "Audio").src =
+      "/wbw/" +
+      src[0].padStart(3, "0") +
+      "/" +
+      reciter +
+      "/" +
+      src[0].padStart(3, "0") +
+      src[1].padStart(3, "0") +
+      ".mp3";
+    document.getElementById(position + id + "Audio").play();
+    document.getElementById(position + id + "Audio").classList =
+      "hidden";
+  }}
+>
+  <CirclePlay className="w-7 h-7 text-red-500" />
+</button>
+<img id="image" className="bg-white" src="" />
+
+<div
+  id="ayahShow"
+  className=" bg-green-100 p-4 rounded shadow-md"
+></div>
+</div> */}
+{/* refference table container */}
+{/* <table className="text-2xl table-auto border-collapse">
+            <thead>
+              <tr>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  ক্রমিক{" "}
+                </th>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  রেফারেন্স{" "}
+                </th>
+                <th className="border-2 font-bangla border-gray-500"> সুরা </th>
+                <th className="border-2 font-bangla border-gray-500"> আয়াত </th>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  স্থান{" "}
+                </th>
+                <th className="border-2 font-bangla border-gray-500"> শব্দ </th>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  শব্দ অডিও{" "}
+                </th>
+                <th className="border-2 font-bangla border-gray-500">
+                  {" "}
+                  আয়াত অডিও{" "}
+                </th>
+              </tr>
+            </thead>
+            <tbody key={`${position}${id}tbody`}>
+              {refData.map((item, index) => (
+                <tr key={`${position}${id}${index}trow`}>
+                  <td className="border-2 border-gray-500">{index + 1}</td>
+
+                  <td className="border-2 border-gray-500"> */}
+                    {/* ayah ref */}
+                  //   <button
+                  //     onClick={async () => {
+                  //       const refAyah = await receiveDataFromDjango(
+                  //         rootAddress +
+                  //           "quran-words/filter_by_sura?sura=" +
+                  //           item.sura +
+                  //           "&aya=" +
+                  //           item.aya
+                  //       );
+                  //       const src =
+                  //         "/aba/" + item.sura + "_" + item.aya + ".png";
+                  //       console.log(src);
+                  //       document.getElementById("image").src = src;
+                  //       document
+                  //         .getElementById("imageframe")
+                  //         .classList.toggle("hidden");
+
+                  //       const ayah = refAyah
+                  //         .map((item1) => item1.text)
+                  //         .join(" ");
+                  //       console.log(ayah);
+                  //       document.getElementById("ayahShow").innerText = ayah;
+                  //     }}
+                  //   >
+                  //     <BookOpenText className="w-7 h-7 text-green-800" />
+                  //   </button>
+                  // </td>
+                  // <td className="border-2 border-gray-500">{item.sura}</td>
+                  // <td className="border-2 border-gray-500">{item.aya}</td>
+                  // <td className="border-2 border-gray-500">{item.position}</td>
+                  // <td className="border-2 border-gray-500">{item.text}</td>
+                  // <td className="border-2 border-gray-500 ">
+                  //   {/* every word audio */}
+                  //   <button
+                  //     onClick={async () => {
+                  //       try {
+                  //         const src =
+                  //           "/wbw" + item.audio.substring(0, 4) + item.audio;
+                  //         console.log(src);
+                  //         document.getElementById(position + id + "Audio").src =
+                  //           src;
+                  //         document
+                  //           .getElementById(position + id + "Audio")
+                  //           .play();
+                  //         document.getElementById(
+                  //           position + id + "Audio"
+                  //         ).classList = "hidden";
+                  //       } catch (error) {
+                  //         console.error("❌ Error fetching data:", error);
+                  //       }
+                  //     }}
+                  //   >
+                  //     <CirclePlay className="w-7 h-7 text-green-500" />
+                  //   </button>
+                  // </td>
+                  // <td className="border-2 border-gray-500">
+                  //   {/* ayah ref audio */}
+          //           <button
+          //             onClick={async () => {
+          //               try {
+          //                 const src =
+          //                   "/wbw" +
+          //                   item.audio.substring(0, 4) +
+          //                   "/" +
+          //                   reciter +
+          //                   "" +
+          //                   item.audio.substring(0, 4) +
+          //                   item.audio.substring(5, 8) +
+          //                   ".mp3";
+          //                 console.log(src);
+          //                 document.getElementById(position + id + "Audio").src =
+          //                   src;
+          //                 document
+          //                   .getElementById(position + id + "Audio")
+          //                   .play();
+          //                 document.getElementById(
+          //                   position + id + "Audio"
+          //                 ).classList = "hidden";
+          //               } catch (error) {
+          //                 console.error("❌ Error fetching data:", error);
+          //               }
+          //             }}
+          //           >
+          //             <CirclePlay className="w-7 h-7 text-red-500" />
+          //           </button>
+          //         </td>
+          //       </tr>
+          //     ))}
+          //   </tbody>
+          // </table>
