@@ -7,17 +7,10 @@ export default function QuranRead() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const reciter = localStorage.getItem("arabic-app-reciter").split(",")[1].split(":")[1].slice(1,-2);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setData(null);
-    if (sura < 1 || sura > 114) {
-      setError("Number of Surah is wrong");
-      setLoading(false);
-    } else {
-      let url = `https://rmn30654.pythonanywhere.com/quran-words/filter_by_sura/?sura=${sura}`;
+  const fetchQuran = async(sura,aya) =>{
+    let url = `https://rmn30654.pythonanywhere.com/quran-words/filter_by_sura/?sura=${sura}`;
       if (aya) {
         url += `&aya=${aya}`;
       }
@@ -34,6 +27,17 @@ export default function QuranRead() {
       } finally {
         setLoading(false);
       }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setData(null);
+    if (sura < 1 || sura > 114) {
+      setError("Number of Surah is wrong");
+      setLoading(false);
+    } else {
+      fetchQuran(sura, aya);
     }
   };
 
@@ -87,7 +91,7 @@ export default function QuranRead() {
             folder="wbw/"
             fileName={
               String(data[0].sura).padStart(3, "0") +
-              "/Shuraim/" +
+              "/"+reciter+"/" +
               String(data[0].sura).padStart(3, "0") +
               ".mp3"
             }
@@ -108,7 +112,7 @@ export default function QuranRead() {
                     folder="/wbw/"
                     fileName={
                       String(i.sura).padStart(3, "0") +
-                      "/Shuraim/" +
+                      "/"+reciter+"/" +
                       String(i.sura).padStart(3, "0") +
                       String(i.aya).padStart(3, "0") +
                       ".mp3"

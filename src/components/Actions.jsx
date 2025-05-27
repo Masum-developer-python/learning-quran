@@ -235,7 +235,7 @@ export default function ActionBar({
                       onClick={async () => {
                         const refAyah = await receiveDataFromDjango(
                           rootAddress +
-                            "quran-words/filter_by_sura_aya?sura=" +
+                            "quran-words/filter_by_sura?sura=" +
                             item.sura +
                             "&aya=" +
                             item.aya
