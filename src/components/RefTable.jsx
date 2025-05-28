@@ -18,7 +18,7 @@ export default function RefTable({ refData }) {
   return (
     <div id="refTable" className="">
       <table className="text-2xl table-auto border-collapse">
-        <thead>
+        <thead className="">
           <tr>
             <th className="border-2 font-bangla border-gray-500"> ক্রমিক </th>
             <th className="border-2 font-bangla border-gray-500"> সুরা </th>
@@ -68,7 +68,7 @@ export default function RefTable({ refData }) {
               <td className="border-2 border-gray-500 ">
                 {/* ayah ref audio */}
                 <Audio
-                  title={`${item.audio}`}
+                  title={`Ayah Audio`}
                   folder={
                     "/wbw" + item.audio.substring(0, 4) + "/" + reciter + "/"
                   }
@@ -82,7 +82,7 @@ export default function RefTable({ refData }) {
 
               <td className="border-2 border-gray-500">
                 <Audio
-                  title={`${item.audio}`}
+                  title={`Surah Audio`}
                   folder={"/wbw" + item.audio.substring(0, 4) + "/" + reciter}
                   fileName={item.audio.substring(0, 4) + ".mp3"}
                 />
@@ -130,6 +130,7 @@ export default function RefTable({ refData }) {
                     data={ayah[`${item.sura}-${item.aya}-${item.position}`]}
                     suraAudio={false}
                     ayaAudio={false}
+                    word={item.text}
                   ></AyahWord>
                 )}
               </td>
