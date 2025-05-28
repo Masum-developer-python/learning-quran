@@ -2,6 +2,7 @@ import { BookOpenText, CirclePlay } from "lucide-react";
 import React, { useState } from "react";
 import { receiveDataFromDjango } from "../data";
 import Audio from "./Audio";
+import AyahWord from "./AyahWord";
 
 export default function RefTable({ refData }) {
   const reciter = localStorage
@@ -10,6 +11,10 @@ export default function RefTable({ refData }) {
     .split(":")[1]
     .slice(1, -2);
   const rootAddress = localStorage.getItem("rootAddress");
+  const [ayah, setAyah] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [selectedAyah, setSelectedAyah] = useState(null);
+  console.log(ayah);
   return (
     <div id="refTable" className="">
       <table className="text-2xl table-auto border-collapse">
@@ -40,22 +45,23 @@ export default function RefTable({ refData }) {
         </thead>
         <tbody key={`tbody`}>
           {refData.map((item, index) => (
-            
             <tr key={`${index}trow`}>
               <td className="border-2 border-gray-500">{index + 1}</td>
               <td className="border-2 border-gray-500">{item.sura}</td>
               <td className="border-2 border-gray-500">{item.aya}</td>
               <td className="border-2 border-gray-500">{item.position}</td>
-              <td className="border-2 border-gray-500">{item.text}</td>
+              <td className="border-2 border-gray-500 text-5xl font-akber">
+                {item.text}
+              </td>
               <td className="border-2 border-gray-500 ">
                 {/* every word audio */}
-                <Audio 
-                    title="Word Audio"
-                    folder={"/wbw"}
-                    fileName={item.audio.substring(0, 4) + item.audio}
+                <Audio
+                  title="Word Audio"
+                  folder={"/wbw"}
+                  fileName={item.audio.substring(0, 4) + item.audio}
                 />
               </td>
-              <td className="border-2 border-gray-500 text-green-500">
+              <td className="border-2 border-gray-500 ">
                 {/* ayah ref audio */}
                 <Audio
                   title={`${item.audio}`}
@@ -73,9 +79,11 @@ export default function RefTable({ refData }) {
               <td className="border-2 border-gray-500">
                 {/* ayah ref text */}
                 <button
-                    title="Click for Ayah text"
+                  title="Click for Ayah text"
                   onClick={async () => {
+                    const key = `${item.sura}-${item.aya}-${item.position}`;
                     try {
+                      setLoading(true);
                       const refAyah = await receiveDataFromDjango(
                         rootAddress +
                           "quran-words/filter_by_sura?sura=" +
@@ -84,11 +92,16 @@ export default function RefTable({ refData }) {
                           item.aya
                       );
 
-                      const ayah = refAyah.map((item1) => item1.text).join(" ");
-                      console.log(ayah);
-                      document.getElementById(`${item.sura}-${item.aya}-${item.position}`).innerText = ayah;
+                      console.log(refAyah);
+                      setAyah((prev) => ({
+                        ...prev,
+                        [key]: refAyah,
+                      }));
+                      
                     } catch (error) {
                       console.error("❌ Error fetching data:", error);
+                    } finally {
+                      setLoading(false);
                     }
                   }}
                 >
@@ -99,8 +112,14 @@ export default function RefTable({ refData }) {
               <td
                 dir="rtl"
                 id={`${item.sura}-${item.aya}-${item.position}`}
-                className="border-2 border-gray-500 p-2 text-4xl"
-              ></td>
+                className="border-2 border-gray-500 p-2 text-5xl font-akber"
+              >
+                {ayah[`${item.sura}-${item.aya}-${item.position}`] && (
+                  <AyahWord
+                    data={ayah[`${item.sura}-${item.aya}-${item.position}`]}
+                  ></AyahWord>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

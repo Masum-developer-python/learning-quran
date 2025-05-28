@@ -33,8 +33,6 @@ export default function ActionBar({
   const user = localStorage.getItem("user");
   const isAdmin = user == null ? false : true;
   const [refData, setRefData] = useState([]);
-  // const [ref, setRef] = useState([]);
-  console.log(cellId);
   const accessToken = localStorage.getItem("access_token");
   const reciter = localStorage
     .getItem("arabic-app-reciter")
@@ -43,10 +41,6 @@ export default function ActionBar({
     .slice(1, -2);
   console.log(reciter);
 
-  // receiveDataFromDjango(rootAddress +"quran-words/filter_by_word/?word=" + word).then( item =>
-  //   setRef(item)
-  // )
-  // console.log(user, isAdmin);
   return (
     <>
       {/* actions */}
@@ -152,17 +146,17 @@ export default function ActionBar({
 
         <div
           id={`${position}${id}ID`}
-          className={`hidden fixed overflow-y-scroll h-[300px] max-w-[80%]  left-4 md:left-48 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
+          className={`hidden fixed overflow-y-scroll h-[400px] max-w-[80%]  left-4 md:left-48 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
         >
           <button
-            className="w-8 h-8 z-20 bg-gray-100 rounded-lg hover:bg-red-200"
+            className="w-8 h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
             onClick={() => {
               document
                 .getElementById(`${position}${id}ID`)
                 .classList.toggle("hidden");
             }}
           >
-            <SquareX className="w-7 h-7 text-red-500"></SquareX>
+            <SquareX className="w-7 h-7 text-red-900"></SquareX>
           </button>
           <div className=""> <RefTable refData={refData} /></div>
         </div>

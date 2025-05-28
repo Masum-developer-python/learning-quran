@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Audio from "./Audio";
-import { Circle } from "lucide-react";
+import AyahWord from "./AyahWord";
 import RefTable from "./RefTable";
 import { receiveDataFromDjango } from "../data";
 export default function QuranRead({ selectedColor }) {
@@ -143,60 +142,14 @@ export default function QuranRead({ selectedColor }) {
         </p>
       )}
       <div className="w-[100%] flex gap-16 mt-8">
-      {!error && data && (
-        <div className={`${selectedColor.textColor} w-[45%]`}>
-          <h2 className="text-xl font-semibold mb-2">
-            সুরাহ অডিও
-            <Audio
-              title="Surah Audio"
-              folder="wbw/"
-              fileName={
-                String(data[0].sura).padStart(3, "0") +
-                "/" +
-                reciter +
-                "/" +
-                String(data[0].sura).padStart(3, "0") +
-                ".mp3"
-              }
-            ></Audio>
-          </h2>
-          <div className={`text-4xl ${selectedColor.textColor}`} dir="rtl">
-            {data.map((i) => (
-              <>
-                {i.text ? (
-                  <Audio
-                    folder="/wbw"
-                    fileName={
-                      i.audio != null ? i.audio.substring(0, 4) + i.audio : ""
-                    }
-                  >
-                    <span className="py-2 m-1 font-akber">{i.text + " "}</span>
-                  </Audio>
-                ) : (
-                  <Audio
-                    title="Ayah Audio"
-                    folder={"/wbw/" + String(i.sura).padStart(3, "0") +
-                    "/" +
-                    reciter +
-                    "/" }
-                    fileName={
-                      
-                      String(i.sura).padStart(3, "0") +
-                      String(i.aya).padStart(3, "0") +
-                      ".mp3"
-                    }
-                  />
-                )}
-              </>
-            ))}
-          </div>
-          {/* <pre className="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
-            {JSON.stringify(data, null, 2)}
-          </pre> */}
-        </div>
+      {!error && data && (<>
+        <h2 className="text-xl font-semibold">
+        সুরাহ অডিও</h2>
+        <AyahWord data={data}></AyahWord>
+        </>
       )}
       {refData[0] && ( 
-        <div className="w-[45%]">
+        <div className="w-[60%]">
          <RefTable refData={refData}></RefTable>
         </div>
       )

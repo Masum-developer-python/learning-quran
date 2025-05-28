@@ -2,7 +2,7 @@ import { CirclePlay } from "lucide-react";
 export default function Audio({ folder, fileName, children, title="click me" }) {
   // console.log(folder, fileName);
   const selectedcolor = localStorage.getItem("arabic-app-color");
-   console.log(selectedcolor);
+  // console.log(selectedcolor);
   return (
     <>
       <button 
