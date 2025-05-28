@@ -13,13 +13,12 @@ export default function RefTable({ refData }) {
   const rootAddress = localStorage.getItem("rootAddress");
   const [ayah, setAyah] = useState({});
   const [loading, setLoading] = useState(false);
-  const [selectedAyah, setSelectedAyah] = useState(null);
   // console.log(ayah);
   return (
     <div id="refTable" className="">
-      <table className="text-2xl table-auto border-collapse">
-        <thead className="">
-          <tr>
+      <table className="text-xs md:text-2xl table-auto border-collapse">
+        <thead>
+          <tr className="sticky top-2 bg-green-100">
             <th className="border-2 font-bangla border-gray-500"> ক্রমিক </th>
             <th className="border-2 font-bangla border-gray-500"> সুরা </th>
             <th className="border-2 font-bangla border-gray-500"> আয়াত </th>
@@ -42,99 +41,121 @@ export default function RefTable({ refData }) {
               {" "}
               রেফারেন্স{" "}
             </th>
-            <th className="border-2 font-bangla border-gray-500">
+            <th className="hidden md:block border-2 font-bangla border-gray-500">
               পূর্ণাঙ্গ আয়াত
             </th>
           </tr>
         </thead>
         <tbody key={`tbody`}>
           {refData.map((item, index) => (
-            <tr key={`${index}trow`}>
-              <td className="border-2 border-gray-500">{index + 1}</td>
-              <td className="border-2 border-gray-500">{item.sura}</td>
-              <td className="border-2 border-gray-500">{item.aya}</td>
-              <td className="border-2 border-gray-500">{item.position}</td>
-              <td className="border-2 border-gray-500 text-5xl font-akber">
-                {item.text}
-              </td>
-              <td className="border-2 border-gray-500 ">
-                {/* every word audio */}
-                <Audio
-                  title="Word Audio"
-                  folder={"/wbw"}
-                  fileName={item.audio.substring(0, 4) + item.audio}
-                />
-              </td>
-              <td className="border-2 border-gray-500 ">
-                {/* ayah ref audio */}
-                <Audio
-                  title={`Ayah Audio`}
-                  folder={
-                    "/wbw" + item.audio.substring(0, 4) + "/" + reciter + "/"
-                  }
-                  fileName={
-                    item.audio.substring(0, 4) +
-                    item.audio.substring(5, 8) +
-                    ".mp3"
-                  }
-                />
-              </td>
-
-              <td className="border-2 border-gray-500">
-                <Audio
-                  title={`Surah Audio`}
-                  folder={"/wbw" + item.audio.substring(0, 4) + "/" + reciter}
-                  fileName={item.audio.substring(0, 4) + ".mp3"}
-                />
-              </td>
-
-              <td className="border-2 border-gray-500">
-                {/* ayah ref text */}
-                <button
-                  title="Click for Ayah text"
-                  onClick={async () => {
-                    const key = `${item.sura}-${item.aya}-${item.position}`;
-                    try {
-                      setLoading(true);
-                      const refAyah = await receiveDataFromDjango(
-                        rootAddress +
-                          "quran-words/filter_by_sura?sura=" +
-                          item.sura +
-                          "&aya=" +
-                          item.aya
-                      );
-
-                      console.log(refAyah);
-                      setAyah((prev) => ({
-                        ...prev,
-                        [key]: refAyah,
-                      }));
-                    } catch (error) {
-                      console.error("❌ Error fetching data:", error);
-                    } finally {
-                      setLoading(false);
+            <>
+              <tr key={`${index}trow`}>
+                <td className="border-2 border-gray-500">{index + 1}</td>
+                <td className="border-2 border-gray-500">{item.sura}</td>
+                <td className="border-2 border-gray-500">{item.aya}</td>
+                <td className="border-2 border-gray-500">{item.position}</td>
+                <td className="border-2 border-gray-500 text-xl md:text-5xl font-akber">
+                  {item.text}
+                </td>
+                <td className="border-2 border-gray-500 ">
+                  {/* every word audio */}
+                  <Audio
+                    title="Word Audio"
+                    folder={"/wbw"}
+                    fileName={item.audio.substring(0, 4) + item.audio}
+                  />
+                </td>
+                <td className="border-2 border-gray-500 ">
+                  {/* ayah ref audio */}
+                  <Audio
+                    title={`Ayah Audio`}
+                    folder={
+                      "/wbw" + item.audio.substring(0, 4) + "/" + reciter + "/"
                     }
-                  }}
-                >
-                  <BookOpenText className="w-7 h-7 text-red-500" />
-                </button>
-              </td>
+                    fileName={
+                      item.audio.substring(0, 4) +
+                      item.audio.substring(5, 8) +
+                      ".mp3"
+                    }
+                  />
+                </td>
 
-              <td
-                dir="rtl"
-                id={`${item.sura}-${item.aya}-${item.position}`}
-                className="border-2 border-gray-500 p-2 text-5xl font-akber"
-              >
-                {ayah[`${item.sura}-${item.aya}-${item.position}`] && (
-                  <AyahWord
-                    data={ayah[`${item.sura}-${item.aya}-${item.position}`]}
-                    suraAudio={false}
-                    ayaAudio={false}
-                    word={item.text}
-                  ></AyahWord>
-                )}
-              </td>
-            </tr>
+                <td className="border-2 border-gray-500 ">
+                  <Audio
+                    title={`Surah Audio`}
+                    folder={"/wbw" + item.audio.substring(0, 4) + "/" + reciter}
+                    fileName={item.audio.substring(0, 4) + ".mp3"}
+                  />
+                </td>
+
+                <td className="border-2 border-gray-500">
+                  {/* ayah ref text */}
+                  <button
+                    title="Click for Ayah text"
+                    onClick={async () => {
+                      const key = `${item.sura}-${item.aya}-${item.position}`;
+                      try {
+                        setLoading(true);
+                        const refAyah = await receiveDataFromDjango(
+                          rootAddress +
+                            "quran-words/filter_by_sura?sura=" +
+                            item.sura +
+                            "&aya=" +
+                            item.aya
+                        );
+
+                        console.log(refAyah);
+                        setAyah((prev) => ({
+                          ...prev,
+                          [key]: refAyah,
+                        }));
+                      } catch (error) {
+                        console.error("❌ Error fetching data:", error);
+                      } finally {
+                        setLoading(false);
+                      }
+                    }}
+                  >
+                    <BookOpenText className="w-4 h-4 md:w-7 md:h-7 text-red-500" />
+                  </button>
+                </td>
+
+                <td
+                  dir="rtl"
+                  id={`${item.sura}-${item.aya}-${item.position}`}
+                  className="hidden md:block border-2 border-gray-500 p-2 text-5xl font-akber"
+                >
+                  {ayah[`${item.sura}-${item.aya}-${item.position}`] && (
+                    <AyahWord
+                      data={ayah[`${item.sura}-${item.aya}-${item.position}`]}
+                      suraAudio={false}
+                      ayaAudio={false}
+                      word={item.text}
+                    ></AyahWord>
+                  )}
+                </td>
+              </tr>
+              <tr className=" md:hidden">
+                <th className=" border-2 font-bangla border-gray-500">
+                  পূর্ণাঙ্গ আয়াত
+                </th>
+                <td
+                  dir="rtl"
+                  id={`${item.sura}-${item.aya}-${item.position}`}
+                  className=" border-2 border-gray-500 p-2 text-5xl font-akber"
+                  colSpan={8}
+                >
+                  {ayah[`${item.sura}-${item.aya}-${item.position}`] && (
+                    <AyahWord
+                      data={ayah[`${item.sura}-${item.aya}-${item.position}`]}
+                      suraAudio={false}
+                      ayaAudio={false}
+                      word={item.text}
+                    ></AyahWord>
+                  )}
+                </td>
+              </tr>
+            </>
           ))}
         </tbody>
       </table>

@@ -13,21 +13,18 @@ export default function AyahWord({
     .split(":")[1]
     .slice(1, -2);
   console.log(data);
-
+  const data1 = data.filter((i) => i.audio);
   return (
     <div className={`${selectedColor.textColor} `}>
       {data[0] && (
-        <p className="text-2xl ">
+        <p className="text-xs md:text-2xl ">
           <strong>
             {" "}
             {suraAudio && (
-              <span>
-                আয়াত সংখ্যা : {data[data.length - 1].aya}
-                <br />
-              </span>
+              <span>আয়াত সংখ্যা : {data[data.length - 1].aya}</span>
             )}{" "}
-            শব্দ সংখ্যা :{" "}
-            {Number(data.length - data[data.length - 1].aya)}
+            &nbsp; &nbsp; শব্দ সংখ্যা : &nbsp;
+            {Number(data1.length)}
           </strong>
         </p>
       )}
@@ -37,11 +34,11 @@ export default function AyahWord({
           folder={`wbw/${String(data[0].sura).padStart(3, "0")}/${reciter}/`}
           fileName={String(data[0].sura).padStart(3, "0") + ".mp3"}
         >
-          <strong className="text-3xl">সুরাহ অডিও</strong>
+          {/* <strong className="text-3xl">সুরাহ অডিও</strong> */}
         </Audio>
       )}
 
-      <div className={`text-4xl ${selectedColor.textColor}`} dir="rtl">
+      <div className={`text-xl md:text-4xl ${selectedColor.textColor}`} dir="rtl">
         {suraAudio && (
           <>
             <br />
@@ -56,26 +53,27 @@ export default function AyahWord({
             <>
               {i.text ? (
                 <Audio
-                  title= {i.text}
+                  title={i.text}
                   folder="/wbw"
                   fileName={
                     i.audio != null ? i.audio.substring(0, 4) + i.audio : ""
                   }
                 >
-                  {i.audio ?
-                    (i.text === word ? (
+                  {i.audio ? (
+                    i.text === word ? (
                       <strong>
-                        <span className="py-2 m-2 leading-relaxed font-akber hover:text-green-900">
+                        <span className="m-1 md:py-2 md:m-2 leading-relaxed font-akber hover:text-green-900">
                           {i.text + " "}
                         </span>
                       </strong>
                     ) : (
-                      <span className="py-2 m-2 leading-relaxed font-akber hover:text-green-900">
+                      <span className="m-1 md:py-2 md:m-2 leading-relaxed font-akber hover:text-green-900">
                         {i.text + " "}
                       </span>
-                    )) : " "
-                  }
-                  
+                    )
+                  ) : (
+                    " "
+                  )}
                 </Audio>
               ) : ayaAudio ? (
                 <Audio
