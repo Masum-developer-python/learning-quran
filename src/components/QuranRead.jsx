@@ -50,9 +50,9 @@ export default function QuranRead({ selectedColor }) {
 
   return (
     <div
-      className={`w-[100%] mx-auto mt-10 p-4 ${selectedColor.backgroundColor} shadow-lg rounded-xl font-bangla`}
+      className={`w-[95%] md:w-[80%] mx-auto mt-10 p-4 ${selectedColor.backgroundColor} shadow-lg rounded-xl font-bangla`}
     >
-      <h1 className="text-2xl font-bold mb-4 text-center ">কুরআন</h1>
+      <h1 className="text-lg md:text-2xl font-bold mb-4 text-center ">কুরআন</h1>
       <div className="flex gap-16">
         <div className="w-[45%]">
           <form onSubmit={handleSubmit} className="space-y-4 ">
@@ -79,12 +79,17 @@ export default function QuranRead({ selectedColor }) {
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
-            >
-              কুরআনের সুরাহ বা আয়াত পড়ুন
-            </button>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                &nbsp;
+              </label>
+              <button
+                type="submit"
+                className="text-sm md:text-2xl w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+              >
+                কুরআনের সুরাহ বা আয়াত পড়ুন
+              </button>
+            </div>
           </form>
         </div>
         <div className="w-[45%] space-y-8">
@@ -102,12 +107,12 @@ export default function QuranRead({ selectedColor }) {
           <button
             type="submit"
             onClick={async () => {
-              console.log("word ",word);
+              console.log("word ", word);
               try {
                 const ref = await receiveDataFromDjango(
                   rootAddress + "quran-words/filter_by_words/?word=" + word
                 ); // ✅ waits here
-                console.log("ref ",ref);
+                console.log("ref ", ref);
                 if (!ref) {
                   console.log("Not found in Quran DB");
                 } else {
@@ -115,7 +120,7 @@ export default function QuranRead({ selectedColor }) {
                     console.log(item);
                   });
                   setRefData(ref); // update your state after data is fetched
-                  
+
                   // ✅ You can do more stuff *after* data is ready here
                 }
               } catch (error) {
@@ -124,12 +129,11 @@ export default function QuranRead({ selectedColor }) {
 
               try {
                 console.log(await refData);
-              }
-              catch(error){
+              } catch (error) {
                 console.error("Error fetching data:", error);
               }
             }}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+            className="text-sm md:text-2xl w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
           >
             কুরআনের রেফারেন্স খুজুন
           </button>
@@ -141,17 +145,17 @@ export default function QuranRead({ selectedColor }) {
           <pre>{error}</pre>
         </p>
       )}
-      <div className="w-[100%] flex gap-16 mt-8">
-      {!error && data && (<>
-        <AyahWord data={data}></AyahWord>
-        </>
-      )}
-      {refData[0] && ( 
-        <div className="w-[60%]">
-         <RefTable refData={refData}></RefTable>
-        </div>
-      )
-      }
+      <div className="md:w-[100%]  flex flex-col gap-16 mt-8">
+        {refData[0] && (
+          <div className=" w-[98%]">
+            <RefTable refData={refData}></RefTable>
+          </div>
+        )}
+        {!error && data && (
+          <>
+            <AyahWord data={data} word={word}></AyahWord>
+          </>
+        )}
       </div>
     </div>
   );

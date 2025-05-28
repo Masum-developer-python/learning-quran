@@ -13,6 +13,7 @@ import { sendDataToDjango, receiveDataFromDjango } from "../data";
 import Audio from "./Audio";
 import Words from "./Words";
 import RefTable from "./RefTable";
+
 export default function ActionBar({
   diacritics,
   position,

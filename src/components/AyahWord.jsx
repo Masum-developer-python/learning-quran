@@ -77,7 +77,7 @@ export default function AyahWord({
                 </Audio>
               ) : ayaAudio ? (
                 <Audio
-                  title="Ayah Audio"
+                  title={`${i.aya}-Ayah Audio`}
                   folder={
                     "/wbw/" +
                     String(i.sura).padStart(3, "0") +

@@ -15,11 +15,11 @@ export default function RefTable({ refData }) {
   const [loading, setLoading] = useState(false);
   // console.log(ayah);
   return (
-    <div id="refTable" className="">
+    <div id="refTable" className="w-[99%]">
       <table className="text-xs md:text-2xl table-auto border-collapse">
         <thead>
-          <tr className="sticky top-2 bg-green-100">
-            <th className="border-2 font-bangla border-gray-500"> ক্রমিক </th>
+          <tr className="md:sticky md:top-2 bg-green-100">
+            <th className="hidden md:table-cell border-2 font-bangla border-gray-500"> ক্রমিক </th>
             <th className="border-2 font-bangla border-gray-500"> সুরা </th>
             <th className="border-2 font-bangla border-gray-500"> আয়াত </th>
             <th className="border-2 font-bangla border-gray-500"> স্থান </th>
@@ -41,7 +41,7 @@ export default function RefTable({ refData }) {
               {" "}
               রেফারেন্স{" "}
             </th>
-            <th className="hidden md:block border-2 font-bangla border-gray-500">
+            <th className="hidden md:table-cell border-2 font-bangla border-gray-500">
               পূর্ণাঙ্গ আয়াত
             </th>
           </tr>
@@ -50,11 +50,11 @@ export default function RefTable({ refData }) {
           {refData.map((item, index) => (
             <>
               <tr key={`${index}trow`}>
-                <td className="border-2 border-gray-500">{index + 1}</td>
+                <td className="hidden md:table-cell border-2 border-gray-500">{index + 1}</td>
                 <td className="border-2 border-gray-500">{item.sura}</td>
                 <td className="border-2 border-gray-500">{item.aya}</td>
                 <td className="border-2 border-gray-500">{item.position}</td>
-                <td className="border-2 border-gray-500 text-xl md:text-5xl font-akber">
+                <td className="border-2 border-gray-500 text-lg md:text-5xl font-akber" dir="rtl">
                   {item.text}
                 </td>
                 <td className="border-2 border-gray-500 ">
@@ -123,7 +123,7 @@ export default function RefTable({ refData }) {
                 <td
                   dir="rtl"
                   id={`${item.sura}-${item.aya}-${item.position}`}
-                  className="hidden md:block border-2 border-gray-500 p-2 text-5xl font-akber"
+                  className="hidden md:table-cell border-2 border-gray-500 p-2 text-5xl font-akber"
                 >
                   {ayah[`${item.sura}-${item.aya}-${item.position}`] && (
                     <AyahWord
