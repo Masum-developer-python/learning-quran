@@ -14,7 +14,7 @@ export default function RefTable({ refData }) {
   const [ayah, setAyah] = useState({});
   const [loading, setLoading] = useState(false);
   const [selectedAyah, setSelectedAyah] = useState(null);
-  console.log(ayah);
+  // console.log(ayah);
   return (
     <div id="refTable" className="">
       <table className="text-2xl table-auto border-collapse">
@@ -33,6 +33,10 @@ export default function RefTable({ refData }) {
             <th className="border-2 font-bangla border-gray-500">
               {" "}
               আয়াত অডিও{" "}
+            </th>
+            <th className="border-2 font-bangla border-gray-500">
+              {" "}
+              সুরাহ অডিও{" "}
             </th>
             <th className="border-2 font-bangla border-gray-500">
               {" "}
@@ -77,6 +81,14 @@ export default function RefTable({ refData }) {
               </td>
 
               <td className="border-2 border-gray-500">
+                <Audio
+                  title={`${item.audio}`}
+                  folder={"/wbw" + item.audio.substring(0, 4) + "/" + reciter}
+                  fileName={item.audio.substring(0, 4) + ".mp3"}
+                />
+              </td>
+
+              <td className="border-2 border-gray-500">
                 {/* ayah ref text */}
                 <button
                   title="Click for Ayah text"
@@ -97,7 +109,6 @@ export default function RefTable({ refData }) {
                         ...prev,
                         [key]: refAyah,
                       }));
-                      
                     } catch (error) {
                       console.error("❌ Error fetching data:", error);
                     } finally {
@@ -117,6 +128,8 @@ export default function RefTable({ refData }) {
                 {ayah[`${item.sura}-${item.aya}-${item.position}`] && (
                   <AyahWord
                     data={ayah[`${item.sura}-${item.aya}-${item.position}`]}
+                    suraAudio={false}
+                    ayaAudio={false}
                   ></AyahWord>
                 )}
               </td>

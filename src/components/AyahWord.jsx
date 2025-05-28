@@ -1,6 +1,6 @@
 import Audio from "./Audio";
 import { useState } from "react";
-export default function AyahWord({ data }) {
+export default function AyahWord({ data, suraAudio = true, ayaAudio = true }) {
   let selectedColor = localStorage.getItem("arabic-app-color");
   const reciter = localStorage
     .getItem("arabic-app-reciter")
@@ -12,21 +12,39 @@ export default function AyahWord({ data }) {
   return (
     <div className={`${selectedColor.textColor} `}>
       {data[0] && (
+        <p className="text-2xl ">
+          <strong>
+            {" "}
+            {suraAudio && (
+              <span>
+                আয়াত সংখ্যা : {data[data.length - 1].aya}
+                <br />
+              </span>
+            )}{" "}
+            শব্দ সংখ্যা : {data.length}
+          </strong>
+        </p>
+      )}
+      {data[0] && suraAudio && (
         <Audio
           title="Surah Audio"
-          folder={"wbw/"+ String(data[0].sura).padStart(3, "0") +
-          "/" +
-          reciter +
-          "/" }
-          fileName={
-
-            String(data[0].sura).padStart(3, "0") +
-            ".mp3"
-          }
-        ></Audio>
+          folder={`wbw/${String(data[0].sura).padStart(3, "0")}/${reciter}/`}
+          fileName={String(data[0].sura).padStart(3, "0") + ".mp3"}
+        >
+          <strong className="text-3xl">সুরাহ অডিও</strong>
+        </Audio>
       )}
 
       <div className={`text-4xl ${selectedColor.textColor}`} dir="rtl">
+        {suraAudio && (
+          <>
+            <br />
+            <hr />
+            <hr />
+            <hr />
+            <br />
+          </>
+        )}
         {data[0] &&
           data.map((i) => (
             <>
@@ -40,7 +58,7 @@ export default function AyahWord({ data }) {
                 >
                   <span className="py-2 m-1 font-akber">{i.text + " "}</span>
                 </Audio>
-              ) : (
+              ) : ayaAudio ? (
                 <Audio
                   title="Ayah Audio"
                   folder={
@@ -56,6 +74,8 @@ export default function AyahWord({ data }) {
                     ".mp3"
                   }
                 />
+              ) : (
+                ""
               )}
             </>
           ))}

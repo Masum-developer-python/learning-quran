@@ -8,7 +8,7 @@ export default function Audio({ folder, fileName, children, title="click me" }) 
       <button 
         title={title}
         onClick={() => {
-          console.log(folder, fileName);
+          console.log(folder+fileName);
           document.getElementById("Audio").src = folder + fileName;
           document.getElementById("Audio").play();
           document.getElementById("Audio").classList = "hidden";

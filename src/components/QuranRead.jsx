@@ -143,8 +143,6 @@ export default function QuranRead({ selectedColor }) {
       )}
       <div className="w-[100%] flex gap-16 mt-8">
       {!error && data && (<>
-        <h2 className="text-xl font-semibold">
-        সুরাহ অডিও</h2>
         <AyahWord data={data}></AyahWord>
         </>
       )}
