@@ -1,6 +1,11 @@
 import Audio from "./Audio";
 import { useState } from "react";
-export default function AyahWord({ data, suraAudio = true, ayaAudio = true , word}) {
+export default function AyahWord({
+  data,
+  suraAudio = true,
+  ayaAudio = true,
+  word,
+}) {
   let selectedColor = localStorage.getItem("arabic-app-color");
   const reciter = localStorage
     .getItem("arabic-app-reciter")
@@ -21,7 +26,8 @@ export default function AyahWord({ data, suraAudio = true, ayaAudio = true , wor
                 <br />
               </span>
             )}{" "}
-            শব্দ সংখ্যা : {Number(data[data.length-2].audio.split('_')[2].split('.')[0])}
+            শব্দ সংখ্যা :{" "}
+            {Number(data.length - data[data.length - 1].aya)}
           </strong>
         </p>
       )}
@@ -50,15 +56,25 @@ export default function AyahWord({ data, suraAudio = true, ayaAudio = true , wor
             <>
               {i.text ? (
                 <Audio
-                  title="word audio"
+                  title= {i.text}
                   folder="/wbw"
                   fileName={
                     i.audio != null ? i.audio.substring(0, 4) + i.audio : ""
                   }
                 >
-                  {i.text === word ?
-                    <strong><span className="py-2 m-1 font-akber">{i.text + " "}</span></strong> :
-                    <span className="py-2 m-1 font-akber">{i.text + " "}</span> }
+                  {i.audio ?
+                    (i.text === word ? (
+                      <strong>
+                        <span className="py-2 m-2 leading-relaxed font-akber hover:text-green-900">
+                          {i.text + " "}
+                        </span>
+                      </strong>
+                    ) : (
+                      <span className="py-2 m-2 leading-relaxed font-akber hover:text-green-900">
+                        {i.text + " "}
+                      </span>
+                    )) : " "
+                  }
                   
                 </Audio>
               ) : ayaAudio ? (
@@ -78,7 +94,7 @@ export default function AyahWord({ data, suraAudio = true, ayaAudio = true , wor
                   }
                 />
               ) : (
-                ""
+                "۞"
               )}
             </>
           ))}
