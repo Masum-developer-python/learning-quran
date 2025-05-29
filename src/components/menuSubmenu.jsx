@@ -220,6 +220,7 @@ function Submenu({
         <br />
         <ThemeSelector
           selectedTheme={selectedTheme}
+          selectedColor={selectedColor}
           setSelectedTheme={(newTheme) => {
             setSelectedTheme(newTheme);
             setSelectedColor(newTheme.combinations[2]); // Reset color when theme changes

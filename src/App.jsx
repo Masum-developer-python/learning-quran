@@ -40,10 +40,10 @@ function App() {
       try {
         return JSON.parse(saved);
       } catch {
-        return alphabetColorCombinations[2];
+        return alphabetColorCombinations[1];
       }
     }
-    return alphabetColorCombinations[2];
+    return alphabetColorCombinations[1];
   });
   const [selectedColor, setSelectedColor] = useState(() => {
     const saved = localStorage.getItem("arabic-app-color");
@@ -51,10 +51,10 @@ function App() {
       try {
         return JSON.parse(saved);
       } catch {
-        return selectedTheme.combinations[2];
+        return selectedTheme.combinations[0];
       }
     }
-    return selectedTheme.combinations[2];
+    return selectedTheme.combinations[0];
   });
 
   // Save to localStorage when theme changes

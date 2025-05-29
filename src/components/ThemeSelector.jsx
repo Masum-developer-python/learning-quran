@@ -2,11 +2,11 @@ console.log('ThemeSelector.jsx');
 
 import React from "react";
 
-function ThemeSelector({ selectedTheme, setSelectedTheme, alphabetColorCombinations, setSelectedColor }) {
+function ThemeSelector({ selectedTheme, setSelectedTheme, alphabetColorCombinations, setSelectedColor, selectedColor }) {
   const handleThemeChange = (e) => {
     const theme = alphabetColorCombinations.find((t) => t.theme === e.target.value);
     setSelectedTheme(theme);
-    setSelectedColor(theme.combinations[2]); // Set the first color combination of the selected theme.
+    setSelectedColor(theme.combinations[0]); // Set the first color combination of the selected theme.
   };
 
   return (
@@ -15,7 +15,7 @@ function ThemeSelector({ selectedTheme, setSelectedTheme, alphabetColorCombinati
       <select
         value={selectedTheme.theme}
         onChange={handleThemeChange}
-        className="w-24 p-2 border rounded font-bangla"
+        className={`w-24 p-2 border rounded font-bangla ${selectedColor.textColor}`}
       >
         {alphabetColorCombinations.map((theme) => (
           <option key={theme.theme} value={theme.theme}>

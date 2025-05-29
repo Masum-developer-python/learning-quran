@@ -62,15 +62,20 @@ export const alphabetColorCombinations = [
         description: "Soft blue & deep blue",
       },
       {
-        backgroundColor: "bg-green-50",
-        textColor: "text-green-900",
-        description: "Pale green & dark green",
+        backgroundColor: "bg-orange-50",
+        textColor: "text-orange-900",
+        description: "Soft orange & deep orange",
       },
       {
         backgroundColor: "bg-yellow-100",
         textColor: "text-gray-900",
         description: "Light yellow & dark gray",
       },
+      {
+        backgroundColor: "bg-teal-50",
+        textColor: "text-teal-900",
+        description: "Mild teal & dark teal",
+      },      
     ],
   },
   {
@@ -113,6 +118,28 @@ export const alphabetColorCombinations = [
       },
     ],
   },
+  {
+    theme: "Night Study",
+    combinations: [
+      {
+        backgroundColor: "bg-gray-900",
+        textColor: "text-yellow-100",
+        description: "Dark gray & pale yellow",
+      },
+      {
+        backgroundColor: "bg-black",
+        textColor: "text-green-200",
+        description: "Black & soft green",
+      },
+      {
+        backgroundColor: "bg-gray-800",
+        textColor: "text-purple-200",
+        description: "Charcoal & light purple",
+      },
+    ],
+  }
+  
+
 ];
 // console.log(alphabetColorCombinations[0].combinations[0].backgroundColor);
 // let cl = alphabetColorCombinations[0].combinations[1];
