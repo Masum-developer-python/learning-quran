@@ -26,14 +26,14 @@ function Nav({
         <Menu />
       </button>
       <div
-        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-4 h-screen 
+        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-4 h-[calc(100vh)]
         md:block hidden mt-16`}
       ></div>
       {/* Navbar */}
       <nav
         id="vertical-menu"
         className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 
-        fixed h-[calc(100vh-50px)] hidden overflow-y-scroll hover:w-52 md:block mt-16 md:mt-0 z-10`}
+        fixed h-[calc(100vh-50px)] md:h-[calc(100vh)] hidden overflow-y-scroll hover:w-52 md:block mt-16 md:mt-0 z-10`}
       >
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
         <Submenu

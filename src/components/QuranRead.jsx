@@ -50,7 +50,7 @@ export default function QuranRead({ selectedColor }) {
 
   return (
     <div
-      className={`w-[95%] md:w-[80%] mx-auto mt-10 p-4 ${selectedColor.backgroundColor} shadow-lg rounded-xl font-bangla`}
+      className={`w-[calc(100%-10px)] md:w-[calc(100%-100px)] mx-auto mt-10 p-4 ${selectedColor.backgroundColor} shadow-lg rounded-xl font-bangla`}
     >
       <h1 className="text-lg md:text-2xl font-bold mb-4 text-center ">কুরআন</h1>
       <div className="flex gap-16">

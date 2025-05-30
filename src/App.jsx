@@ -92,7 +92,7 @@ function App() {
 
   return (
     <>
-      <div className="flex w-full">
+      <div className="flex w-[calc(100%-50px)] m-auto">
         <Nav
           selectedColor={selectedColor}
           selectedTheme={selectedTheme}
@@ -104,7 +104,7 @@ function App() {
           reciterList={reciterList}
         />
         <Router>
-          <main className="flex-1 flex max-w-">
+          <main className="flex-1 flex max-w-[100%]">
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -133,6 +133,7 @@ function App() {
                     selectedColor={selectedColor}
                     withHoverChildren={true}
                     arabicAlphabet={arabicAlphabet}
+                    audio = {'alphabets'}
                   />
                 }
               />
@@ -179,6 +180,7 @@ function App() {
                             route.name.toLowerCase() === "saakinah"
                           }
                           isSaddah={route.name.toLowerCase() === "ashshaddah"}
+                          audio = {`${category.toLowerCase()}/${route.name.toLowerCase()}`}
                         />
                       }
                     />

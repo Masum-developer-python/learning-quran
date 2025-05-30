@@ -145,6 +145,8 @@ export const alphabetColorCombinations = [
 // let cl = alphabetColorCombinations[0].combinations[1];
 // console.log(cl);
 
+export const fileLocation = '/';
+
 export const arabicDiacritics = {
   Letter: {
     title: "বর্ণমালা",
