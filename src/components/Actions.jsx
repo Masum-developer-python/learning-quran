@@ -27,16 +27,18 @@ export default function ActionBar({
 }) {
   // console.log(diacritics, position, id, pName);
   let rootAddress = localStorage.getItem("rootAddress");
-  let bangla='';
+  let bangla = "";
+  let english = "";
+  let parts_of_speech = "";
+  let maddah = "";
   const baseAddress = rootAddress + "arabic-words/";
   const [address, setAddress] = useState(baseAddress);
-  const [method, setMethod] = useState("POST");
+  const [method, setMethod] = useState("");
   const user = localStorage.getItem("user");
   const isAdmin = user == null ? false : true;
   const [refData, setRefData] = useState([]);
   const [visible, setVisible] = useState({});
-  const accessToken = localStorage.getItem("access_token");
-  const refreshToken = localStorage.getItem("refresh_token");
+  const [refVisible, setRefVisible] = useState(false);
   const reciter = localStorage
     .getItem("arabic-app-reciter")
     .split(",")[1]
@@ -57,37 +59,12 @@ export default function ActionBar({
                   title="Delete"
                   className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
                   onClick={async () => {
-
-                    try {
-                      const refreshResponse = await axios.post(
-                        rootAddress + "token/refresh/",
-                        { refresh: refreshToken },
-                        {
-                          headers: { "Content-Type": "application/json" },
-                          withCredentials: true,
-                        }
-                      );
-                  
-                      if (refreshResponse.status === 200) {
-                        const newAccessToken = refreshResponse.data.access;
-                        const newRefreshToken = refreshResponse.data.refresh;
-                  
-                        localStorage.setItem("access_token", newAccessToken);
-                        localStorage.setItem("refresh_token", newRefreshToken);
-                      }
-                    } catch (error) {
-                      console.error("🔒 Token refresh failed:", error);
-                      alert("Session expired. Please log in again.");
-                      // Optionally redirect to login
-                      return;
-                    }
                     setMethod("DELETE");
                     console.log(address, method);
                     sendDataToDjango(
                       null,
                       baseAddress + cellId + "/",
-                      method,
-                      accessToken
+                      "DELETE"
                     );
                   }}
                 >
@@ -98,33 +75,7 @@ export default function ActionBar({
                 <button
                   title="Edit"
                   className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-blue-200"
-                  onClick={ async () => {
-
-                    try {
-                      const refreshResponse = await axios.post(
-                        rootAddress + "token/refresh/",
-                        { refresh: refreshToken },
-                        {
-                          headers: { "Content-Type": "application/json" },
-                          withCredentials: true,
-                        }
-                      );
-                  
-                      if (refreshResponse.status === 200) {
-                        const newAccessToken = refreshResponse.data.access;
-                        const newRefreshToken = refreshResponse.data.refresh;
-                  
-                        localStorage.setItem("access_token", newAccessToken);
-                        localStorage.setItem("refresh_token", newRefreshToken);
-                      }
-                    } catch (error) {
-                      console.error("🔒 Token refresh failed:", error);
-                      alert("Session expired. Please log in again.");
-                      // Optionally redirect to login
-                      return;
-                    }
-
-
+                  onClick={async () => {
                     const key = position + id;
                     setSendingWord(word);
                     setVisible((prev) => ({
@@ -135,8 +86,7 @@ export default function ActionBar({
                     setMethod("PATCH");
                     console.log(
                       baseAddress + cellId + "/",
-                      method,
-                      accessToken
+                      method
                     );
                   }}
                 >
@@ -152,30 +102,6 @@ export default function ActionBar({
                   title="Insert word"
                   className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-yellow-200"
                   onClick={async () => {
-
-                    try {
-                      const refreshResponse = await axios.post(
-                        rootAddress + "token/refresh/",
-                        { refresh: refreshToken },
-                        {
-                          headers: { "Content-Type": "application/json" },
-                          withCredentials: true,
-                        }
-                      );
-                  
-                      if (refreshResponse.status === 200) {
-                        const newAccessToken = refreshResponse.data.access;
-                        const newRefreshToken = refreshResponse.data.refresh;
-                  
-                        localStorage.setItem("access_token", newAccessToken);
-                        localStorage.setItem("refresh_token", newRefreshToken);
-                      }
-                    } catch (error) {
-                      console.error("🔒 Token refresh failed:", error);
-                      alert("Session expired. Please log in again.");
-                      // Optionally redirect to login
-                      return;
-                    }
                     const key = position + id;
                     setVisible((prev) => ({
                       ...prev,
@@ -199,9 +125,6 @@ export default function ActionBar({
           title="Refference"
           className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-green-200"
           onClick={async () => {
-            document
-              .getElementById(position + id + "ID")
-              .classList.toggle("hidden");
             console.log(word);
             try {
               const ref = await receiveDataFromDjango(
@@ -215,7 +138,7 @@ export default function ActionBar({
                   console.log(item);
                 });
                 setRefData(ref); // update your state after data is fetched
-
+                setRefVisible(true);
                 // ✅ You can do more stuff *after* data is ready here
               }
             } catch (error) {
@@ -226,25 +149,23 @@ export default function ActionBar({
           <BookOpen className="w-7 h-7 text-green-500" />
         </button>
 
-        <div
-          id={`${position}${id}ID`}
-          className={`hidden fixed overflow-y-scroll h-[calc(90%-10px)] w-[90%] md:max-w-[80%]  left-4 md:left-64 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
+        {refVisible && (
+          <div
+          className={` fixed overflow-y-scroll h-[calc(60%-10px)] w-[90%] md:max-w-[80%]  left-4 md:left-64 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
         >
           <button
             className="w-8 h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
             onClick={() => {
-              document
-                .getElementById(`${position}${id}ID`)
-                .classList.toggle("hidden");
+              setRefVisible(false);
             }}
           >
             <SquareX className="w-7 h-7 text-red-900"></SquareX>
           </button>
           <div className="">
             {" "}
-            <RefTable refData={refData} word={word}/>
+            <RefTable refData={refData} word={word} />
           </div>
-        </div>
+        </div>)}
         {/* ref ayah show */}
 
         {/* refference end*/}
@@ -281,43 +202,108 @@ export default function ActionBar({
         {/* ------------------------------------------------------------------------------------------------------------------- */}
       </div>
       {/* word maker */}
-      
-      { visible[`${position}${id}`] && (<div id={`${position}${id}`} className="bg-gray-100 relative">
-        <Words
-          selectedColor={selectedColor}
-          sendingWord={sendingWord}
-          setSendingWord={setSendingWord}
-          arabicAlphabet={arabicAlphabet}
-        />
-        <button
-          className="bg-gray-300"
-          onClick={() =>
-            sendDataToDjango(
-              {
-                diacritics: diacritics,
-                position: position,
-                word: sendingWord,
-                bangla: bangla,
-                english: "",
-                parts_of_speech: "",
-                letter: id,
-                join_diacritics: pName,
-              }, // Data to send
-              address, // URL
-              method,
-              accessToken
-            )
-          }
-        >
-          <Save className="w-8 h-8 text-blue-500" />
-        </button>
-        <input type="text" placeholder="bang" className="h-16 w-48 text-sm"
-        onChange={(e)=>{
-          bangla = e.target.value;
-          console.log(bangla);
-        }}
-        ></input>
-      </div>)}
+
+      {visible[`${position}${id}`] && (
+        <div id={`${position}${id}`} className="bg-gray-100 relative">
+          <Words
+            selectedColor={selectedColor}
+            sendingWord={sendingWord}
+            setSendingWord={setSendingWord}
+            arabicAlphabet={arabicAlphabet}
+          >
+            <div className="flex">
+              <input
+                type="text"
+                placeholder="bang"
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-64
+              ${selectedColor.backgroundColor} 
+             text-xl text-center 
+             ${selectedColor.textColor} 
+           rounded-lg
+             flex justify-center items-center
+             hover:shadow-2xl focus:outline-none focus:ring-4 `}
+                onChange={(e) => {
+                  bangla = e.target.value;
+                  console.log(bangla);
+                }}
+              ></input>
+              <input
+                type="text"
+                placeholder="eng"
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-48
+              ${selectedColor.backgroundColor} 
+             text-xl text-center 
+             ${selectedColor.textColor} 
+           rounded-lg
+             flex justify-center items-center
+             hover:shadow-2xl focus:outline-none focus:ring-4 `}
+                onChange={(e) => {
+                  english = e.target.value;
+                  console.log(english);
+                }}
+              ></input>
+              <input
+                type="text"
+                placeholder="pos"
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-32
+              ${selectedColor.backgroundColor} 
+             text-xl text-center 
+             ${selectedColor.textColor} 
+           rounded-lg
+             flex justify-center items-center
+             hover:shadow-2xl focus:outline-none focus:ring-4 `}
+                onChange={(e) => {
+                  parts_of_speech = e.target.value;
+                  console.log(parts_of_speech);
+                }}
+              ></input>
+              <input
+                type="text"
+                placeholder="maddah"
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-28
+              ${selectedColor.backgroundColor} 
+             text-xl text-center 
+             ${selectedColor.textColor} 
+           rounded-lg
+             flex justify-center items-center
+             hover:shadow-2xl focus:outline-none focus:ring-4 `}
+                onChange={(e) => {
+                  maddah = e.target.value;
+                  console.log(maddah);
+                }}
+              ></input>
+              <button
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-16
+              ${selectedColor.backgroundColor} 
+             text-xl text-center 
+             ${selectedColor.textColor} 
+           rounded-lg
+             flex justify-center items-center
+             hover:shadow-2xl focus:outline-none focus:ring-4 `}
+                onClick={async () => {
+                    await sendDataToDjango(
+                      {
+                        diacritics: diacritics,
+                        position: position,
+                        word: sendingWord,
+                        bangla: bangla,
+                        english: english,
+                        parts_of_speech: parts_of_speech,
+                        letter: id,
+                        join_diacritics: pName,
+                        maddah: maddah,
+                      },
+                      address, // endpoint like "words/" etc.
+                      method
+                    );
+                }}
+              >
+                <Save className="w-8 h-8 text-blue-500" />
+              </button>
+            </div>
+          </Words>
+        </div>
+      )}
     </>
   );
 }

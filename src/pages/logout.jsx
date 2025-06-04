@@ -68,7 +68,7 @@ const Logout = () => {
         localStorage.removeItem("refresh_token");
         localStorage.removeItem("user");
         axios.defaults.headers.common["Authorization"] = "";
-        window.location.href = "/login";
+        // window.location.href = "/login";
       }
     })();
   }, []);

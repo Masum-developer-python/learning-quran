@@ -1,17 +1,3 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-//   base: "/", // Ensure this is correct
-//   build: {
-//     outDir: "dist",
-//   },
-//   //base: '/react-gh-pages/', // Replace with your repository name
-// })
-
-
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -19,6 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: "/", // Ensure this is correct
+  server: {
+    port: 2000, // Change this to your desired port
+  },
   build: {
     outDir: "dist",
     rollupOptions: {

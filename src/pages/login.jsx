@@ -27,6 +27,7 @@ export const Login = () => {
     localStorage.removeItem("refresh_token");
     localStorage.setItem("access_token", data.access);
     localStorage.setItem("refresh_token", data.refresh);
+    console.log(localStorage.getItem('access_token'), localStorage.getItem('refresh_token'))
     localStorage.setItem("user", user.username);
 
     axios.defaults.headers.common["Authorization"] = `Bearer ${data["access"]}`;

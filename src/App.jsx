@@ -91,8 +91,8 @@ function App() {
   }, [selectedReciter]);
 
   return (
-    <>
-      <div className="flex w-[calc(100%-50px)] m-auto">
+    <div className="flex flex-col min-h-screen">
+      <div className="flex flex-1 w-[calc(100%-50px)] m-auto ">
         <Nav
           selectedColor={selectedColor}
           selectedTheme={selectedTheme}
@@ -104,7 +104,7 @@ function App() {
           reciterList={reciterList}
         />
         <Router>
-          <main className="flex-1 flex max-w-[100%]">
+          <main className="flex-1 flex max-w-full">
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -207,7 +207,19 @@ function App() {
           </main>
         </Router>
       </div>
-    </>
+      <footer className="h-[50px]  text-center font-sans text-[#555] border-t border-[#eaeaea] w-full text-base mt-auto">
+        Al Quran Learning | Developed by{" "}
+        <strong>
+          Masum @{" "}
+          <em>
+            <span>R</span>
+            <span>A</span>
+            <span>R</span>
+          </em>{" "}
+          E Academy
+        </strong>
+      </footer>
+    </div>
   );
 }
 

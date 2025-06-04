@@ -20,18 +20,115 @@ function SideBar({
   arabicAlphabet,
 }) {
   console.log("SideBar.jsx");
-  console.log(word);
+  // console.log(word);
   // console.log(arabicAlphabet, preAlphabet);
   //console.log(isSaddah);
   //console.log(alphabetColorCombinations);
   let rowIndex = 0;
-  const ringColor = `focus:ring-${selectedColor.textColor.slice(4)}`;
   return (
-    <div key={rowIndex} className="flex flex-grow font-bangla ">
-      
+    <div key={rowIndex} className="font-bangla">
+      {!isAllDiacritics && (
+        <div className="flex flex-row-reverse relative px-56">
+          {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
+            <button
+              key={`item-${rowIndex}-${itemIndex}`}
+              onClick={() =>
+                setPreAlphabetDiacriticsUnicode(item.unicode.slice(2))
+              }
+              className={`rtl p-4 m-1 mb-0 h-[50px] w-20 bg-gray-300
+          ${selectedColor.backgroundColor} 
+          text-4xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+            >
+              {"-" + String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className="flex flex-row-reverse">
+        {arabicAlphabet.slice(0, 9).map((item, itemIndex) => (
+          <button
+            onClick={() => {
+              console.log(item);
+              setPreAlphabet(item.alphabet);
+              console.log(preAlphabet);
+              setWord((prev) => prev + item.alphabet);
+            }}
+            key={`item-${rowIndex}-${itemIndex}`}
+            className={`rtl p-4 m-1 mb-0 h-[50px] w-20
+          ${selectedColor.backgroundColor} 
+          text-xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          >
+            {item.alphabet}
+          </button>
+        ))}
+      </div>
+      <div className="flex flex-row-reverse">
+        {arabicAlphabet.slice(9, 18).map((item, itemIndex) => (
+          <button
+            onClick={() => {
+              setPreAlphabet(item.alphabet);
+              setWord((prev) => prev + item.alphabet);
+            }}
+            key={`item-${rowIndex}-${itemIndex}`}
+            className={`rtl p-4 m-1 mb-0 h-[50px] w-20
+          ${selectedColor.backgroundColor} 
+          text-xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          >
+            {item.alphabet}
+          </button>
+        ))}
+      </div>
+      <div className="flex flex-row-reverse">
+        {arabicAlphabet.slice(18, 27).map((item, itemIndex) => (
+          <button
+            onClick={() => {
+              setPreAlphabet(item.alphabet);
+              setWord((prev) => prev + item.alphabet);
+            }}
+            key={`item-${rowIndex}-${itemIndex}`}
+            className={`rtl p-4 m-1 mb-0 h-[50px] w-20
+          ${selectedColor.backgroundColor} 
+          text-xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          >
+            {item.alphabet}
+          </button>
+        ))}
+      </div>
+      <div className="flex flex-row-reverse">
+        {arabicAlphabet.slice(27).map((item, itemIndex) => (
+          <button
+            onClick={() => {
+              setPreAlphabet(item.alphabet);
+              setWord((prev) => prev + item.alphabet);
+            }}
+            key={`item-${rowIndex}-${itemIndex}`}
+            className={`rtl p-4 m-1 mb-0 h-[50px] w-20
+          ${selectedColor.backgroundColor} 
+          text-xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+          >
+            {item.alphabet}
+          </button>
+        ))}
+      </div>
       {(isSaddah || isAllDiacritics) && (
         <>
-          <div>
+          <div className="flex flex-row-reverse relative">
             {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
               <button
                 key={`item-${rowIndex}-${itemIndex}`}
@@ -45,7 +142,7 @@ function SideBar({
                       prev + String.fromCodePoint(parseInt(unicodeValue, 16))
                   );
                 }}
-                className={`rtl p-4 m-1 mb-0 h-[40px] w-16 
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-20 
           ${selectedColor.backgroundColor} 
           text-4xl text-center 
           ${selectedColor.textColor} rounded-lg
@@ -71,7 +168,7 @@ function SideBar({
                       prev + String.fromCodePoint(parseInt(unicodeValue, 16))
                   );
                 }}
-                className={`rtl p-4 m-1 mb-0 h-[40px] w-16
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-20
           ${selectedColor.backgroundColor} 
           text-4xl text-center 
           ${selectedColor.textColor} rounded-lg
@@ -99,7 +196,7 @@ function SideBar({
                       prev + String.fromCodePoint(parseInt(unicodeValue, 16))
                   );
                 }}
-                className={`rtl p-4 m-1 mb-0 h-[40px] w-16
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-20
           ${selectedColor.backgroundColor} 
           text-4xl text-center 
           ${selectedColor.textColor} rounded-lg
@@ -112,105 +209,47 @@ function SideBar({
                   String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
-            {/* </div>
-          <div> */}
-            {isAllDiacritics &&
-              arabicDiacritics["others"].diacritics.map((item, itemIndex) => (
-                <button
-                  key={`item-${rowIndex}-${itemIndex}`}
-                  onClick={() => {
-                    const unicodeValue = item.unicode.slice(2); // Get the Unicode value
-                    setPostAlphabetDiacriticsUnicode(unicodeValue); // Update the postAlphabetDiacriticsUnicode state
+          </div>
+        </>
+      )}
+      <div className="flex flex-row">
+        {isAllDiacritics &&
+          arabicDiacritics["others"].diacritics.map((item, itemIndex) => (
+            <div key={`item-${rowIndex}-${itemIndex}`}>
+              <button
+                key={`item-${rowIndex}-${itemIndex}`}
+                onClick={() => {
+                  const unicodeValue = item.unicode.slice(2); // Get the Unicode value
+                  setPostAlphabetDiacriticsUnicode(unicodeValue); // Update the postAlphabetDiacriticsUnicode state
 
-                    // Directly use the value of unicodeValue to append to the word
-                    setWord(
-                      (prev) =>
-                        prev + String.fromCodePoint(parseInt(unicodeValue, 16))
-                    );
-                  }}
-                  className={`rtl p-4 m-1 mb-0 h-[40px] w-16
+                  // Directly use the value of unicodeValue to append to the word
+                  setWord(
+                    (prev) =>
+                      prev + String.fromCodePoint(parseInt(unicodeValue, 16))
+                  );
+                }}
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-20
           ${selectedColor.backgroundColor} 
           text-4xl text-center 
           ${selectedColor.textColor} rounded-lg
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4 `}
-                >
-                  {"-" +
-                    String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
-                </button>
-              ))}
-          </div>
-        </>
-      )}
-      <div>
-        {arabicAlphabet.slice(0, 14).map((item, itemIndex) => (
-          <button
-            onClick={() => {
-              console.log(item);
-              setPreAlphabet(item.alphabet);
-              console.log(preAlphabet);
-              setWord((prev) => prev + item.alphabet);
-            }}
-            key={`item-${rowIndex}-${itemIndex}`}
-            className={`rtl p-4 m-1 mb-0 h-[2px] w-16
-          ${selectedColor.backgroundColor} 
-          text-xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-          >
-            {item.alphabet}
-          </button>
-        ))}
-      </div>
-      <div>
-        {arabicAlphabet.slice(14, 28).map((item, itemIndex) => (
-          <button
-            onClick={() => {
-              setPreAlphabet(item.alphabet);
-              setWord((prev) => prev + item.alphabet);
-            }}
-            key={`item-${rowIndex}-${itemIndex}`}
-            className={`rtl p-4 m-1 mb-0 h-[2px] w-16
-          ${selectedColor.backgroundColor} 
-          text-xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-          >
-            {item.alphabet}
-          </button>
-        ))}
-      </div>
+              >
+                {"-" +
+                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+              </button>
+            </div>
+          ))}
 
-      <div>
-        {arabicAlphabet.slice(28).map((item, itemIndex) => (
-          <button
-            onClick={() => {
-              setPreAlphabet(item.alphabet);
-              setWord((prev) => prev + item.alphabet);
-            }}
-            key={`item-${rowIndex}-${itemIndex}`}
-            className={`rtl p-4 m-1 mb-0 h-[2px] w-16
-          ${selectedColor.backgroundColor} 
-          text-xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-          >
-            {item.alphabet}
-          </button>
-        ))}
-
-        <div>
-          {children && (
-            <div>
+        {children && (
+          <>
+            <div className="flex flex-row">
               <input
                 type="text"
-                className={`rtl p-4 m-1 mb-0 h-[40px] w-16 bg-gray-300
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-64 bg-gray-300
           ${selectedColor.backgroundColor} 
           text-sm text-center 
-          ${selectedColor.textColor} rounded-lg
+          ${selectedColor.textColor} rounded-3xl
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4 `}
                 placeholder="Input"
@@ -223,31 +262,9 @@ function SideBar({
                 }}
               ></input>
             </div>
-          )}
-
-          {children}
-        </div>
-      </div>
-      <div>
-        {!isAllDiacritics && (
-          <>
-            {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
-              <button
-                key={`item-${rowIndex}-${itemIndex}`}
-                onClick={() =>
-                  setPreAlphabetDiacriticsUnicode(item.unicode.slice(2))
-                }
-                className={`rtl p-4 m-1 mb-0 h-[40px] w-16 bg-gray-300
-          ${selectedColor.backgroundColor} 
-          text-4xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-              >
-                {"-" +
-                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
-              </button>
-            ))}
+            <div className="flex flex-row">
+              {children}
+            </div>
           </>
         )}
       </div>

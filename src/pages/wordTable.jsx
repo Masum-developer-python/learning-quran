@@ -76,7 +76,7 @@ const Table = ({
                         />
                       )
                   )}
-                  <td className="py-2 px-4 border-t border-gray-300 text-5xl md:text-7xl text-center ">
+                  <td className="py-2 px-4 border-t border-gray-300 text-8xl text-center ">
                     {letter.alphabet}
                     {String.fromCodePoint(
                       parseInt(arabicAlphabetDiacritics, 16)

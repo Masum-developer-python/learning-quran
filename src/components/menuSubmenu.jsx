@@ -58,16 +58,17 @@ function Submenu({
   return (
     <ul
       className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal 
-        ${selectedColor.backgroundColor} ${selectedColor.textColor} z-20`}
+        ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
     >
       {Object.keys(arabicDiacritics).map((category, index) => (
+        <>
         <li key={index} className="relative">
           <hr />
           <br />
           <br />
           {/* Category Name */}
           <a
-            className="block px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition 
+            className=" px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition 
             duration-1000"
             href={"/" + category.toLowerCase()}
           >
@@ -84,17 +85,20 @@ function Submenu({
               {openCategories[category] ? ">" : "<"}
             </button>
           )}
+          </li>
 
-          {(openCategories[category] || isDesktop) &&
+          
+          {(openCategories[category]) &&
             arabicDiacritics[category].diacritics && (
+              
               <div
-                className={`absolute z-30 left-14 ${
-                  openCategories[category] ? "" : "hidden"
-                } transform 
-                -translate-y-1/2 mt-2 w-full ${selectedColor.backgroundColor} ${
-                  selectedColor.textColor
-                } 
-                rounded shadow-lg transition duration-300 z-5`}
+              className={` ${
+                openCategories[category] ? "" : "hidden"
+              }
+               mt-2 w-full ${selectedColor.backgroundColor} ${
+                selectedColor.textColor
+              } 
+              rounded shadow-lg`}
               >
                 {/* Sub-Menu */}
                 {arabicDiacritics[category].diacritics.map((item, index) => (
@@ -106,12 +110,12 @@ function Submenu({
                         "/" +
                         item.name.toLowerCase()
                       }
-                      className="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+                      className=" py-2 px-4 rounded hover:bg-blue-700 transition-colors"
                     >
                       {item.title}
                     </a>
 
-                    {(isMobile || isTablet || isDesktop) && (
+                    
                       <button
                         onClick={() => {
                           toggleSubCategory(item.name);
@@ -120,15 +124,15 @@ function Submenu({
                       >
                         {openSubCategories[item.name] ? ">" : "<"}
                       </button>
-                    )}
-
-                    {(openSubCategories[item.name] || isDesktop) &&
+                    
+                    {(openSubCategories[item.name]) &&
                       item.pages && (
+                        <li>
                         <div
-                          className={`absolute left-14 top-0 mt-2 w-full rounded shadow-lg
+                          className={` top-0 m-2 w-full rounded shadow-lg
                             ${
                               openSubCategories[item.name] ? "" : "hidden"
-                            } transition duration-300
+                            } 
                             ${selectedColor.backgroundColor} ${
                             selectedColor.textColor
                           } 
@@ -150,6 +154,7 @@ function Submenu({
                             </a>
                           ))}
                         </div>
+                      </li>
                       )}
                   </div>
                 ))}
@@ -158,7 +163,8 @@ function Submenu({
           <br />
           <br />
           <hr />
-        </li>
+        
+        </>
       ))}
       <li key={"123"} className="group">
         <hr />
