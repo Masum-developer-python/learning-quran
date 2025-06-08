@@ -50,7 +50,7 @@ export default function RefTable({ refData, word }) {
         <tbody key={`tbody`}>
           {refData.map((item, index) => (
             <>
-              <tr key={`${index}trow`}>
+              <tr key={`${index}trow`} className="h-[90px]">
                 <td className="border-2 border-gray-500">{index + 1}</td>
                 <td className="border-2 border-gray-500">
                   <Audio

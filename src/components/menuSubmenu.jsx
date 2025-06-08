@@ -82,7 +82,7 @@ function Submenu({
               }}
               className=" py-2"
             >
-              {openCategories[category] ? ">" : "<"}
+              {openCategories[category] ? "▾" : "◂"}
             </button>
           )}
           </li>
@@ -122,7 +122,7 @@ function Submenu({
                         }}
                         className="px-4 py-2"
                       >
-                        {openSubCategories[item.name] ? ">" : "<"}
+                        {openSubCategories[item.name] ? "▾" : "◂"}
                       </button>
                     
                     {(openSubCategories[item.name]) &&

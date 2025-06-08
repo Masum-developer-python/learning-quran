@@ -10,6 +10,7 @@ export default function QuranRead({ selectedColor }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [surahList, setSurahList] = ([]);
   const reciter = localStorage
     .getItem("arabic-app-reciter")
     .split(",")[1]
@@ -47,6 +48,9 @@ export default function QuranRead({ selectedColor }) {
       fetchQuran(sura, aya);
     }
   };
+  let surahListTemp = receiveDataFromDjango(rootAddress+"sura");
+  console.log(surahListTemp, surahList);
+  //setSurahList(surahListTemp);
 
   return (
     <div
@@ -60,13 +64,25 @@ export default function QuranRead({ selectedColor }) {
               <label className="block text-sm font-medium text-gray-700">
                 সূরাহ নং
               </label>
-              <input
+              {
+                surahList ? (<select>
+                  { surahList.map((sura)=>
+                    <option>
+                      {sura.name}
+                    </option>
+                  )
+  
+                  }
+                </select>):(<input
                 type="number"
                 value={sura}
                 onChange={(e) => setSura(e.target.value)}
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
                 required
-              />
+              />)
+              }
+              
+              
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">

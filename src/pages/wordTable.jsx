@@ -11,7 +11,7 @@ const Table = ({
   page,
 }) => {
   const [sendingWord, setSendingWord] = useState("");
-  const positions = ["end", "middle", "start"];
+  const [loading, setLoading] = useState(true);
   console.log("wordTable.jsx");
   let method = "POST";
   let rootAddress = localStorage.getItem("rootAddress");
@@ -21,16 +21,21 @@ const Table = ({
   const [arabicWords, setArabicWords] = useState([]);
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const data = await receiveDataFromDjango(address);
       setArabicWords(data); // ✅ Update state with fetched data
+      setLoading(false);
     }
     fetchData();
-  }, []);
+  }, [diacritics]);
   console.log(arabicWords);
   // console.log(selectedColor);
   console.log(method);
   // console.log(page.column);
   // page.column.map((position, index) => console.log(index));
+  if (loading) {
+    return <div className="text-center p-4">লোড হচ্ছে...</div>;
+  }
   return (
     <div
       className={`container mx-auto p-4 ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
