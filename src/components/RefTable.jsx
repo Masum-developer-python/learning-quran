@@ -42,16 +42,13 @@ export default function RefTable({ refData, word }) {
           </tr>
         </thead>
         <tbody key={`tbody`}>
-          {(refData.length==0) && (
-            
-              <tr>
-                <td colSpan={7}
-                  className='font-bangla'
-                >
-                  কুরআন ডেটাবেজে খুজে পাওয়া যায় নি
-                </td>
-              </tr>
-            )}
+          {refData.length == 0 && (
+            <tr>
+              <td colSpan={7} className="font-bangla">
+                কুরআন ডেটাবেজে খুজে পাওয়া যায় নি
+              </td>
+            </tr>
+          )}
           {refData.map((item, index) => (
             <tr key={`${index}trow`} className="h-[90px]">
               <td className="border-2 border-gray-500">{index + 1}</td>
@@ -172,7 +169,13 @@ export default function RefTable({ refData, word }) {
                     }
                   }}
                 >
-                  <BookOpenText className="w-7 h-7 text-red-500" />
+                  <BookOpenText
+                    className={`w-7 h-7 ${
+                      visible[`${item.sura}-${item.aya}-${item.position}`]
+                        ? "text-green-500"
+                        : "text-red-500"
+                    } `}
+                  />
                 </button>
               </td>
 

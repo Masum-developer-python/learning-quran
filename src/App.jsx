@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import Cards from "./pages/LetterCard";
-import Nav from "./components/Nav";
-import Words from "./pages/WordMaker";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   alphabetColorCombinations,
   arabicDiacritics,
   receiveDataFromDjango,
-  // rootAddress,
 } from "./data";
+
+import Nav from "./components/Nav";
+
+import Cards from "./pages/LetterCard";
+import Words from "./pages/WordMaker";
 import Table from "./pages/wordTable";
 import Blog from "./pages/Blog";
 import Home from "./pages/home";
@@ -162,7 +163,12 @@ function App() {
                     <Route
                       key={`${index}0`}
                       path={`/${category.toLowerCase()}`}
-                      element={<Blog selectedColor={selectedColor} />}
+                      element={
+                        <Blog
+                          selectedColor={selectedColor}
+                          diacritics={`${category}`}
+                        />
+                      }
                     />
                     <Route
                       key={`${index}1`}

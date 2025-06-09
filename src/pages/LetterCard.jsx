@@ -18,13 +18,12 @@ function Cards({
   const [postAlphabetDiacriticsUnicode, setPostAlphabetDiacriticsUnicode] =
     useState("");
 
-  let rowIndex = 0;
 
   console.log("LetterCard.jsx");
   console.log(arabicAlphabet);
   return (
     <>
-      <div key={rowIndex} className="flex flex-wrap w-[calc(100%-10px)]
+      <div className="flex flex-wrap w-[calc(100%-10px)]
        space-x-1 p-1 ">
         <div
           className={`font-bangla flex  justify-center items-center 
@@ -60,7 +59,7 @@ function Cards({
             .filter((row) => row.extra != 1)
             .map((item, itemIndex) => (
               <div
-                key={`container-${rowIndex}-${itemIndex}`}
+                key={`container-${itemIndex}`}
                 className=" group flex-grow"
               >
                 <Audio
@@ -68,8 +67,8 @@ function Cards({
                   fileName={`${itemIndex + 1}.mp3`}
                 >
                   <div
-                    key={`item-${rowIndex}-${itemIndex}`}
-                    className={`rtl p-1 py-2 m-auto my-2 w-[150px] md:w-64 ${withHoverChildren ? "":"h-32"} md:h-48
+                    key={`item-${itemIndex}`}
+                    className={`rtl p-1 py-2 m-auto my-2 w-64 h-48
             ${selectedColor.backgroundColor} 
             text-8xl text-center 
             ${selectedColor.textColor} rounded-lg`}
@@ -95,13 +94,13 @@ function Cards({
                       <>
                         <div
                           dir="rtl"
-                          key={`itemNameAr-${rowIndex}-${itemIndex}`}
+                          key={`itemNameAr-${itemIndex}`}
                           className="text-5xl text-right opacity-0 group-hover:opacity-100"
                         >
                           {item.alphabet_name}
                         </div>
                         <div
-                          key={`itemNameBn-${rowIndex}-${itemIndex}`}
+                          key={`itemNameBn-${itemIndex}`}
                           className="text-2xl text-left opacity-0 group-hover:opacity-100"
                         >
                           {item.alphabet_banglaname}
