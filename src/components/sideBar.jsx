@@ -214,7 +214,7 @@ function SideBar({
       )}
       <div className="flex flex-row">
         {isAllDiacritics &&
-          arabicDiacritics["others"].diacritics.map((item, itemIndex) => (
+          arabicDiacritics["sakinah"].diacritics.map((item, itemIndex) => (
             <div key={`item-${rowIndex}-${itemIndex}`}>
               <button
                 key={`item-${rowIndex}-${itemIndex}`}
@@ -240,7 +240,33 @@ function SideBar({
               </button>
             </div>
           ))}
+        {isAllDiacritics &&
+          arabicDiacritics["shaddah"].diacritics.map((item, itemIndex) => (
+            <div key={`item-${rowIndex}-${itemIndex}`}>
+              <button
+                key={`item-${rowIndex}-${itemIndex}`}
+                onClick={() => {
+                  const unicodeValue = item.unicode.slice(2); // Get the Unicode value
+                  setPostAlphabetDiacriticsUnicode(unicodeValue); // Update the postAlphabetDiacriticsUnicode state
 
+                  // Directly use the value of unicodeValue to append to the word
+                  setWord(
+                    (prev) =>
+                      prev + String.fromCodePoint(parseInt(unicodeValue, 16))
+                  );
+                }}
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-20
+          ${selectedColor.backgroundColor} 
+          text-4xl text-center 
+          ${selectedColor.textColor} rounded-lg
+          flex justify-center items-center
+          hover:shadow-2xl focus:outline-none focus:ring-4 `}
+              >
+                {"-" +
+                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+              </button>
+            </div>
+          ))}
         {children && (
           <>
             <div className="flex flex-row">

@@ -203,7 +203,7 @@ export const arabicDiacritics = {
     diacritics: [
       {
         name: "Saakinah",
-        title: "সাকিন",
+        title: "সাকিন যুক্ত বর্ণ",
         symbol: "\u0652", // ـْ
         unicode: "U+0652",
         description: "No vowel (silent letter)",
@@ -360,7 +360,7 @@ export const arabicDiacritics = {
     diacritics: [
       {
         name: "AshShaddah",
-        title: "তাশদীদ",
+        title: "তাশদীদ যুক্ত বর্ণ",
         symbol: "\u0651", // ـّ
         unicode: "U+0651",
         description: "Indicates doubling (gemination)",

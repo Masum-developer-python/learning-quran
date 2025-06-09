@@ -18,7 +18,7 @@ export default function QuranRead({ selectedColor }) {
     .slice(1, -2);
   let rootAddress = localStorage.getItem("rootAddress");
   const fetchQuran = async (sura, aya) => {
-    let url = `${rootAddress}/quran-words/filter_by_sura/?sura=${sura}`;
+    let url = `${rootAddress}quran-words/filter_by_sura/?sura=${sura}`;
     if (aya) {
       url += `&aya=${aya}`;
     }
@@ -54,7 +54,7 @@ export default function QuranRead({ selectedColor }) {
 
   return (
     <div
-      className={`w-[95%] md:w-[80%] mx-auto mt-10 p-4 ${selectedColor.backgroundColor} shadow-lg rounded-xl font-bangla`}
+      className={`w-[80%] mx-auto mt-10 p-4 ${selectedColor.backgroundColor} shadow-lg rounded-xl font-bangla`}
     >
       <h1 className="text-lg md:text-2xl font-bold mb-4 text-center ">কুরআন</h1>
       <div className="flex gap-16">
@@ -101,7 +101,7 @@ export default function QuranRead({ selectedColor }) {
               </label>
               <button
                 type="submit"
-                className="text-sm md:text-2xl w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+                className="text-2xl w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
               >
                 কুরআনের সুরাহ বা আয়াত পড়ুন
               </button>
@@ -149,7 +149,7 @@ export default function QuranRead({ selectedColor }) {
                 console.error("Error fetching data:", error);
               }
             }}
-            className="text-sm md:text-2xl w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+            className="text-2xl w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
           >
             কুরআনের রেফারেন্স খুজুন
           </button>
@@ -161,7 +161,12 @@ export default function QuranRead({ selectedColor }) {
           <pre>{error}</pre>
         </p>
       )}
-      <div className="md:w-[100%]  flex flex-col gap-16 mt-8">
+      <div className="w-[100%]  flex flex-col gap-16 mt-8">
+        {!refData[0] && (
+          <div className=" w-[98%]">
+            কুরআনের ডেটাবেজে পাওয়া যায় নি , অন্য শব্দ / ফরম্যাট দিয়ে খুজুন
+        </div>
+        )}
         {refData[0] && (
           <div className=" w-[98%]">
             <RefTable refData={refData} word={word}></RefTable>

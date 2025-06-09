@@ -134,9 +134,7 @@ export default function ActionBar({
               if (!ref) {
                 console.log("Not found in Quran DB");
               } else {
-                ref.forEach(async (item) => {
-                  console.log(item);
-                });
+                console.log("founded");
                 setRefData(ref); // update your state after data is fetched
                 setRefVisible(true);
                 // ✅ You can do more stuff *after* data is ready here

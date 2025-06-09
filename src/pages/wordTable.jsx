@@ -21,6 +21,7 @@ const Table = ({
   const [arabicWords, setArabicWords] = useState([]);
   useEffect(() => {
     async function fetchData() {
+      console.log("fetching...");
       setLoading(true);
       const data = await receiveDataFromDjango(address);
       setArabicWords(data); // ✅ Update state with fetched data

@@ -102,7 +102,7 @@ function Submenu({
               >
                 {/* Sub-Menu */}
                 {arabicDiacritics[category].diacritics.map((item, index) => (
-                  <div key={index} className="group/sub relative">
+                  <div key={index} className="group/sub relative text-center">
                     <a
                       href={
                         "/" +
@@ -110,7 +110,7 @@ function Submenu({
                         "/" +
                         item.name.toLowerCase()
                       }
-                      className=" py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+                      className="block py-2 px-4 rounded hover:bg-blue-700 transition-colors text-center"
                     >
                       {item.title}
                     </a>
