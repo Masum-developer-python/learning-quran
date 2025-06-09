@@ -1,8 +1,8 @@
 console.log("data.js");
 export const rootAddresses = [
   "https://growwithquran.xyz/",
-  "https://rmn30654.pythonanywhere.com/",
-  "http://localhost:8000/",
+  // "https://rmn30654.pythonanywhere.com/",
+  // "http://localhost:8000/",
 ];
 export const fileLocation = "/";
 export async function selectAliveRootAddress() {
