@@ -162,12 +162,7 @@ export default function QuranRead({ selectedColor }) {
         </p>
       )}
       <div className="w-[100%]  flex flex-col gap-16 mt-8">
-        {!refData[0] && (
-          <div className=" w-[98%]">
-            কুরআনের ডেটাবেজে পাওয়া যায় নি , অন্য শব্দ / ফরম্যাট দিয়ে খুজুন
-        </div>
-        )}
-        {refData[0] && (
+        { (
           <div className=" w-[98%]">
             <RefTable refData={refData} word={word}></RefTable>
           </div>

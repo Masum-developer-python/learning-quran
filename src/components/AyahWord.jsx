@@ -54,6 +54,8 @@ export default function AyahWord({
             <br />
           </>
         )}
+
+
         {data[0] &&
           data.map((i) => (
             <>
