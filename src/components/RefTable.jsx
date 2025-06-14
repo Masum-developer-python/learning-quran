@@ -1,5 +1,5 @@
 import { BookOpenText, CirclePlay } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { receiveDataFromDjango } from "../data";
 import Audio from "./Audio";
 import AyahWord from "./AyahWord";
@@ -13,9 +13,27 @@ export default function RefTable({ refData, word }) {
   const rootAddress = localStorage.getItem("rootAddress");
   const [ayah, setAyah] = useState({});
   const [visible, setVisible] = useState({});
+  const [surahList, setSurahList] = useState(null);
   async () => {
     console.log("function");
   };
+  useEffect(() => {
+      // Fetch the surah list when the component mounts
+      const fetchSurahList = async () => {
+        try {
+          const response = await receiveDataFromDjango(rootAddress + "sura");
+          console.log("Surah List: ", response);
+          if (!response || response.length === 0) {
+            throw new Error("No surah data found");
+          }
+          setSurahList(response);
+        } catch (error) {
+          console.error("Error fetching surah list:", error);
+        }
+      };
+  
+      fetchSurahList();
+    }, [rootAddress]);
   // console.log(visible);
   // console.log(ayah);
   return (
@@ -52,9 +70,9 @@ export default function RefTable({ refData, word }) {
           {refData.map((item, index) => (
             <tr key={`${index}trow`} className="h-[90px]">
               <td className="border-2 border-gray-500">{index + 1}</td>
-              <td className="border-2 border-gray-500">
+              <td className="border-2 border-gray-500 font-bangla">
                 <Audio
-                  title={`Surah Audio`}
+                  title={surahList ? "Sura "+surahList[item.sura - 1]?.name+"'s Audio" : item.sura}
                   folder={
                     fileLocation +
                     "audios/sura" +
@@ -64,7 +82,7 @@ export default function RefTable({ refData, word }) {
                   }
                   fileName={item.audio.substring(0, 4) + ".mp3"}
                 >
-                  {item.sura}
+                  {surahList ? surahList[item.sura - 1]?.name_bn.split(' ')[1] : item.sura}
                 </Audio>
               </td>
               <td className="border-2 border-gray-500">

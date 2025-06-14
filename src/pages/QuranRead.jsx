@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import AyahWord from "../components/AyahWord"
+import React, { useState, useEffect } from "react";
+import AyahWord from "../components/AyahWord";
 import RefTable from "../components//RefTable";
 import { receiveDataFromDjango } from "../data";
 export default function QuranRead({ selectedColor }) {
@@ -10,7 +10,7 @@ export default function QuranRead({ selectedColor }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [surahList, setSurahList] = ([]);
+  const [surahList, setSurahList] = useState(null);
   const reciter = localStorage
     .getItem("arabic-app-reciter")
     .split(",")[1]
@@ -48,9 +48,25 @@ export default function QuranRead({ selectedColor }) {
       fetchQuran(sura, aya);
     }
   };
-  let surahListTemp = receiveDataFromDjango(rootAddress+"sura");
-  console.log(surahListTemp, surahList);
-  //setSurahList(surahListTemp);
+
+  useEffect(() => {
+    // Fetch the surah list when the component mounts
+    const fetchSurahList = async () => {
+      try {
+        const response = await receiveDataFromDjango(rootAddress + "sura");
+        console.log("Surah List: ", response);
+        if (!response || response.length === 0) {
+          throw new Error("No surah data found");
+        }
+        setSurahList(response);
+      } catch (error) {
+        console.error("Error fetching surah list:", error);
+      }
+    };
+
+    fetchSurahList();
+  }, [rootAddress]);
+  console.log(sura, aya, surahList);
 
   return (
     <div
@@ -64,36 +80,63 @@ export default function QuranRead({ selectedColor }) {
               <label className="block text-sm font-medium text-gray-700">
                 সূরাহ নং
               </label>
-              {
-                surahList ? (<select>
-                  { surahList.map((sura)=>
-                    <option>
-                      {sura.name}
+              {surahList ? (
+                <select
+                  onChange={(e) => setSura(e.target.value)}
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  <option value="">-- Select Surah --</option>
+                  {surahList.map((sura, index) => (
+                    <option key={index} value={index + 1}>
+                      {sura.name_bn}
                     </option>
-                  )
-  
-                  }
-                </select>):(<input
-                type="number"
-                value={sura}
-                onChange={(e) => setSura(e.target.value)}
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                required
-              />)
-              }
-              
-              
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type="number"
+                  value={sura}
+                  onChange={(e) => setSura(e.target.value)}
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+              )}
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 আয়াত নং (ঐচ্ছিক)
               </label>
-              <input
+              {/* <input
                 type="number"
                 value={aya}
                 onChange={(e) => setAya(e.target.value)}
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-              />
+              /> */}
+
+              {sura ? (
+                <select
+                  onChange={(e) => setAya(e.target.value)}
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  <option value="">-- Select Ayah --</option>
+                  {Array.from(
+                    { length: surahList[sura - 1].aya_count },
+                    (_, index) => (
+                      <option key={index} value={index + 1}>
+                        {index + 1}
+                      </option>
+                    )
+                  )}
+                </select>
+              ) : (
+                ''
+              )}
+              <input
+                  type="number"
+                  value={aya}
+                  onChange={(e) => setAya(e.target.value)}
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+                />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -113,6 +156,8 @@ export default function QuranRead({ selectedColor }) {
             শব্দ
           </label>
           <input
+            required
+            placeholder="শব্দ লিখুন"
             type="text"
             value={word}
             onChange={(e) => setWord(e.target.value)}
@@ -162,7 +207,7 @@ export default function QuranRead({ selectedColor }) {
         </p>
       )}
       <div className="w-[100%]  flex flex-col gap-16 mt-8">
-        { (
+        {refData[0] && (
           <div className=" w-[98%]">
             <RefTable refData={refData} word={word}></RefTable>
           </div>

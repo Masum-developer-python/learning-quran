@@ -7,6 +7,10 @@ export default defineConfig({
   base: "/", // Ensure this is correct
   server: {
     port: 2000, // Change this to your desired port
+    watch: {
+      ignored: ['**/public/audios/**']
+    },
+    
   },
   build: {
     outDir: "dist",

@@ -45,7 +45,7 @@ export default function ActionBar({
     .split(":")[1]
     .slice(1, -2);
   // console.log(reciter);
-
+  
   return (
     <>
       {/* actions */}
@@ -84,10 +84,7 @@ export default function ActionBar({
                     }));
                     setAddress(baseAddress + cellId + "/");
                     setMethod("PATCH");
-                    console.log(
-                      baseAddress + cellId + "/",
-                      method
-                    );
+                    console.log(baseAddress + cellId + "/", method);
                   }}
                 >
                   <Pencil className="w-7 h-7 text-blue-500" />
@@ -149,21 +146,22 @@ export default function ActionBar({
 
         {refVisible && (
           <div
-          className={` fixed overflow-y-scroll h-[calc(60%-10px)] w-[90%] md:max-w-[80%]  left-4 md:left-64 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
-        >
-          <button
-            className="w-8 h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
-            onClick={() => {
-              setRefVisible(false);
-            }}
+            className={` fixed overflow-y-scroll h-[calc(60%-10px)] w-[90%] md:max-w-[80%]  left-4 md:left-64 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
           >
-            <SquareX className="w-7 h-7 text-red-900"></SquareX>
-          </button>
-          <div className="">
-            {" "}
-            <RefTable refData={refData} word={word} />
+            <button
+              className="w-8 h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
+              onClick={() => {
+                setRefVisible(false);
+              }}
+            >
+              <SquareX className="w-7 h-7 text-red-900"></SquareX>
+            </button>
+            <div className="">
+              {" "}
+              <RefTable refData={refData} word={word} />
+            </div>
           </div>
-        </div>)}
+        )}
         {/* ref ayah show */}
 
         {/* refference end*/}
@@ -279,21 +277,21 @@ export default function ActionBar({
              flex justify-center items-center
              hover:shadow-2xl focus:outline-none focus:ring-4 `}
                 onClick={async () => {
-                    await sendDataToDjango(
-                      {
-                        diacritics: diacritics,
-                        position: position,
-                        word: sendingWord,
-                        bangla: bangla,
-                        english: english,
-                        parts_of_speech: parts_of_speech,
-                        letter: id,
-                        join_diacritics: pName,
-                        maddah: maddah,
-                      },
-                      address, // endpoint like "words/" etc.
-                      method
-                    );
+                  await sendDataToDjango(
+                    {
+                      diacritics: diacritics,
+                      position: position,
+                      word: sendingWord,
+                      bangla: bangla,
+                      english: english,
+                      parts_of_speech: parts_of_speech,
+                      letter: id,
+                      join_diacritics: pName,
+                      maddah: maddah,
+                    },
+                    address, // endpoint like "words/" etc.
+                    method
+                  );
                 }}
               >
                 <Save className="w-8 h-8 text-blue-500" />

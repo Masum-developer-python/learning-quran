@@ -86,8 +86,9 @@ export default function AyahWord({
                   )}
                 </Audio>
               ) : ayaAudio ? (
+                <>
                 <Audio
-                  title={`${i.aya}-Ayah Audio`}
+                  title={i.translation_bn}
                   folder={
                     fileLocation +
                     "audios/sura/" +
@@ -102,6 +103,12 @@ export default function AyahWord({
                     ".mp3"
                   }
                 />
+                {/* <br/>
+                <span className="font-bangla text-sm">
+                {i.translation_bn}
+                </span>
+                <br/> */}
+                </>
               ) : (
                 <>۞
                 <br/>
