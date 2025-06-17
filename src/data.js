@@ -155,7 +155,7 @@ export const arabicDiacritics = {
         title: "যবর",
         symbol: "\u064E", // ـَ
         unicode: "U+064E",
-        description: "Short 'a' sound",
+        indication : [], //"Short 'a' sound",
         pages: [
           {
             name: "Words",
@@ -170,7 +170,7 @@ export const arabicDiacritics = {
         title: "যের",
         symbol: "\u0650", // ـِ
         unicode: "U+0650",
-        description: "Short 'i' sound",
+        indication : [], //"Short 'i' sound",
         pages: [
           {
             name: "Words",
@@ -185,7 +185,7 @@ export const arabicDiacritics = {
         title: "পেশ",
         symbol: "\u064F", // ـُ
         unicode: "U+064F",
-        description: "Short 'u' sound",
+        indication : [], //"Short 'u' sound",
         pages: [
           {
             name: "Words",
@@ -206,7 +206,7 @@ export const arabicDiacritics = {
         title: "সাকিন যুক্ত বর্ণ",
         symbol: "\u0652", // ـْ
         unicode: "U+0652",
-        description: "No vowel (silent letter)",
+        indication : [], //"No vowel (silent letter)",
         pages: [
           {
             name: "Words",
@@ -216,41 +216,6 @@ export const arabicDiacritics = {
           },
         ],
       },
-      // {
-      //   name: "AshShaddah",
-      //   title: "তাশদীদ",
-      //   symbol: "\u0651", // ـّ
-      //   unicode: "U+0651",
-      //   description: "Indicates doubling (gemination)",
-      //   pages: [
-      //     {
-      //       name: "Words_harakat",
-      //       title: "তাশদীদ এবং হারকাত যুক্ত শব্দ",
-      //       column: ["দ্বাম্মাহ এর সাথে", "কাসরাহ এর সাথে", "ফাতহাহ এর সাথে"],
-      //       columnEn: ["end", "middle", "start"],
-      //     },
-      //     {
-      //       name: "Words_tanween",
-      //       title: "তাশদীদ এবং তানভীন যুক্ত শব্দ",
-      //       column: [
-      //         "দ্বাম্মাহ তানভীনের সাথে",
-      //         "কাসরাহ তানভীনের সাথে",
-      //         "ফাতহাহ তানভীনের সাথে",
-      //       ],
-      //       columnEn: ["end", "middle", "start"],
-      //     },
-      //     {
-      //       name: "Words_madd",
-      //       title: "তাশদীদ এবং মাদ্দ যুক্ত শব্দ",
-      //       column: [
-      //         "ওয়াও মাদ্দ এর সাথে",
-      //         "ইয়া মাদ্দ এর সাথে",
-      //         "আলিফ মাদ্দ এর সাথে",
-      //       ],
-      //       columnEn: ["end", "middle", "start"],
-      //     },
-      //   ],
-      // },
     ],
   },
 
@@ -262,7 +227,8 @@ export const arabicDiacritics = {
         title: "দুই যবর",
         symbol: "\u064B", // ـً
         unicode: "U+064B",
-        description: "Indicates 'an' sound (tanween)",
+        indication : ["U+064E","U+0646","U+0652"], // Represents 'an' sound (tanween)
+        // "Indicates 'an' sound (tanween)",
         pages: [
           {
             name: "Words",
@@ -277,7 +243,8 @@ export const arabicDiacritics = {
         title: "দুই যের",
         symbol: "\u064D", // ـٍ
         unicode: "U+064D",
-        description: "Indicates 'in' sound (tanween)",
+        indication : ["U+0650","U+0646","U+0652"], // Represents 'in' sound (tanween)
+        // "Indicates 'in' sound (tanween)",
         pages: [
           {
             name: "Words",
@@ -292,7 +259,8 @@ export const arabicDiacritics = {
         title: "দুই পেশ",
         symbol: "\u064C", // ـٌ
         unicode: "U+064C",
-        description: "Indicates 'un' sound (tanween)",
+        indication : ["U+064F","U+0646","U+0652"], // Represents 'un' sound (tanween)
+        // "Indicates 'un' sound (tanween)",
         pages: [
           {
             name: "Words",
@@ -312,7 +280,7 @@ export const arabicDiacritics = {
         title: "আলিফ মদ / খাড়া যবর",
         symbol: "\u0657", // ـٰ
         unicode: "U+0670",
-        description: "Represents a prolonged vowel sound",
+        indication : ["U+064E","U+0627","U+200B"], //"Represents a prolonged vowel sound",
         pages: [
           {
             name: "Words",
@@ -327,7 +295,7 @@ export const arabicDiacritics = {
         title: "ইয়া মদ / খাড়া যের",
         symbol: "\u0656", // ـٰ
         unicode: "U+0656",
-        description: "Represents a prolonged vowel sound",
+        indication : ["U+0650","U+064A","U+0652"], //"Represents a prolonged vowel sound",
         pages: [
           {
             name: "Words",
@@ -342,7 +310,7 @@ export const arabicDiacritics = {
         title: "ওয়াও মদ / উল্টা পেশ",
         symbol: "\u0657", // ـٰ
         unicode: "U+0657",
-        description: "Represents a prolonged vowel sound",
+        indication : ["U+064F","U+0648","U+0652"] ,//"Represents a prolonged vowel sound",
         pages: [
           {
             name: "Words",
@@ -363,7 +331,7 @@ export const arabicDiacritics = {
         title: "তাশদীদ যুক্ত বর্ণ",
         symbol: "\u0651", // ـّ
         unicode: "U+0651",
-        description: "Indicates doubling (gemination)",
+        indication : ["U+0652"], //"Indicates doubling (gemination)",
         pages: [
           {
             name: "Words_harakat",

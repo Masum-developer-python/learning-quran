@@ -15,14 +15,8 @@ function Submenu({
   setSelectedReciter,
   reciterList,
 }) {
-  const width = window.innerWidth;
-  const isMobile = width < 640;
-  const isTablet = width >= 640 && width < 1024;
-  const isDesktop = width >= 1024;
-
   const [openCategories, setOpenCategories] = useState({});
   const [openSubCategories, setOpenSubCategories] = useState({});
-  const submenuRefs = useRef({});
 
   const toggleCategory = (category) => {
     setOpenCategories((prev) => {
@@ -57,47 +51,43 @@ function Submenu({
   };
   return (
     <ul
-      className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal 
+      className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal text-2xl
         ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
     >
       {Object.keys(arabicDiacritics).map((category, index) => (
         <>
-        <li key={index} className="relative">
-          <hr />
-          <br />
-          <br />
-          {/* Category Name */}
-          <a
-            className=" px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition 
+          <li key={index} className="relative">
+            <hr />
+            <br />
+            <br />
+            {/* Category Name */}
+            <a
+              className=" px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition 
             duration-1000"
-            href={"/" + category.toLowerCase()}
-          >
-            {arabicDiacritics[category].title}
-          </a>
-
-          {arabicDiacritics[category]?.diacritics?.length > 0 && (
-            <button
-              onClick={() => {
-                toggleCategory(category);
-              }}
-              className=" py-2"
+              href={"/" + category.toLowerCase()}
             >
-              {openCategories[category] ? "▾" : "◂"}
-            </button>
-          )}
+              {arabicDiacritics[category].title}
+            </a>
+
+            {arabicDiacritics[category]?.diacritics?.length > 0 && (
+              <button
+                onClick={() => {
+                  toggleCategory(category);
+                }}
+                className=" py-2"
+              >
+                {openCategories[category] ? "▾" : "◂"}
+              </button>
+            )}
           </li>
 
-          
-          {(openCategories[category]) &&
+          {openCategories[category] &&
             arabicDiacritics[category].diacritics && (
-              
               <div
-              className={` ${
-                openCategories[category] ? "" : "hidden"
-              }
+                className={` ${openCategories[category] ? "" : "hidden"}
                mt-2 w-full ${selectedColor.backgroundColor} ${
-                selectedColor.textColor
-              } 
+                  selectedColor.textColor
+                } 
               rounded shadow-lg`}
               >
                 {/* Sub-Menu */}
@@ -115,24 +105,20 @@ function Submenu({
                       {item.title}
                     </a>
 
-                    
-                      <button
-                        onClick={() => {
-                          toggleSubCategory(item.name);
-                        }}
-                        className="px-4 py-2"
-                      >
-                        {openSubCategories[item.name] ? "▾" : "◂"}
-                      </button>
-                    
-                    {(openSubCategories[item.name]) &&
-                      item.pages && (
-                        <li>
+                    <button
+                      onClick={() => {
+                        toggleSubCategory(item.name);
+                      }}
+                      className="px-4 py-2"
+                    >
+                      {openSubCategories[item.name] ? "▾" : "◂"}
+                    </button>
+
+                    {openSubCategories[item.name] && item.pages && (
+                      <li>
                         <div
                           className={` top-0 m-2 w-full rounded shadow-lg
-                            ${
-                              openSubCategories[item.name] ? "" : "hidden"
-                            } 
+                            ${openSubCategories[item.name] ? "" : "hidden"} 
                             ${selectedColor.backgroundColor} ${
                             selectedColor.textColor
                           } 
@@ -155,7 +141,7 @@ function Submenu({
                           ))}
                         </div>
                       </li>
-                      )}
+                    )}
                   </div>
                 ))}
               </div>
@@ -163,7 +149,6 @@ function Submenu({
           <br />
           <br />
           <hr />
-        
         </>
       ))}
       <li key={"123"} className="group">

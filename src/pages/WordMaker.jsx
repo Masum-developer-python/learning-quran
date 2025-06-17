@@ -5,7 +5,9 @@ function Words({
   selectedColor,
   width = "100px",
   sendingWord,
-  setSendingWord,
+  setSendingWord = (() => {
+    sendingWord = newWord;
+  }),
   arabicAlphabet,
   children,
 }) {

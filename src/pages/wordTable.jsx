@@ -65,7 +65,7 @@ const Table = ({
             .filter((letter) => letter.extra != 1)
             .map((letter, letterIndex) => (
               <>
-                <tr key={letterIndex} className={"bg-red"}>
+                <tr key={letterIndex} className="font-akber">
                   {page.column.map(
                     (position, index) =>
                       position != "" && (

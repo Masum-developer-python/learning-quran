@@ -26,7 +26,7 @@ function SideBar({
   //console.log(alphabetColorCombinations);
   let rowIndex = 0;
   return (
-    <div key={rowIndex} className="font-bangla">
+    <div key={rowIndex} className="font-amiri">
       {!isAllDiacritics && (
         <div className="flex flex-row-reverse relative px-56">
           {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
@@ -42,7 +42,8 @@ function SideBar({
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4 `}
             >
-              {"-" + String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+              <span className="text-5xl font-bangla">-</span>
+              {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
             </button>
           ))}
         </div>
@@ -128,7 +129,7 @@ function SideBar({
       </div>
       {(isSaddah || isAllDiacritics) && (
         <>
-          <div className="flex flex-row-reverse relative">
+          <div className="flex flex-row-reverse relative font-saudi">
             {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
               <button
                 key={`item-${rowIndex}-${itemIndex}`}
@@ -149,8 +150,8 @@ function SideBar({
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4`}
               >
-                {"-" +
-                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+                <span className="text-5xl font-bangla">-</span>
+                {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
             {/* </div>
@@ -177,8 +178,8 @@ function SideBar({
           ${itemIndex == 2 ? "font-akber" : ""}
           `}
               >
-                {"-" +
-                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+                <span className="text-5xl font-bangla">-</span>
+                {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
             {/* </div>
@@ -205,8 +206,8 @@ function SideBar({
           
           `}
               >
-                {"-" +
-                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+                <span className="text-5xl font-bangla">-</span>
+                {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
           </div>
@@ -235,8 +236,8 @@ function SideBar({
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4 `}
               >
-                {"-" +
-                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+                <span className="text-5xl font-bangla">-</span>
+                {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             </div>
           ))}
@@ -262,8 +263,8 @@ function SideBar({
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4 `}
               >
-                {"-" +
-                  String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
+                <span className="text-5xl font-bangla">-</span>
+                {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             </div>
           ))}

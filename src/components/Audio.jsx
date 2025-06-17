@@ -7,6 +7,7 @@ export default function Audio({ folder, fileName, children, title="click me" }) 
     <>
       <button 
         title={title}
+        className="w-full"
         onClick={() => {
           console.log(folder+fileName);
           document.getElementById("Audio").src = folder + fileName;

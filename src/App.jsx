@@ -92,8 +92,8 @@ function App() {
   }, [selectedReciter]);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="flex flex-1 w-[calc(100%-50px)] m-auto ">
+    <div className="min-h-screen flex flex-col">
+      <div className="flex flex-1 w-[100%] h-full mb-10">
         <Nav
           selectedColor={selectedColor}
           selectedTheme={selectedTheme}
@@ -104,124 +104,134 @@ function App() {
           setSelectedReciter={setSelectedReciter}
           reciterList={reciterList}
         />
-        <Router>
-          <main className="flex-1 flex max-w-full">
-            <Routes>
-              <Route path="/home" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
+        <div className="flex-1 fixed left-40 top-0 bottom-12 right-0 overflow-y-auto">
+          <Router>
+            <main className=" flex w-[calc(100%-10px)] pb-4">
+              <Routes>
+                <Route path="/home" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
 
-              <Route
-                path="/quran"
-                element={<QuranRead selectedColor={selectedColor} />}
-              />
-              <Route
-                key={10}
-                path={`/`}
-                element={
-                  <Cards
-                    selectedColor={selectedColor}
-                    withHoverChildren={true}
-                    arabicAlphabet={arabicAlphabet}
-                  />
-                }
-              />
-              <Route
-                key={0}
-                path={`/letter`}
-                element={
-                  <Cards
-                    selectedColor={selectedColor}
-                    withHoverChildren={true}
-                    arabicAlphabet={arabicAlphabet}
-                  />
-                }
-              />
-              <Route
-                key={1}
-                path={`/tables`}
-                element={
-                  <Table
-                    selectedColor={selectedColor}
-                    arabicAlphabet={arabicAlphabet}
-                  />
-                }
-              />
-              <Route
-                key={2}
-                path={`/words`}
-                element={
-                  <Words
-                    selectedColor={selectedColor}
-                    arabicAlphabet={arabicAlphabet}
-                  />
-                }
-              />
-              {Object.keys(arabicDiacritics).map((category) =>
-                arabicDiacritics[category].diacritics.map((route, index) => (
-                  <>
-                    <Route
-                      key={`${index}0`}
-                      path={`/${category.toLowerCase()}`}
-                      element={
-                        <Blog
-                          selectedColor={selectedColor}
-                          diacritics={`${category}`}
-                        />
-                      }
+                <Route
+                  path="/quran"
+                  element={<QuranRead selectedColor={selectedColor} />}
+                />
+                <Route
+                  key={10}
+                  path={`/`}
+                  element={
+                    <Cards
+                      selectedColor={selectedColor}
+                      withHoverChildren={true}
+                      arabicAlphabet={arabicAlphabet}
                     />
-                    <Route
-                      key={`${index}1`}
-                      path={`/${category.toLowerCase()}/${route.name.toLowerCase()}`}
-                      element={
-                        <Cards
-                          arabicAlphabet={arabicAlphabet}
-                          selectedColor={selectedColor}
-                          arabicAlphabetDiacritics={route.unicode.slice(2)}
-                          withNames={route.withNames}
-                          title={route.title}
-                          isSaakinah={
-                            route.name.toLowerCase() === "ashshaddah" ||
-                            route.name.toLowerCase() === "saakinah"
-                          }
-                          isSaddah={route.name.toLowerCase() === "ashshaddah"}
-                          audioFolder={`/${category.toLowerCase()}/${route.name.toLowerCase()}`}
-                        />
-                      }
+                  }
+                />
+                <Route
+                  key={0}
+                  path={`/letter`}
+                  element={
+                    <Cards
+                      selectedColor={selectedColor}
+                      withHoverChildren={true}
+                      arabicAlphabet={arabicAlphabet}
                     />
-                    {(route.pages || []).map((page, pageIndex) => (
+                  }
+                />
+                <Route
+                  key={1}
+                  path={`/tables`}
+                  element={
+                    <Table
+                      selectedColor={selectedColor}
+                      arabicAlphabet={arabicAlphabet}
+                    />
+                  }
+                />
+                <Route
+                  key={2}
+                  path={`/words`}
+                  element={
+                    <Words
+                      selectedColor={selectedColor}
+                      arabicAlphabet={arabicAlphabet}
+                    />
+                  }
+                />
+                {Object.keys(arabicDiacritics).map((category) =>
+                  arabicDiacritics[category].diacritics.map((route, index) => (
+                    <>
                       <Route
-                        key={`${category}-${index}-${pageIndex}-page`}
-                        path={`/${category.toLowerCase()}/${route.name.toLowerCase()}${page.name.toLowerCase()}`}
+                        key={`${index}0`}
+                        path={`/${category.toLowerCase()}`}
                         element={
-                          <Table
-                            arabicAlphabet={arabicAlphabet}
+                          <Blog
                             selectedColor={selectedColor}
-                            title={page.title}
-                            diacritics={route.name.toLowerCase()}
-                            arabicAlphabetDiacritics={route.unicode.slice(2)}
-                            tableColumn={page.column}
-                            page={page}
+                            diacritics={`${category}`}
                           />
                         }
                       />
-                    ))}
-                  </>
-                ))
-              )}
-            </Routes>
-          </main>
-        </Router>
+                      <Route
+                        key={`${index}1`}
+                        path={`/${category.toLowerCase()}/${route.name.toLowerCase()}`}
+                        element={
+                          <Cards
+                            arabicAlphabet={arabicAlphabet}
+                            selectedColor={selectedColor}
+                            diacritics={route}
+                            arabicAlphabetDiacritics={route.unicode.slice(2)}
+                            withNames={route.withNames}
+                            title={route.title}
+                            isSaakinah={
+                              route.name.toLowerCase() === "ashshaddah" ||
+                              route.name.toLowerCase() === "saakinah"
+                            }
+                            isSaddah={route.name.toLowerCase() === "ashshaddah"}
+                            audioFolder={`/${category.toLowerCase()}/${route.name.toLowerCase()}`}
+                          />
+                        }
+                      />
+                      {(route.pages || []).map((page, pageIndex) => (
+                        <Route
+                          key={`${category}-${index}-${pageIndex}-page`}
+                          path={`/${category.toLowerCase()}/${route.name.toLowerCase()}${page.name.toLowerCase()}`}
+                          element={
+                            <Table
+                              arabicAlphabet={arabicAlphabet}
+                              selectedColor={selectedColor}
+                              title={page.title}
+                              diacritics={route.name.toLowerCase()}
+                              arabicAlphabetDiacritics={route.unicode.slice(2)}
+                              tableColumn={page.column}
+                              page={page}
+                            />
+                          }
+                        />
+                      ))}
+                    </>
+                  ))
+                )}
+              </Routes>
+            </main>
+          </Router>
+        </div>
       </div>
-      <footer className="h-[50px]  text-center font-sans text-[#555] border-t border-[#eaeaea] w-full text-base mt-auto">
+      <footer
+        className="h-12 relative w-[calc(100%-150px)] left-40 flex items-center justify-center text-center font-sans
+        text-[#555] border-t border-[#eaeaea] text-base rounded-lg"
+      >
         Al Quran Learning | Developed by{" "}
         <strong>
           Masum @{" "}
-          <em>
-            <span>R</span>
-            <span>A</span>
-            <span>R</span>
-          </em>{" "}
+          <button title="Rufaidah" className="text-green-500">
+            <em>R </em>
+          </button>
+          <button title="Ataullah" className="text-red-500">
+            <em>A </em>
+          </button>
+          <button title="Rukaiyah" className="text-green-500">
+            <em>R</em>
+          </button>{" "}
           E Academy
         </strong>
       </footer>

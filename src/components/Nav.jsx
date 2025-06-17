@@ -15,15 +15,15 @@ function Nav({
   return (
     <>
       
-      <div
-        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-4 h-screen 
+      {/* <div
+        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-4 h-[50px] 
          mt-16`}
-      ></div>
+      ></div> */}
       {/* Navbar */}
       <nav
         id="vertical-menu"
         className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 
-        fixed h-[calc(100vh-50px)] overflow-y-scroll block mt-0`}
+        fixed left-6 h-[calc(100vh-5px)] overflow-y-scroll mt-0`}
       >
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
         <Submenu
