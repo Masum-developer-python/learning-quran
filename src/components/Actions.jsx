@@ -57,7 +57,7 @@ export default function ActionBar({
                 {/* Delete */}
                 <button
                   title="Delete"
-                  className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
+                  className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
                   onClick={async () => {
                     setMethod("DELETE");
                     console.log(address, method);
@@ -68,13 +68,13 @@ export default function ActionBar({
                     );
                   }}
                 >
-                  <Eraser className="w-7 h-7 text-red-500" />
+                  <Eraser className="md:w-7 md:h-7 text-red-500" />
                 </button>
                 {/* ------------------------------------------------------------------------------------------------------------------- */}
                 {/* Edit */}
                 <button
                   title="Edit"
-                  className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-blue-200"
+                  className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-blue-200"
                   onClick={async () => {
                     const key = position + id;
                     setSendingWord(word);
@@ -87,7 +87,7 @@ export default function ActionBar({
                     console.log(baseAddress + cellId + "/", method);
                   }}
                 >
-                  <Pencil className="w-7 h-7 text-blue-500" />
+                  <Pencil className="md:w-7 md:h-7 text-blue-500" />
                 </button>
               </>
             )}
@@ -97,7 +97,7 @@ export default function ActionBar({
                 {/* insert */}
                 <button
                   title="Insert word"
-                  className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-yellow-200"
+                  className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-yellow-200"
                   onClick={async () => {
                     const key = position + id;
                     setVisible((prev) => ({
@@ -109,7 +109,7 @@ export default function ActionBar({
                     console.log(method);
                   }}
                 >
-                  <NotebookPen className="w-7 h-7 text-yellow-500" />
+                  <NotebookPen className="md:w-7 md:h-7 text-yellow-500" />
                 </button>
               </>
             )}
@@ -120,7 +120,7 @@ export default function ActionBar({
         {/* refference start*/}
         <button
           title="Refference"
-          className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-green-200"
+          className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-green-200"
           onClick={async () => {
             console.log(word);
             try {
@@ -141,7 +141,7 @@ export default function ActionBar({
             }
           }}
         >
-          <BookOpen className="w-7 h-7 text-green-500" />
+          <BookOpen className="md:w-7 md:h-7 text-green-500" />
         </button>
 
         {refVisible && (
@@ -149,12 +149,12 @@ export default function ActionBar({
             className={` fixed overflow-y-scroll h-[calc(60%-10px)] w-[90%] md:max-w-[80%]  left-4 md:left-64 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
           >
             <button
-              className="w-8 h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
+              className="md:w-8 md:h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
               onClick={() => {
                 setRefVisible(false);
               }}
             >
-              <SquareX className="w-7 h-7 text-red-900"></SquareX>
+              <SquareX className="md:w-7 md:h-7 text-red-900"></SquareX>
             </button>
             <div className="">
               {" "}
@@ -169,7 +169,7 @@ export default function ActionBar({
         {/* word audio */}
         <button
           title="Word Audio"
-          className="w-8 h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
+          className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
           onClick={async () => {
             try {
               const ref = await receiveDataFromDjango(
@@ -189,7 +189,7 @@ export default function ActionBar({
             }
           }}
         >
-          <CirclePlay className="w-7 h-7 text-red-500" />
+          <CirclePlay className="md:w-7 md:h-7 text-red-500" />
         </button>
         <audio controls id={`${position}${id}Audio`} className="hidden">
           <source src="" type="audio/mpeg" />
@@ -294,7 +294,7 @@ export default function ActionBar({
                   );
                 }}
               >
-                <Save className="w-8 h-8 text-blue-500" />
+                <Save className="md:w-8 md:h-8 text-blue-500" />
               </button>
             </div>
           </Words>

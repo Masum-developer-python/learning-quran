@@ -104,7 +104,7 @@ function App() {
           setSelectedReciter={setSelectedReciter}
           reciterList={reciterList}
         />
-        <div className="flex-1 fixed left-40 top-0 bottom-12 right-0 overflow-y-auto">
+        <div className="flex-1 fixed left-20 md:left-40 top-0 bottom-12 right-0 overflow-y-auto">
           <Router>
             <main className=" flex w-[calc(100%-10px)] pb-4">
               <Routes>
@@ -218,7 +218,7 @@ function App() {
       </div>
       <footer
         className="h-12 relative w-[calc(100%-150px)] left-40 flex items-center justify-center text-center font-sans
-        text-[#555] border-t border-[#eaeaea] text-base rounded-lg"
+        text-[#555] border-t border-[#eaeaea] text-base rounded-lg block"
       >
         Al Quran Learning | Developed by{" "}
         <strong>

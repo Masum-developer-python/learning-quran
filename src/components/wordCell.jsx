@@ -34,7 +34,7 @@ export default function WordCell({
     //console.log(cellId);
   return (
     <td
-      className={`py-1 md:py-2 px-2 md:px-4 border border-gray-300 text-5xl md:text-8xl text-center
+      className={`py-1 md:py-2 px-1 md:px-4 border border-gray-300 text-4xl md:text-8xl text-center
            s       ${word ? selectedColor.textColor : selectedColor.textColor}
                   `}
     >

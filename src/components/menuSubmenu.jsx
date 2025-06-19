@@ -51,7 +51,7 @@ function Submenu({
   };
   return (
     <ul
-      className={`font-bangla w-24 relative h-full text-center break-words whitespace-normal text-2xl
+      className={`font-bangla w-12 md:w-24 text-xs md:text-2xl relative h-full text-center break-words whitespace-normal 
         ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
     >
       {Object.keys(arabicDiacritics).map((category, index) => (
@@ -62,7 +62,7 @@ function Submenu({
             <br />
             {/* Category Name */}
             <a
-              className=" px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition 
+              className=" px-2 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition 
             duration-1000"
               href={"/" + category.toLowerCase()}
             >

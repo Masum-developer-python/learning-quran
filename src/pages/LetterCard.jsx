@@ -49,7 +49,7 @@ function Cards({
           </span>
         </div>
         {isSaakinah && (
-          <div className="relative left-96 font-akber">
+          <div className="relative p-10  left-[20%] font-akber">
             <SideBar
               selectedColor={selectedColor}
               preAlphabetDiacriticsUnicode={preAlphabetDiacriticsUnicode}
@@ -71,7 +71,7 @@ function Cards({
             .map((item, itemIndex) => (
               <div key={`container-${itemIndex}`} className=" group flex-grow 
               m-1 p-1
-              w-full sm:w-1/2 md:w-1/4 lg:w-1/5 xl:w-[14%] 2xl:w-[14%]
+              w-[90%] sm:w-[40%] md:w-[30%] lg:w-[20%] xl:w-[15%] 2xl:w-[13%]
              ">
                 <Audio
                   folder={`${fileLocation}audios/alphabets${audioFolder}/`}
@@ -79,8 +79,8 @@ function Cards({
                 >
                   <div
                     key={`item-${itemIndex}`}
-                    className={`rtl p-10 m-1 box-border w-[calc(100%-10px)] max-w-[200px]
-                      aspect-square
+                    className={`rtl p-10 m-1 box-border w-[calc(90%)] max-w-[250px]
+                      aspect-square md:aspect-[3/4]
                       ${selectedColor.backgroundColor} 
                       text-8xl text-center 
                       ${selectedColor.textColor} rounded-lg 
@@ -97,7 +97,8 @@ function Cards({
                     {diacritics
                       ? itemIndex !== 0
                         ? `${item.alphabet}`
-                        : `${arabicAlphabet[28].alphabet}`
+                        : diacritics.name.includes("Fatha") || diacritics.name.includes("Dhammah") ? `${arabicAlphabet[35].alphabet}`: diacritics.name.includes("Kasrah") ?`${arabicAlphabet[32].alphabet}` 
+                        : `${arabicAlphabet[34].alphabet}`
                       : `${item.alphabet}`}
 
                     {arabicAlphabetDiacritics &&
@@ -111,7 +112,7 @@ function Cards({
                     {item.post_alphabet && item.post_alphabet}
                     {diacritics && diacritics.indication.length != 0 && (
                       <span className="text-5xl text-right ">
-                        {" "}
+                        <br />
                         (
                         {diacritics.name === "AshShaddah" &&
                           (preAlphabet ? `${preAlphabet}` : "")}

@@ -39,7 +39,7 @@ const Table = ({
   }
   return (
     <div
-      className={`container mx-auto p-4 ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
+      className={`container p-1 md:mx-auto md:p-4 ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
     >
       <h1 className={`text-2xl font-bold mb-4 text-center font-bangla`}>
         {page.title}
@@ -82,7 +82,8 @@ const Table = ({
                         />
                       )
                   )}
-                  <td className="py-2 px-4 border-t border-gray-300 text-8xl text-center ">
+                  <td className="py-2 px-4 border-t border-gray-300  text-4xl 
+                  md:text-8xl text-center ">
                     {letter.alphabet}
                     {String.fromCodePoint(
                       parseInt(arabicAlphabetDiacritics, 16)

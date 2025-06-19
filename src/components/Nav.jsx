@@ -22,8 +22,8 @@ function Nav({
       {/* Navbar */}
       <nav
         id="vertical-menu"
-        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-32  p-2 
-        fixed left-6 h-[calc(100vh-5px)] overflow-y-scroll mt-0`}
+        className={`${selectedColor.backgroundColor} ${selectedColor.textColor} w-16 md:w-32  p-2 
+        fixed left-1 md:left-6 h-[calc(100vh-5px)] overflow-y-scroll mt-0`}
       >
         <div className="text-lg font-bold mb-6">আরবী শেখা</div>
         <Submenu
