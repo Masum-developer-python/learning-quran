@@ -46,7 +46,7 @@ const Table = ({
       </h1>
 
       <table
-        className={`min-w-full border border-gray-300 ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
+        className={`min-w-full container border border-gray-300 ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
       >
         <thead>
           <tr>

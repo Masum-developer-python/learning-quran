@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Draggable from "react-draggable";
+
 import {
   Pencil,
   NotebookPen,
@@ -7,6 +9,7 @@ import {
   Save,
   CirclePlay,
   SquareX,
+  GripHorizontal,
 } from "lucide-react";
 import { sendDataToDjango, receiveDataFromDjango } from "../data";
 import Words from "../pages/WordMaker";
@@ -45,7 +48,7 @@ export default function ActionBar({
     .split(":")[1]
     .slice(1, -2);
   // console.log(reciter);
-  
+
   return (
     <>
       {/* actions */}
@@ -145,22 +148,25 @@ export default function ActionBar({
         </button>
 
         {refVisible && (
-          <div
-            className={` fixed overflow-y-scroll h-[calc(60%-10px)] w-[90%] md:max-w-[80%]  left-4 md:left-64 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
-          >
-            <button
-              className="md:w-8 md:h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
-              onClick={() => {
-                setRefVisible(false);
-              }}
+          <Draggable handle=".drag-handle">
+            <div
+              className={`fixed overflow-y-scroll h-[calc(60%-10px)] w-[90%] md:max-w-[80%]  left-4 md:left-64 top-8 z-5 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
             >
-              <SquareX className="md:w-7 md:h-7 text-red-900"></SquareX>
-            </button>
-            <div className="">
-              {" "}
-              <RefTable refData={refData} word={word} />
+              <button
+                className="md:w-8 md:h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
+                onClick={() => {
+                  setRefVisible(false);
+                }}
+              >
+                <SquareX className="md:w-7 md:h-7 text-red-900"></SquareX>
+              </button>
+              <GripHorizontal className="drag-handle block md:w-8 md:h-8 text-gray-500" />
+              <div className="">
+                {" "}
+                <RefTable refData={refData} word={word} />
+              </div>
             </div>
-          </div>
+          </Draggable>
         )}
         {/* ref ayah show */}
 

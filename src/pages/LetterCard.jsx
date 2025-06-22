@@ -71,18 +71,19 @@ function Cards({
             .map((item, itemIndex) => (
               <div key={`container-${itemIndex}`} className=" group flex-grow 
               m-1 p-1
-              w-[90%] sm:w-[40%] md:w-[30%] lg:w-[20%] xl:w-[15%] 2xl:w-[13%]
+              w-[90%] sm:w-[40%] md:w-[30%] lg:w-[24%] xl:w-[19%] 2xl:w-[13%]
              ">
                 <Audio
                   folder={`${fileLocation}audios/alphabets${audioFolder}/`}
                   fileName={`${itemIndex + 1}.mp3`}
+                  card={true}
                 >
                   <div
                     key={`item-${itemIndex}`}
                     className={`rtl p-10 m-1 box-border w-[calc(90%)] max-w-[250px]
                       aspect-square md:aspect-[3/4]
                       ${selectedColor.backgroundColor} 
-                      text-8xl text-center 
+                      text-8xl text-center font-akber
                       ${selectedColor.textColor} rounded-lg 
                       hover:scale-110 hover:border-4 hover:border-solid hover:border-green-500
                       transition-all duration-150 ease-in-out`}
@@ -143,7 +144,7 @@ function Cards({
                         <div
                           dir="rtl"
                           key={`itemNameAr-${itemIndex}`}
-                          className="text-5xl text-right opacity-0 group-hover:opacity-100"
+                          className="text-2xl text-right opacity-0 group-hover:opacity-100"
                         >
                           {item.alphabet_name}
                         </div>

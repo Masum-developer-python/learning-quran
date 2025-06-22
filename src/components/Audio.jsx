@@ -1,5 +1,5 @@
 import { CirclePlay } from "lucide-react";
-export default function Audio({ folder, fileName, children, title="click me" }) {
+export default function Audio({ folder, fileName, children, title="click me", card = false }) {
   // console.log(folder, fileName);
   const selectedcolor = localStorage.getItem("arabic-app-color");
   // console.log(selectedcolor);
@@ -7,7 +7,7 @@ export default function Audio({ folder, fileName, children, title="click me" }) 
     <>
       <button 
         title={title}
-        className="w-full"
+        className={` ${card ? "w-full" : ""}`}
         onClick={() => {
           console.log(folder+fileName);
           document.getElementById("Audio").src = folder + fileName;

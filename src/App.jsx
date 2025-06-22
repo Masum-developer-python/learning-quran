@@ -92,7 +92,7 @@ function App() {
   }, [selectedReciter]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
       <div className="flex flex-1 w-[100%] h-full mb-10">
         <Nav
           selectedColor={selectedColor}
