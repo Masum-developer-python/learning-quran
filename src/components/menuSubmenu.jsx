@@ -68,7 +68,7 @@ function Submenu({
             >
               {arabicDiacritics[category].title}
             </a>
-
+            <br />
             {arabicDiacritics[category]?.diacritics?.length > 0 && (
               <button
                 onClick={() => {
@@ -104,7 +104,8 @@ function Submenu({
                     >
                       {item.title}
                     </a>
-
+                    {/* Sub-Category Toggle Button */}
+                    <br />
                     <button
                       onClick={() => {
                         toggleSubCategory(item.name);
@@ -206,7 +207,7 @@ function Submenu({
         <hr />
       </li>
 
-      <li className="w-24">
+      <li className="">
         <hr />
         <br />
         <br />

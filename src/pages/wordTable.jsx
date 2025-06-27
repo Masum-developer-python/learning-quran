@@ -31,6 +31,7 @@ const Table = ({
   }, [diacritics]);
   console.log(arabicWords);
   // console.log(selectedColor);
+  console.log(diacritics, arabicAlphabet);
   console.log(method);
   // console.log(page.column);
   // page.column.map((position, index) => console.log(index));
@@ -84,7 +85,13 @@ const Table = ({
                   )}
                   <td className="py-2 px-4 border-t border-gray-300  text-4xl 
                   md:text-8xl text-center ">
-                    {letter.alphabet}
+                    {/* {letter.alphabet} */}
+                    {diacritics
+                      ? letterIndex !== 0
+                        ? `${letter.alphabet}`
+                        : diacritics.includes("fatha") || diacritics.includes("dhammah") ? `${arabicAlphabet[35].alphabet}`: diacritics.includes("kasrah") ?`${arabicAlphabet[32].alphabet}` 
+                        : `${arabicAlphabet[34].alphabet}`
+                      : `${letter.alphabet}`}
                     {String.fromCodePoint(
                       parseInt(arabicAlphabetDiacritics, 16)
                     )}

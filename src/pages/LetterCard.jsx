@@ -39,7 +39,7 @@ function Cards({
             <span className="text-3xl font-bangla">{title} </span>
             {arabicAlphabetDiacritics && (
               <>
-                <span className="text-5xl font-amiri">
+                <span className="text-5xl font-akber">
                   {String.fromCodePoint(parseInt(arabicAlphabetDiacritics, 16))}
                 </span>
                 <span className="text-5xl font-bangla">-</span>
@@ -80,10 +80,11 @@ function Cards({
                 >
                   <div
                     key={`item-${itemIndex}`}
-                    className={`rtl p-10 m-1 box-border w-[calc(90%)] max-w-[250px]
-                      aspect-square md:aspect-[3/4]
+                    className={`rtl p-10 m-1 box-border w-[calc(90%)] max-w-[250px] 2xl:max-w-[400px]
+                      aspect-square md:aspect-[3/4] 2xl:aspect-[5/5]
                       ${selectedColor.backgroundColor} 
-                      text-8xl text-center font-akber
+                      text-8xl xl:text-9xl 2xl:text-[10rem]
+                       text-center font-akber
                       ${selectedColor.textColor} rounded-lg 
                       hover:scale-110 hover:border-4 hover:border-solid hover:border-green-500
                       transition-all duration-150 ease-in-out`}
