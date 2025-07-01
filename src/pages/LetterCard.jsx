@@ -26,7 +26,7 @@ function Cards({
     <>
       <div
         className="flex flex-wrap w-[calc(100%-10px)]
-       space-x-1 p-1 "
+       space-x-1 p-1 justify-center items-center"
       >
         <div
           className={`flex  justify-center items-center 
@@ -39,7 +39,7 @@ function Cards({
             <span className="text-3xl font-bangla">{title} </span>
             {arabicAlphabetDiacritics && (
               <>
-                <span className="text-5xl font-akber">
+                <span className="text-5xl font-akbar">
                   {String.fromCodePoint(parseInt(arabicAlphabetDiacritics, 16))}
                 </span>
                 <span className="text-5xl font-bangla">-</span>
@@ -49,7 +49,7 @@ function Cards({
           </span>
         </div>
         {isSaakinah && (
-          <div className="relative p-10  left-[20%] font-akber">
+          <div className="w-[100%] font-akber flex justify-center items-center">
             <SideBar
               selectedColor={selectedColor}
               preAlphabetDiacriticsUnicode={preAlphabetDiacriticsUnicode}
@@ -145,8 +145,9 @@ function Cards({
                         <div
                           dir="rtl"
                           key={`itemNameAr-${itemIndex}`}
-                          className="text-2xl text-right opacity-0 group-hover:opacity-100"
+                          className="text-2xl text-right opacity-0 group-hover:opacity-100 pt-16"
                         >
+                          <hr></hr>
                           {item.alphabet_name}
                         </div>
                         <div

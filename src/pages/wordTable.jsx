@@ -40,7 +40,7 @@ const Table = ({
   }
   return (
     <div
-      className={`container p-1 md:mx-auto md:p-4 ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
+      className={`container p-1 lg:mx-auto lg:p-4 ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
     >
       <h1 className={`text-2xl font-bold mb-4 text-center font-bangla`}>
         {page.title}

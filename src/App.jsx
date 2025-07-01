@@ -104,7 +104,7 @@ function App() {
           setSelectedReciter={setSelectedReciter}
           reciterList={reciterList}
         />
-        <div className="flex-1 fixed left-20 md:left-40 top-0 bottom-12 right-0 overflow-y-auto">
+        <div className="flex-1 fixed left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 overflow-y-auto">
           <Router>
             <main className=" flex w-[calc(100%-10px)] pb-4">
               <Routes>

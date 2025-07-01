@@ -11,11 +11,11 @@ function ThemeSelector({ selectedTheme, setSelectedTheme, alphabetColorCombinati
 
   return (
     <>
-      <label className="font-bangla w-8 md:w-16 mb-2 font-xs md:font-small">Select Theme : </label>
+      <label className="font-bangla w-8 md:w-12 lg:w-16 mb-2 font-xs md:font-small">Select Theme : </label>
       <select
         value={selectedTheme.theme}
         onChange={handleThemeChange}
-        className={`w-12 md:w-24 p-1 md:p-2 border-4 hover:border-green-300 rounded font-bangla ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
+        className={`w-12 md:w-16 lg:w-24 p-1 md:p-2 border-4 hover:border-green-300 rounded font-bangla ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
       >
         {alphabetColorCombinations.map((theme) => (
           <option key={theme.theme} value={theme.theme}>

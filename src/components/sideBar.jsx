@@ -26,9 +26,12 @@ function SideBar({
   //console.log(alphabetColorCombinations);
   let rowIndex = 0;
   return (
-    <div key={rowIndex} className="font-amiri">
+    <div
+      key={rowIndex}
+      className="font-amiri w-[98%] flex flex-col m-auto p-2 justify-center items-center"
+    >
       {!isAllDiacritics && (
-        <div className="flex flex-row-reverse relative px-56">
+        <div className="flex flex-row-reverse flex-wrap justify-center items-center w-[100%]">
           {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
             <button
               key={`item-${rowIndex}-${itemIndex}`}
@@ -42,15 +45,14 @@ function SideBar({
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4 `}
             >
-              <span className="text-5xl font-bangla">-</span>
+              <span className="text-3xl font-bangla">-</span>
               {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
             </button>
           ))}
         </div>
       )}
-
-      <div className="flex flex-row-reverse">
-        {arabicAlphabet.slice(0, 9).map((item, itemIndex) => (
+      <div className="flex flex-row-reverse flex-wrap justify-center items-center w-[100%]">
+        {arabicAlphabet.map((item, itemIndex) => (
           <button
             onClick={() => {
               console.log(item);
@@ -70,66 +72,9 @@ function SideBar({
           </button>
         ))}
       </div>
-      <div className="flex flex-row-reverse">
-        {arabicAlphabet.slice(9, 18).map((item, itemIndex) => (
-          <button
-            onClick={() => {
-              setPreAlphabet(item.alphabet);
-              setWord((prev) => prev + item.alphabet);
-            }}
-            key={`item-${rowIndex}-${itemIndex}`}
-            className={`rtl p-4 m-1 mb-0 h-[50px] w-20
-          ${selectedColor.backgroundColor} 
-          text-xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-          >
-            {item.alphabet}
-          </button>
-        ))}
-      </div>
-      <div className="flex flex-row-reverse">
-        {arabicAlphabet.slice(18, 27).map((item, itemIndex) => (
-          <button
-            onClick={() => {
-              setPreAlphabet(item.alphabet);
-              setWord((prev) => prev + item.alphabet);
-            }}
-            key={`item-${rowIndex}-${itemIndex}`}
-            className={`rtl p-4 m-1 mb-0 h-[50px] w-20
-          ${selectedColor.backgroundColor} 
-          text-xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-          >
-            {item.alphabet}
-          </button>
-        ))}
-      </div>
-      <div className="flex flex-row-reverse">
-        {arabicAlphabet.slice(27).map((item, itemIndex) => (
-          <button
-            onClick={() => {
-              setPreAlphabet(item.alphabet);
-              setWord((prev) => prev + item.alphabet);
-            }}
-            key={`item-${rowIndex}-${itemIndex}`}
-            className={`rtl p-4 m-1 mb-0 h-[50px] w-20
-          ${selectedColor.backgroundColor} 
-          text-xl text-center 
-          ${selectedColor.textColor} rounded-lg
-          flex justify-center items-center
-          hover:shadow-2xl focus:outline-none focus:ring-4 `}
-          >
-            {item.alphabet}
-          </button>
-        ))}
-      </div>
       {(isSaddah || isAllDiacritics) && (
         <>
-          <div className="flex flex-row-reverse relative font-saudi">
+          <div className="flex flex-row-reverse flex-wrap justify-center items-center w-[100%]">
             {arabicDiacritics["Harakat"].diacritics.map((item, itemIndex) => (
               <button
                 key={`item-${rowIndex}-${itemIndex}`}
@@ -150,7 +95,7 @@ function SideBar({
           flex justify-center items-center
           hover:shadow-2xl focus:outline-none focus:ring-4`}
               >
-                <span className="text-5xl font-bangla">-</span>
+                <span className="text-3xl font-bangla">-</span>
                 {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
@@ -178,7 +123,7 @@ function SideBar({
           ${itemIndex == 2 ? "font-akber" : ""}
           `}
               >
-                <span className="text-5xl font-bangla">-</span>
+                <span className="text-3xl font-bangla">-</span>
                 {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
@@ -206,14 +151,14 @@ function SideBar({
           
           `}
               >
-                <span className="text-5xl font-bangla">-</span>
+                <span className="text-3xl font-bangla">-</span>
                 {String.fromCodePoint(parseInt(item.unicode.slice(2), 16))}
               </button>
             ))}
           </div>
         </>
       )}
-      <div className="flex flex-row">
+      <div className="flex flex-row-reverse flex-wrap justify-center items-center w-[100%]">
         {isAllDiacritics &&
           arabicDiacritics["sakinah"].diacritics.map((item, itemIndex) => (
             <div key={`item-${rowIndex}-${itemIndex}`}>
@@ -289,9 +234,7 @@ function SideBar({
                 }}
               ></input>
             </div>
-            <div className="flex flex-row">
-              {children}
-            </div>
+            <div className="flex flex-row">{children}</div>
           </>
         )}
       </div>

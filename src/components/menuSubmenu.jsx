@@ -51,7 +51,7 @@ function Submenu({
   };
   return (
     <ul
-      className={`font-bangla w-12 md:w-24 text-xs md:text-2xl relative h-full text-center break-words whitespace-normal 
+      className={`font-bangla w-12 md:w-20 lg:w-24 text-xs md:text-2xl relative h-full text-center break-words whitespace-normal 
         ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
     >
       {Object.keys(arabicDiacritics).map((category, index) => (
@@ -68,7 +68,7 @@ function Submenu({
             >
               {arabicDiacritics[category].title}
             </a>
-            <br />
+            <hr className="2xl:hidden w-0"/>
             {arabicDiacritics[category]?.diacritics?.length > 0 && (
               <button
                 onClick={() => {
@@ -105,7 +105,7 @@ function Submenu({
                       {item.title}
                     </a>
                     {/* Sub-Category Toggle Button */}
-                    <br />
+                    <hr className="2xl:hidden w-0"/>
                     <button
                       onClick={() => {
                         toggleSubCategory(item.name);
@@ -143,6 +143,7 @@ function Submenu({
                         </div>
                       </li>
                     )}
+                    <hr className="px-2"></hr>
                   </div>
                 ))}
               </div>

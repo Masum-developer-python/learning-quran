@@ -22,12 +22,12 @@ function Words({
       <div
         className={`font-akber ${selectedColor.backgroundColor} 
       text-8xl text-center w-[778px] h-32 rounded-lg m-2 p-1
-      ${selectedColor.textColor} top-0 flex flex-row-reverse `}
+      ${selectedColor.textColor} top-0 flex font-akber w-[50%] m-auto p-2 justify-center items-center `}
       >
-        <div className="text-center w-[50%] ">{word}</div>
-        <div className="text-center w-[50%] ">{sendingWord}</div>
+        <div className="text-right w-[50%] ">{word}</div>
+        <div className="text-right w-[50%] ">{sendingWord}</div>
       </div>
-      <div className="flex font-bangla">
+      <div className="flex font-bangla w-[60%] m-auto p-2 justify-center items-center">
         <SideBar
           isAllDiacritics={true}
           word={word}

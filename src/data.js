@@ -422,17 +422,17 @@ export async function sendDataToDjango(
     }
 
     const response = await fetch(address, options);
-
+    console.log("sendDataToDjango", address, sdata, method,response);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
 
     const result = await response.json();
     console.log("Data sent successfully:", result);
-    location.reload();
   } catch (error) {
     console.error("Error sending data:", error);
   }
+  location.reload();
 }
 
 
