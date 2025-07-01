@@ -211,8 +211,8 @@ export const arabicDiacritics = {
           {
             name: "Words",
             title: "সাকিনযুক্ত শব্দ",
-            column: ["শেষে", "মধ্যে", "শুরুতে"],
-            columnEn: ["end", "middle", "start"],
+            column: ["শেষে", "মধ্যে", ''],
+            columnEn: ["end", "middle", ''],
           },
         ],
       },
