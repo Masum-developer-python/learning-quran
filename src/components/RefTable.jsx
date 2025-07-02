@@ -41,7 +41,7 @@ export default function RefTable({ refData, word }) {
       <table className="text-2xl table-auto border-collapse">
         <caption className="text-left font-bangla bg-white text-green-400 sticky top-0">
           <marquee>
-            সুরা, আয়াত বা শব্দের অডিও শুনতে নাম/সংখ্যা/শব্দের উপর ক্লিক করুন
+            শব্দটি কুরআনে <span className="font-bold text-3xl">{refData.length}</span> বার এসেছে । সুরা, আয়াত বা শব্দের অডিও শুনতে নাম/সংখ্যা/শব্দের উপর ক্লিক করুন । 
           </marquee>
         </caption>
         <thead>
