@@ -208,18 +208,30 @@ export default function ActionBar({
       {/* word maker */}
 
       {visible[`${position}${id}`] && (
-        <div id={`${position}${id}`} className="bg-gray-100 relative">
+        <div id={`${position}${id}`} className="bg-gray-100 relative w-[500px] m-auto p-2 rounded-lg shadow-lg">
           <Words
             selectedColor={selectedColor}
             sendingWord={sendingWord}
             setSendingWord={setSendingWord}
             arabicAlphabet={arabicAlphabet}
           >
-            <div className="flex">
+            <div className="flex flex-col justify-between items-center">
+              <input
+                type="text"
+                placeholder={sendingWord}
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-[1/5]
+              ${selectedColor.backgroundColor} 
+             text-xl text-center 
+             ${selectedColor.textColor} 
+           rounded-lg
+             flex justify-center items-center
+             hover:shadow-2xl focus:outline-none focus:ring-4 `}
+                
+              ></input>
               <input
                 type="text"
                 placeholder="bang"
-                className={`rtl p-4 m-1 mb-0 h-[50px] w-64
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-[1/5]
               ${selectedColor.backgroundColor} 
              text-xl text-center 
              ${selectedColor.textColor} 
@@ -234,7 +246,7 @@ export default function ActionBar({
               <input
                 type="text"
                 placeholder="eng"
-                className={`rtl p-4 m-1 mb-0 h-[50px] w-48
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-[1/5]
               ${selectedColor.backgroundColor} 
              text-xl text-center 
              ${selectedColor.textColor} 
@@ -246,10 +258,11 @@ export default function ActionBar({
                   console.log(english);
                 }}
               ></input>
+
               <input
                 type="text"
                 placeholder="pos"
-                className={`rtl p-4 m-1 mb-0 h-[50px] w-32
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-[1/5]
               ${selectedColor.backgroundColor} 
              text-xl text-center 
              ${selectedColor.textColor} 
@@ -264,7 +277,7 @@ export default function ActionBar({
               <input
                 type="text"
                 placeholder="maddah"
-                className={`rtl p-4 m-1 mb-0 h-[50px] w-28
+                className={`rtl p-4 m-1 mb-0 h-[50px] w-[1/5]
               ${selectedColor.backgroundColor} 
              text-xl text-center 
              ${selectedColor.textColor} 

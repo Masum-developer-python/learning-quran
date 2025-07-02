@@ -30,26 +30,28 @@ function Cards({
       >
         <div
           className={`flex  justify-center items-center 
-            text-center text-2xl relative left-8 w-[calc(100%-25px)] 
-            p-1 h-[50px] rounded-lg ${selectedColor.backgroundColor} 
+            text-center text-lg md:text-2xl relative left-8 w-[calc(100%-25px)] 
+            p-1 h-[75px] md:h-[50px] rounded-lg ${selectedColor.backgroundColor} 
             ${selectedColor.textColor}`}
         >
           <span className="text-center">
-            <span className="text-3xl font-bangla">আরবী বর্ণমালা </span>
-            <span className="text-3xl font-bangla">{title} </span>
+            <span className="text-lg md:text-3xl font-bangla">
+              আরবী বর্ণমালা{" "}
+            </span>
+            <span className="text-lg md:text-3xl font-bangla">{title} </span>
             {arabicAlphabetDiacritics && (
               <>
                 <span className="text-5xl font-akbar">
                   {String.fromCodePoint(parseInt(arabicAlphabetDiacritics, 16))}
                 </span>
                 <span className="text-5xl font-bangla">-</span>
-                <span className="text-3xl font-bangla"> দিয়ে</span>
+                <span className="text-lg md:text-3xl font-bangla"> দিয়ে</span>
               </>
             )}
           </span>
         </div>
         {isSaakinah && (
-          <div className="w-[100%] font-akber flex justify-center items-center">
+          <div className="w-[100%] h-[25vh] overflow-y-scroll font-akber flex justify-center items-center">
             <SideBar
               selectedColor={selectedColor}
               preAlphabetDiacriticsUnicode={preAlphabetDiacriticsUnicode}
@@ -69,10 +71,13 @@ function Cards({
           {arabicAlphabet
             .filter((row) => row.extra != 1)
             .map((item, itemIndex) => (
-              <div key={`container-${itemIndex}`} className=" group flex-grow 
+              <div
+                key={`container-${itemIndex}`}
+                className=" group flex-grow 
               m-1 p-1
               w-[90%] sm:w-[40%] md:w-[30%] lg:w-[24%] xl:w-[19%] 2xl:w-[13%]
-             ">
+             "
+              >
                 <Audio
                   folder={`${fileLocation}audios/alphabets${audioFolder}/`}
                   fileName={`${itemIndex + 1}.mp3`}
@@ -99,7 +104,11 @@ function Cards({
                     {diacritics
                       ? itemIndex !== 0
                         ? `${item.alphabet}`
-                        : diacritics.name.includes("Fatha") || diacritics.name.includes("Dhammah") ? `${arabicAlphabet[35].alphabet}`: diacritics.name.includes("Kasrah") ?`${arabicAlphabet[32].alphabet}` 
+                        : diacritics.name.includes("Fatha") ||
+                          diacritics.name.includes("Dhammah")
+                        ? `${arabicAlphabet[35].alphabet}`
+                        : diacritics.name.includes("Kasrah")
+                        ? `${arabicAlphabet[32].alphabet}`
                         : `${arabicAlphabet[34].alphabet}`
                       : `${item.alphabet}`}
 
@@ -114,8 +123,7 @@ function Cards({
                     {item.post_alphabet && item.post_alphabet}
                     {diacritics && diacritics.indication.length != 0 && (
                       <span className="text-5xl text-right ">
-                        <br />
-                        (
+                        <br />(
                         {diacritics.name === "AshShaddah" &&
                           (preAlphabet ? `${preAlphabet}` : "")}
                         {diacritics.name === "AshShaddah" &&
@@ -132,10 +140,15 @@ function Cards({
                         )}
                         {diacritics.name === "AshShaddah"
                           ? postAlphabetDiacriticsUnicode
-                            ? `${item.alphabet}${String.fromCodePoint(
-                                parseInt(postAlphabetDiacriticsUnicode, 16)
-                              )}`
-                            : `${item.alphabet}`
+                            ? itemIndex !== 0
+                              ? `${item.alphabet}`
+                              : `${arabicAlphabet[34].alphabet}` +
+                                `${String.fromCodePoint(
+                                  parseInt(postAlphabetDiacriticsUnicode, 16)
+                                )}`
+                            : itemIndex !== 0
+                            ? `${item.alphabet}`
+                            : `${arabicAlphabet[34].alphabet}`
                           : ""}
                         )
                       </span>

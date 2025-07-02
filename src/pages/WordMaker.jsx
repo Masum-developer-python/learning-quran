@@ -18,16 +18,15 @@ function Words({
     useState("");
   const [preAlphabet, setPreAlphabet] = useState("");
   return (
-    <div className="flex flex-col m-auto p-8">
+    <div className="flex flex-col m-auto p-2">
       <div
         className={`font-akber ${selectedColor.backgroundColor} 
-      text-8xl text-center w-[778px] h-32 rounded-lg m-2 p-1
-      ${selectedColor.textColor} top-0 flex font-akber w-[50%] m-auto p-2 justify-center items-center `}
+      text-8xl text-center  h-32 rounded-lg m-2 p-1 w-[400px]
+      ${selectedColor.textColor} top-0 flex font-akber  m-auto p-2 justify-center items-center `}
       >
         <div className="text-right w-[50%] ">{word}</div>
-        <div className="text-right w-[50%] ">{sendingWord}</div>
       </div>
-      <div className="flex font-bangla w-[60%] m-auto p-2 justify-center items-center">
+      <div className="flex font-bangla w-[100%] m-auto p-2 justify-center items-center">
         <SideBar
           isAllDiacritics={true}
           word={word}
