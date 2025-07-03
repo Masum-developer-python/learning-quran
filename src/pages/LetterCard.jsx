@@ -30,7 +30,7 @@ function Cards({
       >
         <div
           className={`flex  justify-center items-center 
-            text-center text-lg md:text-2xl relative left-8 w-[calc(100%-25px)] 
+            text-center text-lg md:text-2xl relative left-4 md:left-8 w-[calc(100%-25px)] 
             p-1 h-[75px] md:h-[50px] rounded-lg ${selectedColor.backgroundColor} 
             ${selectedColor.textColor}`}
         >
@@ -67,15 +67,15 @@ function Cards({
             />
           </div>
         )}
-        <div className="flex flex-0 flex-wrap flex-row-reverse w-[100%]  relative left-4 m-2 font-akber">
+        <div className="flex flex-0 flex-wrap flex-row-reverse w-[100%]  relative left-4 m-2 font-akber ">
           {arabicAlphabet
             .filter((row) => row.extra != 1)
             .map((item, itemIndex) => (
               <div
                 key={`container-${itemIndex}`}
                 className=" group flex-grow 
-              m-1 p-1
-              w-[90%] sm:w-[40%] md:w-[30%] lg:w-[24%] xl:w-[19%] 2xl:w-[13%]
+              m-1 p-1 space-x-1
+              w-[45%] sm:w-[40%] md:w-[30%] lg:w-[24%] xl:w-[19%] 2xl:w-[13%]
              "
               >
                 <Audio
@@ -85,7 +85,7 @@ function Cards({
                 >
                   <div
                     key={`item-${itemIndex}`}
-                    className={`rtl p-10 m-1 box-border w-[calc(90%)] max-w-[250px] 2xl:max-w-[400px]
+                    className={`rtl p-2 sm:p-4 md:p-10 m-1 mx-auto box-border max-w-[250px] min-w-[100px] 2xl:max-w-[400px]
                       aspect-square md:aspect-[3/4] 2xl:aspect-[5/5]
                       ${selectedColor.backgroundColor} 
                       text-8xl xl:text-9xl 2xl:text-[10rem]
@@ -158,7 +158,7 @@ function Cards({
                         <div
                           dir="rtl"
                           key={`itemNameAr-${itemIndex}`}
-                          className="text-2xl text-right opacity-0 group-hover:opacity-100 pt-16"
+                          className="text-2xl text-right opacity-0 group-hover:opacity-100 pt-1 sm:pt-4 lg:pt-16"
                         >
                           <hr></hr>
                           {item.alphabet_name}
