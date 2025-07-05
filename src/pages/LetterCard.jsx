@@ -25,12 +25,12 @@ function Cards({
   return (
     <>
       <div
-        className="flex flex-wrap w-[calc(100%-10px)]
+        className="flex flex-col w-[calc(100%-10px)]
        space-x-1 p-1 justify-center items-center"
       >
         <div
           className={`flex  justify-center items-center 
-            text-center text-lg md:text-2xl relative left-4 md:left-8 w-[calc(100%-25px)] 
+            text-center text-lg md:text-2xl  w-[calc(100%-0px)] 
             p-1 h-[75px] md:h-[50px] rounded-lg ${selectedColor.backgroundColor} 
             ${selectedColor.textColor}`}
         >
@@ -67,7 +67,7 @@ function Cards({
             />
           </div>
         )}
-        <div className="flex flex-0 flex-wrap flex-row-reverse w-[100%]  relative left-4 m-2 font-akber ">
+        <div className="flex flex-0 flex-wrap flex-row-reverse w-[100%] font-akber ">
           {arabicAlphabet
             .filter((row) => row.extra != 1)
             .map((item, itemIndex) => (
