@@ -5,15 +5,14 @@ function Words({
   selectedColor,
   width = "100px",
   sendingWord,
-  setSendingWord = (() => {
-    sendingWord = newWord;
-  }),
+  setSendingWord ,
   arabicAlphabet,
   children,
 }) {
   const [word, setWord] = useState("");
   console.log("Words.jsx");
   console.log(word);
+  console.log(sendingWord, setSendingWord);
   const [postAlphabetDiacriticsUnicode, setPostAlphabetDiacriticsUnicode] =
     useState("");
   const [preAlphabet, setPreAlphabet] = useState("");
@@ -84,7 +83,7 @@ function Words({
           >
             {"Delete"}
           </button>
-
+          
           <button
             key={`sub`}
             onClick={() => {

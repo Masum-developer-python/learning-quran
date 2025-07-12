@@ -1,5 +1,5 @@
 import { arabicDiacritics } from "../data";
-import { useState, useRef } from "react";
+import React ,{ useState, useRef } from "react";
 import { UserNavigation } from "./navigations";
 import ThemeSelector from "./ThemeSelector";
 import ColorSelector from "./ColorSelector";
@@ -50,12 +50,12 @@ function Submenu({
     });
   };
   return (
-    <ul
+    <ul key={`vlkzb`}
       className={`font-bangla w-12 md:w-20 lg:w-24 text-xs md:text-2xl relative h-full text-center break-words whitespace-normal 
         ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
     >
       {Object.keys(arabicDiacritics).map((category, index) => (
-        <>
+        <React.Fragment key={category}>
           <li key={index} className="relative">
             <hr />
             <br />
@@ -102,7 +102,7 @@ function Submenu({
                       }
                       className="block py-2 px-4 rounded hover:bg-blue-700 transition-colors text-center"
                     >
-                      {item.title}
+                      {item.title} যুক্ত বর্ণমালা
                     </a>
                     {/* Sub-Category Toggle Button */}
                     <hr className="2xl:hidden w-0"/>
@@ -116,7 +116,7 @@ function Submenu({
                     </button>
 
                     {openSubCategories[item.name] && item.pages && (
-                      <li>
+                      
                         <div
                           className={` top-0 m-2 w-full rounded shadow-lg
                             ${openSubCategories[item.name] ? "" : "hidden"} 
@@ -141,7 +141,7 @@ function Submenu({
                             </a>
                           ))}
                         </div>
-                      </li>
+                      
                     )}
                     <hr className="px-2"></hr>
                   </div>
@@ -151,7 +151,7 @@ function Submenu({
           <br />
           <br />
           <hr />
-        </>
+        </React.Fragment>
       ))}
       <li key={"123"} className="group">
         <hr />
@@ -184,7 +184,7 @@ function Submenu({
         <br />
         <hr />
       </li>
-      <li>
+      <li key={"12345"}>
         <hr />
         <br />
         <br />
@@ -198,7 +198,7 @@ function Submenu({
         <br />
         <hr />
       </li>
-      <li>
+      <li key={"123456"}>
         <hr />
         <br />
         <br />
@@ -208,7 +208,7 @@ function Submenu({
         <hr />
       </li>
 
-      <li className="">
+      <li key={"1234567"}>
         <hr />
         <br />
         <br />

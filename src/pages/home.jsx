@@ -4,12 +4,12 @@ import { rootAddress } from "../data";
 // Define the Login function.
 export default function Home() {
   const [message, setMessage] = useState("0");
-  const user = localStorage.getItem("user");
+  const user = sessionStorage.getItem("user");
   console.log(user);
   useEffect(() => {
-    // Check if the access token exists in localStorage
-    const refreshToken = localStorage.getItem("refresh_token");
-    const accessToken = localStorage.getItem("access_token");
+    // Check if the access token exists in sessionStorage
+    const refreshToken = sessionStorage.getItem("refresh_token");
+    const accessToken = sessionStorage.getItem("access_token");
     console.log(accessToken);
     console.log(refreshToken);
     if (accessToken === null) {
@@ -31,6 +31,7 @@ export default function Home() {
           );
           console.log("Message from server:", data.message); // Log response message
           setMessage(data.message); // Assuming the server response has 'message'
+          window.history.go(-2);
         } catch (e) {
           if (e.response && e.response.status === 401) {
             // Unauthorized: Redirect to login
@@ -40,7 +41,8 @@ export default function Home() {
             console.log("Error:", e);
           }
         }
-      })();
+      }
+    )();
     }
   }, []);
 
@@ -57,11 +59,11 @@ export default function Home() {
 // // Define the Login function.
 // export default function Home() {
 //   const [message, setMessage] = useState("0");
-//   console.log(localStorage.getItem("access_token"));
+//   console.log(sessionStorage.getItem("access_token"));
 
 //   useEffect(() => {
 //     // Redirect to login if there is no access token
-//     if (localStorage.getItem("access_token") === null) {
+//     if (sessionStorage.getItem("access_token") === null) {
 //       window.location.href = "/login";
 //       console.log('access token not found ,redirect to login');
 //     } else {
@@ -73,7 +75,7 @@ export default function Home() {
 //             {
 //               headers: {
 //                 "Content-Type": "application/json",
-//                 Authorization: `Bearer ${localStorage.getItem("access_token")}`, // Send the token here
+//                 Authorization: `Bearer ${sessionStorage.getItem("access_token")}`, // Send the token here
 //               },
 //             }
 //           );

@@ -93,7 +93,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col ">
-      <div className="flex flex-1 w-[100%] h-full mb-10">
+      <div className="flex flex-1 w-[100%] h-full ">
         <Nav
           selectedColor={selectedColor}
           selectedTheme={selectedTheme}
@@ -106,7 +106,7 @@ function App() {
         />
         <div className="flex-1 fixed left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 overflow-y-auto">
           <Router>
-            <main className=" flex w-[calc(100%-10px)] pb-4">
+            <main className=" flex w-[calc(100%-10px)] pb-16 sm:pb-4 md:pb-4 ">
               <Routes>
                 <Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -167,7 +167,7 @@ function App() {
                         element={
                           <Blog
                             selectedColor={selectedColor}
-                            diacritics={`${category}`}
+                            diacritics={arabicDiacritics[category]}
                           />
                         }
                       />
@@ -217,12 +217,12 @@ function App() {
         </div>
       </div>
       <footer
-        className="h-12 relative w-[calc(100%-150px)] left-40 flex items-center justify-center text-center font-sans
-        text-[#555] border-t border-[#eaeaea] text-base rounded-lg block"
+        className="h-auto w-[calc(100%-60px)] mx-auto px-12 flex items-center justify-center text-center font-sans
+        text-[#555] border-t border-[#eaeaea] text-base rounded-lg block z-10"
       >
-        Al Quran Learning | Developed by{" "}
+        Al Quran Learning | Developed by{" "}&nbsp;
         <strong>
-          Masum @{" "}
+          <a href="https://www.facebook.com/rahmatullah.masum/"> Masum </a> @{" "}
           <button title="Rufaidah" className="text-green-500">
             <em>R </em>
           </button>
@@ -232,7 +232,7 @@ function App() {
           <button title="Rukaiyah" className="text-green-500">
             <em>R</em>
           </button>{" "}
-          E Academy
+          e Academy
         </strong>
       </footer>
     </div>

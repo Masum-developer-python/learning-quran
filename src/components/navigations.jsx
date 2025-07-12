@@ -1,9 +1,9 @@
 import React, { useState, useEffect} from 'react';
 export function UserNavigation() {
-   const user = localStorage.getItem("user");
+   const user = sessionStorage.getItem("user");
    const [isAuth, setIsAuth] = useState(false);
    useEffect(() => {
-     if (localStorage.getItem('access_token') !== null) {
+     if (sessionStorage.getItem('access_token') !== null) {
         setIsAuth(true); 
         console.log(isAuth);
       }

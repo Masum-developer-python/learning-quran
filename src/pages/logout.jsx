@@ -5,15 +5,15 @@ const Logout = () => {
   useEffect(() => {
     (async () => {
       try {
-        const refreshToken = localStorage.getItem("refresh_token");
-        const accessToken = localStorage.getItem("access_token");
+        const refreshToken = sessionStorage.getItem("refresh_token");
+        const accessToken = sessionStorage.getItem("access_token");
 
         // If no refresh token or access token, log out immediately
         if (!refreshToken || !accessToken) {
           console.log("No tokens found, logging out immediately.");
-          localStorage.removeItem("access_token");
-          localStorage.removeItem("refresh_token");
-          localStorage.removeItem("user");
+          sessionStorage.removeItem("access_token");
+          sessionStorage.removeItem("refresh_token");
+          sessionStorage.removeItem("user");
           window.location.href = "/login";
           return;
         }
@@ -32,9 +32,9 @@ const Logout = () => {
           const newAccessToken = refreshResponse.data.access;
           const newRefreshToken = refreshResponse.data.refresh;
 
-          // Update the access and refresh tokens in localStorage
-          localStorage.setItem("access_token", newAccessToken);
-          localStorage.setItem("refresh_token", newRefreshToken);
+          // Update the access and refresh tokens in sessionStorage
+          sessionStorage.setItem("access_token", newAccessToken);
+          sessionStorage.setItem("refresh_token", newRefreshToken);
 
           // Now that we have a valid access token, proceed with the logout
           await axios.post(
@@ -52,23 +52,21 @@ const Logout = () => {
           // Log the response for debugging
           console.log("Logout successful.");
 
-          // Clear localStorage and reset axios default Authorization header
-          localStorage.removeItem("access_token");
-          localStorage.removeItem("refresh_token");
-          localStorage.removeItem("user");
+          // Clear sessionStorage and reset axios default Authorization header
+          sessionStorage.removeItem("access_token");
+          sessionStorage.removeItem("refresh_token");
+          sessionStorage.removeItem("user");
           axios.defaults.headers.common["Authorization"] = "";
-
-          // Redirect to login page
-          window.location.href = "/login";
         }
+        
       } catch (e) {
         console.error("Error during logout:", e.response ? e.response.data : e);
         // If refresh failed, handle it and logout anyway
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("refresh_token");
-        localStorage.removeItem("user");
+        sessionStorage.removeItem("access_token");
+        sessionStorage.removeItem("refresh_token");
+        sessionStorage.removeItem("user");
         axios.defaults.headers.common["Authorization"] = "";
-        // window.location.href = "/login";
+        window.history.go(-1);
       }
     })();
   }, []);
@@ -83,9 +81,9 @@ export default Logout;
 
 // const Logout = () => {
 //   useEffect(() => {
-//     // Get the refresh token and access token from localStorage
-//     const refreshToken = localStorage.getItem("refresh_token");
-//     const accessToken = localStorage.getItem("access_token");
+//     // Get the refresh token and access token from sessionStorage
+//     const refreshToken = sessionStorage.getItem("refresh_token");
+//     const accessToken = sessionStorage.getItem("access_token");
 //     console.log(accessToken);
 //     console.log(refreshToken);
 //     (async () => {
@@ -94,7 +92,7 @@ export default Logout;
 //         // If no refresh token or access token, log out immediately
 //         if (!refreshToken || !accessToken) {
 //           console.log("No tokens found, logging out immediately.");
-//           localStorage.clear();
+//           sessionStorage.clear();
 //           window.location.href = "/login";
 //           return;
 //         }
@@ -115,8 +113,8 @@ export default Logout;
 //         // Log the response for debugging
 //         console.log("Logout successful:", response.data);
 
-//         // Clear localStorage and reset axios default Authorization header
-//         localStorage.clear();
+//         // Clear sessionStorage and reset axios default Authorization header
+//         sessionStorage.clear();
 //         axios.defaults.headers.common['Authorization'] = '';
 
 //         // Redirect to login page
@@ -145,12 +143,12 @@ export default Logout;
 // //     // Define an async function for the logout process
 // //     (async () => {
 // //       try {
-// //         // Get the refresh token from localStorage
-// //         const refreshToken = localStorage.getItem("refresh_token");
+// //         // Get the refresh token from sessionStorage
+// //         const refreshToken = sessionStorage.getItem("refresh_token");
 // //         console.log(refreshToken);
 // //         if (!refreshToken) {
 // //           console.log("No refresh token found, logging out immediately.");
-// //           localStorage.clear();
+// //           sessionStorage.clear();
 // //           window.location.href = "/login";
 // //           return;
 // //         }
@@ -170,8 +168,8 @@ export default Logout;
 // //         // Log the response for debugging
 // //         console.log("Logout successful:", response.data);
 
-// //         // Clear localStorage and reset axios default Authorization header
-// //         localStorage.clear();
+// //         // Clear sessionStorage and reset axios default Authorization header
+// //         sessionStorage.clear();
 // //         axios.defaults.headers.common['Authorization'] = '';
 
 // //         // Redirect to login page
@@ -196,12 +194,12 @@ export default Logout;
 // // //     (async () => {
 // // //       try {
 // // //         // Send the logout request with the refresh token
-// // //         const refreshToken = localStorage.getItem("refresh_token");
+// // //         const refreshToken = sessionStorage.getItem("refresh_token");
 // // //         console.log(refreshToken);
 // // //         if (!refreshToken) {
 // // //           // If no refresh token, handle the case where it's missing
 // // //           console.log("No refresh token found, logging out immediately.");
-// // //           localStorage.clear();
+// // //           sessionStorage.clear();
 // // //           window.location.href = "/login";
 // // //           return;
 // // //         }
@@ -218,9 +216,9 @@ export default Logout;
 // // //           }
 // // //         );
 
-// // //         // Log out process successful: clear localStorage and reset headers
+// // //         // Log out process successful: clear sessionStorage and reset headers
 // // //         console.log("Logout successful:", data);
-// // //         localStorage.clear(); // Clear all local storage data
+// // //         sessionStorage.clear(); // Clear all local storage data
 // // //         axios.defaults.headers.common['Authorization'] = ''; // Clear Authorization header
 // // //         window.location.href = "/login"; // Redirect to the login page
 // // //       } catch (e) {
@@ -243,10 +241,10 @@ export default Logout;
 // // // //          try {
 // // // //            const {data} = await
 // // // //                  axios.post(rootAddress + 'logout/',{
-// // // //                  refresh_token:localStorage.getItem('refresh_token')
+// // // //                  refresh_token:sessionStorage.getItem('refresh_token')
 // // // //                  } ,{headers: {'Content-Type': 'application/json'}},
 // // // //                  {withCredentials: true});
-// // // //            localStorage.clear();
+// // // //            sessionStorage.clear();
 // // // //            axios.defaults.headers.common['Authorization'] = null;
 // // // //            window.location.href = '/login'
 // // // //            } catch (e) {

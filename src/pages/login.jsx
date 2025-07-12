@@ -21,14 +21,14 @@ export const Login = () => {
       { headers: { "Content-Type": "application/json" }, withCredentials: true }
     );
 
-    // Initialize the access & refresh token in localstorage.
-    localStorage.removeItem("user");
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    localStorage.setItem("access_token", data.access);
-    localStorage.setItem("refresh_token", data.refresh);
-    console.log(localStorage.getItem('access_token'), localStorage.getItem('refresh_token'))
-    localStorage.setItem("user", user.username);
+    // Initialize the access & refresh token in sessionStorage.
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("access_token");
+    sessionStorage.removeItem("refresh_token");
+    sessionStorage.setItem("access_token", data.access);
+    sessionStorage.setItem("refresh_token", data.refresh);
+    console.log(sessionStorage.getItem('access_token'), sessionStorage.getItem('refresh_token'))
+    sessionStorage.setItem("user", user.username);
 
     axios.defaults.headers.common["Authorization"] = `Bearer ${data["access"]}`;
 

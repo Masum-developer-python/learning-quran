@@ -3,11 +3,15 @@ console.log("data.js");
 export const fileLocation = "/";
 
 export let rootAddress = localStorage.getItem("rootAddress");
-if(localStorage.getItem("rootAddress") === null || localStorage.getItem("rootAddress") === "") {
+if (
+  localStorage.getItem("rootAddress") === null ||
+  localStorage.getItem("rootAddress") === ""
+) {
   rootAddress = "https://rare-academy.xyz/api/lq/";
   localStorage.setItem("rootAddress", rootAddress);
-}
-else if (localStorage.getItem("rootAddress") !== "https://rare-academy.xyz/api/lq/") {
+} else if (
+  localStorage.getItem("rootAddress") !== "https://rare-academy.xyz/api/lq/"
+) {
   localStorage.setItem("rootAddress", "https://rare-academy.xyz/api/lq/");
 }
 console.log("rootAddress", rootAddress);
@@ -111,14 +115,17 @@ export const arabicDiacritics = {
     diacritics: [],
   },
   Harakat: {
-    title: "হরকত",
+    title: "হারাকাত",
+    meaning: "নড়াচড়া করা",
+    video : "/videos/harakat.mp4",
     diacritics: [
       {
         name: "Fathah",
         title: "যবর",
+        description: "দুই চোয়াল আলাদা করে মুখ খোলা রেখে যবর উচ্চারণ করতে হয়। বাংলা আ-কার এর মতো । যেমন :বা بَ",
         symbol: "\u064E", // ـَ
         unicode: "U+064E",
-        indication : [], //"Short 'a' sound",
+        indication: [], //"Short 'a' sound",
         pages: [
           {
             name: "Words",
@@ -131,9 +138,10 @@ export const arabicDiacritics = {
       {
         name: "Kasrah",
         title: "যের",
+        description: "নিচের চোয়াল ঝুঁকিয়ে যের উচ্চারণ করতে হয়।  বাংলা ই-কার এর মতো । যেমন :বি بِ",
         symbol: "\u0650", // ـِ
         unicode: "U+0650",
-        indication : [], //"Short 'i' sound",
+        indication: [], //"Short 'i' sound",
         pages: [
           {
             name: "Words",
@@ -146,9 +154,10 @@ export const arabicDiacritics = {
       {
         name: "Dhammah",
         title: "পেশ",
+        description: "দুই ঠোট সম্পূর্ণভাবে গোল করে বাধাহীনভাবে পেশ উচ্চারণ করতে হয়।  বাংলা উ-কার এর মতো । যেমন :বু بُ",
         symbol: "\u064F", // ـُ
         unicode: "U+064F",
-        indication : [], //"Short 'u' sound",
+        indication: [], //"Short 'u' sound",
         pages: [
           {
             name: "Words",
@@ -162,20 +171,81 @@ export const arabicDiacritics = {
   },
 
   sakinah: {
-    title: "সাকিন",
+    title: "সাকিনাহ্",
+    meaning: "নীরব",
+    video : "/videos/sakinah.mp4",
     diacritics: [
       {
         name: "Saakinah",
-        title: "সাকিন যুক্ত বর্ণ",
+        title: "সাকিনাহ্",
+        description: "স্থীরভাবে নড়াচড়াহীন অবস্থায় সাকিনাহ্ উচ্চারণ করতে হয়। বাংলা হসন্তের মতো । যেমন : ব্ بْ ",
         symbol: "\u0652", // ـْ
         unicode: "U+0652",
-        indication : [], //"No vowel (silent letter)",
+        indication: [], //"No vowel (silent letter)",
         pages: [
           {
             name: "Words",
             title: "সাকিনযুক্ত শব্দ",
-            column: ["শেষে", "মধ্যে", ''],
-            columnEn: ["end", "middle", ''],
+            column: ["শেষে", "মধ্যে", ""],
+            columnEn: ["end", "middle", ""],
+          },
+        ],
+      },
+    ],
+  },
+  Madd: {
+    title: "মাদ্দ",
+    meaning: "প্রসারিত করা বা লম্বা করা",
+    video : "/videos/madd.mp4",
+    diacritics: [
+      {
+        name: "AlifMadd",
+        title: "আলিফ মাদ্দ / খাড়া যবর",
+        description:
+          "দুই চোয়াল আলাদা করে মুখ খোলা রেখে দীর্ঘ করে খাড়া যবর উচ্চারণ করতে হয়। বাংলা দীর্ঘ আ-কার এর মতো । যেমন :বাা بَا",
+        symbol: "\u0657", // ـٰ
+        unicode: "U+0670",
+        indication: ["U+064E", "U+0627", "U+200B"], //"Represents a prolonged vowel sound",
+        pages: [
+          {
+            name: "Words",
+            title: "আলিফ মাদ্দযুক্ত শব্দ",
+            column: ["শেষে", "মধ্যে", "শুরুতে"],
+            columnEn: ["end", "middle", "start"],
+          },
+        ],
+      },
+      {
+        name: "YaaMadd",
+        title: "ইয়া মাদ্দ / খাড়া যের",
+        description:
+          "নিচের চোয়াল ঝুঁকিয়ে দীর্ঘ করে খাড়া যের উচ্চারণ করতে হয়।  বাংলা দীর্ঘ ই-কার এর মতো । যেমন : বী بٖ",
+        symbol: "\u0656", // ـٰ
+        unicode: "U+0656",
+        indication: ["U+0650", "U+064A", "U+0652"], //"Represents a prolonged vowel sound",
+        pages: [
+          {
+            name: "Words",
+            title: "ইয়া মাদ্দযুক্ত শব্দ",
+            column: ["শেষে", "মধ্যে", "শুরুতে"],
+            columnEn: ["end", "middle", "start"],
+          },
+        ],
+      },
+      {
+        name: "WaaoMadd",
+        title: "ওয়াও মাদ্দ / উল্টা পেশ",
+        description:
+          "দুই ঠোট সম্পূর্ণভাবে গোল করে বাধাহীনভাবে দীর্ঘ স্বরে উল্টা পেশ উচ্চারণ করতে হয়।  বাংলা ঊ-কার এর মতো । যেমন :বূ بُ",
+        symbol: "\u0657", // ـٰ
+        unicode: "U+0657",
+        indication: ["U+064F", "U+0648", "U+0652"], //"Represents a prolonged vowel sound",
+        pages: [
+          {
+            name: "Words",
+            title: "ওয়াও মাদ্দযুক্ত শব্দ",
+            column: ["শেষে", "মধ্যে", "শুরুতে"],
+            columnEn: ["end", "middle", "start"],
           },
         ],
       },
@@ -184,13 +254,16 @@ export const arabicDiacritics = {
 
   Tanween: {
     title: "তানভীন",
+    meaning: "দুই যবর, দুই যের, দুই পেশ",
+    video : "/videos/tanween.mp4",
     diacritics: [
       {
         name: "FathahTanween",
         title: "দুই যবর",
+        description: "দুই চোয়াল আলাদা করে মুখ খোলা রেখে যবর এবং নুন সাকিন সহ দুই যবর উচ্চারণ করতে হয়। বাংলা আ-কার+ন্ এর মতো । যেমন :বান্ بَ",
         symbol: "\u064B", // ـً
         unicode: "U+064B",
-        indication : ["U+064E","U+0646","U+0652"], // Represents 'an' sound (tanween)
+        indication: ["U+064E", "U+0646", "U+0652"], // Represents 'an' sound (tanween)
         // "Indicates 'an' sound (tanween)",
         pages: [
           {
@@ -204,9 +277,10 @@ export const arabicDiacritics = {
       {
         name: "KasrahTanween",
         title: "দুই যের",
+        description: "নিচের চোয়াল ঝুঁকিয়ে যের এবং নুন সাকিন সহ দুই যের উচ্চারণ করতে হয়।  বাংলা ই-কার+ন্ এর মতো । যেমন :বিন্ بِ",
         symbol: "\u064D", // ـٍ
         unicode: "U+064D",
-        indication : ["U+0650","U+0646","U+0652"], // Represents 'in' sound (tanween)
+        indication: ["U+0650", "U+0646", "U+0652"], // Represents 'in' sound (tanween)
         // "Indicates 'in' sound (tanween)",
         pages: [
           {
@@ -220,9 +294,10 @@ export const arabicDiacritics = {
       {
         name: "DhammahTanween",
         title: "দুই পেশ",
+        description: "দুই ঠোট সম্পূর্ণভাবে গোল করে বাধাহীনভাবে পেশ এবং নুন সাকিন সহ দুই পেশ উচ্চারণ করতে হয়।  বাংলা উ-কার+ন্ এর মতো । যেমন :বুন্ بُ",
         symbol: "\u064C", // ـٌ
         unicode: "U+064C",
-        indication : ["U+064F","U+0646","U+0652"], // Represents 'un' sound (tanween)
+        indication: ["U+064F", "U+0646", "U+0652"], // Represents 'un' sound (tanween)
         // "Indicates 'un' sound (tanween)",
         pages: [
           {
@@ -235,66 +310,19 @@ export const arabicDiacritics = {
       },
     ],
   },
-  Madd: {
-    title: "মদ",
-    diacritics: [
-      {
-        name: "AlifMadd",
-        title: "আলিফ মদ / খাড়া যবর",
-        symbol: "\u0657", // ـٰ
-        unicode: "U+0670",
-        indication : ["U+064E","U+0627","U+200B"], //"Represents a prolonged vowel sound",
-        pages: [
-          {
-            name: "Words",
-            title: "আলিফ মাদ্দযুক্ত শব্দ",
-            column: ["শেষে", "মধ্যে", "শুরুতে"],
-            columnEn: ["end", "middle", "start"],
-          },
-        ],
-      },
-      {
-        name: "YaaMadd",
-        title: "ইয়া মদ / খাড়া যের",
-        symbol: "\u0656", // ـٰ
-        unicode: "U+0656",
-        indication : ["U+0650","U+064A","U+0652"], //"Represents a prolonged vowel sound",
-        pages: [
-          {
-            name: "Words",
-            title: "ইয়া মাদ্দযুক্ত শব্দ",
-            column: ["শেষে", "মধ্যে", "শুরুতে"],
-            columnEn: ["end", "middle", "start"],
-          },
-        ],
-      },
-      {
-        name: "WaaoMadd",
-        title: "ওয়াও মদ / উল্টা পেশ",
-        symbol: "\u0657", // ـٰ
-        unicode: "U+0657",
-        indication : ["U+064F","U+0648","U+0652"] ,//"Represents a prolonged vowel sound",
-        pages: [
-          {
-            name: "Words",
-            title: "ওয়াও মাদ্দযুক্ত শব্দ",
-            column: ["শেষে", "মধ্যে", "শুরুতে"],
-            columnEn: ["end", "middle", "start"],
-          },
-        ],
-      },
-    ],
-  },
 
   shaddah: {
     title: "তাশদীদ",
+    meaning: "দ্বিত্ববর্ণ",
+    video : "/videos/tashdeed.mp4",
     diacritics: [
       {
         name: "AshShaddah",
-        title: "তাশদীদ যুক্ত বর্ণ",
+        title: "তাশদীদ ",
+        description: "তাশদীদ উচ্চারণের সময় বর্ণ দ্বিত্ব হয় অর্থ্যাৎ প্রথম বার সাকিন এবং দ্বিতীয় বার হরকত / মাদ্দ / তানভীন অনুসারে উচ্চারিত হয়। যেমন :ব্ব بّ",
         symbol: "\u0651", // ـّ
         unicode: "U+0651",
-        indication : ["U+0652"], //"Indicates doubling (gemination)",
+        indication: ["U+0652"], //"Indicates doubling (gemination)",
         pages: [
           {
             name: "Words_harakat",
@@ -365,12 +393,7 @@ export const arabicDiacritics = {
 //   }
 // }
 
-
-export async function sendDataToDjango(
-  sdata,
-  address,
-  method = "POST"
-) {
+export async function sendDataToDjango(sdata, address, method = "POST") {
   try {
     const options = {
       method: method,
@@ -385,7 +408,7 @@ export async function sendDataToDjango(
     }
 
     const response = await fetch(address, options);
-    console.log("sendDataToDjango", address, sdata, method,response);
+    console.log("sendDataToDjango", address, sdata, method, response);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -397,7 +420,6 @@ export async function sendDataToDjango(
   }
   location.reload();
 }
-
 
 export async function receiveDataFromDjango(address) {
   try {
