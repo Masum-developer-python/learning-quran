@@ -37,7 +37,7 @@ export default function ActionBar({
   const baseAddress = rootAddress + "arabic-words/";
   const [address, setAddress] = useState(baseAddress);
   const [method, setMethod] = useState("");
-  const user = localStorage.getItem("user");
+  const user = sessionStorage.getItem("user");
   const isAdmin = user == null ? false : true;
   const [refData, setRefData] = useState([]);
   const [visible, setVisible] = useState({});
