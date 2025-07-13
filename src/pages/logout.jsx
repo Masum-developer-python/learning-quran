@@ -66,6 +66,7 @@ const Logout = () => {
         sessionStorage.removeItem("refresh_token");
         sessionStorage.removeItem("user");
         axios.defaults.headers.common["Authorization"] = "";
+        window.location.reload(); // Reload the page to reflect the logout state
         window.history.go(-1);
       }
     })();
