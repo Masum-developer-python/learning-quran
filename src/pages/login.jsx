@@ -31,7 +31,7 @@ export const Login = () => {
     sessionStorage.setItem("user", user.username);
 
     axios.defaults.headers.common["Authorization"] = `Bearer ${data["access"]}`;
-
+    window.location.reload();
     window.location.href = "/home";
   };
   return (

@@ -32,6 +32,7 @@ export default function Home() {
           console.log("Message from server:", data.message); // Log response message
           setMessage(data.message); // Assuming the server response has 'message'
           window.location.reload(); // Reload the page to reflect the new state
+          window.location.reload();
           window.history.go(-2);
         } catch (e) {
           if (e.response && e.response.status === 401) {
