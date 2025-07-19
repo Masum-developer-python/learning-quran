@@ -89,7 +89,7 @@ const Table = ({
                     {diacritics
                       ? letterIndex !== 0
                         ? `${letter.alphabet}`
-                        : diacritics.includes("fatha") || diacritics.includes("dhammah") ? `${arabicAlphabet[35].alphabet}`: diacritics.includes("kasrah") ?`${arabicAlphabet[32].alphabet}` 
+                        : diacritics.includes("fatha") || diacritics.includes("dhammah") || diacritics.includes("alifmadd") || diacritics.includes("waaomadd") ? `${arabicAlphabet[35].alphabet}`: diacritics.includes("kasrah") || diacritics.includes("yaamadd") ?`${arabicAlphabet[32].alphabet}` 
                         : `${arabicAlphabet[34].alphabet}`
                       : `${letter.alphabet}`}
                     {String.fromCodePoint(

@@ -16,6 +16,7 @@ import Home from "./pages/home";
 import { Login } from "./pages/login";
 import Logout from "./pages/logout";
 import QuranRead from "./pages/QuranRead";
+import Class from "./pages/Class";
 
 function App() {
   console.log("App.jsx");
@@ -111,6 +112,8 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
+
+                <Route path="/class" element={<Class />} />
 
                 <Route
                   path="/quran"
