@@ -17,6 +17,7 @@ import { Login } from "./pages/login";
 import Logout from "./pages/logout";
 import QuranRead from "./pages/QuranRead";
 import Class from "./pages/Class";
+import ICT from "./pages/ICT";
 
 function App() {
   console.log("App.jsx");
@@ -114,7 +115,7 @@ function App() {
                 <Route path="/logout" element={<Logout />} />
 
                 <Route path="/class" element={<Class />} />
-
+                <Route path="/ict" element={<ICT />} />
                 <Route
                   path="/quran"
                   element={<QuranRead selectedColor={selectedColor} />}
@@ -223,7 +224,7 @@ function App() {
         className="h-auto w-[calc(100%-60px)] mx-auto px-12 flex items-center justify-center text-center font-sans
         text-[#555] border-t border-[#eaeaea] text-base rounded-lg block z-10"
       >
-        Al Quran Learning | Developed by{" "}&nbsp;
+        Al Quran Learning | Developed by &nbsp;
         <strong>
           <a href="https://www.facebook.com/rahmatullah.masum/"> Masum </a> @{" "}
           <button title="Rufaidah" className="text-green-500">
