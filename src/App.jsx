@@ -118,7 +118,10 @@ function App() {
                 <Route path="/ict" element={<ICT />} />
                 <Route
                   path="/quran"
-                  element={<QuranRead selectedColor={selectedColor} />}
+                  element={<QuranRead 
+                    selectedColor={selectedColor}
+                    arabicAlphabet={arabicAlphabet}
+                  />}
                 />
                 <Route
                   key={10}

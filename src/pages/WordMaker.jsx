@@ -20,7 +20,7 @@ function Words({
     <div className="flex flex-col m-auto p-2">
       <div
         className={`font-akber ${selectedColor.backgroundColor} 
-      text-8xl text-center  h-32 rounded-lg m-2 p-1 w-[400px]
+      text-8xl text-center  h-32 rounded-lg m-2 p-1 w-[80%]
       ${selectedColor.textColor} top-0 flex font-akber  m-auto p-2 justify-center items-center `}
       >
         <div className="text-right w-[50%] ">{word}</div>

@@ -6,6 +6,8 @@ const ICT = () => {
   const [inputBase, setInputBase] = useState(10);
   const [tergetedBase, setTergetedBase] = useState(2);
   const [input, setInput] = useState(0);
+  const [integerPart, setIntegerPart] = useState(0);
+  const [fractionalPart, setFractionalPart] = useState(0);
   return (
     <div className="p-4 w-[100%]">
       <h1>Information and Communication Technology (ICT)</h1>
@@ -41,6 +43,7 @@ const ICT = () => {
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               onChange={(e) => {
                 setInputBase(e.target.value);
+
                 console.log(` base: ${e.target.value}`);
               }}
             >
@@ -54,7 +57,18 @@ const ICT = () => {
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter a number"
               onChange={(e) => {
-                setInput(e.target.value);
+                let input = e.target.value;
+                setInput(input);
+                input.length === 0 ||
+                  parseInt(input[input.length - 1], inputBase) >= 0 ||
+                  input[input.length - 1] == "." ||
+                  alert("Invalid digit for the selected base");
+                setIntegerPart(Math.floor(e.target.value));
+                setFractionalPart(
+                  e.target.value.includes(".")
+                    ? e.target.value.split(".")[1]
+                    : 0
+                );
                 console.log(`Input number: ${e.target.value}`);
                 // Handle the input number here
               }}
@@ -64,23 +78,38 @@ const ICT = () => {
               Select target base:
             </label>
             <select
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm 
+              p-2 focus:ring-blue-500 focus:border-blue-500"
               onChange={(e) => {
                 setTergetedBase(e.target.value);
+
                 console.log(` base: ${e.target.value}`);
               }}
             >
               <option value="2">বাইনারি</option>
               <option value="8">অক্টাল</option>
               <option value="16">হেক্সাডেসিমাল</option>
+              <option value="10">ডেসিমাল</option>
             </select>
             <br />
             <div className="mt-4">
+              <p className="text-6xl">
+                {tergetedBase && (
+                  <>
+                    {integerPart || "0"}
+                    <sub>{inputBase}</sub> {" => "}
+                    {` ${parseInt(integerPart, inputBase)
+                      .toString(tergetedBase)
+                      .toUpperCase()}`}{" "}
+                    <sub>{tergetedBase}</sub>
+                  </>
+                )}
+              </p>
               <br />
-              {tergetedBase && input && inputBase === 10 && (
-                <div>
+              {tergetedBase && input && inputBase == 10 && (
+                <div className="mx-auto w-fit p-10">
                   {(() => {
-                    let tempInput = input;
+                    let tempInput = integerPart;
                     let stepsNumber = [];
                     let reminders = [];
                     console.log(tempInput);
@@ -102,7 +131,7 @@ const ICT = () => {
                                 {tergetedBase}
                               </div>
                               <div className=" inline-block border-l border-b border-gray-900">
-                                &nbsp;{input}
+                                &nbsp;{integerPart}
                               </div>
                             </td>
                             <td className="font-semibold text-right inline-block">
@@ -153,18 +182,52 @@ const ICT = () => {
                   })()}
                 </div>
               )}
-              <p className="text-6xl">
-                {tergetedBase && (
-                  <>
-                    {input || "0"}
-                    <sub>{inputBase}</sub> -
-                    {` ${parseInt(input, inputBase)
-                      .toString(tergetedBase)
-                      .toUpperCase()}`}{" "}
-                    <sub>{tergetedBase}</sub>
-                  </>
-                )}
-              </p>
+
+              {inputBase && input && tergetedBase == 10 && (
+                <div className="mx-auto w-fit">
+                  {(() => {
+                    let msbPower = integerPart.toString().length - 1;
+                    let lsbPower = (fractionalPart.toString().length - 1) * -1;
+                    let stepsPower = [];
+                    while (msbPower >= lsbPower) {
+                      stepsPower.push(msbPower);
+                      msbPower--;
+                    }
+                    console.log(stepsPower);
+                    return (
+                      <>
+                        <p className="text-4xl text-left">
+                          {stepsPower.map((power, index) => (
+                            <>
+                              {input[index]} * {inputBase}
+                              <sup>{power}</sup>{" "}
+                              {index < stepsPower.length - 1 && " + "}
+                            </>
+                          ))}
+                        </p>
+                        <p className="text-5xl text-left">
+                          ={" "}
+                          {stepsPower.map((power, index) => (
+                            <>
+                              {input[index] * Math.pow(inputBase, power)}
+                              {index < stepsPower.length - 1 && " + "}
+                            </>
+                          ))}
+                        </p>
+                        <p className="text-5xl text-left">
+                          ={" "}
+                          {stepsPower.reduce((acc, power, index) => {
+                            return (
+                              acc + input[index] * Math.pow(inputBase, power)
+                            );
+                          }, 0)}{" "}
+                          <sub>10</sub>
+                        </p>
+                      </>
+                    );
+                  })()}
+                </div>
+              )}
             </div>
           </div>
         )}

@@ -162,7 +162,7 @@ function Submenu({
           className="block px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition duration-1000"
           href={"/words"}
         >
-          শব্দ তৈরী
+          শব্দ পরীক্ষা 
         </a>
         <br />
         <br />

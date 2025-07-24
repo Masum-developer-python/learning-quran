@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import AyahWord from "../components/AyahWord";
-import RefTable from "../components//RefTable";
+import RefTable from "../components/RefTable";
+import Words from "../pages/WordMaker";
 import { receiveDataFromDjango } from "../data";
-export default function QuranRead({ selectedColor }) {
+export default function QuranRead({ selectedColor, arabicAlphabet }) {
   const [sura, setSura] = useState("");
   const [aya, setAya] = useState("");
   const [refData, setRefData] = useState([]);
@@ -129,14 +130,14 @@ export default function QuranRead({ selectedColor }) {
                   )}
                 </select>
               ) : (
-                ''
+                ""
               )}
               <input
-                  type="number"
-                  value={aya}
-                  onChange={(e) => setAya(e.target.value)}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                />
+                type="number"
+                value={aya}
+                onChange={(e) => setAya(e.target.value)}
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -152,6 +153,15 @@ export default function QuranRead({ selectedColor }) {
           </form>
         </div>
         <div className="w-[45%] space-y-8">
+          <div className="h-48 overflow-y-auto">
+            <Words
+              selectedColor={selectedColor}
+              sendingWord={word}
+              setSendingWord={setWord}
+              arabicAlphabet={arabicAlphabet}
+            />
+          </div>
+
           <label className="block text-sm font-medium text-gray-700">
             শব্দ
           </label>
