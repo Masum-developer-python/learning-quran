@@ -7,7 +7,8 @@ const ICT = () => {
   const [tergetedBase, setTergetedBase] = useState(2);
   const [input, setInput] = useState(0);
   const [integerPart, setIntegerPart] = useState(0);
-  const [fractionalPart, setFractionalPart] = useState(0.0);
+  const [fractionalPart, setFractionalPart] = useState(0);
+  const [stepCount, setStepCount] = useState(3);
   return (
     <div className="p-4 w-[100%]">
       <h1>Information and Communication Technology (ICT)</h1>
@@ -21,7 +22,7 @@ const ICT = () => {
           className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
           onChange={(e) => {
             const Topic = e.target.value;
-            // console.log(` topic: ${Topic}`);
+            console.log(` topic: ${Topic}`);
             setUnit(e.target.value);
             // Handle the  topic here
           }}
@@ -34,27 +35,30 @@ const ICT = () => {
           <option value="programming">Programming</option>
           <option value="databases">Databases</option>
         </select>
+
+        {/* //--------------------------------------------------------------------------------------------------- */}
+
         {Unit === "numbersystem" && (
           <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-700">
+            {/* <label className="block text-sm font-medium text-gray-700">
               Select Input base:
-            </label>
+            </label> */}
             <select
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              className="m-1  inline-block w-1/4 border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               onChange={(e) => {
                 setInputBase(e.target.value);
 
-                // console.log(` base: ${e.target.value}`);
+                console.log(` base: ${e.target.value}`);
               }}
             >
-              <option value="10">ডেসিমাল</option>
+              <option value="10">ডেসিমেল</option>
               <option value="2">বাইনারি</option>
               <option value="8">অক্টাল</option>
-              <option value="16">হেক্সাডেসিমাল</option>
+              <option value="16">হেক্সাডেসিমেল</option>
             </select>
             <input
               type="text"
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+              className="m-1 inline-block w-1/4 border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter a number"
               onChange={(e) => {
                 let input = e.target.value;
@@ -69,27 +73,26 @@ const ICT = () => {
                     ? e.target.value.split(".")[1]
                     : 0
                 );
-                // console.log(`Input number: ${e.target.value}`);
+                console.log(`Input number: ${e.target.value}`);
                 // Handle the input number here
               }}
             />
-            <br />
-            <label className="block text-sm font-medium text-gray-700">
+            {/* <label className="block text-sm font-medium text-gray-700">
               Select target base:
-            </label>
+            </label> */}
             <select
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm 
+              className="m-1 inline-block w-1/4 border-gray-300 rounded-md shadow-sm 
               p-2 focus:ring-blue-500 focus:border-blue-500"
               onChange={(e) => {
                 setTergetedBase(e.target.value);
 
-                // console.log(` base: ${e.target.value}`);
+                console.log(` base: ${e.target.value}`);
               }}
             >
               <option value="2">বাইনারি</option>
               <option value="8">অক্টাল</option>
-              <option value="16">হেক্সাডেসিমাল</option>
-              <option value="10">ডেসিমাল</option>
+              <option value="16">হেক্সাডেসিমেল</option>
+              <option value="10">ডেসিমেল</option>
             </select>
             <br />
             <div className="mt-4">
@@ -106,137 +109,202 @@ const ICT = () => {
                 )}
               </p>
               <br />
+              {/* //--------------------------------------------------------------------------------------------------- */}
               {tergetedBase && input && inputBase == 10 && (
-                <div className="mx-auto w-fit p-10">
+                <div className="mx-auto w-full">
                   {(() => {
                     let tempInput = integerPart;
                     let stepsNumber = [];
                     let reminders = [];
-                    // console.log(tempInput);
+                    console.log(tempInput);
 
                     while (tempInput > 0) {
                       reminders.push(tempInput % tergetedBase);
-                      // console.log(reminders);
+                      console.log(reminders);
                       tempInput = Math.floor(tempInput / tergetedBase);
                       stepsNumber.push(tempInput);
-                      // console.log(tempInput);
+                      console.log(tempInput);
                     }
 
                     let tempFractionalPart =
                       fractionalPart / 10 ** fractionalPart.length || 0;
                     let integerSteps = [];
+                    let fractionalSteps = [];
                     let count = 0;
-                    while (count < 10 && tempFractionalPart > 0) {
+                    while (count < stepCount && tempFractionalPart > 0) {
                       tempFractionalPart *= tergetedBase;
                       tempFractionalPart = tempFractionalPart.toFixed(6);
+
                       integerSteps.push(Math.floor(tempFractionalPart));
 
-                      // console.log(tempFractionalPart, integerSteps);
+                      console.log(tempFractionalPart, integerSteps);
 
                       tempFractionalPart -= Math.floor(tempFractionalPart);
+                      fractionalSteps.push(tempFractionalPart.toFixed(3));
                       count++;
                     }
-                    // console.log(integerSteps);
+                    console.log(integerSteps);
 
                     return (
-                      <div>
-                        <h3 className="text-lg font-semibold">Steps:</h3>
-                        <table className="border-collapse font-bangla mx-auto">
-                          <tr className="w-full ">
-                            <td className="font-semibold text-right ">
-                              <div className=" inline-block">
-                                {tergetedBase}
+                      <div className="w-full">
+                        <div className="w-[90%] mx-auto">
+                          <p className="text-4xl text-left">
+                            {integerPart || "0"}
+                            {fractionalPart ? `.${fractionalPart}` : ""}
+                            <sub>{inputBase}</sub> {" => "}
+                            {reminders.reverse().map((reminder, index) => (
+                              <div key={index} className="inline-block">
+                                {` ${parseInt(reminder, inputBase)
+                                  .toString(tergetedBase)
+                                  .toUpperCase()}`}
                               </div>
-                              <div className=" inline-block border-l border-b border-gray-900">
-                                &nbsp;{integerPart}
+                            ))}
+                            .
+                            {integerSteps.map((reminder, index) => (
+                              <div key={index} className="inline-block">
+                                {` ${parseInt(reminder, inputBase)
+                                  .toString(tergetedBase)
+                                  .toUpperCase()}`}
+                                {index == integerSteps.length - 1 && (
+                                  <sub>{tergetedBase}</sub>
+                                )}
                               </div>
-                            </td>
-                            <td className="font-semibold text-right inline-block">
-                              &nbsp;
-                            </td>
-                            <td className="font-semibold pl-2">^</td>
-                          </tr>
-                          {stepsNumber.map((step, index) => (
-                            <tr key={index} className="w-full">
-                              <td className="font-semibold text-right ">
-                                {index < stepsNumber.length - 1 && (
+                            ))}
+                          </p>
+                        </div>
+                        <div className="flex mt-16">
+                          <div className="w-1/2 mx-auto mt-12">
+                            <table className="border-collapse font-bangla mx-auto">
+                              <tr className="w-full ">
+                                <td className="font-semibold text-right ">
                                   <div className=" inline-block">
                                     {tergetedBase}
                                   </div>
-                                )}
-
-                                <div
-                                  className={`inline-block ${
-                                    index < stepsNumber.length - 1
-                                      ? "border-l border-b border-gray-900"
-                                      : ""
-                                  }`}
-                                >
-                                  &nbsp;{step}
-                                </div>
-                              </td>
-                              <td className="font-semibold text-right">
-                                <div
-                                  className={`inline-block ${
-                                    index < stepsNumber.length - 1
-                                      ? "border-b border-gray-900"
-                                      : ""
-                                  }`}
-                                >
-                                  - {reminders[index]}
-                                </div>
-                              </td>
-                              <td>
-                                <div className="inline-block border-r border-gray-900 ml-2">
+                                  <div className=" inline-block border-l border-b border-gray-900">
+                                    &nbsp;{integerPart}
+                                  </div>
+                                </td>
+                                <td className="font-semibold text-right inline-block">
                                   &nbsp;
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </table>
-                        <p className="text-4xl text-left">
-                          {integerPart || "0"}
-                          <sub>{inputBase}</sub> {" => "}
-                          {reminders.reverse().map((reminder, index) => (
-                            <>
-                              {` ${parseInt(reminder, inputBase)
-                                .toString(tergetedBase)
-                                .toUpperCase()}`}
-                              
-                            </>
-                          ))}.
-                          {integerSteps.map((reminder, index) => (
-                            <>
-                              {` ${parseInt(reminder, inputBase)
-                                .toString(tergetedBase)
-                                .toUpperCase()}`}
-                              {index == integerSteps.length - 1 && (
-                                <sub>{tergetedBase}</sub>
-                              )}
-                            </>
-                          ))}
-                        </p>
+                                </td>
+                                <td className="font-semibold pl-2">^</td>
+                              </tr>
+                              {stepsNumber.map((step, index) => (
+                                <tr key={index} className="w-full">
+                                  <td className="font-semibold text-right ">
+                                    {index < stepsNumber.length - 1 && (
+                                      <div className=" inline-block">
+                                        {tergetedBase}
+                                      </div>
+                                    )}
+
+                                    <div
+                                      className={`inline-block ${
+                                        index < stepsNumber.length - 1
+                                          ? "border-l border-b border-gray-900"
+                                          : ""
+                                      }`}
+                                    >
+                                      &nbsp;{step}
+                                    </div>
+                                  </td>
+                                  <td className="font-semibold text-right">
+                                    <div
+                                      className={`inline-block ${
+                                        index < stepsNumber.length - 1
+                                          ? "border-b border-gray-900"
+                                          : ""
+                                      }`}
+                                    >
+                                      - {reminders[stepsNumber.length - 1 - index]}
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div className="inline-block border-r border-gray-900 ml-2">
+                                      &nbsp;
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))}
+                            </table>
+                          </div>
+                          <div className="w-1/4 mx-auto mt-4">
+                            {/* ------------------- */}
+                            <button
+                              className="bg-blue-500 text-white px-4 py-2 rounded inline-block"
+                              onClick={() => {
+                                setStepCount(stepCount + 1);
+                              }}
+                            >
+                              +
+                            </button>
+                            <button
+                              className="bg-red-500 text-white px-4 py-2 rounded ml-2 inline-block"
+                              onClick={() => {
+                                if (stepCount > 1) {
+                                  setStepCount(stepCount - 1);
+                                }
+                              }}
+                            >
+                              -
+                            </button>
+                            <br />
+                            <table className="border-collapse font-bangla mx-auto">
+                              <tr className="w-full ">
+                                <td className="font-semibold text-right ">
+                                  <div className=" inline-block">&nbsp;</div>
+                                  <div className=" inline-block border-l border-b border-gray-900">
+                                    &nbsp;
+                                    {`${(
+                                      fractionalPart /
+                                      10 ** fractionalPart.length
+                                    ).toFixed(3)}`}
+                                    <br />x {tergetedBase}
+                                  </div>
+                                </td>
+                              </tr>
+                              {fractionalSteps.map((step, index) => (
+                                <tr key={index} className="w-full">
+                                  <td className="font-semibold text-right ">
+                                    <div className=" inline-block">
+                                      {integerSteps[index]}
+                                    </div>
+
+                                    <div
+                                      className={`inline-block border-l border-b border-gray-900`}
+                                    >
+                                      &nbsp;{step}
+                                      <br />
+                                      {`x ${tergetedBase}`}
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))}
+                            </table>
+                          </div>
+                        </div>
+                        {/* ---------------------- */}
                       </div>
                     );
                   })()}
                 </div>
               )}
-
+              {/* //--------------------------------------------------------------------------------------------------- */}
               {inputBase && input && tergetedBase == 10 && (
                 <div className="mx-auto w-fit">
                   {(() => {
                     let msbPower = integerPart.toString().length - 1;
-                    let lsbPower = fractionalPart.toString().length * -1;
+                    let lsbPower = input.includes('.') ? fractionalPart.toString().length * -1 : 0;
                     let stepsPower = [];
-                    // console.log(`msbPower: ${msbPower}`);
-                    // console.log(`lsbPower: ${lsbPower}`);
+                    console.log(`msbPower: ${msbPower}`);
+                    console.log(`lsbPower: ${lsbPower}`);
                     while (msbPower >= lsbPower) {
                       stepsPower.push(msbPower);
                       msbPower--;
                     }
-                    // console.log(stepsPower);
-                    let number = integerPart + fractionalPart;
-                    // console.log(`number: ${number}`);
+                    console.log(stepsPower);
+                    let number = integerPart + (input.includes('.') ? fractionalPart : '');
+                    console.log(`number: ${number}`);
                     return (
                       <>
                         <p className="text-4xl text-left">
@@ -259,11 +327,13 @@ const ICT = () => {
                         </p>
                         <p className="text-5xl text-left">
                           ={" "}
-                          {stepsPower.reduce((acc, power, index) => {
-                            return (
-                              acc + number[index] * Math.pow(inputBase, power)
-                            );
-                          }, 0).toFixed(4)}{" "}
+                          {stepsPower
+                            .reduce((acc, power, index) => {
+                              return (
+                                acc + number[index] * Math.pow(inputBase, power)
+                              );
+                            }, 0)
+                            .toFixed(4)}{" "}
                           <sub>10</sub>
                         </p>
                       </>
