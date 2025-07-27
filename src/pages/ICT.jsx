@@ -21,7 +21,7 @@ const ICT = () => {
           className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
           onChange={(e) => {
             const Topic = e.target.value;
-            console.log(` topic: ${Topic}`);
+            // console.log(` topic: ${Topic}`);
             setUnit(e.target.value);
             // Handle the  topic here
           }}
@@ -44,7 +44,7 @@ const ICT = () => {
               onChange={(e) => {
                 setInputBase(e.target.value);
 
-                console.log(` base: ${e.target.value}`);
+                // console.log(` base: ${e.target.value}`);
               }}
             >
               <option value="10">ডেসিমাল</option>
@@ -69,7 +69,7 @@ const ICT = () => {
                     ? e.target.value.split(".")[1]
                     : 0
                 );
-                console.log(`Input number: ${e.target.value}`);
+                // console.log(`Input number: ${e.target.value}`);
                 // Handle the input number here
               }}
             />
@@ -83,7 +83,7 @@ const ICT = () => {
               onChange={(e) => {
                 setTergetedBase(e.target.value);
 
-                console.log(` base: ${e.target.value}`);
+                // console.log(` base: ${e.target.value}`);
               }}
             >
               <option value="2">বাইনারি</option>
@@ -112,14 +112,14 @@ const ICT = () => {
                     let tempInput = integerPart;
                     let stepsNumber = [];
                     let reminders = [];
-                    console.log(tempInput);
+                    // console.log(tempInput);
 
                     while (tempInput > 0) {
                       reminders.push(tempInput % tergetedBase);
-                      console.log(reminders);
+                      // console.log(reminders);
                       tempInput = Math.floor(tempInput / tergetedBase);
                       stepsNumber.push(tempInput);
-                      console.log(tempInput);
+                      // console.log(tempInput);
                     }
 
                     let tempFractionalPart =
@@ -131,12 +131,12 @@ const ICT = () => {
                       tempFractionalPart = tempFractionalPart.toFixed(6);
                       integerSteps.push(Math.floor(tempFractionalPart));
 
-                      console.log(tempFractionalPart, integerSteps);
+                      // console.log(tempFractionalPart, integerSteps);
 
                       tempFractionalPart -= Math.floor(tempFractionalPart);
                       count++;
                     }
-                    console.log(integerSteps);
+                    // console.log(integerSteps);
 
                     return (
                       <div>
@@ -228,15 +228,15 @@ const ICT = () => {
                     let msbPower = integerPart.toString().length - 1;
                     let lsbPower = fractionalPart.toString().length * -1;
                     let stepsPower = [];
-                    console.log(`msbPower: ${msbPower}`);
-                    console.log(`lsbPower: ${lsbPower}`);
+                    // console.log(`msbPower: ${msbPower}`);
+                    // console.log(`lsbPower: ${lsbPower}`);
                     while (msbPower >= lsbPower) {
                       stepsPower.push(msbPower);
                       msbPower--;
                     }
-                    console.log(stepsPower);
+                    // console.log(stepsPower);
                     let number = integerPart + fractionalPart;
-                    console.log(`number: ${number}`);
+                    // console.log(`number: ${number}`);
                     return (
                       <>
                         <p className="text-4xl text-left">
@@ -263,7 +263,7 @@ const ICT = () => {
                             return (
                               acc + number[index] * Math.pow(inputBase, power)
                             );
-                          }, 0)}{" "}
+                          }, 0).toFixed(4)}{" "}
                           <sub>10</sub>
                         </p>
                       </>
