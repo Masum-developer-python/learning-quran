@@ -7,7 +7,7 @@ const ICT = () => {
   const [tergetedBase, setTergetedBase] = useState(2);
   const [input, setInput] = useState(0);
   const [integerPart, setIntegerPart] = useState(0);
-  const [fractionalPart, setFractionalPart] = useState(0);
+  const [fractionalPart, setFractionalPart] = useState(0.0);
   return (
     <div className="p-4 w-[100%]">
       <h1>Information and Communication Technology (ICT)</h1>
@@ -121,6 +121,23 @@ const ICT = () => {
                       stepsNumber.push(tempInput);
                       console.log(tempInput);
                     }
+
+                    let tempFractionalPart =
+                      fractionalPart / 10 ** fractionalPart.length || 0;
+                    let integerSteps = [];
+                    let count = 0;
+                    while (count < 10 && tempFractionalPart > 0) {
+                      tempFractionalPart *= tergetedBase;
+                      tempFractionalPart = tempFractionalPart.toFixed(6);
+                      integerSteps.push(Math.floor(tempFractionalPart));
+
+                      console.log(tempFractionalPart, integerSteps);
+
+                      tempFractionalPart -= Math.floor(tempFractionalPart);
+                      count++;
+                    }
+                    console.log(integerSteps);
+
                     return (
                       <div>
                         <h3 className="text-lg font-semibold">Steps:</h3>
@@ -177,6 +194,28 @@ const ICT = () => {
                             </tr>
                           ))}
                         </table>
+                        <p className="text-4xl text-left">
+                          {integerPart || "0"}
+                          <sub>{inputBase}</sub> {" => "}
+                          {reminders.reverse().map((reminder, index) => (
+                            <>
+                              {` ${parseInt(reminder, inputBase)
+                                .toString(tergetedBase)
+                                .toUpperCase()}`}
+                              
+                            </>
+                          ))}.
+                          {integerSteps.map((reminder, index) => (
+                            <>
+                              {` ${parseInt(reminder, inputBase)
+                                .toString(tergetedBase)
+                                .toUpperCase()}`}
+                              {index == integerSteps.length - 1 && (
+                                <sub>{tergetedBase}</sub>
+                              )}
+                            </>
+                          ))}
+                        </p>
                       </div>
                     );
                   })()}
@@ -187,19 +226,23 @@ const ICT = () => {
                 <div className="mx-auto w-fit">
                   {(() => {
                     let msbPower = integerPart.toString().length - 1;
-                    let lsbPower = (fractionalPart.toString().length - 1) * -1;
+                    let lsbPower = fractionalPart.toString().length * -1;
                     let stepsPower = [];
+                    console.log(`msbPower: ${msbPower}`);
+                    console.log(`lsbPower: ${lsbPower}`);
                     while (msbPower >= lsbPower) {
                       stepsPower.push(msbPower);
                       msbPower--;
                     }
                     console.log(stepsPower);
+                    let number = integerPart + fractionalPart;
+                    console.log(`number: ${number}`);
                     return (
                       <>
                         <p className="text-4xl text-left">
                           {stepsPower.map((power, index) => (
                             <>
-                              {input[index]} * {inputBase}
+                              {number[index]} * {inputBase}
                               <sup>{power}</sup>{" "}
                               {index < stepsPower.length - 1 && " + "}
                             </>
@@ -209,7 +252,7 @@ const ICT = () => {
                           ={" "}
                           {stepsPower.map((power, index) => (
                             <>
-                              {input[index] * Math.pow(inputBase, power)}
+                              {number[index] * Math.pow(inputBase, power)}
                               {index < stepsPower.length - 1 && " + "}
                             </>
                           ))}
@@ -218,7 +261,7 @@ const ICT = () => {
                           ={" "}
                           {stepsPower.reduce((acc, power, index) => {
                             return (
-                              acc + input[index] * Math.pow(inputBase, power)
+                              acc + number[index] * Math.pow(inputBase, power)
                             );
                           }, 0)}{" "}
                           <sub>10</sub>
