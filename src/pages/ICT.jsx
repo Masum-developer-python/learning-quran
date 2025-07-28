@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 const ICT = () => {
   const [Unit, setUnit] = useState("");
-  const [Topic, setTopic] = useState("");
+  const [topic, setTopic] = useState("");
   const [inputBase, setInputBase] = useState(10);
   const [tergetedBase, setTergetedBase] = useState(2);
-  const [input, setInput] = useState(0);
-  const [integerPart, setIntegerPart] = useState(0);
-  const [fractionalPart, setFractionalPart] = useState(0);
+  const [input, setInput] = useState('');
+  const [integerPart, setIntegerPart] = useState('');
+  const [fractionalPart, setFractionalPart] = useState('');
   const [stepCount, setStepCount] = useState(3);
   return (
     <div className="p-4 w-[100%]">
@@ -67,13 +67,14 @@ const ICT = () => {
                   parseInt(input[input.length - 1], inputBase) >= 0 ||
                   input[input.length - 1] == "." ||
                   alert("Invalid digit for the selected base");
-                setIntegerPart(Math.floor(e.target.value));
+                setIntegerPart(e.target.value.split(".")[0] || 0);
                 setFractionalPart(
                   e.target.value.includes(".")
                     ? e.target.value.split(".")[1]
                     : 0
                 );
-                console.log(`Input number: ${e.target.value}`);
+                
+                console.log(`Input number: ${input}`);
                 // Handle the input number here
               }}
             />
@@ -303,14 +304,19 @@ const ICT = () => {
                       msbPower--;
                     }
                     console.log(stepsPower);
-                    let number = integerPart + (input.includes('.') ? fractionalPart : '');
+                    let number = integerPart.toString().split('').map((digit) => {
+                      return parseInt(digit, inputBase);
+                    }).concat (input.includes('.') ? fractionalPart.toString().split('').map((digit) => {
+                      return parseInt(digit, inputBase);
+                    }) : []);
                     console.log(`number: ${number}`);
+                    
                     return (
                       <>
                         <p className="text-4xl text-left">
                           {stepsPower.map((power, index) => (
                             <>
-                              {number[index]} * {inputBase}
+                              {parseInt(number[index], inputBase)} * {inputBase}
                               <sup>{power}</sup>{" "}
                               {index < stepsPower.length - 1 && " + "}
                             </>
