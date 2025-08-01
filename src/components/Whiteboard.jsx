@@ -551,6 +551,9 @@ export default function Whiteboard({
     if (whiteboardOpen) {
       canvasRef.current.style.height = height;
     }
+    else{
+      canvasRef.current.style.height = '100%';
+    }
   }, [whiteboardOpen]);
   return (
     <div
