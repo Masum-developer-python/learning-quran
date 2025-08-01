@@ -1,6 +1,10 @@
+import { use } from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
 
-export default function Whiteboard({ whiteboardOpen = false }) {
+export default function Whiteboard({
+  whiteboardOpen = false,
+  height = "100%",
+}) {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
@@ -541,10 +545,16 @@ export default function Whiteboard({ whiteboardOpen = false }) {
     "#800080",
     "#ffc0cb",
   ];
+  useEffect(() => {
+    // Update the height state whenever the whiteboardOpen state changes
 
+    if (whiteboardOpen) {
+      canvasRef.current.style.height = height;
+    }
+  }, [whiteboardOpen]);
   return (
     <div
-      className={`flex flex-col w-[calc(100%-10px)] h-[102%] absolute z-10 pb-16 sm:pb-4 md:pb-4 pr-6`}
+      className={`flex flex-col w-[calc(100%-10px)] h-[${height}] absolute z-10 pb-16 sm:pb-4 md:pb-4 pr-6`}
     >
       {/* Header Toolbar */}
       {!whiteboardOpen && (
@@ -781,10 +791,10 @@ export default function Whiteboard({ whiteboardOpen = false }) {
       )}
 
       {/* Canvas Container */}
-      <div className="flex-1 h-full">
+      <div className={`flex-1 h-[${height}]`}>
         <canvas
           ref={canvasRef}
-          className={`w-full h-full ${getCursor()}`}
+          className={`w-full h-[${height}] ${getCursor()}`}
           style={{
             touchAction: "none",
             background: "transparent",
