@@ -18,11 +18,14 @@ import Logout from "./pages/logout";
 import QuranRead from "./pages/QuranRead";
 import Class from "./pages/Class";
 import ICT from "./pages/ICT";
+import Whiteboard from "./components/Whiteboard";
+import OverlayWhiteboard from "./components/OverlayWhiteboard";
 
 function App() {
   console.log("App.jsx");
   console.log(arabicDiacritics.Harakat.diacritics[0].pages[0].column);
   const [arabicAlphabet, setArabicAlphabet] = useState([]);
+  const [whiteboardOpen, setWhiteboardOpen] = useState(false);
 
   let rootAddress = localStorage.getItem("rootAddress");
   console.log(rootAddress);
@@ -105,10 +108,16 @@ function App() {
           selectedReciter={selectedReciter}
           setSelectedReciter={setSelectedReciter}
           reciterList={reciterList}
+          whiteboardOpen={whiteboardOpen}
+          setWhiteboardOpen={setWhiteboardOpen}
         />
-        <div className="flex-1 fixed left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 overflow-y-auto">
+        
+        <div className="flex-1 fixed left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 overflow-y-auto h-full">
+          
+          {/* <OverlayWhiteboard /> */}
           <Router>
             <main className=" flex w-[calc(100%-10px)] pb-16 sm:pb-4 md:pb-4 ">
+              {whiteboardOpen && <Whiteboard  whiteboardOpen = {whiteboardOpen}/>}
               <Routes>
                 <Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -116,6 +125,7 @@ function App() {
 
                 <Route path="/class" element={<Class />} />
                 <Route path="/ict" element={<ICT />} />
+                <Route path="/whiteboard" element={<Whiteboard />} />
                 <Route
                   path="/quran"
                   element={<QuranRead 

@@ -1,5 +1,5 @@
 import { arabicDiacritics } from "../data";
-import React ,{ useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { UserNavigation } from "./navigations";
 import ThemeSelector from "./ThemeSelector";
 import ColorSelector from "./ColorSelector";
@@ -14,10 +14,13 @@ function Submenu({
   selectedReciter,
   setSelectedReciter,
   reciterList,
+  whiteboardOpen = false,
+  setWhiteboardOpen,
 }) {
   const [openCategories, setOpenCategories] = useState({});
   const [openSubCategories, setOpenSubCategories] = useState({});
 
+  console.log(whiteboardOpen);
   const toggleCategory = (category) => {
     setOpenCategories((prev) => {
       const isCurrentlyOpen = prev[category];
@@ -50,10 +53,35 @@ function Submenu({
     });
   };
   return (
-    <ul key={`vlkzb`}
-      className={`font-bangla w-12 md:w-20 lg:w-24 text-xs md:text-2xl relative h-full text-center break-words whitespace-normal 
+    <ul
+      key={`vlkzb`}
+      className={`font-bangla w-12 md:w-20 lg:w-24 text-xs md:text-xl lg:text-2xl relative h-full text-center whitespace-normal 
         ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
     >
+      <li key={"1234"} className="text-xs">
+        <hr />
+        <br />
+        <br />
+        {/* Category Name */}
+        <a
+          className="block px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition duration-1000"
+          href={"/whiteboard"}
+        >
+          হোয়াইট বোর্ড পেজ
+        </a>
+        <br />
+        <button
+          onClick={() => {
+            // Handle whiteboard button click
+            setWhiteboardOpen((prev) => !prev);
+          }}
+          className="block px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition duration-1000"
+        >
+          হোয়াইট বোর্ড
+        </button>
+        <br />
+        <hr />
+      </li>
       {Object.keys(arabicDiacritics).map((category, index) => (
         <React.Fragment key={category}>
           <li key={index} className="relative">
@@ -68,7 +96,7 @@ function Submenu({
             >
               {arabicDiacritics[category].title}
             </a>
-            <hr className="2xl:hidden w-0"/>
+            <hr className="2xl:hidden w-0" />
             {arabicDiacritics[category]?.diacritics?.length > 0 && (
               <button
                 onClick={() => {
@@ -105,7 +133,7 @@ function Submenu({
                       {item.title} যুক্ত বর্ণমালা
                     </a>
                     {/* Sub-Category Toggle Button */}
-                    <hr className="2xl:hidden w-0"/>
+                    <hr className="2xl:hidden w-0" />
                     <button
                       onClick={() => {
                         toggleSubCategory(item.name);
@@ -116,32 +144,30 @@ function Submenu({
                     </button>
 
                     {openSubCategories[item.name] && item.pages && (
-                      
-                        <div
-                          className={` top-0 m-2 w-full rounded shadow-lg
+                      <div
+                        className={` top-0 m-2 w-full rounded shadow-lg
                             ${openSubCategories[item.name] ? "" : "hidden"} 
                             ${selectedColor.backgroundColor} ${
-                            selectedColor.textColor
-                          } 
+                          selectedColor.textColor
+                        } 
                         `}
-                        >
-                          {item.pages.map((page, pageIndex) => (
-                            <a
-                              key={pageIndex}
-                              href={
-                                "/" +
-                                category.toLowerCase() +
-                                "/" +
-                                item.name.toLowerCase() +
-                                page.name.toLowerCase()
-                              }
-                              className="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"
-                            >
-                              {page.title}
-                            </a>
-                          ))}
-                        </div>
-                      
+                      >
+                        {item.pages.map((page, pageIndex) => (
+                          <a
+                            key={pageIndex}
+                            href={
+                              "/" +
+                              category.toLowerCase() +
+                              "/" +
+                              item.name.toLowerCase() +
+                              page.name.toLowerCase()
+                            }
+                            className="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+                          >
+                            {page.title}
+                          </a>
+                        ))}
+                      </div>
                     )}
                     <hr className="px-2"></hr>
                   </div>
@@ -162,14 +188,14 @@ function Submenu({
           className="block px-3 py-2 rounded hover:bg-blue-700 focus:bg-red-200 transition duration-1000"
           href={"/words"}
         >
-          শব্দ পরীক্ষা 
+          শব্দ পরীক্ষা
         </a>
         <br />
         <br />
         <hr />
       </li>
 
-      <li key={"1234"} className="">
+      <li key={"a1234"} className="">
         <hr />
         <br />
         <br />
@@ -184,6 +210,7 @@ function Submenu({
         <br />
         <hr />
       </li>
+
       <li key={"12345"}>
         <hr />
         <br />

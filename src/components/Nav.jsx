@@ -10,6 +10,8 @@ function Nav({
   selectedReciter,
   setSelectedReciter,
   reciterList,
+  setWhiteboardOpen,
+  whiteboardOpen = false, // Default to false if not provided
 }) {
   console.log("Nav.jsx");
   return (
@@ -36,6 +38,8 @@ function Nav({
           selectedReciter={selectedReciter}
           setSelectedReciter={setSelectedReciter}
           reciterList={reciterList}
+          whiteboardOpen={whiteboardOpen}
+          setWhiteboardOpen={setWhiteboardOpen}
         />
       </nav>
     </>
