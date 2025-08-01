@@ -151,7 +151,7 @@ export default function ActionBar({
           <Draggable handle=".drag-handle">
             <div
               className={`fixed overflow-y-scroll h-[calc(80%-10px)] md:h-[calc(70%-10px)] lg:h-[calc(60%-10px)] 
-                w-[99%] xl:w-[calc(100%-150px)] lg:min-w-[1000px] lg:max-w-[1600px] left-1 lg:left-2 xl:left-36 top-8 z-5 
+                w-[99%] md:w-[90%] xl:w-[calc(100%-150px)] lg:min-w-[1000px] lg:max-w-[1600px] left-1 md:left-24 lg:left-2 xl:left-36 top-8 md:top-24 z-5 
                 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
             >
               <button

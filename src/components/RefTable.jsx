@@ -52,7 +52,7 @@ export default function RefTable({ refData, word }) {
             <th className="border-2 font-bangla border-gray-500 p-4 hidden lg:table-cell">
               ক্রমিক
             </th>
-            <th className="border-2 font-bangla border-gray-500 p-4 w-[40%] md:w-[30%] lg:w-[15%]">
+            <th className="border-2 font-bangla border-gray-500 p-4 w-[40%] md:w-[10%] lg:w-[15%]">
               শব্দ
             </th>
             <th className="border-2 font-bangla border-gray-500 p-4 w-[10%] md:w-[10%] lg:w-[15%]">
@@ -61,7 +61,7 @@ export default function RefTable({ refData, word }) {
             <th className="border-2 font-bangla border-gray-500 p-4 w-[10%] md:w-[10%] lg:w-[5%]">
               আয়াত
             </th>
-            <th className="border-2 font-bangla border-gray-500 p-4 w-[10%] md:w-[10%] lg:w-[5%]">
+            <th className="border-2 font-bangla border-gray-500 p-4 w-[10%] md:w-[5%] lg:w-[5%]">
               স্থান
             </th>
 
