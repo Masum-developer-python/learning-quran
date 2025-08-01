@@ -49,7 +49,7 @@ const Table = ({
       <table
         className={`min-w-full container border border-gray-300 ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
       >
-        <thead>
+        <thead className="sticky top-0 w-full">
           <tr>
             {page.column
               .filter((position) => position != "")

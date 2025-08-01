@@ -32,7 +32,7 @@ export default function WordCell({
 
   // console.log(word.split(""));
   const wordArray = word.split("");
-  let c=0;
+  let c = 0;
   return (
     <td
       className={`py-1 md:py-2 px-1 md:px-4 border border-gray-300 text-center
@@ -40,16 +40,12 @@ export default function WordCell({
                   ${word ? selectedColor.textColor : "bg-red-300"}
                   `}
     >
-      <div className="flex flex-row-reverse flex-wrap justify-center items-center">
-        <span
-                  className="p-1 text-3xl md:text-6xl xl:text-8xl 2xl:text-[7rem]"
-                  
-                >
+      <div className="flex flex-row-reverse  justify-center items-center">
         {Array.from({ length: Math.ceil(wordArray.length / 2) }).map(
           (_, index) => {
-            const first = wordArray[ index * 2 + c];
-            const second = wordArray[ index * 2 + 1 + c];
-            const third = wordArray[ index * 2 + 2 + c];
+            const first = wordArray[index * 2 + c];
+            const second = wordArray[index * 2 + 1 + c];
+            const third = wordArray[index * 2 + 2 + c];
             // console.log(
             //   `first: ${first}, second: ${second}, third: ${third}`
             // );
@@ -59,19 +55,23 @@ export default function WordCell({
               return (
                 <>
                   {first}
-                  {second}
+                  {String.fromCodePoint(parseInt('0652', 16))}
+                  &#8204;
+                  {first}
                   {third}
-                  &#8204;{' '}
+                  &#8204;{" "}
                 </>
               );
             }
-            
+
             return (
-              <>{first}{second}&#8204;{' '} </>
+              <div className="p-1 flex-1 text-3xl md:text-6xl xl:text-8xl 2xl:text-[7rem]">
+                {first}
+                {second}&#8204;{" "}
+              </div>
             );
           }
         )}
-        </span>
       </div>
       <hr></hr>
       {word}
