@@ -41,13 +41,19 @@ export default function RefTable({ refData, word }) {
       <table className="text-2xl table-auto border-collapse">
         <caption className="text-left font-bangla bg-white text-green-400 sticky top-0">
           <marquee>
-            শব্দটি কুরআনে <span className="font-bold text-3xl">{refData.length}</span> বার এসেছে । সুরা, আয়াত বা শব্দের অডিও শুনতে নাম/সংখ্যা/শব্দের উপর ক্লিক করুন । 
+            শব্দটি কুরআনে{" "}
+            <span className="font-bold text-3xl">{refData.length}</span> বার
+            এসেছে । সুরা, আয়াত বা শব্দের অডিও শুনতে নাম/সংখ্যা/শব্দের উপর ক্লিক
+            করুন ।
           </marquee>
         </caption>
         <thead>
           <tr className="sticky top-8 bg-green-100">
             <th className="border-2 font-bangla border-gray-500 p-4 hidden lg:table-cell">
               ক্রমিক
+            </th>
+            <th className="border-2 font-bangla border-gray-500 p-4 w-[40%] md:w-[30%] lg:w-[15%]">
+              শব্দ
             </th>
             <th className="border-2 font-bangla border-gray-500 p-4 w-[10%] md:w-[10%] lg:w-[15%]">
               সুরা
@@ -58,9 +64,7 @@ export default function RefTable({ refData, word }) {
             <th className="border-2 font-bangla border-gray-500 p-4 w-[10%] md:w-[10%] lg:w-[5%]">
               স্থান
             </th>
-            <th className="border-2 font-bangla border-gray-500 p-4 w-[40%] md:w-[30%] lg:w-[15%]">
-              শব্দ
-            </th>
+
             <th className="border-2 font-bangla border-gray-500 p-4 hidden lg:table-cell">
               রেফারেন্স
             </th>
@@ -82,6 +86,48 @@ export default function RefTable({ refData, word }) {
               <tr key={`${index}trow`} className="h-[90px]">
                 <td className="border-2 border-gray-500 hidden lg:table-cell">
                   {index + 1}
+                </td>
+                <td
+                  className="border-2 border-gray-500 text-5xl font-akber"
+                  dir="rtl"
+                >
+                  {(() => {
+                    const text = item.text;
+                    const search = word;
+                    const highlightIndexes = [];
+
+                    let tIndex = 0;
+                    for (let sIndex = 0; sIndex < search.length; sIndex++) {
+                      const char = search[sIndex];
+                      while (tIndex < text.length && text[tIndex] !== char) {
+                        tIndex++;
+                      }
+                      if (tIndex < text.length) {
+                        highlightIndexes.push(tIndex);
+                        tIndex++;
+                      }
+                    }
+
+                    return (
+                      <Audio
+                        title="Word Audio"
+                        folder={fileLocation + "audios/sura"}
+                        fileName={item.audio.substring(0, 4) + item.audio}
+                      >
+                        <span>
+                          {text.split("").map((char, index) =>
+                            highlightIndexes.includes(index) ? (
+                              <span key={index} className="text-green-500">
+                                {char}
+                              </span>
+                            ) : (
+                              <span key={index}>{char}</span>
+                            )
+                          )}
+                        </span>
+                      </Audio>
+                    );
+                  })()}
                 </td>
                 <td className="border-2 border-gray-500 font-bangla">
                   <Audio
@@ -132,48 +178,6 @@ export default function RefTable({ refData, word }) {
                   >
                     {item.position}
                   </Audio>
-                </td>
-                <td
-                  className="border-2 border-gray-500 text-5xl font-akber"
-                  dir="rtl"
-                >
-                  {(() => {
-                    const text = item.text;
-                    const search = word;
-                    const highlightIndexes = [];
-
-                    let tIndex = 0;
-                    for (let sIndex = 0; sIndex < search.length; sIndex++) {
-                      const char = search[sIndex];
-                      while (tIndex < text.length && text[tIndex] !== char) {
-                        tIndex++;
-                      }
-                      if (tIndex < text.length) {
-                        highlightIndexes.push(tIndex);
-                        tIndex++;
-                      }
-                    }
-
-                    return (
-                      <Audio
-                        title="Word Audio"
-                        folder={fileLocation + "audios/sura"}
-                        fileName={item.audio.substring(0, 4) + item.audio}
-                      >
-                        <span>
-                          {text.split("").map((char, index) =>
-                            highlightIndexes.includes(index) ? (
-                              <span key={index} className="text-green-500">
-                                {char}
-                              </span>
-                            ) : (
-                              <span key={index}>{char}</span>
-                            )
-                          )}
-                        </span>
-                      </Audio>
-                    );
-                  })()}
                 </td>
 
                 <td className="border-2 border-gray-500 hidden lg:table-cell">
@@ -234,14 +238,13 @@ export default function RefTable({ refData, word }) {
               </tr>
               <tr>
                 <th className="border-2 font-bangla border-gray-500 p-4 table-cell lg:hidden">
-                  
                   <button
                     title="Click for Ayah text"
                     className={` ${
-                        visible[`${item.sura}-${item.aya}-${item.position}`]
-                          ? "text-green-500"
-                          : "text-red-500"
-                      } `}
+                      visible[`${item.sura}-${item.aya}-${item.position}`]
+                        ? "text-green-500"
+                        : "text-red-500"
+                    } `}
                     onClick={async () => {
                       const key = `${item.sura}-${item.aya}-${item.position}`;
                       try {
@@ -267,7 +270,9 @@ export default function RefTable({ refData, word }) {
                         }));
                       }
                     }}
-                  > রেফারেন্স
+                  >
+                    {" "}
+                    রেফারেন্স
                   </button>
                 </th>
                 <td
