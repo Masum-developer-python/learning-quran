@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   alphabetColorCombinations,
@@ -26,6 +26,8 @@ function App() {
   console.log(arabicDiacritics.Harakat.diacritics[0].pages[0].column);
   const [arabicAlphabet, setArabicAlphabet] = useState([]);
   const [whiteboardOpen, setWhiteboardOpen] = useState(false);
+  const outerRef = useRef(null);
+  const whiteboardContainerRef = useRef(null);
 
   let rootAddress = localStorage.getItem("rootAddress");
   console.log(rootAddress);
@@ -96,6 +98,14 @@ function App() {
     console.log(selectedReciter);
   }, [selectedReciter]);
 
+  useEffect(() => {
+    if (outerRef.current && whiteboardContainerRef.current) {
+      const scrollHeight = outerRef.current.scrollHeight;
+      whiteboardContainerRef.current.style.height = `${scrollHeight}px`;
+      console.log("Set whiteboard container height to:", scrollHeight);
+    }
+  }, [whiteboardOpen]); // Run when whiteboard is opened
+
   return (
     <div className="min-h-screen flex flex-col ">
       <div className="flex flex-1 w-[100%] h-full ">
@@ -111,13 +121,22 @@ function App() {
           whiteboardOpen={whiteboardOpen}
           setWhiteboardOpen={setWhiteboardOpen}
         />
-        
-        <div className="flex-1 fixed left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 overflow-y-auto h-full">
-          
+
+        <div
+          ref={outerRef}
+          className="flex-1 fixed left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 overflow-y-auto h-full"
+        >
           {/* <OverlayWhiteboard /> */}
           <Router>
             <main className=" flex w-[calc(100%-10px)] pb-16 sm:pb-4 md:pb-4 ">
-              {whiteboardOpen && <Whiteboard  whiteboardOpen = {whiteboardOpen}/>}
+              {whiteboardOpen && (
+                <div
+                  ref={whiteboardContainerRef}
+                  className="w-[calc(100%-10px)] absolute z-10 pb-16 sm:pb-4 md:pb-4 pr-6"
+                >
+                  <Whiteboard whiteboardOpen={whiteboardOpen} />
+                </div>
+              )}
               <Routes>
                 <Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -128,10 +147,12 @@ function App() {
                 <Route path="/whiteboard" element={<Whiteboard />} />
                 <Route
                   path="/quran"
-                  element={<QuranRead 
-                    selectedColor={selectedColor}
-                    arabicAlphabet={arabicAlphabet}
-                  />}
+                  element={
+                    <QuranRead
+                      selectedColor={selectedColor}
+                      arabicAlphabet={arabicAlphabet}
+                    />
+                  }
                 />
                 <Route
                   key={10}

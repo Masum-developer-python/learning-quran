@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
-export default function Whiteboard({whiteboardOpen = false}) {
+export default function Whiteboard({ whiteboardOpen = false }) {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
-  
+
   // Drawing states
   const [isDrawing, setIsDrawing] = useState(false);
-  const [tool, setTool] = useState('pen');
-  const [color, setColor] = useState('#000000');
+  const [tool, setTool] = useState("pen");
+  const [color, setColor] = useState("#000000");
   const [brushSize, setBrushSize] = useState(1);
   const [drawingData, setDrawingData] = useState(null);
-  
+
   // Selection and clipboard states
   const [isSelecting, setIsSelecting] = useState(false);
   const [selection, setSelection] = useState(null);
@@ -30,7 +30,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
     const rect = canvas.getBoundingClientRect();
     return {
       x: (e.clientX - rect.left) * (canvas.width / rect.width),
-      y: (e.clientY - rect.top) * (canvas.height / rect.height)
+      y: (e.clientY - rect.top) * (canvas.height / rect.height),
     };
   }, []);
 
@@ -48,32 +48,35 @@ export default function Whiteboard({whiteboardOpen = false}) {
   }, [history, historyIndex]);
 
   // Draw paste preview
-  const drawPastePreview = useCallback((x, y) => {
-    if (!clipboard || !contextRef.current) return;
-    
-    const ctx = contextRef.current;
-    ctx.save();
-    ctx.globalAlpha = 0.7;
-    ctx.putImageData(clipboard.imageData, x, y);
-    ctx.restore();
-  }, [clipboard]);
+  const drawPastePreview = useCallback(
+    (x, y) => {
+      if (!clipboard || !contextRef.current) return;
+
+      const ctx = contextRef.current;
+      ctx.save();
+      ctx.globalAlpha = 0.7;
+      ctx.putImageData(clipboard.imageData, x, y);
+      ctx.restore();
+    },
+    [clipboard]
+  );
 
   // Redraw canvas
   const redrawCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = contextRef.current;
-    
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     if (drawingData) {
       const img = new Image();
       img.onload = () => {
         ctx.drawImage(img, 0, 0);
-        
+
         // Draw selection box
-        if (selection && tool === 'select') {
+        if (selection && tool === "select") {
           ctx.save();
-          ctx.strokeStyle = '#0066cc';
+          ctx.strokeStyle = "#0066cc";
           ctx.lineWidth = 2;
           ctx.setLineDash([5, 5]);
           ctx.strokeRect(
@@ -84,7 +87,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
           );
           ctx.restore();
         }
-        
+
         // Draw paste preview
         if (pastePreview && pasteMode) {
           drawPastePreview(pastePreview.x, pastePreview.y);
@@ -97,47 +100,58 @@ export default function Whiteboard({whiteboardOpen = false}) {
   }, [drawingData, selection, tool, pastePreview, pasteMode, drawPastePreview]);
 
   // Draw shapes
-  const drawShape = useCallback((start, end, finalize = false) => {
-    const ctx = contextRef.current;
-    ctx.save();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = brushSize;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
+  const drawShape = useCallback(
+    (start, end, finalize = false) => {
+      const ctx = contextRef.current;
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = brushSize;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
 
-    switch (tool) {
-      case 'rectangle':
-        ctx.strokeRect(start.x, start.y, end.x - start.x, end.y - start.y);
-        break;
-      case 'circle':
-        const radius = Math.sqrt(Math.pow(end.x - start.x, 2) + Math.pow(end.y - start.y, 2));
-        ctx.beginPath();
-        ctx.arc(start.x, start.y, radius, 0, 2 * Math.PI);
-        ctx.stroke();
-        break;
-      case 'line':
-        ctx.beginPath();
-        ctx.moveTo(start.x, start.y);
-        ctx.lineTo(end.x, end.y);
-        ctx.stroke();
-        break;
-      case 'arrow':
-        const headlen = 15;
-        const dx = end.x - start.x;
-        const dy = end.y - start.y;
-        const angle = Math.atan2(dy, dx);
-        
-        ctx.beginPath();
-        ctx.moveTo(start.x, start.y);
-        ctx.lineTo(end.x, end.y);
-        ctx.lineTo(end.x - headlen * Math.cos(angle - Math.PI / 6), end.y - headlen * Math.sin(angle - Math.PI / 6));
-        ctx.moveTo(end.x, end.y);
-        ctx.lineTo(end.x - headlen * Math.cos(angle + Math.PI / 6), end.y - headlen * Math.sin(angle + Math.PI / 6));
-        ctx.stroke();
-        break;
-    }
-    ctx.restore();
-  }, [tool, color, brushSize]);
+      switch (tool) {
+        case "rectangle":
+          ctx.strokeRect(start.x, start.y, end.x - start.x, end.y - start.y);
+          break;
+        case "circle":
+          const radius = Math.sqrt(
+            Math.pow(end.x - start.x, 2) + Math.pow(end.y - start.y, 2)
+          );
+          ctx.beginPath();
+          ctx.arc(start.x, start.y, radius, 0, 2 * Math.PI);
+          ctx.stroke();
+          break;
+        case "line":
+          ctx.beginPath();
+          ctx.moveTo(start.x, start.y);
+          ctx.lineTo(end.x, end.y);
+          ctx.stroke();
+          break;
+        case "arrow":
+          const headlen = 15;
+          const dx = end.x - start.x;
+          const dy = end.y - start.y;
+          const angle = Math.atan2(dy, dx);
+
+          ctx.beginPath();
+          ctx.moveTo(start.x, start.y);
+          ctx.lineTo(end.x, end.y);
+          ctx.lineTo(
+            end.x - headlen * Math.cos(angle - Math.PI / 6),
+            end.y - headlen * Math.sin(angle - Math.PI / 6)
+          );
+          ctx.moveTo(end.x, end.y);
+          ctx.lineTo(
+            end.x - headlen * Math.cos(angle + Math.PI / 6),
+            end.y - headlen * Math.sin(angle + Math.PI / 6)
+          );
+          ctx.stroke();
+          break;
+      }
+      ctx.restore();
+    },
+    [tool, color, brushSize]
+  );
 
   // Initialize canvas
   useEffect(() => {
@@ -148,26 +162,26 @@ export default function Whiteboard({whiteboardOpen = false}) {
     const resize = () => {
       const container = canvas.parentElement;
       const dpr = window.devicePixelRatio || 1;
-      
+
       // Save current drawing
       let currentDrawing = null;
       if (canvas.width > 0 && canvas.height > 0) {
         currentDrawing = canvas.toDataURL();
       }
-      
+
       // Set display size
       const displayWidth = container.clientWidth;
       const displayHeight = container.clientHeight;
-      
+
       // Set canvas size
       canvas.width = displayWidth * dpr;
       canvas.height = displayHeight * dpr;
-      canvas.style.width = displayWidth + 'px';
-      canvas.style.height = displayHeight + 'px';
-      
+      canvas.style.width = displayWidth + "px";
+      canvas.style.height = displayHeight + "px";
+
       // Scale context for high DPI displays
       ctx.scale(dpr, dpr);
-      
+
       // Restore drawing
       const dataToRestore = currentDrawing || drawingData;
       if (dataToRestore && canvas.width > 0 && canvas.height > 0) {
@@ -177,7 +191,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
         };
         img.src = dataToRestore;
       }
-      
+
       // Save initial state if history is empty
       if (history.length === 0) {
         saveToHistory();
@@ -193,121 +207,171 @@ export default function Whiteboard({whiteboardOpen = false}) {
   }, []);
 
   // Event handlers
-  const startDraw = useCallback((e) => {
-    const coords = getCoordinates(e);
-    setStartPoint(coords);
+  const startDraw = useCallback(
+    (e) => {
+      const coords = getCoordinates(e);
+      setStartPoint(coords);
 
-    // Handle paste mode
-    if (pasteMode && clipboard) {
-      if (!pastePreview) {
+      // Handle paste mode
+      if (pasteMode && clipboard) {
+        if (!pastePreview) {
+          setPastePreview({ x: coords.x, y: coords.y });
+          setIsDraggingPaste(true);
+          redrawCanvas();
+          return;
+        } else {
+          const ctx = contextRef.current;
+          ctx.putImageData(clipboard.imageData, pastePreview.x, pastePreview.y);
+          saveToHistory();
+          setPasteMode(false);
+          setPastePreview(null);
+          setIsDraggingPaste(false);
+          return;
+        }
+      }
+
+      if (tool === "select") {
+        setIsSelecting(true);
+        setSelection({
+          startX: coords.x,
+          startY: coords.y,
+          endX: coords.x,
+          endY: coords.y,
+        });
+        return;
+      }
+
+      if (["rectangle", "circle", "line", "arrow"].includes(tool)) {
+        setIsDrawing(true);
+        return;
+      }
+
+      // For pen and eraser
+      setIsDrawing(true);
+      const ctx = contextRef.current;
+      ctx.beginPath();
+      ctx.moveTo(coords.x, coords.y);
+
+      if (tool === "eraser") {
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.lineWidth = brushSize * 3;
+      } else {
+        ctx.globalCompositeOperation = "source-over";
+        ctx.strokeStyle = color;
+        ctx.lineWidth = brushSize;
+      }
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+    },
+    [
+      tool,
+      pasteMode,
+      clipboard,
+      pastePreview,
+      brushSize,
+      color,
+      getCoordinates,
+      redrawCanvas,
+      saveToHistory,
+    ]
+  );
+
+  const draw = useCallback(
+    (e) => {
+      const coords = getCoordinates(e);
+
+      // Handle paste preview
+      if (pasteMode && isDraggingPaste && pastePreview) {
         setPastePreview({ x: coords.x, y: coords.y });
-        setIsDraggingPaste(true);
         redrawCanvas();
         return;
-      } else {
-        const ctx = contextRef.current;
-        ctx.putImageData(clipboard.imageData, pastePreview.x, pastePreview.y);
-        saveToHistory();
-        setPasteMode(false);
-        setPastePreview(null);
+      }
+
+      if (pasteMode && !isDraggingPaste && !pastePreview) {
+        setPastePreview({ x: coords.x, y: coords.y });
+        redrawCanvas();
+        return;
+      }
+
+      // Handle selection
+      if (tool === "select" && isSelecting) {
+        setSelection((prev) => ({ ...prev, endX: coords.x, endY: coords.y }));
+        redrawCanvas();
+        return;
+      }
+
+      // Handle shapes
+      if (
+        ["rectangle", "circle", "line", "arrow"].includes(tool) &&
+        isDrawing
+      ) {
+        redrawCanvas();
+        setTimeout(() => drawShape(startPoint, coords), 0);
+        return;
+      }
+
+      // Handle free drawing
+      if (!isDrawing || ["select"].includes(tool)) return;
+
+      const ctx = contextRef.current;
+      ctx.lineTo(coords.x, coords.y);
+      ctx.stroke();
+    },
+    [
+      tool,
+      pasteMode,
+      isDraggingPaste,
+      pastePreview,
+      isSelecting,
+      isDrawing,
+      startPoint,
+      getCoordinates,
+      redrawCanvas,
+      drawShape,
+    ]
+  );
+
+  const stopDraw = useCallback(
+    (e) => {
+      if (isDraggingPaste) {
         setIsDraggingPaste(false);
         return;
       }
-    }
 
-    if (tool === 'select') {
-      setIsSelecting(true);
-      setSelection({ startX: coords.x, startY: coords.y, endX: coords.x, endY: coords.y });
-      return;
-    }
+      if (tool === "select" && isSelecting) {
+        setIsSelecting(false);
+        return;
+      }
 
-    if (['rectangle', 'circle', 'line', 'arrow'].includes(tool)) {
-      setIsDrawing(true);
-      return;
-    }
+      if (
+        ["rectangle", "circle", "line", "arrow"].includes(tool) &&
+        isDrawing
+      ) {
+        const coords = getCoordinates(e);
+        drawShape(startPoint, coords, true);
+        setIsDrawing(false);
+        saveToHistory();
+        return;
+      }
 
-    // For pen and eraser
-    setIsDrawing(true);
-    const ctx = contextRef.current;
-    ctx.beginPath();
-    ctx.moveTo(coords.x, coords.y);
-    
-    if (tool === 'eraser') {
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.lineWidth = brushSize * 3;
-    } else {
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.strokeStyle = color;
-      ctx.lineWidth = brushSize;
-    }
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-  }, [tool, pasteMode, clipboard, pastePreview, brushSize, color, getCoordinates, redrawCanvas, saveToHistory]);
-
-  const draw = useCallback((e) => {
-    const coords = getCoordinates(e);
-
-    // Handle paste preview
-    if (pasteMode && isDraggingPaste && pastePreview) {
-      setPastePreview({ x: coords.x, y: coords.y });
-      redrawCanvas();
-      return;
-    }
-
-    if (pasteMode && !isDraggingPaste && !pastePreview) {
-      setPastePreview({ x: coords.x, y: coords.y });
-      redrawCanvas();
-      return;
-    }
-
-    // Handle selection
-    if (tool === 'select' && isSelecting) {
-      setSelection(prev => ({ ...prev, endX: coords.x, endY: coords.y }));
-      redrawCanvas();
-      return;
-    }
-
-    // Handle shapes
-    if (['rectangle', 'circle', 'line', 'arrow'].includes(tool) && isDrawing) {
-      redrawCanvas();
-      setTimeout(() => drawShape(startPoint, coords), 0);
-      return;
-    }
-
-    // Handle free drawing
-    if (!isDrawing || ['select'].includes(tool)) return;
-    
-    const ctx = contextRef.current;
-    ctx.lineTo(coords.x, coords.y);
-    ctx.stroke();
-  }, [tool, pasteMode, isDraggingPaste, pastePreview, isSelecting, isDrawing, startPoint, getCoordinates, redrawCanvas, drawShape]);
-
-  const stopDraw = useCallback((e) => {
-    if (isDraggingPaste) {
-      setIsDraggingPaste(false);
-      return;
-    }
-
-    if (tool === 'select' && isSelecting) {
-      setIsSelecting(false);
-      return;
-    }
-
-    if (['rectangle', 'circle', 'line', 'arrow'].includes(tool) && isDrawing) {
-      const coords = getCoordinates(e);
-      drawShape(startPoint, coords, true);
-      setIsDrawing(false);
-      saveToHistory();
-      return;
-    }
-
-    if (isDrawing && !['select'].includes(tool)) {
-      setIsDrawing(false);
-      const ctx = contextRef.current;
-      ctx.closePath();
-      saveToHistory();
-    }
-  }, [tool, isDraggingPaste, isSelecting, isDrawing, startPoint, getCoordinates, drawShape, saveToHistory]);
+      if (isDrawing && !["select"].includes(tool)) {
+        setIsDrawing(false);
+        const ctx = contextRef.current;
+        ctx.closePath();
+        saveToHistory();
+      }
+    },
+    [
+      tool,
+      isDraggingPaste,
+      isSelecting,
+      isDrawing,
+      startPoint,
+      getCoordinates,
+      drawShape,
+      saveToHistory,
+    ]
+  );
 
   // Attach event listeners
   useEffect(() => {
@@ -325,7 +389,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
       const touch = e.touches[0];
       const mouseEvent = new MouseEvent("mousedown", {
         clientX: touch.clientX,
-        clientY: touch.clientY
+        clientY: touch.clientY,
       });
       canvas.dispatchEvent(mouseEvent);
     });
@@ -335,7 +399,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
       const touch = e.touches[0];
       const mouseEvent = new MouseEvent("mousemove", {
         clientX: touch.clientX,
-        clientY: touch.clientY
+        clientY: touch.clientY,
       });
       canvas.dispatchEvent(mouseEvent);
     });
@@ -370,7 +434,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
     if (historyIndex > 0) {
       const newIndex = historyIndex - 1;
       setHistoryIndex(newIndex);
-      
+
       const canvas = canvasRef.current;
       const ctx = contextRef.current;
       const img = new Image();
@@ -387,7 +451,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
     if (historyIndex < history.length - 1) {
       const newIndex = historyIndex + 1;
       setHistoryIndex(newIndex);
-      
+
       const canvas = canvasRef.current;
       const ctx = contextRef.current;
       const img = new Image();
@@ -402,15 +466,15 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
   const copySelection = () => {
     if (!selection) return;
-    
+
     const canvas = canvasRef.current;
     const ctx = contextRef.current;
-    
+
     const x = Math.min(selection.startX, selection.endX);
     const y = Math.min(selection.startY, selection.endY);
     const width = Math.abs(selection.endX - selection.startX);
     const height = Math.abs(selection.endY - selection.startY);
-    
+
     if (width > 0 && height > 0) {
       const imageData = ctx.getImageData(x, y, width, height);
       setClipboard({ imageData, width, height });
@@ -426,13 +490,13 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
   const deleteSelection = () => {
     if (!selection) return;
-    
+
     const ctx = contextRef.current;
     const x = Math.min(selection.startX, selection.endX);
     const y = Math.min(selection.startY, selection.endY);
     const width = Math.abs(selection.endX - selection.startX);
     const height = Math.abs(selection.endY - selection.startY);
-    
+
     ctx.clearRect(x, y, width, height);
     setSelection(null);
     saveToHistory();
@@ -440,278 +504,306 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
   const downloadCanvas = () => {
     const canvas = canvasRef.current;
-    const link = document.createElement('a');
-    link.download = 'whiteboard.png';
-    link.href = canvas.toDataURL('image/png');
+    const link = document.createElement("a");
+    link.download = "whiteboard.png";
+    link.href = canvas.toDataURL("image/png");
     link.click();
   };
 
   const getCursor = () => {
-    if (pasteMode) return 'cursor-copy';
+    if (pasteMode) return "cursor-copy";
     switch (tool) {
-      case 'pen': return 'cursor-crosshair';
-      case 'eraser': return 'cursor-cell';
-      case 'select': return 'cursor-pointer';
-      case 'rectangle':
-      case 'circle':
-      case 'line':
-      case 'arrow': return 'cursor-crosshair';
-      default: return 'cursor-default';
+      case "pen":
+        return "cursor-crosshair";
+      case "eraser":
+        return "cursor-cell";
+      case "select":
+        return "cursor-pointer";
+      case "rectangle":
+      case "circle":
+      case "line":
+      case "arrow":
+        return "cursor-crosshair";
+      default:
+        return "cursor-default";
     }
   };
 
-  const presetColors = ['#000000', '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#800080', '#ffc0cb'];
+  const presetColors = [
+    "#000000",
+    "#ff0000",
+    "#00ff00",
+    "#0000ff",
+    "#ffff00",
+    "#ff00ff",
+    "#00ffff",
+    "#ffa500",
+    "#800080",
+    "#ffc0cb",
+  ];
 
   return (
-    <div className="flex flex-col w-[98%] min-h-[390%] absolute z-10">
+    <div
+      className={`flex flex-col w-[calc(100%-10px)] h-[102%] absolute z-10 pb-16 sm:pb-4 md:pb-4 pr-6`}
+    >
       {/* Header Toolbar */}
-      {!whiteboardOpen && (<div className=" shadow-lg border-b border-gray-200 p-4">
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          {/* Drawing Tools */}
-          <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
-            <button
-              onClick={() => setTool('pen')}
-              className={`p-2 rounded-md transition-all ${
-                tool === 'pen' 
-                  ? 'bg-blue-500 text-white shadow-md' 
-                  : 'text-gray-600 hover:bg-gray-200'
-              }`}
-              title="Pen Tool"
-            >
-              ✏️
-            </button>
-            
-            <button
-              onClick={() => setTool('eraser')}
-              className={`p-2 rounded-md transition-all ${
-                tool === 'eraser' 
-                  ? 'bg-red-500 text-white shadow-md' 
-                  : 'text-gray-600 hover:bg-gray-200'
-              }`}
-              title="Eraser"
-            >
-              🧽
-            </button>
-
-            <button
-              onClick={() => setTool('select')}
-              className={`p-2 rounded-md transition-all ${
-                tool === 'select' 
-                  ? 'bg-green-500 text-white shadow-md' 
-                  : 'text-gray-600 hover:bg-gray-200'
-              }`}
-              title="Select"
-            >
-              📦
-            </button>
-          </div>
-
-          {/* Shape Tools */}
-          <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
-            <button
-              onClick={() => setTool('rectangle')}
-              className={`p-2 rounded-md transition-all ${
-                tool === 'rectangle' 
-                  ? 'bg-purple-500 text-white shadow-md' 
-                  : 'text-gray-600 hover:bg-gray-200'
-              }`}
-              title="Rectangle"
-            >
-              ⬜
-            </button>
-
-            <button
-              onClick={() => setTool('circle')}
-              className={`p-2 rounded-md transition-all ${
-                tool === 'circle' 
-                  ? 'bg-purple-500 text-white shadow-md' 
-                  : 'text-gray-600 hover:bg-gray-200'
-              }`}
-              title="Circle"
-            >
-              ⭕
-            </button>
-
-            <button
-              onClick={() => setTool('line')}
-              className={`p-2 rounded-md transition-all ${
-                tool === 'line' 
-                  ? 'bg-purple-500 text-white shadow-md' 
-                  : 'text-gray-600 hover:bg-gray-200'
-              }`}
-              title="Line"
-            >
-              📏
-            </button>
-
-            <button
-              onClick={() => setTool('arrow')}
-              className={`p-2 rounded-md transition-all ${
-                tool === 'arrow' 
-                  ? 'bg-purple-500 text-white shadow-md' 
-                  : 'text-gray-600 hover:bg-gray-200'
-              }`}
-              title="Arrow"
-            >
-              ➡️
-            </button>
-          </div>
-
-          {/* Color Picker */}
-          <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-2">
-            <input
-              type="color"
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-              className="w-8 h-8 rounded border-2 border-gray-300 cursor-pointer"
-              title="Color Picker"
-            />
-            
-            <div className="flex gap-1">
-              {presetColors.map((presetColor) => (
-                <button
-                  key={presetColor}
-                  onClick={() => setColor(presetColor)}
-                  className={`w-6 h-6 rounded-full border-2 hover:scale-110 transition-transform ${
-                    color === presetColor ? 'border-gray-600' : 'border-gray-300'
-                  }`}
-                  style={{ backgroundColor: presetColor }}
-                  title={`Color: ${presetColor}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Brush Size */}
-          <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
-            <span className="text-sm text-gray-600">Size:</span>
-            <input
-              type="range"
-              min="1"
-              max="20"
-              value={brushSize}
-              onChange={(e) => setBrushSize(parseInt(e.target.value))}
-              className="w-20"
-            />
-            <span className="text-sm text-gray-600 w-6">{brushSize}</span>
-          </div>
-
-          {/* History Controls */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={undo}
-              disabled={historyIndex <= 0}
-              className="p-2 bg-gray-200 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              title="Undo"
-            >
-              ↶
-            </button>
-            <button
-              onClick={redo}
-              disabled={historyIndex >= history.length - 1}
-              className="p-2 bg-gray-200 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              title="Redo"
-            >
-              ↷
-            </button>
-          </div>
-
-          {/* Selection Actions */}
-          {(selection || clipboard) && (
+      {!whiteboardOpen && (
+        <div className=" shadow-lg border-b border-gray-200 p-4">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            {/* Drawing Tools */}
             <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
-              {selection && (
-                <>
-                  <button
-                    onClick={copySelection}
-                    className="p-2 rounded-md text-gray-600 hover:bg-gray-200"
-                    title="Copy"
-                  >
-                    📋
-                  </button>
-                  <button
-                    onClick={deleteSelection}
-                    className="p-2 rounded-md text-gray-600 hover:bg-gray-200"
-                    title="Delete"
-                  >
-                    🗑️
-                  </button>
-                </>
-              )}
-              {clipboard && (
-                <button
-                  onClick={pasteSelection}
-                  className={`p-2 rounded-md transition-all ${
-                    pasteMode 
-                      ? 'bg-orange-500 text-white' 
-                      : 'text-gray-600 hover:bg-gray-200'
-                  }`}
-                  title={pasteMode ? "Click to place" : "Paste"}
-                >
-                  📝
-                </button>
-              )}
-            </div>
-          )}
-
-          {/* Paste Mode Indicator */}
-          {pasteMode && (
-            <div className="flex items-center gap-2 bg-orange-100 rounded-lg p-2 border border-orange-300">
-              <span className="text-sm text-orange-800">
-                {pastePreview ? "Click to place" : "Move to position"}
-              </span>
               <button
-                onClick={() => {
-                  setPasteMode(false);
-                  setPastePreview(null);
-                  setIsDraggingPaste(false);
-                }}
-                className="text-orange-600 hover:text-orange-800"
-                title="Cancel"
+                onClick={() => setTool("pen")}
+                className={`p-2 rounded-md transition-all ${
+                  tool === "pen"
+                    ? "bg-blue-500 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-200"
+                }`}
+                title="Pen Tool"
               >
-                ❌
+                ✏️
+              </button>
+
+              <button
+                onClick={() => setTool("eraser")}
+                className={`p-2 rounded-md transition-all ${
+                  tool === "eraser"
+                    ? "bg-red-500 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-200"
+                }`}
+                title="Eraser"
+              >
+                🧽
+              </button>
+
+              <button
+                onClick={() => setTool("select")}
+                className={`p-2 rounded-md transition-all ${
+                  tool === "select"
+                    ? "bg-green-500 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-200"
+                }`}
+                title="Select"
+              >
+                📦
               </button>
             </div>
-          )}
 
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={clearCanvas}
-              className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-              title="Clear Canvas"
-            >
-              🗑️ Clear
-            </button>
-            
-            <button
-              onClick={downloadCanvas}
-              className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-              title="Download"
-            >
-              💾 Save
-            </button>
+            {/* Shape Tools */}
+            <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
+              <button
+                onClick={() => setTool("rectangle")}
+                className={`p-2 rounded-md transition-all ${
+                  tool === "rectangle"
+                    ? "bg-purple-500 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-200"
+                }`}
+                title="Rectangle"
+              >
+                ⬜
+              </button>
+
+              <button
+                onClick={() => setTool("circle")}
+                className={`p-2 rounded-md transition-all ${
+                  tool === "circle"
+                    ? "bg-purple-500 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-200"
+                }`}
+                title="Circle"
+              >
+                ⭕
+              </button>
+
+              <button
+                onClick={() => setTool("line")}
+                className={`p-2 rounded-md transition-all ${
+                  tool === "line"
+                    ? "bg-purple-500 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-200"
+                }`}
+                title="Line"
+              >
+                📏
+              </button>
+
+              <button
+                onClick={() => setTool("arrow")}
+                className={`p-2 rounded-md transition-all ${
+                  tool === "arrow"
+                    ? "bg-purple-500 text-white shadow-md"
+                    : "text-gray-600 hover:bg-gray-200"
+                }`}
+                title="Arrow"
+              >
+                ➡️
+              </button>
+            </div>
+
+            {/* Color Picker */}
+            <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-2">
+              <input
+                type="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                className="w-8 h-8 rounded border-2 border-gray-300 cursor-pointer"
+                title="Color Picker"
+              />
+
+              <div className="flex gap-1">
+                {presetColors.map((presetColor) => (
+                  <button
+                    key={presetColor}
+                    onClick={() => setColor(presetColor)}
+                    className={`w-6 h-6 rounded-full border-2 hover:scale-110 transition-transform ${
+                      color === presetColor
+                        ? "border-gray-600"
+                        : "border-gray-300"
+                    }`}
+                    style={{ backgroundColor: presetColor }}
+                    title={`Color: ${presetColor}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Brush Size */}
+            <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
+              <span className="text-sm text-gray-600">Size:</span>
+              <input
+                type="range"
+                min="1"
+                max="20"
+                value={brushSize}
+                onChange={(e) => setBrushSize(parseInt(e.target.value))}
+                className="w-20"
+              />
+              <span className="text-sm text-gray-600 w-6">{brushSize}</span>
+            </div>
+
+            {/* History Controls */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={undo}
+                disabled={historyIndex <= 0}
+                className="p-2 bg-gray-200 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Undo"
+              >
+                ↶
+              </button>
+              <button
+                onClick={redo}
+                disabled={historyIndex >= history.length - 1}
+                className="p-2 bg-gray-200 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Redo"
+              >
+                ↷
+              </button>
+            </div>
+
+            {/* Selection Actions */}
+            {(selection || clipboard) && (
+              <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
+                {selection && (
+                  <>
+                    <button
+                      onClick={copySelection}
+                      className="p-2 rounded-md text-gray-600 hover:bg-gray-200"
+                      title="Copy"
+                    >
+                      📋
+                    </button>
+                    <button
+                      onClick={deleteSelection}
+                      className="p-2 rounded-md text-gray-600 hover:bg-gray-200"
+                      title="Delete"
+                    >
+                      🗑️
+                    </button>
+                  </>
+                )}
+                {clipboard && (
+                  <button
+                    onClick={pasteSelection}
+                    className={`p-2 rounded-md transition-all ${
+                      pasteMode
+                        ? "bg-orange-500 text-white"
+                        : "text-gray-600 hover:bg-gray-200"
+                    }`}
+                    title={pasteMode ? "Click to place" : "Paste"}
+                  >
+                    📝
+                  </button>
+                )}
+              </div>
+            )}
+
+            {/* Paste Mode Indicator */}
+            {pasteMode && (
+              <div className="flex items-center gap-2 bg-orange-100 rounded-lg p-2 border border-orange-300">
+                <span className="text-sm text-orange-800">
+                  {pastePreview ? "Click to place" : "Move to position"}
+                </span>
+                <button
+                  onClick={() => {
+                    setPasteMode(false);
+                    setPastePreview(null);
+                    setIsDraggingPaste(false);
+                  }}
+                  className="text-orange-600 hover:text-orange-800"
+                  title="Cancel"
+                >
+                  ❌
+                </button>
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={clearCanvas}
+                className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                title="Clear Canvas"
+              >
+                🗑️ Clear
+              </button>
+
+              <button
+                onClick={downloadCanvas}
+                className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                title="Download"
+              >
+                💾 Save
+              </button>
+            </div>
           </div>
         </div>
-      </div>)}
-      
+      )}
+
       {/* Canvas Container */}
       <div className="flex-1 ">
         <canvas
           ref={canvasRef}
           className={`w-full h-full ${getCursor()}`}
-          style={{ 
-            touchAction: 'none',
-            background : 'transparent',
+          style={{
+            touchAction: "none",
+            background: "transparent",
           }}
         />
       </div>
 
       {/* Status Bar */}
       <div className="bg-gray-100 px-4 py-2 text-sm text-gray-600 border-t">
-        Tool: <span className="font-semibold capitalize">{tool}</span> | 
-        Size: <span className="font-semibold">{brushSize}px</span> | 
-        History: <span className="font-semibold">{historyIndex + 1}/{history.length}</span>
-        {pasteMode && <span className="ml-4 text-orange-600 font-semibold">📝 Paste Mode Active</span>}
+        Tool: <span className="font-semibold capitalize">{tool}</span> | Size:{" "}
+        <span className="font-semibold">{brushSize}px</span> | History:{" "}
+        <span className="font-semibold">
+          {historyIndex + 1}/{history.length}
+        </span>
+        {pasteMode && (
+          <span className="ml-4 text-orange-600 font-semibold">
+            📝 Paste Mode Active
+          </span>
+        )}
       </div>
     </div>
   );
@@ -727,7 +819,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //   const [color, setColor] = useState('#000000');
 //   const [brushSize, setBrushSize] = useState(0.1);
 //   const [drawingData, setDrawingData] = useState(null);
-  
+
 //   // Selection and shapes state
 //   const [isSelecting, setIsSelecting] = useState(false);
 //   const [selection, setSelection] = useState(null);
@@ -743,15 +835,15 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
 //     const resize = () => {
 //       const container = canvas.parentElement;
-      
+
 //       let currentDrawing = null;
 //       if (canvas.width > 0 && canvas.height > 0) {
 //         currentDrawing = canvas.toDataURL();
 //       }
-      
+
 //       canvas.width = container.clientWidth;
 //       canvas.height = container.clientHeight;
-      
+
 //       const dataToRestore = currentDrawing || drawingData;
 //       if (dataToRestore && canvas.width > 0 && canvas.height > 0) {
 //         const img = new Image();
@@ -840,7 +932,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //           const dx = end.x - start.x;
 //           const dy = end.y - start.y;
 //           const angle = Math.atan2(dy, dx);
-          
+
 //           ctx.beginPath();
 //           ctx.moveTo(start.x, start.y);
 //           ctx.lineTo(end.x, end.y);
@@ -870,7 +962,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //           const canvas = canvasRef.current;
 //           const ctx = canvas.getContext("2d");
 //           ctx.putImageData(clipboard.imageData, pastePreview.x, pastePreview.y);
-          
+
 //           if (canvas.width > 0 && canvas.height > 0) {
 //             setDrawingData(canvas.toDataURL());
 //           }
@@ -929,10 +1021,10 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //       }
 
 //       if (!isDrawing || ['select'].includes(tool)) return;
-      
+
 //       // For free drawing (pen/eraser), don't clear canvas
 //       ctx.lineTo(coords.x, coords.y);
-      
+
 //       if (tool === 'eraser') {
 //         ctx.globalCompositeOperation = 'destination-out';
 //         ctx.lineWidth = brushSize * 5;
@@ -941,7 +1033,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //         ctx.strokeStyle = color;
 //         ctx.lineWidth = brushSize / 10;
 //       }
-      
+
 //       ctx.lineCap = "round";
 //       ctx.lineJoin = "round";
 //       ctx.stroke();
@@ -1005,15 +1097,15 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
 //   const copySelection = () => {
 //     if (!selection) return;
-    
+
 //     const canvas = canvasRef.current;
 //     const ctx = canvas.getContext("2d");
-    
+
 //     const x = Math.min(selection.startX, selection.endX);
 //     const y = Math.min(selection.startY, selection.endY);
 //     const width = Math.abs(selection.endX - selection.startX);
 //     const height = Math.abs(selection.endY - selection.startY);
-    
+
 //     if (width > 0 && height > 0) {
 //       const imageData = ctx.getImageData(x, y, width, height);
 //       setClipboard({ imageData, width, height });
@@ -1029,18 +1121,18 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
 //   const deleteSelection = () => {
 //     if (!selection) return;
-    
+
 //     const canvas = canvasRef.current;
 //     const ctx = canvas.getContext("2d");
-    
+
 //     const x = Math.min(selection.startX, selection.endX);
 //     const y = Math.min(selection.startY, selection.endY);
 //     const width = Math.abs(selection.endX - selection.startX);
 //     const height = Math.abs(selection.endY - selection.startY);
-    
+
 //     ctx.clearRect(x, y, width, height);
 //     setSelection(null);
-    
+
 //     if (canvas.width > 0 && canvas.height > 0) {
 //       setDrawingData(canvas.toDataURL());
 //     }
@@ -1082,8 +1174,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //               <button
 //                 onClick={() => setTool('pen')}
 //                 className={`p-2 rounded-md transition-all ${
-//                   tool === 'pen' 
-//                     ? 'bg-blue-500 text-white shadow-md' 
+//                   tool === 'pen'
+//                     ? 'bg-blue-500 text-white shadow-md'
 //                     : 'text-gray-600 hover:bg-gray-200/50'
 //                 }`}
 //                 title="Pen Tool"
@@ -1092,12 +1184,12 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
 //                 </svg>
 //               </button>
-              
+
 //               <button
 //                 onClick={() => setTool('eraser')}
 //                 className={`p-2 rounded-md transition-all ${
-//                   tool === 'eraser' 
-//                     ? 'bg-red-500 text-white shadow-md' 
+//                   tool === 'eraser'
+//                     ? 'bg-red-500 text-white shadow-md'
 //                     : 'text-gray-600 hover:bg-gray-200/50'
 //                 }`}
 //                 title="Eraser Tool"
@@ -1110,8 +1202,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //               <button
 //                 onClick={() => setTool('select')}
 //                 className={`p-2 rounded-md transition-all ${
-//                   tool === 'select' 
-//                     ? 'bg-green-500 text-white shadow-md' 
+//                   tool === 'select'
+//                     ? 'bg-green-500 text-white shadow-md'
 //                     : 'text-gray-600 hover:bg-gray-200/50'
 //                 }`}
 //                 title="Selection Tool"
@@ -1127,8 +1219,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //               <button
 //                 onClick={() => setTool('rectangle')}
 //                 className={`p-2 rounded-md transition-all ${
-//                   tool === 'rectangle' 
-//                     ? 'bg-purple-500 text-white shadow-md' 
+//                   tool === 'rectangle'
+//                     ? 'bg-purple-500 text-white shadow-md'
 //                     : 'text-gray-600 hover:bg-gray-200/50'
 //                 }`}
 //                 title="Rectangle"
@@ -1141,8 +1233,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //               <button
 //                 onClick={() => setTool('circle')}
 //                 className={`p-2 rounded-md transition-all ${
-//                   tool === 'circle' 
-//                     ? 'bg-purple-500 text-white shadow-md' 
+//                   tool === 'circle'
+//                     ? 'bg-purple-500 text-white shadow-md'
 //                     : 'text-gray-600 hover:bg-gray-200/50'
 //                 }`}
 //                 title="Circle"
@@ -1155,8 +1247,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //               <button
 //                 onClick={() => setTool('line')}
 //                 className={`p-2 rounded-md transition-all ${
-//                   tool === 'line' 
-//                     ? 'bg-purple-500 text-white shadow-md' 
+//                   tool === 'line'
+//                     ? 'bg-purple-500 text-white shadow-md'
 //                     : 'text-gray-600 hover:bg-gray-200/50'
 //                 }`}
 //                 title="Line"
@@ -1169,8 +1261,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //               <button
 //                 onClick={() => setTool('arrow')}
 //                 className={`p-2 rounded-md transition-all ${
-//                   tool === 'arrow' 
-//                     ? 'bg-purple-500 text-white shadow-md' 
+//                   tool === 'arrow'
+//                     ? 'bg-purple-500 text-white shadow-md'
 //                     : 'text-gray-600 hover:bg-gray-200/50'
 //                 }`}
 //                 title="Arrow"
@@ -1210,8 +1302,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //                   <button
 //                     onClick={pasteSelection}
 //                     className={`p-2 rounded-md transition-all ${
-//                       pasteMode 
-//                         ? 'bg-orange-500 text-white shadow-md' 
+//                       pasteMode
+//                         ? 'bg-orange-500 text-white shadow-md'
 //                         : 'text-gray-600 hover:bg-gray-200/50'
 //                     }`}
 //                     title={pasteMode ? "Drag to position, click to place" : "Paste"}
@@ -1253,7 +1345,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //                 className="w-6 h-6 rounded border-2 border-gray-300 cursor-pointer hover:scale-110 transition-transform"
 //                 title="Color Picker"
 //               />
-              
+
 //               <div className="flex gap-1">
 //                 {presetColors.map((presetColor) => (
 //                   <button
@@ -1295,7 +1387,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //                 </svg>
 //                 Clear
 //               </button>
-              
+
 //               <button
 //                 onClick={downloadCanvas}
 //                 className="px-4 py-2 bg-green-500/90 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2 backdrop-blur-sm"
@@ -1310,7 +1402,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //           </div>
 //         </div>
 //       </div>
-      
+
 //       {/* Canvas Container - Transparent */}
 //       <div className="flex-1 pointer-events-none">
 //         <div className="relative w-full h-full pointer-events-none">
@@ -1318,7 +1410,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //           <canvas
 //             ref={canvasRef}
 //             className={`absolute inset-0 w-full h-full pointer-events-auto ${getCursor()}`}
-//             style={{ 
+//             style={{
 //               background: 'transparent',
 //               touchAction: 'none'
 //             }}
@@ -1338,7 +1430,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //           cursor: pointer;
 //           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 //         }
-        
+
 //         .slider::-moz-range-thumb {
 //           width: 16px;
 //           height: 16px;
@@ -1352,7 +1444,6 @@ export default function Whiteboard({whiteboardOpen = false}) {
 //     </div>
 //   );
 // }
-
 
 // // import { useEffect, useRef, useState } from "react";
 
@@ -1370,16 +1461,16 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
 // //     const resize = () => {
 // //       const container = canvas.parentElement;
-      
+
 // //       // Save current drawing before resize (only if canvas has valid dimensions)
 // //       let currentDrawing = null;
 // //       if (canvas.width > 0 && canvas.height > 0) {
 // //         currentDrawing = canvas.toDataURL();
 // //       }
-      
+
 // //       canvas.width = container.clientWidth;
 // //       canvas.height = container.clientHeight;
-      
+
 // //       // Restore drawing after resize (use current drawing or stored drawing data)
 // //       const dataToRestore = currentDrawing || drawingData;
 // //       if (dataToRestore && canvas.width > 0 && canvas.height > 0) {
@@ -1411,10 +1502,10 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
 // //     const draw = (e) => {
 // //       if (!isDrawing) return;
-      
+
 // //       const coords = getCoordinates(e);
 // //       ctx.lineTo(coords.x, coords.y);
-      
+
 // //       if (tool === 'eraser') {
 // //         ctx.globalCompositeOperation = 'destination-out';
 // //         ctx.lineWidth = brushSize * 3;
@@ -1423,7 +1514,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // //         ctx.strokeStyle = color;
 // //         ctx.lineWidth = brushSize;
 // //       }
-      
+
 // //       ctx.lineCap = "round";
 // //       ctx.lineJoin = "round";
 // //       ctx.stroke();
@@ -1483,8 +1574,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // //               <button
 // //                 onClick={() => setTool('pen')}
 // //                 className={`p-2 rounded-md transition-all ${
-// //                   tool === 'pen' 
-// //                     ? 'bg-blue-500 text-white shadow-md' 
+// //                   tool === 'pen'
+// //                     ? 'bg-blue-500 text-white shadow-md'
 // //                     : 'text-gray-600 hover:bg-gray-200/50'
 // //                 }`}
 // //                 title="Pen Tool"
@@ -1493,12 +1584,12 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
 // //                 </svg>
 // //               </button>
-              
+
 // //               <button
 // //                 onClick={() => setTool('eraser')}
 // //                 className={`p-2 rounded-md transition-all ${
-// //                   tool === 'eraser' 
-// //                     ? 'bg-red-500 text-white shadow-md' 
+// //                   tool === 'eraser'
+// //                     ? 'bg-red-500 text-white shadow-md'
 // //                     : 'text-gray-600 hover:bg-gray-200/50'
 // //                 }`}
 // //                 title="Eraser Tool"
@@ -1518,7 +1609,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // //                 className="w-6 h-6 rounded border-2 border-gray-300 cursor-pointer hover:scale-110 transition-transform"
 // //                 title="Color Picker"
 // //               />
-              
+
 // //               {/* Preset Colors */}
 // //               <div className="flex gap-1">
 // //                 {presetColors.map((presetColor) => (
@@ -1561,7 +1652,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // //                 </svg>
 // //                 Clear
 // //               </button>
-              
+
 // //               <button
 // //                 onClick={downloadCanvas}
 // //                 className="px-4 py-2 bg-green-500/90 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2 backdrop-blur-sm"
@@ -1585,13 +1676,13 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // //             className={`absolute inset-0 w-full h-full pointer-events-auto ${
 // //               tool === 'pen' ? 'cursor-crosshair' : 'cursor-cell'
 // //             }`}
-// //             style={{ 
+// //             style={{
 // //               background: 'transparent',
 // //               touchAction: 'none'
 // //             }}
 // //             onWheel={(e) => e.stopPropagation()} // Allow scrolling to pass through when not drawing}
 // //           />
-          
+
 // //           {/* Canvas Overlay Info */}
 // //           {/* <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
 // //             {tool === 'pen' ? `Drawing with ${color}` : 'Erasing'} • Size: {brushSize}px
@@ -1610,7 +1701,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // //           cursor: pointer;
 // //           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 // //         }
-        
+
 // //         .slider::-moz-range-thumb {
 // //           width: 16px;
 // //           height: 16px;
@@ -1624,7 +1715,6 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // //     </div>
 // //   );
 // // }
-
 
 // // // import { useEffect, useRef, useState } from "react";
 
@@ -1644,7 +1734,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //       const container = canvas.parentElement;
 // // //       canvas.width = container.clientWidth;
 // // //       canvas.height = container.clientHeight;
-      
+
 // // //       // Set background
 // // //       ctx.fillStyle = backgroundColor;
 // // //       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -1670,10 +1760,10 @@ export default function Whiteboard({whiteboardOpen = false}) {
 
 // // //     const draw = (e) => {
 // // //       if (!isDrawing) return;
-      
+
 // // //       const coords = getCoordinates(e);
 // // //       ctx.lineTo(coords.x, coords.y);
-      
+
 // // //       if (tool === 'eraser') {
 // // //         ctx.globalCompositeOperation = 'destination-out';
 // // //         ctx.lineWidth = brushSize * 3;
@@ -1682,7 +1772,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //         ctx.strokeStyle = color;
 // // //         ctx.lineWidth = brushSize;
 // // //       }
-      
+
 // // //       ctx.lineCap = "round";
 // // //       ctx.lineJoin = "round";
 // // //       ctx.stroke();
@@ -1732,7 +1822,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //           <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
 // // //             Modern Whiteboard
 // // //           </h1>
-          
+
 // // //           {/* Toolbar */}
 // // //           <div className="flex items-center gap-4">
 // // //             {/* Drawing Tools */}
@@ -1740,8 +1830,8 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //               <button
 // // //                 onClick={() => setTool('pen')}
 // // //                 className={`p-2 rounded-md transition-all ${
-// // //                   tool === 'pen' 
-// // //                     ? 'bg-blue-500 text-white shadow-md' 
+// // //                   tool === 'pen'
+// // //                     ? 'bg-blue-500 text-white shadow-md'
 // // //                     : 'text-gray-600 hover:bg-gray-200'
 // // //                 }`}
 // // //                 title="Pen Tool"
@@ -1750,12 +1840,12 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
 // // //                 </svg>
 // // //               </button>
-              
+
 // // //               <button
 // // //                 onClick={() => setTool('eraser')}
 // // //                 className={`p-2 rounded-md transition-all ${
-// // //                   tool === 'eraser' 
-// // //                     ? 'bg-red-500 text-white shadow-md' 
+// // //                   tool === 'eraser'
+// // //                     ? 'bg-red-500 text-white shadow-md'
 // // //                     : 'text-gray-600 hover:bg-gray-200'
 // // //                 }`}
 // // //                 title="Eraser Tool"
@@ -1775,7 +1865,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //                 className="w-10 h-10 rounded-full border-2 border-gray-300 cursor-pointer hover:scale-110 transition-transform"
 // // //                 title="Color Picker"
 // // //               />
-              
+
 // // //               {/* Preset Colors */}
 // // //               <div className="flex gap-1">
 // // //                 {presetColors.map((presetColor) => (
@@ -1830,7 +1920,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //                 </svg>
 // // //                 Clear
 // // //               </button>
-              
+
 // // //               <button
 // // //                 onClick={downloadCanvas}
 // // //                 className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2"
@@ -1854,12 +1944,12 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //             className={`absolute inset-0 w-full h-full ${
 // // //               tool === 'pen' ? 'cursor-crosshair' : 'cursor-cell'
 // // //             }`}
-// // //             style={{ 
+// // //             style={{
 // // //               background: 'transparent',
 // // //               touchAction: 'none' // Prevent scrolling on touch devices
 // // //             }}
 // // //           />
-          
+
 // // //           {/* Canvas Overlay Info */}
 // // //           <div className="absolute top-4 left-4 bg-black/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
 // // //             {tool === 'pen' ? `Drawing with ${color}` : 'Erasing'} • Size: {brushSize}px
@@ -1878,7 +1968,7 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //           cursor: pointer;
 // // //           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 // // //         }
-        
+
 // // //         .slider::-moz-range-thumb {
 // // //           width: 16px;
 // // //           height: 16px;
@@ -1892,7 +1982,6 @@ export default function Whiteboard({whiteboardOpen = false}) {
 // // //     </div>
 // // //   );
 // // // }
-
 
 // // // // // Whiteboard.jsx
 // // // // import { useEffect, useRef, useState } from "react";
