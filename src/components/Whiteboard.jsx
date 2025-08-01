@@ -781,7 +781,7 @@ export default function Whiteboard({ whiteboardOpen = false }) {
       )}
 
       {/* Canvas Container */}
-      <div className="flex-1 h-[100%]">
+      <div className="flex-1 h-full">
         <canvas
           ref={canvasRef}
           className={`w-full h-full ${getCursor()}`}

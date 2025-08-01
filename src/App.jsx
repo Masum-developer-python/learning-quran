@@ -134,7 +134,7 @@ function App() {
                   ref={whiteboardContainerRef}
                   className="w-[calc(100%-10px)] absolute z-10 pb-16 sm:pb-4 md:pb-4 pr-6"
                 >
-                  <Whiteboard whiteboardOpen={whiteboardOpen} />
+                  <Whiteboard whiteboardOpen={whiteboardOpen} height={`${outerRef.current.scrollHeight}px`} />
                 </div>
               )}
               <Routes>
