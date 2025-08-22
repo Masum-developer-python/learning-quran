@@ -5,7 +5,7 @@ import {
   arabicDiacritics,
   receiveDataFromDjango,
 } from "./data";
-
+import { useReactToPrint } from "react-to-print";
 import Nav from "./components/Nav";
 
 import Cards from "./pages/LetterCard";
@@ -17,7 +17,7 @@ import { Login } from "./pages/login";
 import Logout from "./pages/logout";
 import QuranRead from "./pages/QuranRead";
 import Class from "./pages/Class";
-import ICT from "./pages/ICT";
+
 import Whiteboard from "./components/Whiteboard";
 import OverlayWhiteboard from "./components/OverlayWhiteboard";
 
@@ -28,7 +28,7 @@ function App() {
   const [whiteboardOpen, setWhiteboardOpen] = useState(false);
   const outerRef = useRef(null);
   const whiteboardContainerRef = useRef(null);
-
+  const [isPrinting, setIsPrinting] = useState(false);
   let rootAddress = localStorage.getItem("rootAddress");
   console.log(rootAddress);
   useEffect(() => {
@@ -105,7 +105,21 @@ function App() {
       console.log("Set whiteboard container height to:", scrollHeight);
     }
   }, [whiteboardOpen]); // Run when whiteboard is opened
-
+  const handlePrint = async () => {
+    setIsPrinting(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log("Printing started");
+    print();
+    setIsPrinting(false);
+    console.log("Printing finished");
+  };
+  const print = useReactToPrint({
+    // content: () => sectionRef.current,
+    contentRef: outerRef,
+    documentTitle: "RARe Academy - ",
+  });
+  console.log(handlePrint);
+  console.log(isPrinting);
   return (
     <div className="min-h-screen flex flex-col ">
       <div className="flex flex-1 w-[100%] h-full ">
@@ -121,10 +135,21 @@ function App() {
           whiteboardOpen={whiteboardOpen}
           setWhiteboardOpen={setWhiteboardOpen}
         />
-
         <div
           ref={outerRef}
-          className="flex-1 fixed left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 overflow-y-auto h-full"
+          className="w-16 md:w-32 lg:w-40 top-0 bottom-12 right-0 min-h-screen"
+        ></div>
+        <img
+          src="/images/print_btn.png"
+          className="w-10 h-10 fixed top-2 right-2 z-50 cursor-pointer"
+          onClick={handlePrint}
+          width="24"
+          title="প্রিন্ট"
+          alt="print_btn"
+        ></img>
+        <div
+          ref={outerRef}
+          className="flex-1  left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 min-h-screen"
         >
           {/* <OverlayWhiteboard /> */}
           <Router>
@@ -134,23 +159,41 @@ function App() {
                   ref={whiteboardContainerRef}
                   className="w-[calc(100%-10px)] absolute z-10 pb-16 sm:pb-4 md:pb-4 pr-6"
                 >
-                  <Whiteboard whiteboardOpen={whiteboardOpen} height={`${outerRef.current.scrollHeight}px`} />
+                  <Whiteboard
+                    whiteboardOpen={whiteboardOpen}
+                    height={`${outerRef.current.scrollHeight}px`}
+                  />
                 </div>
               )}
               <Routes>
-                <Route path="/home" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/logout" element={<Logout />} />
+                <Route
+                  path="/home"
+                  element={<Home isPrinting={isPrinting} />}
+                />
+                <Route
+                  path="/login"
+                  element={<Login isPrinting={isPrinting} />}
+                />
+                <Route
+                  path="/logout"
+                  element={<Logout isPrinting={isPrinting} />}
+                />
 
-                <Route path="/class" element={<Class />} />
-                <Route path="/ict" element={<ICT />} />
-                <Route path="/whiteboard" element={<Whiteboard />} />
+                <Route
+                  path="/class"
+                  element={<Class isPrinting={isPrinting} />}
+                />
+                <Route
+                  path="/whiteboard"
+                  element={<Whiteboard isPrinting={isPrinting} />}
+                />
                 <Route
                   path="/quran"
                   element={
                     <QuranRead
                       selectedColor={selectedColor}
                       arabicAlphabet={arabicAlphabet}
+                      isPrinting={isPrinting}
                     />
                   }
                 />
@@ -162,6 +205,7 @@ function App() {
                       selectedColor={selectedColor}
                       withHoverChildren={true}
                       arabicAlphabet={arabicAlphabet}
+                      isPrinting={isPrinting}
                     />
                   }
                 />
@@ -173,6 +217,7 @@ function App() {
                       selectedColor={selectedColor}
                       withHoverChildren={true}
                       arabicAlphabet={arabicAlphabet}
+                      isPrinting={isPrinting}
                     />
                   }
                 />
@@ -183,6 +228,7 @@ function App() {
                     <Table
                       selectedColor={selectedColor}
                       arabicAlphabet={arabicAlphabet}
+                      isPrinting={isPrinting}
                     />
                   }
                 />
@@ -193,6 +239,7 @@ function App() {
                     <Words
                       selectedColor={selectedColor}
                       arabicAlphabet={arabicAlphabet}
+                      isPrinting={isPrinting}
                     />
                   }
                 />
@@ -206,6 +253,7 @@ function App() {
                           <Blog
                             selectedColor={selectedColor}
                             diacritics={arabicDiacritics[category]}
+                            isPrinting={isPrinting}
                           />
                         }
                       />
@@ -226,6 +274,7 @@ function App() {
                             }
                             isSaddah={route.name.toLowerCase() === "ashshaddah"}
                             audioFolder={`/${category.toLowerCase()}/${route.name.toLowerCase()}`}
+                            isPrinting={isPrinting}
                           />
                         }
                       />
@@ -242,6 +291,7 @@ function App() {
                               arabicAlphabetDiacritics={route.unicode.slice(2)}
                               tableColumn={page.column}
                               page={page}
+                              isPrinting={isPrinting}
                             />
                           }
                         />

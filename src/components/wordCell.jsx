@@ -11,6 +11,7 @@ export default function WordCell({
   sendingWord,
   setSendingWord,
   arabicAlphabet,
+  isPrinting,
 }) {
   const [word, setWord] = useState(
     arabicWords.find(
@@ -55,7 +56,7 @@ export default function WordCell({
               return (
                 <>
                   {first}
-                  {String.fromCodePoint(parseInt('0652', 16))}
+                  {String.fromCodePoint(parseInt("0652", 16))}
                   &#8204;
                   {first}
                   {third}
@@ -75,19 +76,21 @@ export default function WordCell({
       </div>
       <hr></hr>
       {word}
-      <ActionBar
-        diacritics={diacritics}
-        position={position}
-        id={id}
-        pName={pName}
-        selectedColor={selectedColor}
-        sendingWord={sendingWord}
-        setSendingWord={setSendingWord}
-        arabicAlphabet={arabicAlphabet}
-        arabicWords={arabicWords}
-        word={word}
-        cellId={cellId}
-      />
+      {isPrinting == false && (
+        <ActionBar
+          diacritics={diacritics}
+          position={position}
+          id={id}
+          pName={pName}
+          selectedColor={selectedColor}
+          sendingWord={sendingWord}
+          setSendingWord={setSendingWord}
+          arabicAlphabet={arabicAlphabet}
+          arabicWords={arabicWords}
+          word={word}
+          cellId={cellId}
+        />
+      )}
     </td>
   );
 }

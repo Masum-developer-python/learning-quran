@@ -9,6 +9,7 @@ const Table = ({
   diacritics,
   arabicAlphabetDiacritics,
   page,
+  isPrinting,
 }) => {
   const [sendingWord, setSendingWord] = useState("");
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,7 @@ const Table = ({
   console.log(arabicWords);
   // console.log(selectedColor);
   console.log(diacritics, arabicAlphabet);
-  console.log(method);
+  console.log(isPrinting);
   // console.log(page.column);
   // page.column.map((position, index) => console.log(index));
   if (loading) {
@@ -80,6 +81,7 @@ const Table = ({
                           pName={page.name}
                           sendingWord={sendingWord}
                           setSendingWord={setSendingWord}
+                          isPrinting={isPrinting}
                         />
                       )
                   )}

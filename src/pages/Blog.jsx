@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Blog = ({ selectedColor, diacritics }) => {
+const Blog = ({ selectedColor, diacritics, isPrinting }) => {
   console.log(diacritics);
   const toBanglaNumber = (number) =>
     number.toString().replace(/\d/g, (digit) => "০১২৩৪৫৬৭৮৯"[digit]);
@@ -100,7 +100,7 @@ const Blog = ({ selectedColor, diacritics }) => {
       </div>
 
       {/* Video Section */}
-      <div className="w-full max-w-4xl p-1">
+      { !isPrinting && (<div className="w-full max-w-4xl p-1">
         <video
           className="w-full h-auto rounded-xl shadow-lg border border-gray-300"
           controls
@@ -109,7 +109,7 @@ const Blog = ({ selectedColor, diacritics }) => {
         >
           Your browser does not support the video tag.
         </video>
-      </div>
+      </div>)}
     </div>
   );
 };

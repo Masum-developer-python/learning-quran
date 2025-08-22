@@ -52,7 +52,7 @@ export default function ActionBar({
   return (
     <>
       {/* actions */}
-      <div className="flex flex-row w-full p-1 mt-6 bg-gray-200 rounded-lg">
+      <div className={`flex flex-row w-full p-1 mt-6 bg-gray-200 rounded-lg ${selectedColor.backgroundColor} ${selectedColor.textColor}`}>
         {isAdmin && (
           <>
             {word && (
@@ -60,7 +60,7 @@ export default function ActionBar({
                 {/* Delete */}
                 <button
                   title="Delete"
-                  className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
+                  className={`md:w-8 md:h-8 flex-1 flex items-center justify-center ${selectedColor.backgroundColor} rounded-lg hover:bg-red-200`}
                   onClick={async () => {
                     setMethod("DELETE");
                     console.log(address, method);
@@ -77,7 +77,7 @@ export default function ActionBar({
                 {/* Edit */}
                 <button
                   title="Edit"
-                  className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-blue-200"
+                  className={`md:w-8 md:h-8 flex-1 flex items-center justify-center ${selectedColor.backgroundColor} rounded-lg hover:bg-blue-200`}
                   onClick={async () => {
                     const key = position + id;
                     setSendingWord(word);
@@ -100,7 +100,7 @@ export default function ActionBar({
                 {/* insert */}
                 <button
                   title="Insert word"
-                  className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-yellow-200"
+                  className={`md:w-8 md:h-8 flex-1 flex items-center justify-center ${selectedColor.backgroundColor} rounded-lg hover:bg-yellow-200`}
                   onClick={async () => {
                     const key = position + id;
                     setVisible((prev) => ({
@@ -123,7 +123,7 @@ export default function ActionBar({
         {/* refference start*/}
         <button
           title="Refference"
-          className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-green-200"
+          className={`md:w-8 md:h-8 flex-1 flex items-center justify-center ${selectedColor.backgroundColor} rounded-lg hover:bg-green-200`}
           onClick={async () => {
             console.log(word);
             try {
@@ -155,7 +155,7 @@ export default function ActionBar({
                 ${selectedColor.textColor} ${selectedColor.backgroundColor}`}
             >
               <button
-                className="md:w-8 md:h-8 z-20 fixed bg-gray-100 rounded-lg hover:bg-red-200"
+                className={`md:w-8 md:h-8 z-20 fixed ${selectedColor.backgroundColor} rounded-lg hover:bg-red-200`}
                 onClick={() => {
                   setRefVisible(false);
                 }}
@@ -177,7 +177,7 @@ export default function ActionBar({
         {/* word audio */}
         <button
           title="Word Audio"
-          className="md:w-8 md:h-8 flex-1 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-red-200"
+          className={`md:w-8 md:h-8 flex-1 flex items-center justify-center ${selectedColor.backgroundColor} rounded-lg hover:bg-red-200`}
           onClick={async () => {
             try {
               const ref = await receiveDataFromDjango(
@@ -208,7 +208,7 @@ export default function ActionBar({
       {/* word maker */}
 
       {visible[`${position}${id}`] && (
-        <div id={`${position}${id}`} className="bg-gray-100 relative w-[500px] m-auto p-2 rounded-lg shadow-lg">
+        <div id={`${position}${id}`} className="${selectedColor.backgroundColor} relative w-[500px] m-auto p-2 rounded-lg shadow-lg">
           <Words
             selectedColor={selectedColor}
             sendingWord={sendingWord}

@@ -12,6 +12,7 @@ function Cards({
   title,
   audioFolder = "",
   diacritics,
+  isPrinting,
 }) {
   const [preAlphabetDiacriticsUnicode, setPreAlphabetDiacriticsUnicode] =
     useState("");
@@ -50,7 +51,7 @@ function Cards({
             )}
           </span>
         </div>
-        {isSaakinah && (
+        {!isPrinting && isSaakinah && (
           <div className="w-[100%] h-[25vh] overflow-y-scroll font-akber flex justify-center items-center">
             <SideBar
               selectedColor={selectedColor}
@@ -141,7 +142,10 @@ function Cards({
                         {diacritics.name === "AshShaddah"
                           ? postAlphabetDiacriticsUnicode
                             ? itemIndex !== 0
-                              ? `${item.alphabet}`
+                              ? `${item.alphabet}` +
+                                `${String.fromCodePoint(
+                                  parseInt(postAlphabetDiacriticsUnicode, 16)
+                                )}`
                               : `${arabicAlphabet[34].alphabet}` +
                                 `${String.fromCodePoint(
                                   parseInt(postAlphabetDiacriticsUnicode, 16)
