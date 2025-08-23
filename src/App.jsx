@@ -135,13 +135,10 @@ function App() {
           whiteboardOpen={whiteboardOpen}
           setWhiteboardOpen={setWhiteboardOpen}
         />
-        <div
-          ref={outerRef}
-          className="w-16 md:w-32 lg:w-40 top-0 bottom-12 right-0 min-h-screen"
-        ></div>
+        
         <img
           src="/images/print_btn.png"
-          className="w-10 h-10 fixed top-2 right-2 z-50 cursor-pointer"
+          className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 fixed top-0 left-16 md:left-24 lg:left-40 z-50 cursor-pointer"
           onClick={handlePrint}
           width="24"
           title="প্রিন্ট"
@@ -149,11 +146,12 @@ function App() {
         ></img>
         <div
           ref={outerRef}
-          className="flex-1  left-16 md:left-32 lg:left-40 top-0 bottom-12 right-0 min-h-screen"
+          className="flex-1 absolute left-16 md:left-28 lg:left-40 top-0 bottom-12 right-0 min-h-screen
+          bg-[url('/images/logo.png')] bg-no-repeat bg-contain bg-center"
         >
           {/* <OverlayWhiteboard /> */}
           <Router>
-            <main className=" flex w-[calc(100%-10px)] pb-16 sm:pb-4 md:pb-4 ">
+            <main className="bg-white/50 flex w-[calc(100%-10px)] pb-16 sm:pb-4 md:pb-4 ">
               {whiteboardOpen && (
                 <div
                   ref={whiteboardContainerRef}
@@ -304,7 +302,7 @@ function App() {
           </Router>
         </div>
       </div>
-      <footer
+      {/* <footer
         className="h-auto w-[calc(100%-60px)] mx-auto px-12 flex items-center justify-center text-center font-sans
         text-[#555] border-t border-[#eaeaea] text-base rounded-lg block z-10"
       >
@@ -322,7 +320,7 @@ function App() {
           </button>{" "}
           e Academy
         </strong>
-      </footer>
+      </footer> */}
     </div>
   );
 }

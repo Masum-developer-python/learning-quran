@@ -4,7 +4,7 @@ import { receiveDataFromDjango } from "../data";
 import Audio from "./Audio";
 import AyahWord from "./AyahWord";
 import { fileLocation } from "../data";
-export default function RefTable({ refData, word }) {
+export default function RefTable({ refData, word, isRefPrinting }) {
   const reciter = localStorage
     .getItem("arabic-app-reciter")
     .split(",")[1]
@@ -34,18 +34,53 @@ export default function RefTable({ refData, word }) {
 
     fetchSurahList();
   }, [rootAddress]);
-  // console.log(visible);
-  // console.log(ayah);
+
+  const [printAyah, setPrintAyah] = useState({});
+
+  useEffect(() => {
+    if (isRefPrinting) {
+      const fetchPrintAyah = async () => {
+        const allRefs = {};
+        for (let item of refData) {
+          const key = `${item.sura}-${item.aya}-${item.position}`;
+          try {
+            const refAyah = await receiveDataFromDjango(
+              rootAddress +
+                "quran-words/filter_by_sura?sura=" +
+                item.sura +
+                "&aya=" +
+                item.aya
+            );
+            allRefs[key] = refAyah;
+          } catch (error) {
+            console.error("❌ Error fetching ref ayah:", error);
+          }
+        }
+        setPrintAyah(allRefs);
+      };
+
+      fetchPrintAyah();
+    }
+  }, [isRefPrinting, refData, rootAddress]);
+  console.log(printAyah);
   return (
     <div id="refTable" className="w-[99%] mx-auto">
       <table className="text-2xl table-auto border-collapse">
         <caption className="text-left font-bangla bg-white text-green-400 sticky top-0">
-          <marquee>
-            শব্দটি কুরআনে{" "}
-            <span className="font-bold text-3xl">{refData.length}</span> বার
-            এসেছে । সুরা, আয়াত বা শব্দের অডিও শুনতে নাম/সংখ্যা/শব্দের উপর ক্লিক
-            করুন ।
-          </marquee>
+          {isRefPrinting ? (
+            <div className="text-xl text-center font-bold mb-2">
+              {word} শব্দটি কুরআনে{" "}
+              <span className="font-bold text-3xl">{refData.length}</span> বার
+              এসেছে ।{" "}
+            </div>
+          ) : (
+            <marquee>
+              {word} শব্দটি কুরআনে{" "}
+              <span className="font-bold text-3xl">{refData.length}</span> বার
+              এসেছে । সুরা, আয়াত বা শব্দের অডিও শুনতে নাম/সংখ্যা/শব্দের উপর
+              ক্লিক করুন ।
+            </marquee>
+          )}
         </caption>
         <thead>
           <tr className="sticky top-8 bg-green-100">
@@ -64,10 +99,11 @@ export default function RefTable({ refData, word }) {
             <th className="border-2 font-bangla border-gray-500 p-4 w-[10%] md:w-[5%] lg:w-[5%]">
               স্থান
             </th>
-
-            <th className="border-2 font-bangla border-gray-500 p-4 hidden lg:table-cell">
-              রেফারেন্স
-            </th>
+            {isRefPrinting ? null : (
+              <th className="border-2 font-bangla border-gray-500 p-4 hidden lg:table-cell">
+                রেফারেন্স
+              </th>
+            )}
             <th className="border-2 font-bangla border-gray-500 p-4 w-[95%] hidden lg:table-cell">
               পূর্ণাঙ্গ আয়াত
             </th>
@@ -180,45 +216,47 @@ export default function RefTable({ refData, word }) {
                   </Audio>
                 </td>
 
-                <td className="border-2 border-gray-500 hidden lg:table-cell">
-                  {/* ayah ref text */}
-                  <button
-                    title="Click for Ayah text"
-                    onClick={async () => {
-                      const key = `${item.sura}-${item.aya}-${item.position}`;
-                      try {
-                        const refAyah = await receiveDataFromDjango(
-                          rootAddress +
-                            "quran-words/filter_by_sura?sura=" +
-                            item.sura +
-                            "&aya=" +
-                            item.aya
-                        );
+                {isRefPrinting ? null : (
+                  <td className="border-2 border-gray-500 hidden lg:table-cell">
+                    {/* ayah ref text */}
+                    <button
+                      title="Click for Ayah text"
+                      onClick={async () => {
+                        const key = `${item.sura}-${item.aya}-${item.position}`;
+                        try {
+                          const refAyah = await receiveDataFromDjango(
+                            rootAddress +
+                              "quran-words/filter_by_sura?sura=" +
+                              item.sura +
+                              "&aya=" +
+                              item.aya
+                          );
 
-                        console.log(refAyah);
-                        setAyah((prev) => ({
-                          ...prev,
-                          [key]: refAyah,
-                        }));
-                      } catch (error) {
-                        console.error("❌ Error fetching data:", error);
-                      } finally {
-                        setVisible((prev) => ({
-                          ...prev,
-                          [key]: !prev[key],
-                        }));
-                      }
-                    }}
-                  >
-                    <BookOpenText
-                      className={`w-7 h-7 ${
-                        visible[`${item.sura}-${item.aya}-${item.position}`]
-                          ? "text-green-500"
-                          : "text-red-500"
-                      } `}
-                    />
-                  </button>
-                </td>
+                          console.log(refAyah);
+                          setAyah((prev) => ({
+                            ...prev,
+                            [key]: refAyah,
+                          }));
+                        } catch (error) {
+                          console.error("❌ Error fetching data:", error);
+                        } finally {
+                          setVisible((prev) => ({
+                            ...prev,
+                            [key]: !prev[key],
+                          }));
+                        }
+                      }}
+                    >
+                      <BookOpenText
+                        className={`w-7 h-7 ${
+                          visible[`${item.sura}-${item.aya}-${item.position}`]
+                            ? "text-green-500"
+                            : "text-red-500"
+                        } `}
+                      />
+                    </button>
+                  </td>
+                )}
 
                 <td
                   dir="rtl"
@@ -234,51 +272,80 @@ export default function RefTable({ refData, word }) {
                         word={item.text}
                       ></AyahWord>
                     )}
+                  {/* Print Mode → শুধু text */}
+                  <span className="text-4xl font-akber">
+                    {isRefPrinting &&
+                      printAyah[`${item.sura}-${item.aya}-${item.position}`] &&
+                      printAyah[
+                        `${item.sura}-${item.aya}-${item.position}`
+                      ].map((ayahItem, idx) => (
+                        <span key={idx} className="inline-block">
+                          {ayahItem.text} &nbsp;&nbsp;
+                          {/* এখানে ধরে নিচ্ছি backend এ text ফিল্ডে আয়াত আছে */}
+                        </span>
+                      ))}
+                  </span>
+                  {isRefPrinting && (
+                    <>
+                      ۞<br />
+                    </>
+                  )}
+
+                  <span className="text-base font-bangla">
+                    {isRefPrinting &&
+                      printAyah[`${item.sura}-${item.aya}-${item.position}`]?.[
+                        printAyah[`${item.sura}-${item.aya}-${item.position}`]
+                          ?.length - 1
+                      ]?.translation_bn}{" "}
+                  </span>
                 </td>
               </tr>
+              {/* tr for small screens */}
               <tr>
-                <th className="border-2 font-bangla border-gray-500 p-4 table-cell lg:hidden">
-                  <button
-                    title="Click for Ayah text"
-                    className={` ${
-                      visible[`${item.sura}-${item.aya}-${item.position}`]
-                        ? "text-green-500"
-                        : "text-red-500"
-                    } `}
-                    onClick={async () => {
-                      const key = `${item.sura}-${item.aya}-${item.position}`;
-                      try {
-                        const refAyah = await receiveDataFromDjango(
-                          rootAddress +
-                            "quran-words/filter_by_sura?sura=" +
-                            item.sura +
-                            "&aya=" +
-                            item.aya
-                        );
+                {isRefPrinting ? null : (
+                  <th className="border-2 font-bangla border-gray-500 p-4 table-cell lg:hidden">
+                    <button
+                      title="Click for Ayah text"
+                      className={` ${
+                        visible[`${item.sura}-${item.aya}-${item.position}`]
+                          ? "text-green-500"
+                          : "text-red-500"
+                      } `}
+                      onClick={async () => {
+                        const key = `${item.sura}-${item.aya}-${item.position}`;
+                        try {
+                          const refAyah = await receiveDataFromDjango(
+                            rootAddress +
+                              "quran-words/filter_by_sura?sura=" +
+                              item.sura +
+                              "&aya=" +
+                              item.aya
+                          );
 
-                        console.log(refAyah);
-                        setAyah((prev) => ({
-                          ...prev,
-                          [key]: refAyah,
-                        }));
-                      } catch (error) {
-                        console.error("❌ Error fetching data:", error);
-                      } finally {
-                        setVisible((prev) => ({
-                          ...prev,
-                          [key]: !prev[key],
-                        }));
-                      }
-                    }}
-                  >
-                    {" "}
-                    রেফারেন্স
-                  </button>
-                </th>
+                          console.log(refAyah);
+                          setAyah((prev) => ({
+                            ...prev,
+                            [key]: refAyah,
+                          }));
+                        } catch (error) {
+                          console.error("❌ Error fetching data:", error);
+                        } finally {
+                          setVisible((prev) => ({
+                            ...prev,
+                            [key]: !prev[key],
+                          }));
+                        }
+                      }}
+                    >
+                      {" "}
+                      রেফারেন্স
+                    </button>
+                  </th>
+                )}
                 <td
                   dir="rtl"
                   id={`${item.sura}-${item.aya}-${item.position}`}
-                  colSpan={3}
+                  colSpan={isRefPrinting ? 4 : 3}
                   className=" border-2 border-gray-500 w-[950px] p-2 text-5xl font-akber lg:hidden table-cell"
                 >
                   {visible[`${item.sura}-${item.aya}-${item.position}`] &&
@@ -290,6 +357,31 @@ export default function RefTable({ refData, word }) {
                         word={item.text}
                       ></AyahWord>
                     )}
+                  {/* Print Mode → শুধু text */}
+                  <span className="text-4xl font-akber">
+                    {isRefPrinting &&
+                      printAyah[`${item.sura}-${item.aya}-${item.position}`] &&
+                      printAyah[
+                        `${item.sura}-${item.aya}-${item.position}`
+                      ].map((ayahItem, idx) => (
+                        <span key={idx} className="inline-block">
+                          {ayahItem.text} &nbsp;&nbsp;
+                          {/* এখানে ধরে নিচ্ছি backend এ text ফিল্ডে আয়াত আছে */}
+                        </span>
+                      ))}
+                  </span>
+                  {isRefPrinting && (
+                    <>
+                      ۞<br />
+                    </>
+                  )}
+                  <span className="text-base font-bangla">
+                    {isRefPrinting &&
+                      printAyah[`${item.sura}-${item.aya}-${item.position}`]?.[
+                        printAyah[`${item.sura}-${item.aya}-${item.position}`]
+                          ?.length - 1
+                      ]?.translation_bn}{" "}
+                  </span>
                 </td>
               </tr>
             </>

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Draggable from "react-draggable";
-
+import { useReactToPrint } from "react-to-print";
 import {
   Pencil,
   NotebookPen,
@@ -48,11 +48,27 @@ export default function ActionBar({
     .split(":")[1]
     .slice(1, -2);
   // console.log(reciter);
-
+  const outerRef = useRef(null);
+  const [isRefPrinting, setIsRefPrinting] = useState(false);
+  const handlePrint = async () => {
+    console.log(outerRef, outerRef.current);
+    setIsRefPrinting(true);
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    console.log("Printing started");
+    print();
+    console.log("Printing finished");
+    setIsRefPrinting(false);
+  };
+  const print = useReactToPrint({
+    contentRef: outerRef,
+    documentTitle: `${word} - growwithquran by RARe Academy`,
+  });
   return (
     <>
       {/* actions */}
-      <div className={`flex flex-row w-full p-1 mt-6 bg-gray-200 rounded-lg ${selectedColor.backgroundColor} ${selectedColor.textColor}`}>
+      <div
+        className={`flex flex-row w-full p-1 mt-6 bg-gray-200 rounded-lg ${selectedColor.backgroundColor} ${selectedColor.textColor}`}
+      >
         {isAdmin && (
           <>
             {word && (
@@ -162,16 +178,26 @@ export default function ActionBar({
               >
                 <SquareX className="md:w-7 md:h-7 text-red-900"></SquareX>
               </button>
+              <button
+                onClick={handlePrint}
+                title="Print"
+                className={`md:w-8 md:h-8 z-20 block fixed ${selectedColor.backgroundColor} rounded-lg hover:bg-green-200`}
+              >
+                <img
+                  src="/images/print_btn.png"
+                  className="w-7 h-7 z-20 cursor-pointer"
+                  width="24"
+                ></img>
+              </button>
               <GripHorizontal className="drag-handle block md:w-8 md:h-8 text-gray-500" />
-              <div className="">
+              <div ref={outerRef} className="">
                 {" "}
-                <RefTable refData={refData} word={word} />
+                <RefTable refData={refData} word={word} isRefPrinting={isRefPrinting} />
               </div>
             </div>
           </Draggable>
         )}
         {/* ref ayah show */}
-
         {/* refference end*/}
         {/* ------------------------------------------------------------------------------------------------------------------- */}
         {/* word audio */}
@@ -208,7 +234,10 @@ export default function ActionBar({
       {/* word maker */}
 
       {visible[`${position}${id}`] && (
-        <div id={`${position}${id}`} className="${selectedColor.backgroundColor} relative w-[500px] m-auto p-2 rounded-lg shadow-lg">
+        <div
+          id={`${position}${id}`}
+          className="${selectedColor.backgroundColor} relative w-[500px] m-auto p-2 rounded-lg shadow-lg"
+        >
           <Words
             selectedColor={selectedColor}
             sendingWord={sendingWord}
@@ -226,7 +255,6 @@ export default function ActionBar({
            rounded-lg
              flex justify-center items-center
              hover:shadow-2xl focus:outline-none focus:ring-4 `}
-                
               ></input>
               <input
                 type="text"
