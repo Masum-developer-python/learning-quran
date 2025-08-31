@@ -96,7 +96,7 @@ function Cards({
                       ${selectedColor.textColor} rounded-lg 
                       hover:scale-110 hover:border-4 hover:border-solid hover:border-green-500
                       transition-all duration-150 ease-in-out
-                      print:w-[150px] print:h-[150px] print:m-0 print:p-0 print:text-6xl
+                      print:w-[150px] print:h-[150px] print:m-0 print:p-0 print:text-8xl
 
                       `}
                   >

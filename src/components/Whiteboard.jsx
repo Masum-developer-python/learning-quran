@@ -552,12 +552,12 @@ export default function Whiteboard({
       canvasRef.current.style.height = height;
     }
     else{
-      canvasRef.current.style.height = '100%';
+      canvasRef.current.style.height = '1500px';
     }
   }, [whiteboardOpen]);
   return (
     <div
-      className={`flex flex-col w-[calc(100%-10px)] h-[${height}] absolute z-10 pb-16 sm:pb-4 md:pb-4 pr-6`}
+      className={`flex flex-col w-[calc(100%)] h-[${height}] ${!whiteboardOpen ? "bg-white/90" : ""} absolute z-10 `}
     >
       {/* Header Toolbar */}
       {!whiteboardOpen && (
@@ -800,7 +800,7 @@ export default function Whiteboard({
           className={`w-full h-[${height}] ${getCursor()}`}
           style={{
             touchAction: "none",
-            background: "transparent",
+            
           }}
         />
       </div>

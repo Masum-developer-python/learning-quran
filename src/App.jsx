@@ -148,13 +148,15 @@ function App() {
           ref={outerRef}
           className="flex-1 absolute left-16 md:left-24 lg:left-40 top-0 bottom-12 right-0
           before:absolute before:content-[''] before:inset-0 before:bg-[url('/images/logo.png')] 
-          before:bg-[length:90%_auto] before:bg-repeat-y before:opacity-100 before:-z-10 
-           print:left-0 print:text-3xl print:before:bg-[length:auto_100%] print:before:mt-10
-          print:before:left-16 print:before:bg-no-repeat print:before:bg-center print:before:fixed"
+          before:bg-[length:auto_100%] before:bg-center before:bg-repeat-y before:opacity-100 before:-z-10 
+          print:left-0 print:text-3xl print:before:bg-[length:auto_90%] print:before:mt-10
+          print:before:left-16 print:before:bg-no-repeat print:before:bg-center print:before:fixed
+          after:absolute after:hidden print:after:block after:content-['growwithquran.xyz'] after:bottom-2 after:right-2 after:text-md
+          "
         >
           {/* <OverlayWhiteboard /> */}
           <Router>
-            <main className="bg-white/50 flex w-[calc(100%-10px)] pb-16 sm:pb-4 md:pb-4 ">
+            <main className="bg-white/50 print:bg-white flex w-[calc(100%)] pb-16 sm:pb-4 md:pb-4 print:pb-10">
               {whiteboardOpen && (
                 <div
                   ref={whiteboardContainerRef}
