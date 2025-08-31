@@ -138,7 +138,7 @@ function App() {
         
         <img
           src="/images/print_btn.png"
-          className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 fixed top-0 left-16 md:left-24 lg:left-40 z-50 cursor-pointer"
+          className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 fixed bottom-0 left-16 md:left-24 lg:left-40 z-50 cursor-pointer"
           onClick={handlePrint}
           width="24"
           title="প্রিন্ট"
@@ -146,8 +146,11 @@ function App() {
         ></img>
         <div
           ref={outerRef}
-          className="flex-1 absolute left-16 md:left-28 lg:left-40 top-0 bottom-12 right-0 min-h-screen
-          bg-[url('/images/logo.png')] bg-no-repeat bg-contain bg-center"
+          className="flex-1 absolute left-16 md:left-24 lg:left-40 top-0 bottom-12 right-0
+          before:absolute before:content-[''] before:inset-0 before:bg-[url('/images/logo.png')] 
+          before:bg-[length:90%_auto] before:bg-repeat-y before:opacity-100 before:-z-10 
+           print:left-0 print:text-3xl print:before:bg-[length:auto_100%] print:before:mt-10
+          print:before:left-16 print:before:bg-no-repeat print:before:bg-center print:before:fixed"
         >
           {/* <OverlayWhiteboard /> */}
           <Router>

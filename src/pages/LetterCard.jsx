@@ -33,7 +33,7 @@ function Cards({
           className={`flex  justify-center items-center 
             text-center text-lg md:text-2xl  w-[calc(100%-0px)] 
             p-1 h-[75px] md:h-[50px] rounded-lg ${selectedColor.backgroundColor} 
-            ${selectedColor.textColor}`}
+            ${selectedColor.textColor} print:mt-2 print:mb-8`}
         >
           <span className="text-center">
             <span className="text-lg md:text-3xl font-bangla">
@@ -77,6 +77,8 @@ function Cards({
                 className=" group flex-grow 
               m-1 p-1 space-x-1
               w-[45%] sm:w-[40%] md:w-[30%] lg:w-[24%] xl:w-[19%] 2xl:w-[13%]
+              print:w-fit print:h-fit print:m-0 print:p-0 print:space-y-0
+              print:aspect-square print:space-x-0
              "
               >
                 <Audio
@@ -93,7 +95,10 @@ function Cards({
                        text-center font-akber
                       ${selectedColor.textColor} rounded-lg 
                       hover:scale-110 hover:border-4 hover:border-solid hover:border-green-500
-                      transition-all duration-150 ease-in-out`}
+                      transition-all duration-150 ease-in-out
+                      print:w-[150px] print:h-[150px] print:m-0 print:p-0 print:text-6xl
+
+                      `}
                   >
                     {preAlphabet && preAlphabet}
                     {preAlphabet &&
@@ -157,7 +162,7 @@ function Cards({
                         )
                       </span>
                     )}
-                    {withHoverChildren && (
+                    {!isPrinting && withHoverChildren && (
                       <>
                         <div
                           dir="rtl"
