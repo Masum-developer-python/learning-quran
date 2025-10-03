@@ -126,7 +126,7 @@ function Cards({
                       String.fromCodePoint(
                         parseInt(postAlphabetDiacriticsUnicode, 16)
                       )}
-                    {item.post_alphabet && item.post_alphabet}
+                    {item.post_alphabet && item.post_alphabet}&nbsp;
                     {diacritics && diacritics.indication.length != 0 && (
                       <span className="text-5xl text-right ">
                         <br />(
@@ -161,20 +161,26 @@ function Cards({
                           : ""}
                         )
                       </span>
+                      
                     )}
                     {!isPrinting && withHoverChildren && (
                       <>
                         <div
                           dir="rtl"
                           key={`itemNameAr-${itemIndex}`}
-                          className="text-2xl text-right opacity-0 group-hover:opacity-100 pt-1 sm:pt-4 lg:pt-16"
+                          className="text-2xl text-right hidden group-hover:block pt-1 sm:pt-4 lg:pt-16"
                         >
                           <hr></hr>
                           {item.alphabet_name}
                         </div>
+                        {/* {String.fromCodePoint(
+                                parseInt((item.alphabet.codePointAt(0).toString(16)), 16)
+                              )} */}
+                        {/* {(item.alphabet.codePointAt(0).toString(16).toUpperCase())} */}
+                        
                         <div
                           key={`itemNameBn-${itemIndex}`}
-                          className="text-2xl text-left opacity-0 group-hover:opacity-100"
+                          className="text-2xl text-left hidden group-hover:block"
                         >
                           {item.alphabet_banglaname}
                         </div>

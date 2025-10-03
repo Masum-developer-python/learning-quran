@@ -20,6 +20,7 @@ import Class from "./pages/Class";
 
 import Whiteboard from "./components/Whiteboard";
 import OverlayWhiteboard from "./components/OverlayWhiteboard";
+import UsePageTitle from "./components/TitleManager";
 
 function App() {
   console.log("App.jsx");
@@ -153,6 +154,7 @@ function App() {
         >
           {/* <OverlayWhiteboard /> */}
           <Router>
+            <UsePageTitle />
             <main className="bg-white/50 print:bg-white/20 print:m-2 print:p-2 flex w-[calc(100%)] pb-16 sm:pb-4 md:pb-4 print:pb-10">
               {whiteboardOpen && (
                 <div
