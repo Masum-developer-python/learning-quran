@@ -20,7 +20,7 @@ import Class from "./pages/Class";
 
 import Whiteboard from "./components/Whiteboard";
 import OverlayWhiteboard from "./components/OverlayWhiteboard";
-import UsePageTitle from "./components/TitleManager";
+import UsePageTitle, {titlePrint} from "./components/TitleManager";
 
 function App() {
   console.log("App.jsx");
@@ -117,7 +117,7 @@ function App() {
   const print = useReactToPrint({
     // content: () => sectionRef.current,
     contentRef: outerRef,
-    documentTitle: "grow with Quran - ?",
+    documentTitle: `grow with Quran - ${titlePrint}`,
   });
   console.log(handlePrint);
   console.log(isPrinting);
