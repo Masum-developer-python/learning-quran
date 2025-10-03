@@ -7,7 +7,7 @@ function UsePageTitle() {
 
   useEffect(() => {
     let title = "RARe Academy"; // default
-    document.title = location.pathname.split("/").pop() + " - কুরআন শিক্ষা  " + title;
+    document.title = "কুরআন শিক্ষা - " +location.pathname.split("/").pop() + " - কুরআন শিক্ষা  " + title;
   }, [location.pathname]);
 }
 
