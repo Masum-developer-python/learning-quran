@@ -7,31 +7,7 @@ function UsePageTitle() {
 
   useEffect(() => {
     let title = "RARe Academy"; // default
-
-    switch (location.pathname) {
-      case "/":
-        title = "RARe Academy";
-        break;
-      case "/ict":
-        title = "ICT - RARe Academy";
-        break;
-      case "/math":
-        title = "Math - RARe Academy";
-        break;
-      case "/hisab":
-        title = "Coaching Accounting System - RARe Academy";
-        break;
-      case "/routine":
-        title = "Class Routine Generator - RARe Academy";
-        break;
-      case "/whiteboard":
-        title = "Whiteboard - RARe Academy";
-        break;
-      default:
-        title = "others - RARe Academy";
-    }
-
-    document.title = title;
+    document.title = location.pathname.split("/").pop() + " - কুরআন শিক্ষা  " + title;
   }, [location.pathname]);
 }
 
